@@ -1,0 +1,310 @@
+/*size가 고정된 폰트*/
+html { -webkit-text-size-adjust: none; }
+
+head{
+    background:beige;
+    width: 1120px;
+    max-width: none !important;
+}
+body
+{
+    background:beige;
+    max-width: 100%;
+    height: auto;
+    max-width: none !important;
+}
+
+/*header부분. 여기에서 수정*/
+.header
+{
+    margin-top: 60px;
+    text-align: center;
+    margin-bottom: 60px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.header img
+{
+ width: 200px;
+}
+
+#headerSlogan >h2
+{
+    font-size: 1.6em;
+}
+
+/*sample header부분. 여기에서 수정*/
+.sampleHeader
+{
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+#sampleHeaderLogo>h1
+{
+text-align: center;
+font-size:2em;  
+    margin-bottom: 20px;
+}
+#sampleHeaderLogo>p
+{
+    text-align: center;
+font-size:1.3em;    
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+#sampleHeaderImg >img
+{
+    text-align: center;
+  
+}
+/*예시사진 부분*/
+.sampleHeaderImg {
+    text-align: center;
+    margin-bottom: 100px;
+}
+/*hashtag img부분*/
+.hashtag
+{
+margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+
+}
+.hashtag img{
+      
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.hashtag h3
+{
+font-size: 1.2em;
+    margin-bottom: 13px;
+}
+.letterheader h4
+{
+    text-align: center;
+    
+}
+
+/*변환과정 부분*/
+.transfer 
+{
+text-align: center;    
+}
+#fileUpLoad img
+{
+    width: 100%;
+    height: auto;
+}
+#transferSubmit
+{
+margin-top: 50px; 
+margin-bottom: 50px;
+}
+#transferSubmit img
+{
+width: 300px;
+
+}
+.transfer img
+{
+width: 800px;  
+    margin-bottom: 80px;
+}
+.letter img
+{
+    text-align: left;
+margin-top: 100px;    
+    width: 100%;
+    margin-bottom: 100px;
+    
+}
+.transfer h1
+{
+margin-top: 50px;
+margin-bottom: 50px;
+font-size: 2em;
+text-align: center;
+}
+.btn-file{
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-file input[type=file] {
+            position: absolute;
+            top: 0;
+                right: 0;
+            min-width: 100%;
+            min-height: 100%;
+            font-size: 100px;
+            text-align: right;
+            filter: alpha(opacity=0);
+            opacity: 0;
+            outline: none;
+            background: white;
+            cursor: inherit;
+            display: block;
+        }
+
+
+
+
+/*변환하기 버튼 부분*/
+#transferButton
+{
+    text-align: center;
+    font-size: 5rem;
+    line-height: 2;
+}
+
+
+/*카드 추천 링크부분*/
+.recommand
+{
+text-align: center;    
+margin-bottom: 100px;
+    font-size: 1.7em;
+}
+
+/*cardexp에서 엽서부분*/
+.Empltyletter 
+{
+text-align: center;
+    
+}
+.Empltyletter img
+{
+    
+}
+
+/*이미지 슬라이더*/
+
+
+@import url(https://fonts.googleapis.com/css?family=Varela+Round);
+
+/*html, body { background: white url("https://codepen.io/images/classy_fabric.png"); }*/
+
+.slides {
+    padding: 0;
+    width: 100%; 
+    height: 450px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+}
+
+.slides * {
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.slides input { display: none; }
+
+.slide-container { display: block; }
+
+.slide {
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    position: absolute;
+
+    transform: scale(0);
+
+    transition: all .7s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.nav label {
+    width: 100px;
+    height: 100%;
+    display: none;
+    position: absolute;
+
+   opacity: 0;
+    z-index: 9;
+    cursor: pointer;
+
+    transition: opacity .2s;
+
+    color: #FFF;
+    font-size: 156pt;
+    text-align: center;
+    line-height: 380px;
+    font-family: "Varela Round", sans-serif;
+    background-color: rgba(255, 255, 255, .3);
+    text-shadow: 0px 0px 15px rgb(119, 119, 119);
+}
+
+.slide:hover + .nav label { opacity: 0.5; }
+
+.nav label:hover { opacity: 1; }
+
+.nav .next { right: 0; 
+width: 100px;
+}
+
+input:checked + .slide-container  .slide {
+    opacity: 1;
+
+    transform: scale(1);
+
+    transition: opacity 1s ease-in-out;
+}
+
+input:checked + .slide-container .nav label { display: block; }
+
+.nav-dots {
+ width: 100%;
+ bottom: 9px;
+ height: 11px;
+ display: block;
+ position: absolute;
+ text-align: center;
+}
+
+.nav-dots .nav-dot {
+ top: -5px;
+ width: 11px;
+ height: 11px;
+ margin: 0 4px;
+ position: relative;
+ border-radius: 100%;
+ display: inline-block;
+ background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav-dots .nav-dot:hover {
+ cursor: pointer;
+ background-color: rgba(0, 0, 0, 0.8);
+}
+
+input#img-1:checked ~ .nav-dots label#img-dot-1,
+input#img-2:checked ~ .nav-dots label#img-dot-2,
+input#img-3:checked ~ .nav-dots label#img-dot-3,
+input#img-4:checked ~ .nav-dots label#img-dot-4,
+input#img-5:checked ~ .nav-dots label#img-dot-5,
+input#img-6:checked ~ .nav-dots label#img-dot-6 {
+ background: rgba(0, 0, 0, 0.8);
+}
+
+/*hashtag image*/
+.btn::after
+{
+color: white;
+}
+img {
+  width: 100%;
+  }
