@@ -7,200 +7,30 @@
   </head>
 
   <body>
-    <!--  logo와 slogan-->
-    <div class="header">
-      <div id="headerLogo">
-        <img src="./images/paintlylogo.png" >
-      </div>
-        <div id="headerSlogan">
-          <h2>설날 감사카드는 이제 Paintly로! </h2>
-        </div>
-    </div>
-    <!--예시부분 header-->
-    <div class="sampleHeader">
-      <div id="sampleHeaderLogo">
-        <h1>Paintly가 여러분의 이야기를 작품으로 만들어 드립니다.</h1>
-        <p>사진을 고르고, 원하는 그림 스타일을 고른 뒤, 문구를 입력하면 끝!</p>
-      </div>
-
-    </div>
-    <!-- 결과예시 이미지-->
-    <div class="sampleHeaderImg">
-      <img src="./images/result.png">
-    </div>
-
-    <!--여러가지 예시 이미지 슬라이드-->
-    <ul class="slides">
-      <input type="radio" name="radio-btn" id="img-1" checked />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post1.png" />
-          </a>
-        </div>
-        <div class="nav">
-          <label for="img-6" class="prev">&#x2039;</label>
-          <label for="img-2" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <input type="radio" name="radio-btn" id="img-2" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post2.png" />
-          </a>
-
-        </div>
-        <div class="nav">
-          <label for="img-1" class="prev">&#x2039;</label>
-          <label for="img-3" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <input type="radio" name="radio-btn" id="img-3" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post3.png" />
-          </a>
-        </div>
-        <div class="nav">
-          <label for="img-2" class="prev">&#x2039;</label>
-          <label for="img-4" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <input type="radio" name="radio-btn" id="img-4" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post4.png" />
-          </a>
-
-        </div>
-        <div class="nav">
-          <label for="img-3" class="prev">&#x2039;</label>
-          <label for="img-5" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <input type="radio" name="radio-btn" id="img-5" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post5.png" />
-          </a>
-        </div>
-        <div class="nav">
-          <label for="img-4" class="prev">&#x2039;</label>
-          <label for="img-6" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <input type="radio" name="radio-btn" id="img-6" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post6.png" />
-          </a>
-        </div>
-        <div class="nav">
-          <label for="img-5" class="prev">&#x2039;</label>
-          <label for="img-1" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <li class="nav-dots">
-        <label for="img-1" class="nav-dot" id="img-dot-1"></label>
-        <label for="img-2" class="nav-dot" id="img-dot-2"></label>
-        <label for="img-3" class="nav-dot" id="img-dot-3"></label>
-        <label for="img-4" class="nav-dot" id="img-dot-4"></label>
-        <label for="img-5" class="nav-dot" id="img-dot-5"></label>
-        <label for="img-6" class="nav-dot" id="img-dot-6"></label>
-      </li>
-    </ul>
 
 
-    <!--변환 과정-->
-    <div class="transfer">
-      <div id="transferSelect">
-        <h1>직접 만들어보세요!</h1>
-      </div>
-      <div id="fileUpLoad">
-        <button type="button" style= "max-width:100%;" class="btn-lg,  btn-link btn-file">
-          <img src="./images/pick1.png"><input type="file">
-        </button>
-        <button type="button" style= "max-width:100%;" class="btn-lg,  btn-link btn-file">
-          <img src="./images/pick2.png"><input type="file">
-        </button>  
-      </div>
-    </div>
+<div id="fullpage">
+    <div class="section">One</div>
+        <div class="section">
+                <div class="slide" data-anchor="slide1">Two 1</div>
+                        <div class="slide" data-anchor="slide2">Two 2</div>
+                            </div>
+                                <div class="section">Three</div>
+                                    <div class="section">Four</div>
+                                    </div>
+</body>
 
-    <!--
-      <div class="container">
-      <div id="transferButton">
+<script>
 
-      <button type="button" class="btn-lg,  btn-link btn-file">
-      <img src="./images/pick1.png"><input type="file">
-      </button>
-      </div>
-      </div>
-    -->
+new fullpage('#fullpage', {
+  //options here
+    autoScrolling:true,
+      scrollHorizontally: true
+      });
 
-
-
-    <div class="container">
-      <div id="transferButton">
-        <button type="button" class="btn-lg, btn-outline-secondary">변환하기</button>
-      </div>
-    </div>
-
-    <!--
-      <div id="transferSubmit">
-      <a href="#">
-      <img src="./images/transfer.png">
-      </a>
-      </div>
-    -->
-
-
-
-    <!--결과 엽서-->
-    <div class="letter">
-      <img src="./images/letter.png">
-    </div>
-
-    <div class="container">
-      <h2>Card image test</h2>
-      <p>image at the left</p>
-      <div class="card" style="width: 100%;">
-        <img class="card-img-left" src="/images/letter.png" alt="card image" style="width: 100%">
-        <div class="card-body">
-          <!--               <h4 class="card title">john</h4>-->
-          <h6>받는 사람:</h6>
-          <input type="text" class="form-control" placeholder="받는 사람 이름을 입력하세요.">
-          <p class="card-text">
-          <input type="text" class="form-control" placeholder="보내고 싶은 이야기를 입력하세요.">
-          </p>
-          <a href="#" class="btn btn-primary">보내기</a>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- card추천 -->
-    <div class="recommand">
-      <a href="cardexp.html">
-        <p>저희가 다른 신년인사 카드를 추천해 드릴까요?</p>
-      </a>
-    </div>
-
-    <!--   footer-->
-    <footer>
-      <% include footer %>
-      <a href="#" style="font-size:2em;">Back to top</a></p>
-    </footer>
-
-  </body>
+      //methods
+      fullpage_api.setAllowScrolling(false);
+      </script>
 </html>
+
+
