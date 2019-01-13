@@ -25,7 +25,8 @@ body
 }
 .header img
 {
- width: 200px;
+ width: 100%;
+ margin-bottom: 10%;
 }
 
 #headerSlogan >h2
@@ -36,14 +37,14 @@ body
 /*sample header부분. 여기에서 수정*/
 .sampleHeader
 {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 10%;
+    margin-bottom: 15%;
 }
 #sampleHeaderLogo>h1
 {
 text-align: center;
 font-size:2em;  
-    margin-bottom: 20px;
+    margin-bottom: 10%;
 }
 #sampleHeaderLogo>p
 {
@@ -116,7 +117,7 @@ width: 800px;
 .letter img
 {
     text-align: left;
-margin-top: 100px;    
+margin-top: 10%;    
     width: 100%;
     margin-bottom: 100px;
     
@@ -134,7 +135,6 @@ text-align: center;
         }
 
         .btn-file input[type=file] {
-            position: absolute;
             top: 0;
                 right: 0;
             min-width: 100%;
@@ -192,7 +192,7 @@ text-align: center;
     width: 100%; 
     height: 45vh;
     display: block;
-    margin: 0 auto;
+    margin: 15% 1px 1px 4px;
     position: relative;
 }
 
