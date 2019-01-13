@@ -137,7 +137,7 @@
         <h1> 예쁜 사진을 골라주세요! </h1>
         <h3 style="margin-bottom: 7%;"> 일출이나 꽃 사진은 어때요? </h3>
         <div class="image-upload">
-          <label for="file-input" style="width: 90%">
+          <label for="file-input" style="width: 70%">
             <img src="./images/pick1.png"/>
           </label>
           <input id="file-input" type="file" style="display: none;"/>
@@ -150,7 +150,7 @@
         <h1> 스타일만 고르면 끝이에요 </h1>
         <h3 style="margin-bottom: 7%;"> 저는 Oil, Pop 스타일을 좋아해요 </h3>
         <div class="image-upload">
-          <label for="file-input" style="width: 90%">
+          <label for="file-input" style="width: 70%">
             <img src="./images/pick2.png"/>
           </label>
           <input id="file-input" type="file" style="display: none;"/>
@@ -167,7 +167,7 @@
       </section>
 
       <section>
-      <center style="margin-top: 15%; margin-bottom: 7%;">
+      <center style="margin-top: 10%;">
         <h1> 신년카드가 나왔어요! </h1>
         <h3> 어떤것 같아요? </h3>
         <h3> 마음에 들었으면 좋겠어요.</h3>
@@ -219,6 +219,11 @@
   </body>
 
   <script>
-$(".main").onepage_scroll();
+$(".main").onepage_scroll({
+
+  loop: false,
+  keyboard: false,
+
+});
   </script>
 </html>
