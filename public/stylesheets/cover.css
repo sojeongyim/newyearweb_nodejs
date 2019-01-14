@@ -117,9 +117,9 @@ width: 800px;
 .letter img
 {
     text-align: left;
-margin-top: 10%;    
+margin-top: 5vh;    
     width: 100%;
-    margin-bottom: 10%;
+    margin-bottom: 5vh;
     max-width: 700px;
     
 }
@@ -166,7 +166,6 @@ text-align: center;
 .recommand
 {
 text-align: center;    
-margin-bottom: 100px;
     font-size: 1.7em;
 }
 
