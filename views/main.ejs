@@ -140,8 +140,10 @@
           <label for="file-input" style="width: 70%">
             <img src="./images/pick1.png"/>
           </label>
-          <input id="file-input" type="file" style="display: none;"/>
-        </div>
+<form id="target" name="target" method="post" action="/upload" enctype="multipart/form-data">
+          <input id="file-input" name= "file-input" type="file" style="display: none;"/>
+</form>      
+  </div>
         </center>
       </section>
 
@@ -154,7 +156,7 @@
             <img src="./images/pick2.png"/>
           </label>
           <input id="file-input" type="file" style="display: none;"/>
-        </div>
+<input id="file-input" type="file" style="display: none;"/>        </div>
         </center>
       </section>
 
@@ -224,6 +226,9 @@ $(".main").onepage_scroll({
   loop: false,
   keyboard: false,
 
+});
+$('#file-input').change(function() {
+$('#target').submit();
 });
   </script>
 </html>
