@@ -35,101 +35,39 @@
         <!--  logo와 slogan-->
 
         <!--여러가지 예시 이미지 슬라이드-->
-        <ul class="slides">
-          <input type="radio" name="radio-btn" id="img-1" checked />
-          <li class="slide-container">
-            <div class="slide">
-              <a href="https://paintly.ai/">
-                <img src="/images/post1.png" />
-              </a>
-            </div>
-            <div class="nav">
-              <label for="img-6" class="prev">&#x2039;</label>
-              <label for="img-2" class="next">&#x203a;</label>
-            </div>
-          </li>
-
-          <input type="radio" name="radio-btn" id="img-2" />
-          <li class="slide-container">
-            <div class="slide">
-              <a href="https://paintly.ai/">
-                <img src="/images/post2.png" />
-              </a>
-
-            </div>
-            <div class="nav">
-              <label for="img-1" class="prev">&#x2039;</label>
-              <label for="img-3" class="next">&#x203a;</label>
-            </div>
-          </li>
-
-          <input type="radio" name="radio-btn" id="img-3" />
-          <li class="slide-container">
-            <div class="slide">
-              <a href="https://paintly.ai/">
-                <img src="/images/post3.png" />
-              </a>
-            </div>
-            <div class="nav">
-              <label for="img-2" class="prev">&#x2039;</label>
-              <label for="img-4" class="next">&#x203a;</label>
-            </div>
-          </li>
-
-          <input type="radio" name="radio-btn" id="img-4" />
-          <li class="slide-container">
-            <div class="slide">
-              <a href="https://paintly.ai/">
-                <img src="/images/post4.png" />
-              </a>
-
-            </div>
-            <div class="nav">
-              <label for="img-3" class="prev">&#x2039;</label>
-              <label for="img-5" class="next">&#x203a;</label>
-            </div>
-          </li>
-
-          <input type="radio" name="radio-btn" id="img-5" />
-          <li class="slide-container">
-            <div class="slide">
-              <a href="https://paintly.ai/">
-                <img src="/images/post5.png" />
-              </a>
-            </div>
-            <div class="nav">
-              <label for="img-4" class="prev">&#x2039;</label>
-              <label for="img-6" class="next">&#x203a;</label>
-            </div>
-          </li>
-
-          <input type="radio" name="radio-btn" id="img-6" />
-          <li class="slide-container">
-            <div class="slide">
-              <a href="https://paintly.ai/">
-                <img src="/images/post6.png" />
-              </a>
-            </div>
-            <div class="nav">
-              <label for="img-5" class="prev">&#x2039;</label>
-              <label for="img-1" class="next">&#x203a;</label>
-            </div>
-          </li>
-
-          <li class="nav-dots">
-            <label for="img-1" class="nav-dot" id="img-dot-1"></label>
-            <label for="img-2" class="nav-dot" id="img-dot-2"></label>
-            <label for="img-3" class="nav-dot" id="img-dot-3"></label>
-            <label for="img-4" class="nav-dot" id="img-dot-4"></label>
-            <label for="img-5" class="nav-dot" id="img-dot-5"></label>
-            <label for="img-6" class="nav-dot" id="img-dot-6"></label>
-          </li>
-        </ul>
-        <center style="margin-top: 12vh;">
+    <div class="swiper-container"> 
+     <div class="swiper-wrapper"> 
+       <div class="swiper-slide">
+           <img src="./images/post1.png">
+    </div> 
+       <div class="swiper-slide" style="width:50%;">
+           <img src="./images/post4.png">
+       </div> 
+       <div class="swiper-slide" style="width:50%;">
+           <img src="./images/post3.png">
+       </div> 
+       <div class="swiper-slide" style="width:50%;">
+           <img src="./images/post2.png">
+       </div> 
+       <div class="swiper-slide" style="width:50%;">
+           <img src="./images/post5.png">
+       </div> 
+       <div class="swiper-slide" style="width:50%;">
+           <img src="./images/post6.png">
+         </div>
+         </div> 
+         <div class="swiper-pagination"></div>
+          </div>
+          
+          
+          
+         <div id="p2">
+        <center style="margin-top: 10vh;">
           <h2> 정말 멋지지 않나요? </h2>
           <h1>직접 만들어보세요!</h1>
         </center>
-
+         </div>
+          
       </section>
 
       <section>
@@ -270,7 +208,6 @@ $(".main").onepage_scroll({
 $('#file-input').change(function() {
   $('#target').submit();
 });
-
 if("<%=title%>"=="Upload"){
   $(".main").moveTo(3);
   $(".main").moveDown();
@@ -281,6 +218,16 @@ if("<%=title%>"=="Progressing"){
   $(".main").moveDown();
  setTimeout($(".main").moveDown(),10000);
 }
-
-  </script> 
+      
+ var swiper = new Swiper('.swiper-container', { 
+       slidesPerView: 3, 
+       spaceBetween: 30, 
+       freeMode: true, 
+       pagination: { 
+        el: '.swiper-pagination', 
+         clickable: true, 
+       }, 
+     });
+      
+  </script>
 </html>
