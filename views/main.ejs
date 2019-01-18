@@ -7,58 +7,56 @@
   </head>
 
   <body>
-   
-   <!--       메인 첫번째 페이지-->
-    <div class= "main">
-      <section>
-        <div id="main_index1">
-        <!--예시부분 header-->
-        <div id="cardslider"  style="margin-bottom:50%;">
-<div class="swiper-container" > 
-     <div class="swiper-wrapper" > 
-<!--      <div class="imgsample"></div>-->
-       <div class="swiper-slide" style="margin-top:20%;">
-           <img src="./images/post1.png">
-       </div> 
-       <div class="swiper-slide" style="margin-top:20%;">
-           <img src="./images/post4.png">
-       </div> 
-       <div class="swiper-slide" style="margin-top:20%;">
-           <img src="./images/post3.png">
-       </div> 
-       <div class="swiper-slide" style="margin-top:20%;">
-           <img src="./images/post2.png">
-       </div> 
-       <div class="swiper-slide" style="margin-top:20%;">
-           <img src="./images/post5.png">
-       </div> 
-       <div class="swiper-slide" style="margin-top:20%;">
-           <img src="./images/post6.png">
-       </div> 
-<!--
-       <div class="swiper-slide">Slide 7</div> 
-       <div class="swiper-slide">Slide 8</div> 
-       <div class="swiper-slide">Slide 9</div> 
-       <div class="swiper-slide">Slide 10</div> 
--->
-     </div> 
-     <!-- Add Pagination --> 
-     <div id="point">
-     <div class="swiper-pagination"></div> </div>
-   </div>
-   </div>
-        </div>
-        
-</section>
-<!--메인 두번째 페이지-->
-<section>   
 
-          <div id="main_index2">    
-    
+    <!--       메인 첫번째 페이지-->
+    <div class= "main">
+      <section class = "main2">
+          <!--예시부분 header-->
+          <div id="cardslider"  style="margin-bottom:50%;">
+            <div class="swiper-container" > 
+              <div class="swiper-wrapper" > 
+                <!--      <div class="imgsample"></div>-->
+              <div class="swiper-slide" style="margin-top:20%;">
+                <img src="./images/post1.png">
+              </div> 
+              <div class="swiper-slide" style="margin-top:20%;">
+                <img src="./images/post4.png">
+              </div> 
+              <div class="swiper-slide" style="margin-top:20%;">
+                <img src="./images/post3.png">
+              </div> 
+              <div class="swiper-slide" style="margin-top:20%;">
+                <img src="./images/post2.png">
+              </div> 
+              <div class="swiper-slide" style="margin-top:20%;">
+                <img src="./images/post5.png">
+              </div> 
+              <div class="swiper-slide" style="margin-top:20%;">
+                <img src="./images/post6.png">
+              </div> 
+              <!--
+                <div class="swiper-slide">Slide 7</div> 
+                <div class="swiper-slide">Slide 8</div> 
+                <div class="swiper-slide">Slide 9</div> 
+                <div class="swiper-slide">Slide 10</div> 
+              -->
+              </div> 
+              <!-- Add Pagination --> 
+              <div id="point">
+                <div class="swiper-pagination"></div> </div>
+            </div>
+          </div>
+
+      </section>
+      <!--메인 두번째 페이지-->
+      <section>   
+
+        <div id="main_index2">    
+
         </div>
-          
-</section>
-<!--세번째 페이지-->
+
+      </section>
+      <!--세번째 페이지-->
       <section>
       </section>
 
@@ -67,12 +65,11 @@
   </body>
 
   <script>
-    $(".main").onepage_scroll({
+$(".main").onepage_scroll({
 
-      loop: false,
-      keyboard: false,
-
-    });
+  loop: false,
+  keyboard: false,
+});
 $('#file-input').change(function() {
   $('#target').submit();
 });
@@ -102,9 +99,8 @@ if("<%=title%>"=="Progressing"){
     self.name = 'reload';
     self.location.reload(true);
   }
- //else self.name = ''; 
+  //else self.name = ''; 
 }
-
 
 var swiper = new Swiper('.swiper-container', { 
   slidesPerView: 3, 
@@ -115,6 +111,5 @@ var swiper = new Swiper('.swiper-container', {
     clickable: true, 
   }, 
 });
-
   </script>
 </html>

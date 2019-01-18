@@ -9,50 +9,31 @@
   <body>
     <div class= "main">
       <section id="test1">
-      <div id="index1">
-      <a href="./main">
-<img id="index1_b" src="./images/index1_b.png">
+        <div id="index1">
+          <a class="mainButt"  href="./main">
+            <img id="index1_b" src="./images/index1_b.png">
           </a>
-      </div>
-      </section>
-      
-
-<section>   
-      <div id="index2">    
-</div>
-      </section>
-
-      <section>
-         <div id="index3">    
-        <a href="./main">
-      <img id="index3_b" src="./images/index3_b.png">
-
-        </a>
         </div>
       </section>
-      
-  
-<!--
-      <section>
-    
+
+
+      <section>   
+        <div id="index2">    
+        </div>
       </section>
 
       <section>
-     
+        <div id="index3">    
+          <a class="mainButt"  href="./main">
+            <img id="index3_b" src="./images/index3_b.png">
+          </a>
+        </div>
       </section>
-
-      <section>
-     
-      </section>
-
-      <section>
-       
--->
-        <footer>
-          <% include footer %>
-          <a href="#" style="font-size:2em;">Back to top</a></p>
-        </footer>
-      </section>
+      <footer>
+        <% include footer %>
+        <a href="#" style="font-size:2em;">Back to top</a></p>
+      </footer>
+        </section>
 
 
 
@@ -67,18 +48,18 @@ $(".main").onepage_scroll({
 
 });
 $('#file-input').change(function() {
-$('#target').submit();
+  $('#target').submit();
 });
-      
- var swiper = new Swiper('.swiper-container', { 
-       slidesPerView: 3, 
-       spaceBetween: 30, 
-       freeMode: true, 
-       pagination: { 
-        el: '.swiper-pagination', 
-         clickable: true, 
-       }, 
-     });
-      
+
+var swiper = new Swiper('.swiper-container', { 
+  slidesPerView: 3, 
+  spaceBetween: 30, 
+  freeMode: true, 
+  pagination: { 
+    el: '.swiper-pagination', 
+    clickable: true, 
+  }, 
+});
+
   </script>
 </html>
