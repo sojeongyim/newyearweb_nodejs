@@ -215,8 +215,8 @@ text-align: center;
        
        .swiper-container img
        {
-       width: 115%;
-        height: 50%;
+       width: 35vw;
+        height: 50vh;
        }   
        
 .swiper-slide swiper-slide-active{   
@@ -231,8 +231,9 @@ text-align: center;
 }
 
 /*
-.swiper-pagination swiper-pagination-clickable swiper-pagination-bullets{
-    margin-top:55%;
+.swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-ios
+{
+    position:relative; top:40vh;
 }
 */
 
@@ -273,7 +274,14 @@ background-size: 100% 100vh;
     height: 100%;
     max-width:100%;
 }
-
+#main_index1
+{
+    background: url("../images/main_index1.png") no-repeat center center; 
+background-size: 100% 100vh;
+    width: 100%;
+    height: 100%;
+    max-width:100%;
+}
 #main_index2
 {
     background: url("../images/main_index2.png") no-repeat center center; 
