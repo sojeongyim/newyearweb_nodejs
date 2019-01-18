@@ -7,82 +7,60 @@
   </head>
 
   <body>
+   
+   <!--       메인 첫번째 페이지-->
     <div class= "main">
       <section>
-        <div class="header">
-          <div id="headerLogo">
-            <img src="./images/paintlylogo.png" >
-          </div>
-            <div id="headerSlogan">
-              <h2>설날 감사카드는 이제 Paintly로! </h2>
-            </div>
-        </div>
+        <div id="main_index1">
         <!--예시부분 header-->
-        <div class="sampleHeader">
-          <div id="sampleHeaderLogo">
-            <h1>Paintly가 여러분의 이야기를 작품으로 만들어 드립니다.</h1>
-            <p>사진을 고르고, 원하는 그림 스타일을 고른 뒤, 문구를 입력하면 끝!</p>
-          </div>
-
-        </div>
-        <!-- 결과예시 이미지-->
-        <div class="sampleHeaderImg">
-          <img src="./images/result.png">
-        </div>
-      </section>
-
-      <section>   
-        <!--  logo와 slogan-->
-
-        <!--여러가지 예시 이미지 슬라이드-->
-    <div class="swiper-container"> 
-     <div class="swiper-wrapper"> 
-       <div class="swiper-slide">
+        <div id="cardslider"  style="margin-bottom:50%;">
+<div class="swiper-container" > 
+     <div class="swiper-wrapper" > 
+<!--      <div class="imgsample"></div>-->
+       <div class="swiper-slide" style="margin-top:20%;">
            <img src="./images/post1.png">
-    </div> 
-       <div class="swiper-slide" style="width:50%;">
+       </div> 
+       <div class="swiper-slide" style="margin-top:20%;">
            <img src="./images/post4.png">
        </div> 
-       <div class="swiper-slide" style="width:50%;">
+       <div class="swiper-slide" style="margin-top:20%;">
            <img src="./images/post3.png">
        </div> 
-       <div class="swiper-slide" style="width:50%;">
+       <div class="swiper-slide" style="margin-top:20%;">
            <img src="./images/post2.png">
        </div> 
-       <div class="swiper-slide" style="width:50%;">
+       <div class="swiper-slide" style="margin-top:20%;">
            <img src="./images/post5.png">
        </div> 
-       <div class="swiper-slide" style="width:50%;">
+       <div class="swiper-slide" style="margin-top:20%;">
            <img src="./images/post6.png">
-         </div>
-         </div> 
-         <div class="swiper-pagination"></div>
-          </div>
-          
-          
-          
-         <div id="p2">
-        <center style="margin-top: 10vh;">
-          <h2> 정말 멋지지 않나요? </h2>
-          <h1>직접 만들어보세요!</h1>
-        </center>
-         </div>
-          
-      </section>
+       </div> 
+<!--
+       <div class="swiper-slide">Slide 7</div> 
+       <div class="swiper-slide">Slide 8</div> 
+       <div class="swiper-slide">Slide 9</div> 
+       <div class="swiper-slide">Slide 10</div> 
+-->
+     </div> 
+     <!-- Add Pagination --> 
+     <div id="point">
+     <div class="swiper-pagination"></div> </div>
+   </div>
+   </div>
+        </div>
+        
+</section>
+<!--메인 두번째 페이지-->
+<section>   
 
+          <div id="main_index2">    
+    
+        </div>
+          
+</section>
+<!--세번째 페이지-->
       <section>
-      <center style="margin-top: 10vh;">
-        <h1> 예쁜 사진을 골라주세요! </h1>
-        <h3 style="margin-bottom: 4vh;"> 일출이나 꽃 사진은 어때요? </h3>
-        <div class="image-upload">
-          <label for="file-input" style="width: 70%">
-            <img src="./images/pick1.png"/>
-          </label>
-<form id="target" name="target" method="post" action="/upload" enctype="multipart/form-data">
-          <input id="file-input" name= "file-input" type="file" style="display: none;"/>
-</form>      
-  </div>
-        </center>
+    
       </section>
 
       <section>
@@ -151,6 +129,9 @@
           <% include footer %>
           <a href="#" style="font-size:2em;">Back to top</a></p>
         </footer>
+      </section>
+      <section>
+          <h1>test</h1>
       </section>
 
 
