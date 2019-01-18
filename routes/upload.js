@@ -13,7 +13,7 @@ router.post('/', function(req, res, next)
     var size;
 
     if (part.filename) {
-      filename = part.filename;
+      filename = Math.floor(new Date().getTime() / 1000)+".jpg";
       size = part.byteCount;
     }else{
       part.resume();
@@ -29,11 +29,15 @@ router.post('/', function(req, res, next)
     part.on('end',function(){
       console.log(filename+' Part read complete');
       writeStream.end();
+      console.log(req.session);
+      req.session.filename=filename;
+      console.log('session filename: '+req.session.filename);
+      //console.log('session: '+req.session);  //왜 이러면 출력안되는지 원인좀//:[object object]
     });
   });
 
   form.on('close',function(){
-    res.render('main',{title: 'Express'});
+    res.render('main',{title: 'Upload',uploadfile: filename});
     });
 
   form.on('progress',function(byteRead,byteExpected){

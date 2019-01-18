@@ -64,15 +64,48 @@
       </section>
 
       <section>
-      <center style="margin-top: 10vh;">
-        <h1> 스타일만 고르면 끝이에요 </h1>
-        <h3 style="margin-bottom: 4vh;"> 저는 Oil, Pop 스타일을 좋아해요 </h3>
-        <div class="image-upload">
-          <label for="file-input" style="width: 70%">
-            <img src="./images/pick2.png"/>
-          </label>
-          <input id="file-input" type="file" style="display: none;"/>
-<input id="file-input" type="file" style="display: none;"/>        </div>
+        <center style="margin-top: 10vh;">
+          <h1> 스타일만 고르면 끝이에요 </h1>
+          <h3 style="margin-bottom: 4vh;"> 저는 Oil, Pop 스타일을 좋아해요 </h3>
+          <div>
+            <label style="width: 70%">
+              <% if(title == 'Progressing'){ %>
+              <img src="/images/Style/38.jpg"/>
+              <% }else{ %>
+              <a href="#" data-toggle="modal" data-target="#filterModal"><img src="/images/pick2.png"/></a>
+              <% } %>
+              <!-- Modal -->
+              <div class="modal" style="position: absolute;" id="filterModal" role="dialog" >
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Select a filter</h4>
+                  </div>
+                  <div class="modal-body setmargin">
+                    <div style="display: block;">
+                     <%for(var i=0;i<3;i++){ %>
+                      <div style="display: inline-block; height:30%; margin:10px 10px">
+                        <% for(var j=0;j<3;j++){ %>
+                        <a href="/filterpick/<%=i*3+j%>"><img style="width:30%;" src="/images/Style/38.jpg" /></a>
+                        <% } %>
+                      </div>
+                      <% } %>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+                </div>
+
+              </div>
+            </label> 
+
+
+          </div>
         </center>
       </section>
 
@@ -81,18 +114,22 @@
           <h1 style ="font-size: 62px;"> 수고했어요 ! </h1>
           <h2> 정말 간단하죠? </h2>
           <h3> 우리 인공지능 Annie가 열심히 그리고 있어요! </h3>
+          <div class="wrapper" data-anim="base wrapper" style="margin:auto;">
+              <div class="circle" data-anim="base left"></div>
+              <div class="circle" data-anim="base right"></div>
+          </div>
         </center>
       </section>
 
       <section>
-      <center style="margin-top: 7vh;">
-        <h1> 신년카드가 나왔어요! </h1>
-        <h3> 어떤것 같아요? </h3>
-        <h3> 마음에 들었으면 좋겠어요.</h3>
+        <center style="margin-top: 7vh;">
+          <h1> 신년카드가 나왔어요! </h1>
+          <h3> 어떤것 같아요? </h3>
+          <h3> 마음에 들었으면 좋겠어요.</h3>
         </center>
         <!--결과 엽서-->
         <div class="letter" style="text-align: center;">
-          <img src="./images/letter.png">
+          <img src="/images/letter.png">
         </div>
         <div class="recommand">
           <a href="cardexp.html">
@@ -147,8 +184,18 @@ $(".main").onepage_scroll({
 
 });
 $('#file-input').change(function() {
-$('#target').submit();
+  $('#target').submit();
 });
+if("<%=title%>"=="Upload"){
+  $(".main").moveTo(3);
+  $(".main").moveDown();
+}
+
+if("<%=title%>"=="Progressing"){
+  $(".main").moveTo(4);
+  $(".main").moveDown();
+ setTimeout($(".main").moveDown(),10000);
+}
       
  var swiper = new Swiper('.swiper-container', { 
        slidesPerView: 3, 
