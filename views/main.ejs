@@ -58,7 +58,7 @@
           
 </section>
 <!--세번째 페이지-->
-      <section id="p3">
+<section id="p3">
     <!-- 카테고리-->
     <div id="category">
         <div id="btn1">
@@ -74,7 +74,10 @@
         <button id="post8" class="btn btn-link" onclick=showimg(post8_card)>#직접 쓰기</button>
         </div>
     </div>
-
+        </section>
+        
+        
+<!--카테고리 클릭하면 나오는 카드들-->
 <div id="step1">
 <!--대학 이행시-->
 <center>
@@ -220,134 +223,24 @@
 </div>
 
      
-</section>
+
     
-    
-<section id="p4">
-
-<!--사진 업로드-->
-<div id="p2">
-    <div class="container" id="post8_card">
-    <div class="card" style="width: 50%;">
-        <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-        <div class="card-img-overlay">
-            <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-            <input type="text" id="line1" style="background-image: url(./images/btn_back.png);">
-            <br><br>
-            <input type="text" id="line2" style="background-image: url(./images/btn_back.png);)">
-            </h1>
-             <div id="fileUpLoad">
-       <button type="button" class="btn-lg,  btn-link btn-file">
-           <img src="./images/pick1.png"><input type="file"></button>
-        </div>
-        
-    </div>
-</div>
-</div>
- <div id="paging">
-   <center>
-      <br>
-      <a href="#p2">
-       <button type="button" class="btn btn-outline-primary" onclick="gotostep3()" >선택 완료</button>
-       </a>
-<h2>  
-<br><br> 
-<a href="#p1">
-     <button type="button" class="btn btn-outline-primary">1</button>
-</a>
-<a href="#p2">
-     <button type="button" class="btn btn-outline-primary">2</button>
-</a>
-<a href="#p3">
-     <button type="button" class="btn btn-outline-primary">3</button>
-</a> 
-       </h2>   
-</center>
-  <br><br>
-   </div> 
-</div> 
-                    
-</section>
-    
-    
-    <section id="p5">
-                                          
-                                                    
-<!--스타일 선택          -->
-<div id="p3">
-    <div class="container" id="post8_card">
-    <div class="card" style="width: 50%;">
-        <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-        <div class="card-img-overlay">
-            <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-            <input type="text" id="line1" style="background-image: url(./images/btn_back.png);">
-            <br><br>
-            <input type="text" id="line2" style="background-image: url(./images/btn_back.png);)">
-            </h1>
-             <div id="fileUpLoad">
-       <button type="button" class="btn-lg,  btn-link btn-file">
-           <img src="./images/pick2.png"><input type="file"></button>
-        </div>
-        
-    </div>
-</div>
-</div> 
-<div id="paging">
-   <center>
-      <br>
-      <a href="#p2">
-       <button type="button" class="btn btn-outline-primary" onclick="gotolast()" >변환하기</button>
-       </a>
-<h2>  
-<br><br> 
-<a href="#p1">
-     <button type="button" class="btn btn-outline-primary">1</button>
-</a>
-<a href="#p2">
-     <button type="button" class="btn btn-outline-primary">2</button>
-</a>
-<a href="#p3">
-     <button type="button" class="btn btn-outline-primary">3</button>
-</a> 
-       </h2>   
-</center>
-  <br><br>
-   </div>
-</div>            
-    </section>
-
-
-<!--완성된 카드-->
-<div id="completed">
-   <center>
-       <h2>카드가 완성되었어요!</h2>
-       
-<!--       여기에 완성된 사진 넣어야 함-->
-    <h1>@여기에 완성된 사진 넣어야 함@</h1>
-    </center>
-     <div id="publish" style="float: left; margin-top: 5%; margin-bottom: 2%; 
-      text-align: center">
-      <img src="./images/down_b.png" style="width:7%; margin-left: 2%; margin-right: 2%; ">
-      <img src="./images/kakao_b.png" style="width:7%; margin-left: 2%;margin-right: 2%;">
-      <img src="./images/insta_b.png" style="width:7%; margin-left: 2%;margin-right: 2%;">
-      <img src="./images/naver_b.png" style="width:7%; margin-left: 2%;margin-right: 2%;">
-      </div>
-       
-       <div id="eventPage" style="float: left; margin-top: 2%; margin-bottom: 10%; text-align: center;">
-       <a href="#">
-          <img src="./images/remand_b.png" style="width:30%; margin-right: 5%;">
-          </a>
-           <img src="./images/event_b.png" style="width:30%;">
-       
-       </div>
-    </div>
-
-
-
 
   </body>
 
   <script>
+      
+    //변수 선언
+    var card1=document.getElementById('post1_card');
+    var card2=document.getElementById('post2_card');
+    var card3=document.getElementById('post3_card');
+    var card4=document.getElementById('post4_card');
+    var card5=document.getElementById('post5_card');
+    var card6=document.getElementById('post6_card');
+    var card7=document.getElementById('post7_card');
+    var card8=document.getElementById('post8_card');
+      
+      
     $(".main").onepage_scroll({
 
       loop: false,
