@@ -5,119 +5,47 @@
     <% include header %>
     <title>Paintly.AIcard.main</title>
   </head>
+
   <body>
     <div class= "main">
+
+      <!-- Page One -->
       <section>
-        <!--예시부분 header-->
+        <!-- Sliders -->
         <div id="cardslider" >
           <div class="swiper-container" > 
             <div class="swiper-wrapper" > 
-              <!--      <div class="imgsample"></div>-->
-            <div class="swiper-slide">
-              <img src="./images/post1.png">
+              <% for(var i =1; i<7; i++) { %>
+              <div class="swiper-slide">
+                <img src="./images/post<%= i %>.png">
+              </div> 
+            <% } %>
             </div> 
-          <div class="swiper-slide">
-            <img src="./images/post4.png">
-          </div> 
-          <div class="swiper-slide">
-            <img src="./images/post3.png">
-          </div> 
-          <div class="swiper-slide">
-            <img src="./images/post2.png">
-          </div> 
-          <div class="swiper-slide">
-            <img src="./images/post5.png">
-          </div> 
-          <div class="swiper-slide">
-            <img src="./images/post6.png">
-          </div> 
-            </div> 
-            <div id="point">
-              <div class="swiper-pagination"></div> </div>
           </div>
         </div>
-
       </section>
-      <!--메인 두번째 페이지-->
+
+      <!-- Page Two -->
       <section>   
         <div id="main_index2">    
         </div>
-</section>
-<!--세번째 페이지-->
-<section id="p3">
-    <!-- 카테고리-->
-    <div id="category">
-        <div id="btn1">
-        <button id="post1" class="btn btn-link" onclick=showimg(post1_card)>#대학</button>
-        <button id="post2" class="btn btn-link" onclick=showimg(post2_card)>#취직</button>
-        <button id="post3" class="btn btn-link" onclick=showimg(post3_card)>#연애</button>
-        <button id="post4" class="btn btn-link" onclick=showimg(post4_card)>#자녀</button>
-        </div>
-        <div id="btn2">
-        <button id="post5" class="btn btn-link" onclick=showimg(post5_card)>#성적</button>
-        <button id="post6" class="btn btn-link" onclick=showimg(post6_card)>#연봉</button>
-        <button id="post7" class="btn btn-link" onclick=showimg(post7_card)>#결혼</button>
-        <button id="post8" class="btn btn-link" onclick=showimg(post8_card)>#직접 쓰기</button>
-        </div>
-    </div>
-    
-    
-      
-<!--카테고리 클릭하면 나오는 카드들-->
-<!--대학 이행시-->
-<center>
-<div class="container" id="post1_card">
-    <div class="card" style="width: 50%;">
-        <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-        <div class="card-img-overlay">
-           
-            <h1 class="card-tilte" id="1_txt" style="position: relative; left: 12%; top:8%">
-      
-            대 : <input type="text" style="background-image: url(./images/btn_back.png);">
-            <br><br>
-            학 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-             
-            </h1>
-        </div>
-        
-    </div>
-</div>
-</center>
-<!--취직 이행시-->
-<div class="container" id="post2_card">
-    <div class="card" style="width: 50%;">
-        <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-        <div class="card-img-overlay">
-            <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-            취 : <input type="text" id="line1" style="background-image: url(./images/btn_back.png);">
-            <br><br>
-            직 : <input type="text" id="line2" style="background-image: url(./images/btn_back.png);)">
-            </h1>
-        </div>
       </section>
 
-      <!--카테고리 클릭하면 나오는 카드들-->
-      <div id="step1">
-        <!--대학 이행시-->
-        <center>
-          <div class="container" id="post1_card">
-            <div class="card" style="width: 50%;">
-              <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-              <div class="card-img-overlay">
 
-                <h1 class="card-tilte" id="1_txt" style="position: relative; left: 12%; top:8%">
-
-                  대 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                  <br><br>
-                  학 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-
-                </h1>
-              </div>
-
-            </div>
+      <!-- Page Three -->
+      <section id="p3">
+        <% var tagList = ["#대학", "#취직", "#연애", "#자녀", "#성적", "#연봉", "#결혼", "#직접 쓰기"]; %>
+        <!-- 카테고리-->
+        <div id="category">
+          <% for(i =0 ; i<tagList.length/4 ; i++){ %>
+          <div>
+            <% for(var j = i*4; j< tagList.length  && j< (i+1)*4 ; j++) { %>
+            <button id="post1" class="btn btn-link" ><%= tagList[j] %></button>
+            <% } %>
           </div>
-        </center>
-        <!--취직 이행시-->
+          <% } %>
+        </div>
+
         <div class="container" id="post2_card">
           <div class="card" style="width: 50%;">
             <img class="card-img-top" src="./images/post8.png" style="width: 100%">
@@ -131,304 +59,57 @@
 
           </div>
         </div>
-        <!--연애 이행시-->
-        <div class="container" id="post3_card">
-          <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-            <div class="card-img-overlay">
-              <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                연 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                <br><br>
-                애 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-              </h1>
-            </div>
-
-          </div>
-        </div>
-        <!--자녀 이행시-->
-        <div class="container" id="post4_card">
-          <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-            <div class="card-img-overlay">
-              <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                자 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                <br><br>
-                녀 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-              </h1>
-            </div>
-
-          </div>
-        </div>
-        <!--성적 이행시-->
-        <div class="container" id="post5_card">
-          <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-            <div class="card-img-overlay">
-              <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                성 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                <br><br>
-                적 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-              </h1>
-            </div>
-
-          </div>
-        </div>
-        <!--연봉 이행시-->
-        <div class="container" id="post6_card">
-          <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-            <div class="card-img-overlay">
-              <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                연 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                <br><br>
-                봉 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-              </h1>
-            </div>
-
-          </div>
-        </div>
-        <!--결혼 이행시-->
-        <div class="container" id="post7_card">
-          <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-            <div class="card-img-overlay">
-              <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                결 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                <br><br>
-                혼 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-              </h1>
-            </div>
-
-            <div id="step1">
-              <!--대학 이행시-->
-              <center>
-                <div class="container" id="post1_card">
-                  <div class="card" style="width: 50%;">
-                    <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-                    <div class="card-img-overlay">
-
-                      <h1 class="card-tilte" id="1_txt" style="position: relative; left: 12%; top:8%">
-
-                        대 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                        <br><br>
-                        학 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-
-                      </h1>
-                    </div>
-
-                  </div>
-                </div>
-              </center>
-              <!--취직 이행시-->
-              <div class="container" id="post2_card">
-                <div class="card" style="width: 50%;">
-                  <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-                  <div class="card-img-overlay">
-                    <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                      취 : <input type="text" id="line1" style="background-image: url(./images/btn_back.png);">
-                      <br><br>
-                      직 : <input type="text" id="line2" style="background-image: url(./images/btn_back.png);)">
-                    </h1>
-                  </div>
-
-                </div>
-              </div>
-              <!--연애 이행시-->
-              <div class="container" id="post3_card">
-                <div class="card" style="width: 50%;">
-                  <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-                  <div class="card-img-overlay">
-                    <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                      연 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                      <br><br>
-                      애 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-                    </h1>
-                  </div>
-
-                </div>
-              </div>
-              <!--자녀 이행시-->
-              <div class="container" id="post4_card">
-                <div class="card" style="width: 50%;">
-                  <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-                  <div class="card-img-overlay">
-                    <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                      자 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                      <br><br>
-                      녀 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-                    </h1>
-                  </div>
-
-                </div>
-              </div>
-              <!--성적 이행시-->
-              <div class="container" id="post5_card">
-                <div class="card" style="width: 50%;">
-                  <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-                  <div class="card-img-overlay">
-                    <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                      성 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                      <br><br>
-                      적 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-                    </h1>
-                  </div>
-
-                </div>
-              </div>
-              <!--연봉 이행시-->
-              <div class="container" id="post6_card">
-                <div class="card" style="width: 50%;">
-                  <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-                  <div class="card-img-overlay">
-                    <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                      연 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                      <br><br>
-                      봉 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-                    </h1>
-                  </div>
-
-                </div>
-              </div>
-              <!--결혼 이행시-->
-              <div class="container" id="post7_card">
-                <div class="card" style="width: 50%;">
-                  <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-                  <div class="card-img-overlay">
-                    <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                      결 : <input type="text" style="background-image: url(./images/btn_back.png);">
-                      <br><br>
-                      혼 : <input type="text" style="background-image: url(./images/btn_back.png);)">
-                    </h1>
-                  </div>
-
-                </div>
-              </div>
-
-              <div class="container" id="post8_card">
-                <div class="card" style="width: 50%;">
-                  <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-                  <div class="card-img-overlay">
-                    <h1 class="card-tilte" style="position: relative; left: 12%; top:8%">
-                      직 : <input type="text" id="line1" style="background-image: url(./images/btn_back.png);">
-                      <br><br>
-                      접 : <input type="text" id="line2" style="background-image: url(./images/btn_back.png);)">
-                    </h1>
-                  </div>
-
-                </div>
-              </div>
-
-              <div id="paging">
-                <center>
-                  <br>
-                  <a href="#step2">
-                    <button type="button" class="btn btn-outline-primary" onclick="gotostep2()" >입력 완료</button>
-                  </a>
-                  <h2>  
-                    <br><br> 
-                    <a href="#step1">
-                      <button type="button" class="btn btn-outline-primary">1</button>
-                    </a>
-                    <a href="#step2">
-                      <button type="button" class="btn btn-outline-primary">2</button>
-                    </a>
-                    <a href="#step3">
-                      <button type="button" class="btn btn-outline-primary">3</button>
-                    </a> 
-                  </h2>   
-                </center>
-                <br><br>
-              </div> 
 
 
-            </div>
-
-          </div>
-        </div>
-        
+        <div id="paging">
+          <center>
+            <br>
+            <a href="#step2">
+              <button type="button" class="btn btn-outline-primary" onclick="gotostep2()" >입력 완료</button>
+            </a>
+            <h2>  
+              <br><br> 
+              <a href="#step1">
+                <button type="button" class="btn btn-outline-primary">1</button>
+              </a>
+              <a href="#step2">
+                <button type="button" class="btn btn-outline-primary">2</button>
+              </a>
+              <a href="#step3">
+                <button type="button" class="btn btn-outline-primary">3</button>
+              </a> 
+            </h2>   
+          </center>
+          <br><br>
+        </div> 
+      </section>
     </div>
-</div>
-
-  <div id="paging">
-   <center>
-      <br>
-      <a href="#step2">
-       <button type="button" class="btn btn-outline-primary" onclick="gotostep2()" >입력 완료</button>
-       </a>
-<h2>  
-<br><br> 
-<a href="#step1">
-     <button type="button" class="btn btn-outline-primary">1</button>
-</a>
-<a href="#step2">
-     <button type="button" class="btn btn-outline-primary">2</button>
-</a>
-<a href="#step3">
-     <button type="button" class="btn btn-outline-primary">3</button>
-</a> 
-       </h2>   
-</center>
-  <br><br>
-   </div>     
-
-    
-</section>
-        
-  
-
-
-
+    <script>
 $(".main").onepage_scroll({
+  loop: false,
+});
 
-  <script>
-      
-  //변수 선언
-    var card1=document.getElementById('post1_card');
-    var card2=document.getElementById('post2_card');
-    var card3=document.getElementById('post3_card');
-    var card4=document.getElementById('post4_card');
-    var card5=document.getElementById('post5_card');
-    var card6=document.getElementById('post6_card');
-    var card7=document.getElementById('post7_card');
-    var card8=document.getElementById('post8_card');
-      
-      
-    $(".main").onepage_scroll({
-
-      loop: false,
-      keyboard: false,
-
-    });
 $('#file-input').change(function() {
   $('#target').submit();
 });
-if("<%=title%>"=="Upload"){
-  $(".main").moveTo(3);
-  $(".main").moveDown();
+
+
+var http = new XMLHttpRequest();
+while(http.status==404){
+  setTimeout(function(){ 
+    http.open('HEAD',"/images/Result/<%=uploadfile%>", false);
+    http.send();
+    console.log(http.status!=404); 
+  },5000);
+
 }
 
-if("<%=title%>"=="Progressing"){
-  $(".main").moveTo(4);
-  $(".main").moveDown();
-  $('progress').css({'overflow':'hidden'}); //확인필요
-
-
-  var http = new XMLHttpRequest();
-  while(http.status==404){
-    setTimeout(function(){ 
-      http.open('HEAD',"/images/Result/<%=uploadfile%>", false);
-      http.send();
-      console.log(http.status!=404); 
-    },5000);
-
-  }
-
-  $(".main").moveTo(6);
-  if (self.name != 'reload') {
-    self.name = 'reload';
-    self.location.reload(true);
-  }
-  //else self.name = ''; 
+$(".main").moveTo(6);
+if (self.name != 'reload') {
+  self.name = 'reload';
+  self.location.reload(true);
+}
+//else self.name = ''; 
 }
 
 var swiper = new Swiper('.swiper-container', { 
@@ -440,39 +121,8 @@ var swiper = new Swiper('.swiper-container', {
     clickable: true, 
   }, 
 });
-    var page=document.getElementById('paging');
-    var P2=document.getElementById('p2');
-    var P3=document.getElementById('p3');
-    var finishCard=document.getElementById('completed');
-    
-    card1.style.display='none';
-    card2.style.display='none';
-    card3.style.display='none';
-    card4.style.display='none';
-    card5.style.display='none';
-    card6.style.display='none';
-    card7.style.display='none';
-    card8.style.display='none';
-    
-    page.style.display='none';
-    P2.style.display='none';
-    P3.style.display='none';
-function gotostep2()
-{
-  var input1=document.getElementById('line1').value;
-  var input2=document.getElementById('line2').value;
-  P2.style.display='block';
 
-}
-function gotostep3()
-{
-  P3.style.display='block';
-}    
-function gotolast()
-{
-  finishCard.style.display='block';   
-}
-
-
-  </script> 
+    </script> 
+  </body>
+</html>
 
