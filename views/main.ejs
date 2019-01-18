@@ -7,196 +7,60 @@
   </head>
 
   <body>
+   
+   <!--       메인 첫번째 페이지-->
     <div class= "main">
       <section>
-        <div class="header">
-          <div id="headerLogo">
-            <img src="/images/paintlylogo.png" >
-          </div>
-            <div id="headerSlogan">
-              <h2>설날 감사카드는 이제 Paintly로! </h2>
-            </div>
-        </div>
+        <div id="main_index1">
         <!--예시부분 header-->
-        <div class="sampleHeader">
-          <div id="sampleHeaderLogo">
-            <h1>Paintly가 여러분의 이야기를 작품으로 만들어 드립니다.</h1>
-            <p>사진을 고르고, 원하는 그림 스타일을 고른 뒤, 문구를 입력하면 끝!</p>
-          </div>
-
+        <div id="cardslider"  style="margin-bottom:50%;">
+<div class="swiper-container" > 
+     <div class="swiper-wrapper" > 
+<!--      <div class="imgsample"></div>-->
+       <div class="swiper-slide" style="margin-top:20%;">
+           <img src="./images/post1.png">
+       </div> 
+       <div class="swiper-slide" style="margin-top:20%;">
+           <img src="./images/post4.png">
+       </div> 
+       <div class="swiper-slide" style="margin-top:20%;">
+           <img src="./images/post3.png">
+       </div> 
+       <div class="swiper-slide" style="margin-top:20%;">
+           <img src="./images/post2.png">
+       </div> 
+       <div class="swiper-slide" style="margin-top:20%;">
+           <img src="./images/post5.png">
+       </div> 
+       <div class="swiper-slide" style="margin-top:20%;">
+           <img src="./images/post6.png">
+       </div> 
+<!--
+       <div class="swiper-slide">Slide 7</div> 
+       <div class="swiper-slide">Slide 8</div> 
+       <div class="swiper-slide">Slide 9</div> 
+       <div class="swiper-slide">Slide 10</div> 
+-->
+     </div> 
+     <!-- Add Pagination --> 
+     <div id="point">
+     <div class="swiper-pagination"></div> </div>
+   </div>
+   </div>
         </div>
-        <!-- 결과예시 이미지-->
-        <div class="sampleHeaderImg">
-          <img src="/images/result.png">
+        
+</section>
+<!--메인 두번째 페이지-->
+<section>   
+
+          <div id="main_index2">    
+    
         </div>
-      </section>
-
-      <section>   
-        <!--  logo와 slogan-->
-
-        <!--여러가지 예시 이미지 슬라이드-->
-        <div class="swiper-container"> 
-          <div class="swiper-wrapper"> 
-            <div class="swiper-slide">
-              <img src="/images/post1.png">
-            </div> 
-            <div class="swiper-slide" style="width:50%;">
-              <img src="/images/post4.png">
-            </div> 
-            <div class="swiper-slide" style="width:50%;">
-              <img src="/images/post3.png">
-            </div> 
-            <div class="swiper-slide" style="width:50%;">
-              <img src="/images/post2.png">
-            </div> 
-            <div class="swiper-slide" style="width:50%;">
-              <img src="/images/post5.png">
-            </div> 
-            <div class="swiper-slide" style="width:50%;">
-              <img src="/images/post6.png">
-            </div>
-          </div> 
-          <div class="swiper-pagination"></div>
-        </div>
-
-
-
-        <div id="p2">
-          <center style="margin-top: 10vh;">
-            <h2> 정말 멋지지 않나요? </h2>
-            <h1>직접 만들어보세요!</h1>
-          </center>
-        </div>
-
-      </section>
-
+          
+</section>
+<!--세번째 페이지-->
       <section>
-        <center style="margin-top: 10vh;">
-          <h1> 예쁜 사진을 골라주세요! </h1>
-          <h3 style="margin-bottom: 4vh;"> 일출이나 꽃 사진은 어때요? </h3>
-          <div class="image-upload">
-            <label for="file-input" style="width: 70%">             
-              <%if(title=='Upload'||title =='Progressing'){%>
-              <img src="/images/Origin/<%=uploadfile%>"/>
-              <%}else{%>
-              <img src="/images/pick1.png"/>
-              <%}%>
-            </label>
-            <form id="target" name="target" method="post" action="/upload" enctype="multipart/form-data">
-              <input id="file-input" name= "file-input" type="file" style="display: none;"/>
-            </form>
-          </div>
-        </center>
       </section>
-
-      <section>
-        <center style="margin-top: 10vh;">
-          <h1> 스타일만 고르면 끝이에요 </h1>
-          <h3 style="margin-bottom: 4vh;"> 저는 Oil, Pop 스타일을 좋아해요 </h3>
-          <div>
-            <label style="width: 70%">
-              <% if(title == 'Progressing'){ %>
-              <img src="/images/Style/38.jpg"/>
-              <% }else{ %>
-              <a href="#" data-toggle="modal" data-target="#filterModal"><img src="/images/pick2.png"/></a>
-              <% } %>
-              <!-- Modal -->
-              <div class="modal" style="position: absolute;" id="filterModal" role="dialog" >
-                <div class="modal-dialog">
-                  <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Select a filter</h4>
-                  </div>
-                  <div class="modal-body setmargin">
-                    <div style="display: block;">
-                      <%for(var i=0;i<3;i++){ %>
-                      <div style="display: inline-block; height:30%; margin:10px 10px">
-                        <% for(var j=0;j<3;j++){ %>
-                        <a href="/filterpick/<%=i*3+j%>"><img style="width:30%;" src="/images/Style/38.jpg" /></a>
-                        <% } %>
-                      </div>
-                      <% } %>
-                    </div>
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-                </div>
-
-              </div>
-            </label> 
-
-
-          </div>
-        </center>
-      </section>
-
-      <section id="progress">
-        <center style="top: 20vh; margin-top: 15vh; margin-bottom: 7vh; position: relative">
-          <h1 style ="font-size: 62px;"> 수고했어요 ! </h1>
-          <h2> 정말 간단하죠? </h2>
-          <h3> 우리 인공지능 Annie가 열심히 그리고 있어요! </h3>
-          <div class="wrapper" data-anim="base wrapper" style="margin:auto;">
-            <div class="circle" data-anim="base left"></div>
-            <div class="circle" data-anim="base right"></div>
-          </div>
-        </center>
-      </section>
-
-      <section>
-        <center style="margin-top: 7vh;">
-          <h1> 신년카드가 나왔어요! </h1>
-          <h3> 어떤것 같아요? </h3>
-          <h3> 마음에 들었으면 좋겠어요.</h3>
-        </center>
-        <!--결과 엽서-->
-        <div class="letter" style="text-align: center;">
-          <img src="/images/letter.png">
-          <% if(title == 'Progressing'){ %>
-          <img src="/images/Result/<%=uploadfile%>">
-          <%}%>
-        </div>
-        <div class="recommand">
-          <a href="cardexp.html">
-            <p>다른 신년카드도 만들어 볼래요?</p>
-          </a>
-        </div>
-      </section>
-
-      <section>
-        <div class="container">
-          <h2>Card image test</h2>
-          <p>image at the left</p>
-          <div class="card" style="width: 100%;">
-            <img class="card-img-left" src="/images/letter.png" alt="card image" style="width: 100%">
-            <div class="card-body">
-              <!--               <h4 class="card title">john</h4>-->
-              <h6>받는 사람:</h6>
-              <input type="text" class="form-control" placeholder="받는 사람 이름을 입력하세요.">
-              <p class="card-text">
-              <input type="text" class="form-control" placeholder="보내고 싶은 이야기를 입력하세요.">
-              </p>
-              <a href="#" class="btn btn-primary">보내기</a>
-            </div>
-          </div>
-        </div>
-        <!-- card추천 -->
-        <div class="recommand">
-          <a href="cardexp.html">
-            <p>저희가 다른 신년인사 카드를 추천해 드릴까요?</p>
-          </a>
-        </div>
-        <!--   footer-->
-        <footer>
-          <% include footer %>
-          <a href="#" style="font-size:2em;">Back to top</a></p>
-        </footer>
-      </section>
-
 
 
 
