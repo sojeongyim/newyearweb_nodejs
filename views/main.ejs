@@ -35,39 +35,39 @@
         <!--  logo와 slogan-->
 
         <!--여러가지 예시 이미지 슬라이드-->
-    <div class="swiper-container"> 
-     <div class="swiper-wrapper"> 
-       <div class="swiper-slide">
-           <img src="./images/post1.png">
-    </div> 
-       <div class="swiper-slide" style="width:50%;">
-           <img src="./images/post4.png">
-       </div> 
-       <div class="swiper-slide" style="width:50%;">
-           <img src="./images/post3.png">
-       </div> 
-       <div class="swiper-slide" style="width:50%;">
-           <img src="./images/post2.png">
-       </div> 
-       <div class="swiper-slide" style="width:50%;">
-           <img src="./images/post5.png">
-       </div> 
-       <div class="swiper-slide" style="width:50%;">
-           <img src="./images/post6.png">
-         </div>
-         </div> 
-         <div class="swiper-pagination"></div>
-          </div>
-          
-          
-          
-         <div id="p2">
-        <center style="margin-top: 10vh;">
-          <h2> 정말 멋지지 않나요? </h2>
-          <h1>직접 만들어보세요!</h1>
-        </center>
-         </div>
-          
+        <div class="swiper-container"> 
+          <div class="swiper-wrapper"> 
+            <div class="swiper-slide">
+              <img src="/images/post1.png">
+            </div> 
+            <div class="swiper-slide" style="width:50%;">
+              <img src="/images/post4.png">
+            </div> 
+            <div class="swiper-slide" style="width:50%;">
+              <img src="/images/post3.png">
+            </div> 
+            <div class="swiper-slide" style="width:50%;">
+              <img src="/images/post2.png">
+            </div> 
+            <div class="swiper-slide" style="width:50%;">
+              <img src="/images/post5.png">
+            </div> 
+            <div class="swiper-slide" style="width:50%;">
+              <img src="/images/post6.png">
+            </div>
+          </div> 
+          <div class="swiper-pagination"></div>
+        </div>
+
+
+
+        <div id="p2">
+          <center style="margin-top: 10vh;">
+            <h2> 정말 멋지지 않나요? </h2>
+            <h1>직접 만들어보세요!</h1>
+          </center>
+        </div>
+
       </section>
 
       <section>
@@ -75,10 +75,11 @@
           <h1> 예쁜 사진을 골라주세요! </h1>
           <h3 style="margin-bottom: 4vh;"> 일출이나 꽃 사진은 어때요? </h3>
           <div class="image-upload">
-            <label for="file-input" style="width: 70%">
-              <img src="/images/pick1.png"/>
+            <label for="file-input" style="width: 70%">             
               <%if(title=='Upload'||title =='Progressing'){%>
-              <img src="/images/Origin/<%=uploadfile%>" style="position: absolute; top: 200px; left:300px;"/>
+              <img src="/images/Origin/<%=uploadfile%>"/>
+              <%}else{%>
+              <img src="/images/pick1.png"/>
               <%}%>
             </label>
             <form id="target" name="target" method="post" action="/upload" enctype="multipart/form-data">
@@ -110,7 +111,7 @@
                   </div>
                   <div class="modal-body setmargin">
                     <div style="display: block;">
-                     <%for(var i=0;i<3;i++){ %>
+                      <%for(var i=0;i<3;i++){ %>
                       <div style="display: inline-block; height:30%; margin:10px 10px">
                         <% for(var j=0;j<3;j++){ %>
                         <a href="/filterpick/<%=i*3+j%>"><img style="width:30%;" src="/images/Style/38.jpg" /></a>
@@ -134,14 +135,14 @@
         </center>
       </section>
 
-      <section>
+      <section id="progress">
         <center style="top: 20vh; margin-top: 15vh; margin-bottom: 7vh; position: relative">
           <h1 style ="font-size: 62px;"> 수고했어요 ! </h1>
           <h2> 정말 간단하죠? </h2>
           <h3> 우리 인공지능 Annie가 열심히 그리고 있어요! </h3>
           <div class="wrapper" data-anim="base wrapper" style="margin:auto;">
-              <div class="circle" data-anim="base left"></div>
-              <div class="circle" data-anim="base right"></div>
+            <div class="circle" data-anim="base left"></div>
+            <div class="circle" data-anim="base right"></div>
           </div>
         </center>
       </section>
@@ -155,6 +156,9 @@
         <!--결과 엽서-->
         <div class="letter" style="text-align: center;">
           <img src="/images/letter.png">
+          <% if(title == 'Progressing'){ %>
+          <img src="/images/Result/<%=uploadfile%>">
+          <%}%>
         </div>
         <div class="recommand">
           <a href="cardexp.html">
@@ -199,12 +203,12 @@
   </body>
 
   <script>
-$(".main").onepage_scroll({
+    $(".main").onepage_scroll({
 
-  loop: false,
-  keyboard: false,
+      loop: false,
+      keyboard: false,
 
-});
+    });
 $('#file-input').change(function() {
   $('#target').submit();
 });
@@ -216,18 +220,37 @@ if("<%=title%>"=="Upload"){
 if("<%=title%>"=="Progressing"){
   $(".main").moveTo(4);
   $(".main").moveDown();
- setTimeout($(".main").moveDown(),10000);
+  $('progress').css({'overflow':'hidden'}); //확인필요
+
+
+  var http = new XMLHttpRequest();
+  while(http.status==404){
+    setTimeout(function(){ 
+      http.open('HEAD',"/images/Result/<%=uploadfile%>", false);
+      http.send();
+      console.log(http.status!=404); 
+    },5000);
+
+  }
+
+  $(".main").moveTo(6);
+  if (self.name != 'reload') {
+    self.name = 'reload';
+    self.location.reload(true);
+  }
+ //else self.name = ''; 
 }
-      
- var swiper = new Swiper('.swiper-container', { 
-       slidesPerView: 3, 
-       spaceBetween: 30, 
-       freeMode: true, 
-       pagination: { 
-        el: '.swiper-pagination', 
-         clickable: true, 
-       }, 
-     });
-      
+
+
+var swiper = new Swiper('.swiper-container', { 
+  slidesPerView: 3, 
+  spaceBetween: 30, 
+  freeMode: true, 
+  pagination: { 
+    el: '.swiper-pagination', 
+    clickable: true, 
+  }, 
+});
+
   </script>
 </html>
