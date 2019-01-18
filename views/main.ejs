@@ -48,14 +48,44 @@
 
         <div class="container">
           <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="./images/post8.png" style="width: 100%">
+            <img class="card-img-top" src="./images/page3_card.png" >
             <div class="card-img-overlay">
-              <h1 id ="first_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">
-                대 : <input type="text" id="line1" style="background-image: url(./images/btn_back.png);">
-              </h1>
-              <h1 id ="second_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">
-                학 : <input type="text" id="line2" style="background-image: url(./images/btn_back.png);)">
-              </h1>
+             <div class="page">
+   <h4 id ="first_letter" class="card-tilte" style="position: relative; float:left; margin-top:2vh;">
+             
+              </h4>
+              
+   <div class="page__demo">
+    <label class="field a-field a-field_a1 page__field" style="float:right; width:15vh;">
+      <input class="field__input a-field__input" placeholder="20자 이내 입력" position:relative; top:-5vh;required>
+      
+              
+      <span class="a-field__label-wrap">
+<!--        <span class="a-field__label">First name</span>-->
+      </span>
+    </label>
+                 </div>
+           
+            <h4 id ="second_letter" class="card-tilte" style="position: relative; float:left; margin-top:2vh;">
+                   </h4>
+    <div class="page__demo">
+    <label class="field a-field a-field_a1 page__field" style=" float:right; width:15vh; ">
+      
+      <input class="field__input a-field__input" placeholder="20자 이내 입력" style="position:relative; top:-12vh;" required>
+      
+              
+      <span class="a-field__label-wrap">
+<!--        <span class="a-field__label">First name</span>-->
+      </span>
+    </label>
+    
+    
+  </div>
+</div>
+              
+              <div id="card_img" style="margin-top:6vh; text-align">
+                  <img src="./images/page3_cardimg.png" style="width: 35vw; height:20vh;">
+              </div>
             </div>
           </div>
         </div>
@@ -144,8 +174,8 @@ $(document).ready(function(){
     var tagList = letters.split(',')
       //first Letter is tagList[id][1];
       //second Letter is tagList[id][2];
-      $('h1#first_letter').text(tagList[id][1]);
-    $('h1#second_letter').text(tagList[id][2]);
+      $('h4#first_letter').text(tagList[id][1]);
+    $('h4#second_letter').text(tagList[id][2]);
   });
 });
 
