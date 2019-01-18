@@ -305,5 +305,28 @@ background-size: 100% 100vh;
     height: 100%;
     max-width:100%;
 }
-
- 
+#main_index3
+{
+    background: url("../images/main_index3.png") no-repeat center center; 
+background-size: 100% 100vh;
+    width: 100%;
+    height: 100%;
+    max-width:100%;
+}
+#category
+{
+text-align: center;
+    
+}
+#p3
+{
+    background-color: #EFE2AC;
+}
+#p4
+{
+    background-color: #EFE2AC;
+}
+#p5
+{
+    background-color: #EFE2AC;
+}
