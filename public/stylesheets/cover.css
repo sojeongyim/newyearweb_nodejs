@@ -250,7 +250,8 @@ img {
 
 #index3
 {
-background: url("../images/index3.PNG") no-repeat center center; 
+background: url("../images/index3.png") no-repeat center center; 
+background-size: 100% 100vh;
     width: 100%;
     height: 100%;
     max-width:100%;
@@ -259,14 +260,16 @@ background: url("../images/index3.PNG") no-repeat center center;
 }
 #index2
 {
-background: url("../images/index2.PNG") no-repeat center center; 
+background: url("../images/index2.png") no-repeat center center; 
+background-size: 100% 100vh;
     width: 100%;
     height: 100%;
     max-width:100%;
 }
 #index1
 {
-background: url("../images/index1.PNG") no-repeat center center; 
+background: url("../images/index1.png") no-repeat center center; 
+background-size: 100% 100vh;
     width: 100%;
     height: 100%;
     max-width:100%;
@@ -288,14 +291,16 @@ position:relative;
 }
  #main_index1
 {
-    background: url("../images/main_index1.PNG") no-repeat center center; 
+    background: url("../images/main_index1.png") no-repeat center center; 
+background-size: 100% 100vh;
     width: 100%;
     height: 100%;
     max-width:100%;
 }
 #main_index2
 {
-    background: url("../images/main_index2.PNG") no-repeat center center; 
+    background: url("../images/main_index2.png") no-repeat center center; 
+background-size: 100% 100vh;
     width: 100%;
     height: 100%;
     max-width:100%;
