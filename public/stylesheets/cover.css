@@ -230,11 +230,6 @@ body
   margin-top:15%; 
 }
 
-/*
-.swiper-pagination swiper-pagination-clickable swiper-pagination-bullets{
-margin-top:55%;
-}
- */
 
 /*hashtag image*/
 .btn::after
@@ -273,7 +268,14 @@ img {
   height: 100%;
   max-width:100%;
 }
-
+#main_index1
+{
+    background: url("../images/main_index1.png") no-repeat center center; 
+background-size: 100% 100vh;
+    width: 100%;
+    height: 100%;
+    max-width:100%;
+}
 #main_index2
 {
   background: url("../images/main_index2.png") no-repeat center center; 
