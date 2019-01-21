@@ -1,0 +1,45 @@
+#category {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  }
+
+.card2 {
+  position: relative;
+  width: 100%;
+  background: url(/images/emptycard.png);
+}
+
+.card2:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.card2 img {
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+.card2 .textBlock {
+  width: 90%;
+  position: relative;
+  text-align: left;
+}
+
+.card2 .myCont{
+  position: absolute;
+  height: 100%;
+  padding: 6%;
+
+}
+
+.textBlock h4 {
+  display: inline-block;
+}
+
+.card2 .imageBlock {
+  position: relative;
+  width: 87%;
+
+}
+
+.container {
+  padding: 2px 16px;
+}
