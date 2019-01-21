@@ -128,12 +128,18 @@
       <section id="5" >
 
         <center style="margin-top: 10vh;">
-          <h1> 스타일만 고르면 끝이에요 </h1>
-          <h3 style="margin-bottom: 4vh;"> 저는 Oil, Pop 스타일을 좋아해요 </h3>
-          <div>
-            <label style="width: 70%">
-              <a href="#" data-toggle="modal" data-target="#filterModal"><img src="/images/pick2.png"/></a>
-              <!-- Modal -->
+          <center style="width: 80%; margin: auto; height: 60vh; background: beige">
+          <div class="textBlock" style="padding-top: 5%; height: 25%;">
+            <h4 id="first_letter"> 대 </h4>
+            <div style="display:inline;" id="result1"></div>           
+            <br>
+            <h4 id="second_letter"> 학 </h4>
+            <div style="display:inline" id="result2"></div>  
+          </div>
+          <div class="imageBlock" style="padding-top: 5%; height: 75%;">
+            <a href="#" data-toggle="modal" data-target="#filterModal"><img id="filter_img" src="/images/pick2.png" style=" width: 90%; " ></a>
+
+           <!-- Modal -->
               <div class="modal" style="position: absolute;" id="filterModal" role="dialog" data-backdrop="false">
                 <div class="modal-dialog">
                   <!-- Modal content-->
@@ -146,7 +152,7 @@
                         <%for(var i=0;i<3;i++){ %>
                         <div style="display: inline-block; height:30%; margin:10px 10px">
                           <% for(var j=0;j<3;j++){ %>
-                          <img style="width:30%;" src="/images/Style/38.jpg" />
+                          <img id="<%=i*3+j %>" class="filtersend" data-dismiss="modal" style="width:30%;" src="/images/Style/38.jpg" />
                           <% } %>
                         </div>
                         <% } %>
@@ -158,10 +164,13 @@
                   </div>
                 </div>
               </div>
-            </label> 
+
+
           </div>
         </center>
-        <button class="ajaxsend">ajaxsend</button>
+
+      </center>
+
       </section>
 
       <section id="6">
@@ -220,9 +229,12 @@
         });
 
         // Send to DB
-        $('.ajaxsend').click(function(){
-
-          $.post('/ajax/style', {name: "gg"});
+        $('.filtersend').click(function(){
+          var filenameOb = document.getElementById("filePath");
+          var filename = filenameOb.value;
+          var stylenum = $(this).attr("id");         
+          $('#filter_img').attr("src",$(this).attr("src"));
+          $.post('/ajax/style', {stylenum: stylenum, filename: filename });
           $(".main").moveDown();
 
         });

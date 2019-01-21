@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 var multiparty = require('multiparty');
-
+var mysql = require('mysql');
+var dbconfig = require('./database.js') 
+var connection = mysql.createConnection(dbconfig);
 
 router.post('/upload', function(req, res) 
   {
@@ -23,9 +25,20 @@ router.post('/upload', function(req, res)
 
 router.post('/style', function(req, res, next)
   {
-    console.log(req.body.name);
-    var answer={'result': 'ok'};
-    res.json(answer);
+    var filename=req.body.filename;
+    var stylenum=req.body.stylenum;
+
+    connection.query('INSERT INTO image VALUES(?,?,?)',[filename,stylenum,0],function(err, rows, fields){
+      if (!err){
+        console.log('The solution is: ', rows);
+        var answer={'result': 'ok'};
+        res.json(answer);
+
+      }
+      else
+        console.log('Error while performing Query.', err);
+    });
+
   });
 
 module.exports = router; 
