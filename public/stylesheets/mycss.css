@@ -1,7 +1,19 @@
 #category {
   margin-top: 2vh;
   margin-bottom: 2vh;
-  }
+}
+
+
+#card_style{
+  background: url("../images/card_background.png") no-repeat center center; 
+  background-size: 100% 100vh;
+  width: 80%;
+  height: 60vh;
+  margin: auto;
+    box-shadow: 5px 5px 15px grey;
+
+}
+
 
 .card2 {
   position: relative;
@@ -43,10 +55,44 @@
 .container {
   padding: 2px 16px;
 }
-#card_style{
-background: url("../images/card_background.png") no-repeat center center; 
-     background-size: 100% 100vh;
-  width: 100%;
-  height: 100%;
-  max-width:100%;
+
+@font-face {
+  font-family: dovemayo;
+  src: url("/fonts/dovemayo.otf");
+}
+
+h4 {
+  font-family: dovemayo;
+}
+
+
+
+
+div.scrollmenu {
+  width: 90%;
+  padding: 14px;
+  margin: auto;
+
+  background-color: #EFE2AC;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+
+    border: 2px solid #4a6a99;
+      border-radius: 10px;
+}
+
+div.scrollmenu a.active {
+color: white;
+  background-color: #4a6a99;
+}
+div.scrollmenu a:hover {
+  background-color: white;
 }

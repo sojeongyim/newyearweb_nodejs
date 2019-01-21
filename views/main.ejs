@@ -8,79 +8,30 @@
 
   <body>
     <div class= "main">
-
-      <!-- Page One -->
-      <section id="1">
-        <div id="main_index1">
-        <center>
-        <img src="/images/1_logo.png" style="margin-bottom: 3vh; height: 20vh; width: auto;">
-        </center>
-        <center>
-        <img src="/images/1_ment.png" style="margin-bottom: 3vh; height: 8vh; width: auto;">
-        </center>
-          <!-- Sliders -->
-          <div id="cardslider" >
-            <div class="swiper-container" > 
-              <div class="swiper-wrapper"  > 
-                <% for(var i =1; i<7; i++) { %>
-                <div class="swiper-slide">
-                  <img src="./images/post<%= i %>.png">
-                </div> 
-            <% } %>
-              </div> 
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Page Two -->
-      <section id="2">   
-        <div id="main_index2">    
-        </div>
-      </section>
-
-
-      <!-- Page Three -->
-
-
-
       <section id="3">
         <% var tagList = ["#대학", "#취직", "#연애", "#자녀", "#성적", "#연봉", "#결혼", "#직접 쓰기"]; %>
-        <% var tagList = ["#대학", "#취직", "#연애"]; %>
         <!-- 카테고리-->
-        <div id="category">
-          <% for(i =0 ; i<tagList.length/4 ; i++){ %>
-          <div id="btntag">
-            <% for(var j = i*4; j< tagList.length  && j< (i+1)*4 ; j++) { %>
-            <a id="<%= j %>" class="btn-link <% if(j ==0 ) { %> active <% } %>" ><%= tagList[j] %></a>
-            <% } %>
-          </div>
+
+
+        <h2 style="text-align: center;"> 문구가 들어가요 </h2>
+        <div class="scrollmenu">
+          <% for(i =0 ; i<tagList.length ; i++){ %>
+          <a class="<% if(i ==0 ) { %> active <% } %> "id="<%= i %>" href="#"><%= tagList[i] %> </a>
           <% } %>
         </div>
 
-        <center id="card_style" style="width: 80%; margin: auto; height: 60vh; max-width: 600px;">
-          <div class="textBlock" style="padding-top: 3%; height: 15%;">
-            <h4 id="first_letter"> 대 </h4>
-            <input id="input1" type="text">
-            <br>
-            <h4 id="second_letter"> 학 </h4>
-            <input id="input2" type="text">
+        <center id="card_style">
+          <div class="imageBlock" style="padding: 3%; height: 80%;">
+            <img src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
           </div>
-          <div class="imageBlock" style="padding: 5%; height: 85%;">
-            <img src="/images/emptyinside.png" style="width: 100% ; max-width: 1000px;" >
-          </div>
-        </center>
 
-<!--
-        <center style="margin: 2%;">
-          <div style="margin-bottom: 2%;">
-            <button type="button" class="btn btn-outline-primary" onclick="textPrint()" >입력 완료</button>
-          </div>
-          <div>
-            <button type="button" class="btn btn-outline-primary">1</button>
-            <button type="button" class="btn btn-outline-primary">2</button>
-            <button type="button" class="btn btn-outline-primary">3</button>
-          </div>
+            <div class="textBlock" style="padding-bottom: 3%; height: 20%;">
+              <h4 id="first_letter"> 대 </h4>
+              <input id="input1" type="text">
+              <br>
+              <h4 id="second_letter"> 학 </h4>
+              <input id="input2" type="text">
+            </div>
         </center>
 -->
 <center style="margin: 2%;">
@@ -90,29 +41,23 @@
      </center>
       </section>
 
-
-
-
-
-
-
-
-
       <section id="4">
-        <div class="container">
-          <center id="card_style" style="width: 80%; margin: auto; height: 60vh; max-width: 600px;">
-          <div class="textBlock" style="padding-top: 3%; height: 15%;">
+
+        <center style="width: 80%; margin: auto; height: 60vh; background: beige; max-width: 600px;">
+          <div class="textBlock" style="padding-top: 3%; height: 20%;">
             <h4 id="first_letter"> 대 </h4>
-            <div style="display:inline;" id="result1"></div>           
+            <div style="display:inline;" id="result1">abcd</div>           
             <br>
             <h4 id="second_letter"> 학 </h4>
-            <div style="display:inline" id="result2"></div>  
+            <div style="display:inline" id="result2">abcd</div>  
           </div>
-           <div class="imageBlock" style="padding: 5%; height: 85%;">
-            <img src="/images/emptyinside.png" style="width: 100% ; max-width: 1000px;" >
+          <div class="imageBlock" style="padding: 3%; height: 80%;">
+            <label for="file-input" style= "height: 100%;">
+              <img src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+            </label>
+              <input id="file-input" type="file" style="display: none;"/>
           </div>
         </center>
-        </div>
 
         <center>
           <button type="button" class="btn btn-outline-primary" onclick="gotostep2()" >입력 완료</button>
@@ -192,60 +137,60 @@
 
     <script>
 
-      $(document).ready(function(){
-        // Open Styles
+$(document).ready(function(){
+  // Open Styles
 
-        // Upload Files
-        $('#fileInput').on('change', function () {
-          var form = $('#fileForm')[0];
-          var formData = new FormData(form);
+  // Upload Files
+  $('#fileInput').on('change', function () {
+    var form = $('#fileForm')[0];
+    var formData = new FormData(form);
 
-          $.ajax({
-            type: 'post',
-            url: '/ajax/upload',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-              $('#filePath').val(data);
-              console.log(data);
+    $.ajax({
+      type: 'post',
+      url: '/ajax/upload',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        $('#filePath').val(data);
+        console.log(data);
 
-              $('#origin_image').attr("src","/"+data);
-              $(".main").moveDown();
+        $('#origin_image').attr("src","/"+data);
+        $(".main").moveDown();
 
-            },
-            error: function (err) {
-              console.log(err);
-            }
-          });
-        });
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+  });
 
-        $(".main").onepage_scroll({
-          loop: false,
-          afterMove: function(index) {
-          },
-        });
+  $(".main").onepage_scroll({
+    loop: false,
+    afterMove: function(index) {
+    },
+  });
 
-        // Send to DB
-        $('.ajaxsend').click(function(){
+  // Send to DB
+  $('.ajaxsend').click(function(){
 
-          $.post('/ajax/style', {name: "gg"});
-          $(".main").moveDown();
+    $.post('/ajax/style', {name: "gg"});
+    $(".main").moveDown();
 
-        });
+  });
 
-        $('button.tag').click(function(){
-          var id = $(this).attr('id');
-          $('button.tag').removeClass("active");
-          $(this).addClass("active");
-          var letters ="<%= tagList %>";
-          var tagList = letters.split(',')
-            //first Letter is tagList[id][1];
-            //second Letter is tagList[id][2];
-            $('h4#first_letter').text(tagList[id][1]);
-          $('h4#second_letter').text(tagList[id][2]);
-        });
-      });
+  $('button.tag').click(function(){
+    var id = $(this).attr('id');
+    $('button.tag').removeClass("active");
+    $(this).addClass("active");
+    var letters ="<%= tagList %>";
+    var tagList = letters.split(',')
+      //first Letter is tagList[id][1];
+      //second Letter is tagList[id][2];
+      $('h4#first_letter').text(tagList[id][1]);
+    $('h4#second_letter').text(tagList[id][2]);
+  });
+});
 
 var http = new XMLHttpRequest();
 while(http.status==404){
@@ -264,11 +209,11 @@ function textPrint() {
   var textline1 = text1.value;
   var textline2 = text2.value;
   //console.log(textline);
-  
+
   // print out to page
   var result1 = document.getElementById("result1");
   var result2 = document.getElementById("result2");
-  
+
   result1.innerHTML = textline1;
   result2.innerHTML = textline2;
 
@@ -276,14 +221,14 @@ function textPrint() {
 }
 
 var slidesPerView;
-  if($('body').width() >1000)
-  {
-  slidesPerView= 6
-  }
-  else
-  {
+if($('body').width() >1000)
+{
+  slidesPerView= 5
+}
+else
+{
   slidesPerView= 2
-  }
+}
 
 var swiper = new Swiper('.swiper-container', { 
   spaceBetween: 30, 
