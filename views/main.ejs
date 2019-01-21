@@ -11,19 +11,19 @@
 
       <!-- Page One -->
       <section id="1">
-       <div id="main_index1">
-        <!-- Sliders -->
-        <div id="cardslider" >
-          <div class="swiper-container" > 
-            <div class="swiper-wrapper"  style="padding-top:40vh;"> 
-              <% for(var i =1; i<7; i++) { %>
-              <div class="swiper-slide">
-                <img src="./images/post<%= i %>.png">
-              </div> 
+        <div id="main_index1">
+          <!-- Sliders -->
+          <div id="cardslider" >
+            <div class="swiper-container" > 
+              <div class="swiper-wrapper"  style="padding-top:40vh;"> 
+                <% for(var i =1; i<7; i++) { %>
+                <div class="swiper-slide">
+                  <img src="./images/post<%= i %>.png">
+                </div> 
             <% } %>
-            </div> 
+              </div> 
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -52,29 +52,28 @@
           <% } %>
         </div>
         <center style="width: 80%; margin: auto; height: 60vh; background: beige">
-              <div class="textBlock" style="padding-top: 5%; height: 25%;">
-                <h4 id="first_letter"> 대 </h4>
-                <input type="text">
-                <br>
-                <h4 id="second_letter"> 학 </h4>
-                <input type="text">
-              </div>
-              <div class="imageBlock" style="padding-top: 5%; height: 75%;">
-                <img src="/images/emptyinside.png" style=" width: 90%; " >
-              </div>
+          <div class="textBlock" style="padding-top: 5%; height: 25%;">
+            <h4 id="first_letter"> 대 </h4>
+            <input id="input1" type="text">
+            <br>
+            <h4 id="second_letter"> 학 </h4>
+            <input id="input2" type="text">
+          </div>
+          <div class="imageBlock" style="padding-top: 5%; height: 75%;">
+            <img src="/images/emptyinside.png" style=" width: 90%; " >
+          </div>
         </center>
 
         <center style="margin: 5%;">
           <div style="margin-bottom: 2%;">
-          <button type="button" class="btn btn-outline-primary" onclick="gotostep2()" >입력 완료</button>
+            <button type="button" class="btn btn-outline-primary" onclick="textPrint()" >입력 완료</button>
           </div>
           <div>
-          <button type="button" class="btn btn-outline-primary">1</button>
-          <button type="button" class="btn btn-outline-primary">2</button>
-          <button type="button" class="btn btn-outline-primary">3</button>
+            <button type="button" class="btn btn-outline-primary">1</button>
+            <button type="button" class="btn btn-outline-primary">2</button>
+            <button type="button" class="btn btn-outline-primary">3</button>
           </div>
         </center>
-
 
       </section>
 
@@ -87,13 +86,16 @@
 
 
       <section id="4">
-
         <div class="container">
           <div class="card" style="width: 50%;">
             <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-            <div class="card-img-overlay">
-              <h1 id ="first_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">대 :</h1>
-              <h1 id ="second_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">학 :</h1>
+            <div class="card-img-overlay" >
+              <h1 id ="first_letter" style="display: inline;" class="card-tilte" style="display: inline; position: relative; left: 12%; top:8%">대
+                <div id="result1">테스트</div>
+              </h1>
+              <h1 id ="second_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">학
+              <div id="result1">테스트</div>
+              </h1>
             </div>
           </div>
         </div>
@@ -175,57 +177,57 @@
 
     <script>
 
-$(document).ready(function(){
-  // Open Styles
+      $(document).ready(function(){
+        // Open Styles
 
-  // Upload Files
-  $('#fileInput').on('change', function () {
-    var form = $('#fileForm')[0];
-    var formData = new FormData(form);
+        // Upload Files
+        $('#fileInput').on('change', function () {
+          var form = $('#fileForm')[0];
+          var formData = new FormData(form);
 
-    $.ajax({
-      type: 'post',
-      url: '/ajax/upload',
-      data: formData,
-      processData: false,
-      contentType: false,
-      success: function (data) {
-        $('#filePath').val(data);
-        $(".main").moveDown();
+          $.ajax({
+            type: 'post',
+            url: '/ajax/upload',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+              $('#filePath').val(data);
+              $(".main").moveDown();
 
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    });
-  });
+            },
+            error: function (err) {
+              console.log(err);
+            }
+          });
+        });
 
-  $(".main").onepage_scroll({
-    loop: false,
-    afterMove: function(index) {
-    },
-  });
+        $(".main").onepage_scroll({
+          loop: false,
+          afterMove: function(index) {
+          },
+        });
 
-  // Send to DB
-  $('.ajaxsend').click(function(){
+        // Send to DB
+        $('.ajaxsend').click(function(){
 
-    $.post('/ajax/style', {name: "gg"});
-    $(".main").moveDown();
+          $.post('/ajax/style', {name: "gg"});
+          $(".main").moveDown();
 
-  });
+        });
 
-  $('button.tag').click(function(){
-    var id = $(this).attr('id');
-    $('button.tag').removeClass("active");
-    $(this).addClass("active");
-    var letters ="<%= tagList %>";
-    var tagList = letters.split(',')
-      //first Letter is tagList[id][1];
-      //second Letter is tagList[id][2];
-      $('h4#first_letter').text(tagList[id][1]);
-    $('h4#second_letter').text(tagList[id][2]);
-  });
-});
+        $('button.tag').click(function(){
+          var id = $(this).attr('id');
+          $('button.tag').removeClass("active");
+          $(this).addClass("active");
+          var letters ="<%= tagList %>";
+          var tagList = letters.split(',')
+            //first Letter is tagList[id][1];
+            //second Letter is tagList[id][2];
+            $('h4#first_letter').text(tagList[id][1]);
+          $('h4#second_letter').text(tagList[id][2]);
+        });
+      });
 
 var http = new XMLHttpRequest();
 while(http.status==404){
@@ -237,8 +239,17 @@ while(http.status==404){
 
 }
 
+function textPrint() {
+  var text1 = document.getElementById("text1");
+  var text2 = document.getElementById("text2");
+
+  // print out to page
+  var   blk   = document.getElementById("result");
+  blk.innerHTML  =  resultString; 
+}
+
 var swiper = new Swiper('.swiper-container', { 
-  slidesPerView: 3, 
+  slidesPerView: 2, 
   spaceBetween: 30, 
   freeMode: true, 
   pagination: { 
