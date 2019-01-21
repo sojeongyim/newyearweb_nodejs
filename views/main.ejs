@@ -12,10 +12,16 @@
       <!-- Page One -->
       <section id="1">
         <div id="main_index1">
+        <center>
+        <img src="/images/1_logo.png" style="margin-bottom: 3vh; height: 20vh; width: auto;">
+        </center>
+        <center>
+        <img src="/images/1_ment.png" style="margin-bottom: 3vh; height: 8vh; width: auto;">
+        </center>
           <!-- Sliders -->
           <div id="cardslider" >
             <div class="swiper-container" > 
-              <div class="swiper-wrapper"  style="padding-top:40vh;"> 
+              <div class="swiper-wrapper"  > 
                 <% for(var i =1; i<7; i++) { %>
                 <div class="swiper-slide">
                   <img src="./images/post<%= i %>.png">
@@ -51,20 +57,21 @@
           </div>
           <% } %>
         </div>
-        <center style="width: 80%; margin: auto; height: 60vh; background: beige">
-          <div class="textBlock" style="padding-top: 5%; height: 25%;">
+
+        <center style="width: 80%; margin: auto; height: 60vh; background: beige; max-width: 600px;">
+          <div class="textBlock" style="padding-top: 3%; height: 15%;">
             <h4 id="first_letter"> 대 </h4>
             <input id="input1" type="text">
             <br>
             <h4 id="second_letter"> 학 </h4>
             <input id="input2" type="text">
           </div>
-          <div class="imageBlock" style="padding-top: 5%; height: 75%;">
-            <img src="/images/emptyinside.png" style=" width: 90%; " >
+          <div class="imageBlock" style="padding: 5%; height: 85%;">
+            <img src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
           </div>
         </center>
 
-        <center style="margin: 5%;">
+        <center style="margin: 2%;">
           <div style="margin-bottom: 2%;">
             <button type="button" class="btn btn-outline-primary" onclick="textPrint()" >입력 완료</button>
           </div>
@@ -258,10 +265,20 @@ function textPrint() {
   $(".main").moveDown();
 }
 
+var slidesPerView;
+  if($('body').width() >1000)
+  {
+  slidesPerView= 6
+  }
+  else
+  {
+  slidesPerView= 2
+  }
+
 var swiper = new Swiper('.swiper-container', { 
-  slidesPerView: 2, 
   spaceBetween: 30, 
   freeMode: true, 
+  slidesPerView: slidesPerView,
   pagination: { 
     el: '.swiper-pagination', 
     clickable: true, 
