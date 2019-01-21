@@ -7,200 +7,293 @@
   </head>
 
   <body>
-    <!--  logo와 slogan-->
-    <div class="header">
-      <div id="headerLogo">
-        <img src="./images/paintlylogo.png" >
-      </div>
-        <div id="headerSlogan">
-          <h2>설날 감사카드는 이제 Paintly로! </h2>
+    <div class= "main">
+
+      <!-- Page One -->
+      <section id="1">
+        <div id="main_index1">
+        <center>
+        <img src="/images/1_logo.png" style="margin-bottom: 3vh; height: 20vh; width: auto;">
+        </center>
+        <center>
+        <img src="/images/1_ment.png" style="margin-bottom: 3vh; height: 8vh; width: auto;">
+        </center>
+          <!-- Sliders -->
+          <div id="cardslider" >
+            <div class="swiper-container" > 
+              <div class="swiper-wrapper"  > 
+                <% for(var i =1; i<7; i++) { %>
+                <div class="swiper-slide">
+                  <img src="./images/post<%= i %>.png">
+                </div> 
+            <% } %>
+              </div> 
+            </div>
+          </div>
         </div>
-    </div>
-    <!--예시부분 header-->
-    <div class="sampleHeader">
-      <div id="sampleHeaderLogo">
-        <h1>Paintly가 여러분의 이야기를 작품으로 만들어 드립니다.</h1>
-        <p>사진을 고르고, 원하는 그림 스타일을 고른 뒤, 문구를 입력하면 끝!</p>
-      </div>
+      </section>
 
-    </div>
-    <!-- 결과예시 이미지-->
-    <div class="sampleHeaderImg">
-      <img src="./images/result.png">
-    </div>
+      <!-- Page Two -->
+      <section id="2">   
+      <center>
+       <img style="margin: auto; width: 100%; height: 100vh;" src = "/images/main_index2.png">
+      </center>
+      </section>
 
-    <!--여러가지 예시 이미지 슬라이드-->
-    <ul class="slides">
-      <input type="radio" name="radio-btn" id="img-1" checked />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post1.png" />
-          </a>
+
+      <!-- Page Three -->
+
+
+
+      <section id="3">
+        <% var tagList = ["#대학", "#취직", "#연애", "#자녀", "#성적", "#연봉", "#결혼", "#직접 쓰기"]; %>
+        <% var tagList = ["#대학", "#취직", "#연애"]; %>
+        <!-- 카테고리-->
+        <div id="category">
+          <% for(i =0 ; i<tagList.length/4 ; i++){ %>
+          <div>
+            <% for(var j = i*4; j< tagList.length  && j< (i+1)*4 ; j++) { %>
+            <button id="<%= j %>" class="tag btn btn-link <% if(j ==0 ) { %> active <% } %>" ><%= tagList[j] %></button>
+            <% } %>
+          </div>
+          <% } %>
         </div>
-        <div class="nav">
-          <label for="img-6" class="prev">&#x2039;</label>
-          <label for="img-2" class="next">&#x203a;</label>
-        </div>
-      </li>
 
-      <input type="radio" name="radio-btn" id="img-2" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post2.png" />
-          </a>
+        <center id="card_style" style="width: 80%; margin: auto; height: 60vh; max-width: 600px;">
+          <div class="textBlock" style="padding-top: 3%; height: 20%;">
+            <h4 id="first_letter"> 대 </h4>
+            <input id="input1" type="text">
+            <br>
+            <h4 id="second_letter"> 학 </h4>
+            <input id="input2" type="text">
+          </div>
+          <div class="imageBlock" style="padding: 3%; height: 80%;">
+            <img src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+          </div>
+        </center>
 
-        </div>
-        <div class="nav">
-          <label for="img-1" class="prev">&#x2039;</label>
-          <label for="img-3" class="next">&#x203a;</label>
-        </div>
-      </li>
+        <center style="margin: 2%;">
+          <div style="margin-bottom: 2%;">
+            <button type="button" class="btn btn-outline-primary" onclick="textPrint()" >입력 완료</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-outline-primary">1</button>
+            <button type="button" class="btn btn-outline-primary">2</button>
+            <button type="button" class="btn btn-outline-primary">3</button>
+          </div>
+        </center>
 
-      <input type="radio" name="radio-btn" id="img-3" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post3.png" />
-          </a>
-        </div>
-        <div class="nav">
-          <label for="img-2" class="prev">&#x2039;</label>
-          <label for="img-4" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <input type="radio" name="radio-btn" id="img-4" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post4.png" />
-          </a>
-
-        </div>
-        <div class="nav">
-          <label for="img-3" class="prev">&#x2039;</label>
-          <label for="img-5" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <input type="radio" name="radio-btn" id="img-5" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post5.png" />
-          </a>
-        </div>
-        <div class="nav">
-          <label for="img-4" class="prev">&#x2039;</label>
-          <label for="img-6" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <input type="radio" name="radio-btn" id="img-6" />
-      <li class="slide-container">
-        <div class="slide">
-          <a href="https://paintly.ai/">
-            <img src="./images/post6.png" />
-          </a>
-        </div>
-        <div class="nav">
-          <label for="img-5" class="prev">&#x2039;</label>
-          <label for="img-1" class="next">&#x203a;</label>
-        </div>
-      </li>
-
-      <li class="nav-dots">
-        <label for="img-1" class="nav-dot" id="img-dot-1"></label>
-        <label for="img-2" class="nav-dot" id="img-dot-2"></label>
-        <label for="img-3" class="nav-dot" id="img-dot-3"></label>
-        <label for="img-4" class="nav-dot" id="img-dot-4"></label>
-        <label for="img-5" class="nav-dot" id="img-dot-5"></label>
-        <label for="img-6" class="nav-dot" id="img-dot-6"></label>
-      </li>
-    </ul>
-
-
-    <!--변환 과정-->
-    <div class="transfer">
-      <div id="transferSelect">
-        <h1>직접 만들어보세요!</h1>
-      </div>
-      <div id="fileUpLoad">
-        <button type="button" style= "max-width:100%;" class="btn-lg,  btn-link btn-file">
-          <img src="./images/pick1.png"><input type="file">
-        </button>
-        <button type="button" style= "max-width:100%;" class="btn-lg,  btn-link btn-file">
-          <img src="./images/pick2.png"><input type="file">
-        </button>  
-      </div>
-    </div>
-
-    <!--
-      <div class="container">
-      <div id="transferButton">
-
-      <button type="button" class="btn-lg,  btn-link btn-file">
-      <img src="./images/pick1.png"><input type="file">
-      </button>
-      </div>
-      </div>
-    -->
+      </section>
 
 
 
-    <div class="container">
-      <div id="transferButton">
-        <button type="button" class="btn-lg, btn-outline-secondary">변환하기</button>
-      </div>
-    </div>
-
-    <!--
-      <div id="transferSubmit">
-      <a href="#">
-      <img src="./images/transfer.png">
-      </a>
-      </div>
-    -->
 
 
 
-    <!--결과 엽서-->
-    <div class="letter">
-      <img src="./images/letter.png">
-    </div>
 
-    <div class="container">
-      <h2>Card image test</h2>
-      <p>image at the left</p>
-      <div class="card" style="width: 100%;">
-        <img class="card-img-left" src="/images/letter.png" alt="card image" style="width: 100%">
-        <div class="card-body">
-          <!--               <h4 class="card title">john</h4>-->
-          <h6>받는 사람:</h6>
-          <input type="text" class="form-control" placeholder="받는 사람 이름을 입력하세요.">
-          <p class="card-text">
-          <input type="text" class="form-control" placeholder="보내고 싶은 이야기를 입력하세요.">
-          </p>
-          <a href="#" class="btn btn-primary">보내기</a>
-        </div>
-      </div>
+
+
+      <section id="4">
+        <center style="width: 80%; margin: auto; height: 60vh; background: beige; max-width: 600px;">
+          <div class="textBlock" style="padding-top: 3%; height: 20%;">
+            <h4 id="first_letter"> 대 </h4>
+            <div style="display:inline;" id="result1">abcd</div>           
+            <br>
+            <h4 id="second_letter"> 학 </h4>
+            <div style="display:inline" id="result2">abcd</div>  
+          </div>
+
+
+          <div class="imageBlock" style="padding: 3%; height: 80%;">
+            <label for="file-input" style= "height: 100%;">
+            <img src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+            </label>
+            <input id="file-input" type="file" style="display: none;"/>
+          </div>
+        </center>
+
+        <center>
+          <button type="button" class="btn btn-outline-primary" onclick="gotostep2()" >입력 완료</button>
+        </center>
+        <center>
+          <button type="button" class="btn btn-outline-primary">1</button>
+          <button type="button" class="btn btn-outline-primary">2</button>
+          <button type="button" class="btn btn-outline-primary">3</button>
+        </center>
+
+        <form action="/upload" method="post" enctype="multipart/form-data" id="fileForm">
+          <input type="file" id="fileInput" name="fileInput">
+        </form>
+        <input type="text" id="filePath">
+
+      </section>
+
+
+      <section id="5" >
+
+        <center style="margin-top: 10vh;">
+          <h1> 스타일만 고르면 끝이에요 </h1>
+          <h3 style="margin-bottom: 4vh;"> 저는 Oil, Pop 스타일을 좋아해요 </h3>
+          <div>
+            <label style="width: 70%">
+              <a href="#" data-toggle="modal" data-target="#filterModal"><img src="/images/pick2.png"/></a>
+              <!-- Modal -->
+              <div class="modal" style="position: absolute;" id="filterModal" role="dialog" data-backdrop="false">
+                <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Select a filter</h4>
+                    </div>
+                    <div class="modal-body setmargin">
+                      <div style="display: block;">
+                        <%for(var i=0;i<3;i++){ %>
+                        <div style="display: inline-block; height:30%; margin:10px 10px">
+                          <% for(var j=0;j<3;j++){ %>
+                          <img style="width:30%;" src="/images/Style/38.jpg" />
+                          <% } %>
+                        </div>
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </label> 
+          </div>
+        </center>
+        <button class="ajaxsend">ajaxsend</button>
+      </section>
+
+      <section id="6">
+        <center style="margin-top: 40vh;">
+          <h1> 처리 중입니다. </h1>
+          <div class="loader"></div>
+
+          <section id="7">
+            <div class="container">
+              <div class="card" style="width: 50%;">
+                <img class="card-img-top" src="./images/post8.png" style="width: 100%">
+                <div class="card-img-overlay">
+                  <h1 id ="first_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">대 :</h1>
+                  <h1 id ="second_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">학 :</h1>
+                </div>
+              </div>
+            </div>
+          </section>
     </div>
 
 
-    <!-- card추천 -->
-    <div class="recommand">
-      <a href="cardexp.html">
-        <p>저희가 다른 신년인사 카드를 추천해 드릴까요?</p>
-      </a>
-    </div>
+    <script>
 
-    <!--   footer-->
-    <footer>
-      <% include footer %>
-      <a href="#" style="font-size:2em;">Back to top</a></p>
-    </footer>
+      $(document).ready(function(){
+        // Open Styles
 
+        // Upload Files
+        $('#fileInput').on('change', function () {
+          var form = $('#fileForm')[0];
+          var formData = new FormData(form);
+
+          $.ajax({
+            type: 'post',
+            url: '/ajax/upload',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+              $('#filePath').val(data);
+              console.log(data);
+
+              $('#origin_image').attr("src","/"+data);
+              $(".main").moveDown();
+
+            },
+            error: function (err) {
+              console.log(err);
+            }
+          });
+        });
+
+        $(".main").onepage_scroll({
+          loop: false,
+          afterMove: function(index) {
+          },
+        });
+
+        // Send to DB
+        $('.ajaxsend').click(function(){
+
+          $.post('/ajax/style', {name: "gg"});
+          $(".main").moveDown();
+
+        });
+
+        $('button.tag').click(function(){
+          var id = $(this).attr('id');
+          $('button.tag').removeClass("active");
+          $(this).addClass("active");
+          var letters ="<%= tagList %>";
+          var tagList = letters.split(',')
+            //first Letter is tagList[id][1];
+            //second Letter is tagList[id][2];
+            $('h4#first_letter').text(tagList[id][1]);
+          $('h4#second_letter').text(tagList[id][2]);
+        });
+      });
+
+var http = new XMLHttpRequest();
+while(http.status==404){
+  setTimeout(function(){ 
+    http.open('HEAD',"/images/Result/<%=uploadfile%>", false);
+    http.send();
+    console.log(http.status!=404); 
+  },5000);
+
+}
+
+function textPrint() {
+  var text1 = document.getElementById("input1");
+  var text2 = document.getElementById("input2");
+
+  var textline1 = text1.value;
+  var textline2 = text2.value;
+  //console.log(textline);
+  
+  // print out to page
+  var result1 = document.getElementById("result1");
+  var result2 = document.getElementById("result2");
+  
+  result1.innerHTML = textline1;
+  result2.innerHTML = textline2;
+
+  $(".main").moveDown();
+}
+
+var slidesPerView;
+  if($('body').width() >1000)
+  {
+  slidesPerView= 5
+  }
+  else
+  {
+  slidesPerView= 2
+  }
+
+var swiper = new Swiper('.swiper-container', { 
+  spaceBetween: 30, 
+  freeMode: true, 
+  slidesPerView: slidesPerView,
+  pagination: { 
+    el: '.swiper-pagination', 
+    clickable: true, 
+  }, 
+});
+
+
+    </script> 
   </body>
 </html>
+
