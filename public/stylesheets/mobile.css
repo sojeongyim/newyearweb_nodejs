@@ -1,0 +1,18 @@
+/*mobile device*/
+@media screen and (max-width:768px)
+{
+    #cardslider
+    {
+    padding-top: 15vh;    
+    }
+    
+}
+/*desktop,tablet device*/
+
+@media screen and (min-width:769px)
+{
+    #cardslider
+    {
+    padding-top: 12vh;    
+    }
+}
