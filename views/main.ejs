@@ -50,9 +50,9 @@
         <!-- 카테고리-->
         <div id="category">
           <% for(i =0 ; i<tagList.length/4 ; i++){ %>
-          <div>
+          <div id="btntag">
             <% for(var j = i*4; j< tagList.length  && j< (i+1)*4 ; j++) { %>
-            <button id="<%= j %>" class="tag btn btn-link <% if(j ==0 ) { %> active <% } %>" ><%= tagList[j] %></button>
+            <a id="<%= j %>" class="btn-link <% if(j ==0 ) { %> active <% } %>" ><%= tagList[j] %></a>
             <% } %>
           </div>
           <% } %>
@@ -67,10 +67,11 @@
             <input id="input2" type="text">
           </div>
           <div class="imageBlock" style="padding: 5%; height: 85%;">
-            <img src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+            <img src="/images/emptyinside.png" style="width: 100% ; max-width: 1000px;" >
           </div>
         </center>
 
+<!--
         <center style="margin: 2%;">
           <div style="margin-bottom: 2%;">
             <button type="button" class="btn btn-outline-primary" onclick="textPrint()" >입력 완료</button>
@@ -81,7 +82,12 @@
             <button type="button" class="btn btn-outline-primary">3</button>
           </div>
         </center>
-
+-->
+<center style="margin: 2%;">
+          <div style="margin-bottom: 2%;">
+            <button type="button" class="btn btn-outline-primary" onclick="textPrint()" >입력 완료</button>
+    </div>
+     </center>
       </section>
 
 
@@ -94,16 +100,16 @@
 
       <section id="4">
         <div class="container">
-          <center style="width: 80%; margin: auto; height: 60vh; background: beige">
-          <div class="textBlock" style="padding-top: 5%; height: 25%;">
+          <center id="card_style" style="width: 80%; margin: auto; height: 60vh; max-width: 600px;">
+          <div class="textBlock" style="padding-top: 3%; height: 15%;">
             <h4 id="first_letter"> 대 </h4>
             <div style="display:inline;" id="result1"></div>           
             <br>
             <h4 id="second_letter"> 학 </h4>
             <div style="display:inline" id="result2"></div>  
           </div>
-          <div class="imageBlock" style="padding-top: 5%; height: 75%;">
-            <img id="origin_image" src="/images/emptyinside.png" style=" width: 90%; " >
+           <div class="imageBlock" style="padding: 5%; height: 85%;">
+            <img src="/images/emptyinside.png" style="width: 100% ; max-width: 1000px;" >
           </div>
         </center>
         </div>
@@ -119,8 +125,9 @@
 
         <form action="/upload" method="post" enctype="multipart/form-data" id="fileForm">
           <input type="file" id="fileInput" name="fileInput">
-        </form>
         <input type="text" id="filePath">
+        </form>
+        
 
       </section>
 
