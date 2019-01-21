@@ -60,14 +60,14 @@
         </div>
 
         <center style="width: 80%; margin: auto; height: 60vh; background: beige; max-width: 600px;">
-          <div class="textBlock" style="padding-top: 3%; height: 15%;">
+          <div class="textBlock" style="padding-top: 3%; height: 20%;">
             <h4 id="first_letter"> 대 </h4>
             <input id="input1" type="text">
             <br>
             <h4 id="second_letter"> 학 </h4>
             <input id="input2" type="text">
           </div>
-          <div class="imageBlock" style="padding: 5%; height: 85%;">
+          <div class="imageBlock" style="padding: 3%; height: 80%;">
             <img src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
           </div>
         </center>
@@ -94,20 +94,23 @@
 
 
       <section id="4">
-        <div class="container">
-          <center style="width: 80%; margin: auto; height: 60vh; background: beige">
-          <div class="textBlock" style="padding-top: 5%; height: 25%;">
+        <center style="width: 80%; margin: auto; height: 60vh; background: beige; max-width: 600px;">
+          <div class="textBlock" style="padding-top: 3%; height: 20%;">
             <h4 id="first_letter"> 대 </h4>
-            <div style="display:inline;" id="result1"></div>           
+            <div style="display:inline;" id="result1">abcd</div>           
             <br>
             <h4 id="second_letter"> 학 </h4>
-            <div style="display:inline" id="result2"></div>  
+            <div style="display:inline" id="result2">abcd</div>  
           </div>
-          <div class="imageBlock" style="padding-top: 5%; height: 75%;">
-            <img id="origin_image" src="/images/emptyinside.png" style=" width: 90%; " >
+
+
+          <div class="imageBlock" style="padding: 3%; height: 80%;">
+            <label for="file-input" style= "height: 100%;">
+            <img src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+            </label>
+            <input id="file-input" type="file" style="display: none;"/>
           </div>
         </center>
-        </div>
 
         <center>
           <button type="button" class="btn btn-outline-primary" onclick="gotostep2()" >입력 완료</button>

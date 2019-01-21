@@ -43,3 +43,12 @@
 .container {
   padding: 2px 16px;
 }
+
+@font-face {
+  font-family: dovemayo;
+  src: url("/fonts/dovemayo.otf");
+}
+
+h4 {
+  font-family: dovemayo;
+}
