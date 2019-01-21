@@ -103,7 +103,7 @@
             <div style="display:inline" id="result2"></div>  
           </div>
           <div class="imageBlock" style="padding-top: 5%; height: 75%;">
-            <img src="/images/emptyinside.png" style=" width: 90%; " >
+            <img id="origin_image" src="/images/emptyinside.png" style=" width: 90%; " >
           </div>
         </center>
         </div>
@@ -201,6 +201,9 @@
             contentType: false,
             success: function (data) {
               $('#filePath').val(data);
+              console.log(data);
+
+              $('#origin_image').attr("src","/"+data);
               $(".main").moveDown();
 
             },
