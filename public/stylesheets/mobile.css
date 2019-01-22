@@ -9,8 +9,6 @@
 */
     .imageBlock img
     {
-        margin-top: 30px;
-        position:relative;
         width: 100% ; 
         max-width: 1001px; 
         height:95%; 
