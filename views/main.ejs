@@ -12,9 +12,14 @@
     <h2 style="text-align: center;"> 문구가 들어가요 </h2>
     <div class="scrollmenu">
       <% for(i =0 ; i<tagList.length ; i++){ %>
-      <a class="tag <% if(i ==0 ) { %> active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
+      <a class="tag 
+      <% if(i ==0 ) { %> 
+      active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
       <% } %>
     </div>
+
+  
+   
 
     <div id="myModal" class="modal" data-backdrop="false" >
       <div class="modal-content">
@@ -43,6 +48,18 @@
         <h4 id="second_letter"> 학교다니기 </h4>
       </div>
     </center>
+    
+    
+<!--    style slider-->
+ <h2 style="text-align: center;"> 스타일 슬라이드 </h2>
+   
+    <div class="scrollmenu" id="styleList">
+     <%for(i=1;i<9;i++){%>   
+     <a class="tag">
+         <img src="/images/style<%=i%>.png">
+      </a>
+    <% }%>        
+    </div>
 
 
     <center style="margin-top: 40vh;">
