@@ -10,9 +10,7 @@
     <div class= "main">
       <section id="test1">
         <div id="index1">
-          <a class="mainButt"  href="./main">
-            <img id="index1_b" src="./images/index1_b.png">
-          </a>
+          
         </div>
       </section>
 
@@ -20,17 +18,26 @@
       <section>   
         <div id="index2">  
 <!--        example cards slide-->
-          
+       <div id="cardslider" >
+          <div class="swiper-container" > 
+            <div class="swiper-wrapper" > 
+              <% for(var i =1; i<7; i++) { %>
+              <div class="swiper-slide">
+                <img src="./images/post<%= i %>.png">
+              </div> 
+            <% } %>
+            </div> 
+          </div>
         </div>
-      </section>
-
-      <section>
-        <div id="index3">    
-          <a class="mainButt"  href="./main">
-<!--            <img id="index3_b" src="./images/index3_b.png">-->
+        <a class="mainButt"  href="./main">
+            <img id="index1_b" src="./images/index1_b.png">
           </a>
         </div>
+          
+        
       </section>
+
+    
       
       
       
