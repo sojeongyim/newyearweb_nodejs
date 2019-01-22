@@ -9,14 +9,20 @@
   <body>
 
     <% var tagList = ["#대학", "#취직", "#연애", "#자녀", "#성적", "#연봉", "#결혼", "#직접 쓰기"]; %>
-    <div class="scrollmenu">
+    <div class="scrollmenu" id="tagList">
       <% for(i =0 ; i<tagList.length ; i++){ %>
       <a class="tag 
       <% if(i ==0 ) { %> 
       active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
       <% } %>
     </div>
-
+    <!--    style slider-->
+    <div class="scrollmenu" id="styleList" style="display: none; padding: 0;">
+      <%for(i=1;i<9;i++){%>   
+      <!-- should be changed -->
+      <img id = "8" class="styleImages" src="/images/<%=i%>.jpg">
+      <% }%>        
+    </div>
 
     <div id="myModal" class="modal" data-backdrop="false" >
       <div class="modal-content">
@@ -30,12 +36,12 @@
 
     <center id="card_style">
       <div class="imageBlock" style="padding: 3%; height: 80%;">
-        <div style="position: absolute; width: 100%; height: 100%; top: 15%; left: 0px; right: 0px; margin-left: auto; margin-right: auto">
+        <div id = "progressBar" style="display: none; position: absolute; width: 100%; height: 100%; top: 15%; left: 0px; right: 0px; margin-left: auto; margin-right: auto">
           <h1> 처리 중입니다. </h1>
           <div class="loader"></div>
         </div>
         <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
-          <label for="fileInput" style= "height: 100%; width: 100% margin-bottom: 0px;">
+          <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
             <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
           </label>
             <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
@@ -51,83 +57,29 @@
     </center>
     
     
-<!--    style slider-->
- <h2 style="text-align: center;"> 스타일 슬라이드 </h2>
-   
-    <div class="scrollmenu" id="styleList">
-     <%for(i=1;i<9;i++){%>   
-     <a class="tag">
-         <img src="/images/style<%=i%>.png">
-      </a>
-    <% }%>        
-    </div>
-
     <div style="max-width: 800px; width: 90%; height: 8vh; margin: 3% auto 3% auto;">
       <img class="l_arrow" align="left" style="height: 8vh; width: auto;" src = "/images/l_arrow_empty.png"> 
       <img class="r_arrow" align="right" style="height: 8vh; width: auto;" src = "/images/r_arrow_empty.png"> 
     </div>
 
 
-
-    <center style="margin-top: 10vh;">
-      <center style="width: 80%; margin: auto; height: 60vh; background: beige">
-        <div class="textBlock" style="padding-top: 5%; height: 25%;">
-          <h4 id="first_letter"> 대 </h4>
-          <div style="display:inline;" id="result1"></div>           
-          <br>
-          <h4 id="second_letter"> 학 </h4>
-          <div style="display:inline" id="result2"></div>  
-        </div>
-        <div class="imageBlock" style="padding-top: 5%; height: 75%;">
-          <a href="#" data-toggle="modal" data-target="#filterModal"><img id="filter_img" src="/images/pick2.png" style=" width: 90%; " ></a>
-
-          <!-- Modal -->
-          <div class="modal" style="position: absolute;" id="filterModal" role="dialog" data-backdrop="false">
-            <div class="modal-dialog">
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Select a filter</h4>
-                </div>
-                <div class="modal-body setmargin">
-                  <div style="display: block;">
-                    <% var FilterList = ["filter1-01.png","filter2-01.png","filter3-01.png","filter5-01.png","filter7-01.png"]; %>
-                    <%for(var i=0;i<3;i++){ %>
-                    <div style="display: inline-block; height:30%; margin:10px 10px">
-                      <% for(var j=0;j<2 && i*2+j <FilterList.length;j++){ %>
-                      <img id="<%=i*2+j %>" class="filtersend" data-dismiss="modal" style="width:30%;" src="/images/Style2/<%=FilterList[i*2+j] %>"] />
-                      <% } %>
-                    </div>
-                    <% } %>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        </div>
-      </center>
-    </center>
-
-    <div class="container">
-      <div class="card" style="width: 50%;">
-        <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-        <div class="card-img-overlay">
-          <h1 id ="first_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">대 :</h1>
-          <h1 id ="second_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">학 :</h1>
-        </div>
-      </div>
-    </div>
-  </body>
-
   <script>
 
 var timerId = 0;
 $(document).ready(function(){
+
+
+  $(".styleImages").click(function(){
+    $("#progressBar").css("display", "block");
+    var filenameOb = document.getElementById("filePath");
+    var filename = filenameOb.value;
+    var stylenum = $(this).attr("id");
+
+    $('#filter_img').attr("src",$(this).attr("src"));
+    $.post('/ajax/style', {stylenum: stylenum, filename: filename });
+    timerId = setInterval("check_file()", 5000); 
+  });
+
   $("span.close").click(function(){
     $("#myModal").css('display','none');
   });
@@ -144,6 +96,16 @@ $(document).ready(function(){
   },
   function(){
   $(this).attr("src","/images/r_arrow_empty.png");
+  });
+
+  $("img.r_arrow").click(function(){
+    $("#tagList").css('display','none');
+    $("#styleList").css('display','block');
+  });
+
+  $("img.l_arrow").click(function(){
+    $("#tagList").css('display','block');
+    $("#styleList").css('display','none');
   });
 
   $("a.tag").click(function(){
@@ -182,7 +144,6 @@ $(document).ready(function(){
   $('#fileInput').on('change', function () {
     var form = $('#fileForm')[0];
     var formData = new FormData(form);
-    console.log("it's changed");
 
     $.ajax({
       type: 'post',
@@ -205,14 +166,6 @@ $(document).ready(function(){
   // Send to DB
   $('.filtersend').click(function(){
 
-    var filenameOb = document.getElementById("filePath");
-    var filename = filenameOb.value;
-    var stylenum = $(this).attr("id");
-
-    $('#filter_img').attr("src",$(this).attr("src"));
-    $.post('/ajax/style', {stylenum: stylenum, filename: filename });
-    timerId = setInterval("check_file()", 5000); 
-    $(".main").moveDown();
   });
 
 });
@@ -228,6 +181,7 @@ function check_file(){
   console.log('check_file run');
 
   if(http.status!=404){
+    $("#progressBar").css("display", "none");
     clearInterval(timerId);  
   }
 
