@@ -9,7 +9,6 @@
   <body>
 
     <% var tagList = ["#대학", "#취직", "#연애", "#자녀", "#성적", "#연봉", "#결혼", "#직접 쓰기"]; %>
-    <h2 style="text-align: center;"> 문구가 들어가요 </h2>
     <div class="scrollmenu">
       <% for(i =0 ; i<tagList.length ; i++){ %>
       <a class="tag <% if(i ==0 ) { %> active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
@@ -18,9 +17,9 @@
 
     <div id="myModal" class="modal" data-backdrop="false" >
       <div class="modal-content">
-        <h3 id="first_letter">  </h4>
+        <h3 class="first_letter">  </h4>
         <input id="first" type="text"/>
-        <h3 id="second_letter">  </h4>
+        <h3 class="second_letter">  </h4>
         <input id="second" type="text"/>
         <button id= "mySubmit" class="button"> 확인 </button>
       </div>
@@ -38,9 +37,9 @@
       </div>
 
       <div class="textBlock" style="text-align: start; padding-left: 7%; padding-bottom: 3%; height: 20%;">
-    <h3 id="first_letter" style="display: inline;"> 대 </h3> <h4 id="first_line" style="display: inline;"> 머리 </h4>
+    <h3 class="first_letter" id="show_first" style="display: inline;"> 대 </h3> <h4 id="first_line" style="display: inline;"> 머리 </h4>
         <br>
-    <h3 id="second_letter" style="display: inline;"> 학 </h3> <h4 id="second_line" style="display: inline;"> 학주선생님 </h4>
+    <h3 class="second_letter" id="show_second" style="display: inline;"> 학 </h3> <h4 id="second_line" style="display: inline;"> 학주선생님 </h4>
       </div>
     </center>
 
@@ -114,9 +113,18 @@ $(document).ready(function(){
   });
 
   $("a.tag").click(function(){
-    $("input#first").val("")
-      $("input#second").val("")
-      $("#myModal").css('display','block');  
+    $("input#first").val("");
+    $("input#second").val("");
+    $("#myModal").css('display','block');  
+    var id = $(this).attr('id');
+    $('a.tag').removeClass("active");
+    $(this).addClass("active");
+    var letters ="<%= tagList %>";
+    var tagList = letters.split(',');
+    //first Letter is tagList[id][1];
+    //second Letter is tagList[id][2];
+    $('h3.first_letter').text(tagList[id][1]);
+    $('h3.second_letter').text(tagList[id][2]);
   });
 
   $(window).click(function(e){
@@ -177,21 +185,12 @@ $(document).ready(function(){
 
   });
 
-  $('button.tag').click(function(){
-    var id = $(this).attr('id');
-    $('button.tag').removeClass("active");
-    $(this).addClass("active");
-    var letters ="<%= tagList %>";
-    var tagList = letters.split(',')
-      //first Letter is tagList[id][1];
-      //second Letter is tagList[id][2];
-      $('h3#first_letter').text(tagList[id][1]);
-    $('h3#second_letter').text(tagList[id][2]);
+  $('a.tag').click(function(){
   });
 });
 
 function check_file(){
-   var filenameOb = document.getElementById("filePath");
+  var filenameOb = document.getElementById("filePath");
    var filename = filenameOb.value;
    //console.log(timerId);
 
