@@ -190,6 +190,7 @@ function check_file(){
 
   if(http.status!=404){
     $("#progressBar").css("display", "none");
+    $('#origin_image').attr("src","/Result/"+data);
     clearInterval(timerId);  
   }
 
