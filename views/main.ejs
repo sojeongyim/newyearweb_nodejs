@@ -29,7 +29,7 @@
     <center id="card_style">
       <div class="imageBlock" style="padding: 3%; height: 80%;">
         <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
-          <label for="fileInput" style= "height: 100%; width: 100%">
+          <label for="fileInput" style= "height: 100%; width: 100% margin-bottom: 0px;">
             <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
           </label>
             <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
@@ -134,10 +134,6 @@ $(document).ready(function(){
     $("#myModal").css('display','none');
   });
 
-  var timerId = 0;
-$(document).ready(function(){
-  // Open Styles
-
   // Upload Files
   $('#fileInput').on('change', function () {
     var form = $('#fileForm')[0];
@@ -171,9 +167,7 @@ $(document).ready(function(){
 
     $('#filter_img').attr("src",$(this).attr("src"));
     $.post('/ajax/style', {stylenum: stylenum, filename: filename });
-    
     timerId = setInterval("check_file()", 5000); 
-    
     $(".main").moveDown();
 
   });
