@@ -9,130 +9,139 @@
   <body>
 
     <% var tagList = ["#대학", "#취직", "#연애", "#자녀", "#성적", "#연봉", "#결혼", "#직접 쓰기"]; %>
-    <% var FilterList = ["filter1-01.png","filter2-01.png","filter3-01.png","filter5-01.png","filter7-01.png"]; %>
-
-    <h2 style="text-align: center;"> 문구가 들어가요 </h2>
-    <div class="scrollmenu">
+    <div class="scrollmenu" id="tagList">
       <% for(i =0 ; i<tagList.length ; i++){ %>
-      <a class="tag <% if(i ==0 ) { %> active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
+      <a class="tag 
+      <% if(i ==0 ) { %> 
+      active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
       <% } %>
+    </div>
+    <!--    style slider-->
+    <div class="scrollmenu" id="styleList" style="display: none; padding: 0;">
+      <%for(i=1;i<9;i++){%>   
+      <!-- should be changed -->
+      <img id = "8" class="styleImages" src="/images/<%=i%>.jpg">
+      <% }%>        
     </div>
 
     <div id="myModal" class="modal" data-backdrop="false" >
       <div class="modal-content">
-        <h3 id="first_letter">  </h4>
+        <h3 class="first_letter">  </h4>
       <input id="first" type="text"/>
-      <h3 id="second_letter">  </h4>
+      <h3 class="second_letter">  </h4>
       <input id="second" type="text"/>
       <button id= "mySubmit" class="button"> 확인 </button>
       </div>
     </div>
 
-    <center id="card_style">
-      <div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%;">
-        <div class="imageBlock" style="padding: 3%; height: 80%;">
-          <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
-            <label for="fileInput" style= "height: 100%; width: 100% margin-bottom: 0px;">
-              <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
-            </label>
-              <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
-              <input type="text" id="filePath" style="display: none;"/>
-          </form>
-        </div>
-
-        <div class="textBlock" style="text-align: start; padding-left: 7%; padding-bottom: 3%; height: 20%;">
-          <h3 id="first_letter" style="display: inline;"> 대 </h3> <h4 id="first_line" style="display: inline;"> 머리 </h4>
-          <br>
-          <h3 id="second_letter" style="display: inline;"> 학 </h3> <h4 id="second_line" style="display: inline;"> 학주선생님 </h4>
-        </div>
-      </div>
-    </center>
-    <button onclick="capture()">capture test<button/>
-
-
-        <center style="margin-top: 40vh;">
+    <center id="card_style"> 
+        <div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%;">
+      <div class="imageBlock" style="padding: 3%; height: 80%;">
+        <div id = "progressBar" style="display: none; position: absolute; width: 100%; height: 100%; top: 15%; left: 0px; right: 0px; margin-left: auto; margin-right: auto">
           <h1> 처리 중입니다. </h1>
           <div class="loader"></div>
-        </center>
-
-        <center style="margin-top: 10vh;">
-          <center style="width: 80%; margin: auto; height: 60vh; background: beige">
-            <div class="textBlock" style="padding-top: 5%; height: 25%;">
-              <h4 id="first_letter"> 대 </h4>
-              <div style="display:inline;" id="result1"></div>           
-              <br>
-              <h4 id="second_letter"> 학 </h4>
-              <div style="display:inline" id="result2"></div>  
-            </div>
-            <div class="imageBlock" style="padding-top: 5%; height: 75%;">
-              <a href="#" data-toggle="modal" data-target="#filterModal"><img id="filter_img" src="/images/pick2.png" style=" width: 90%; " ></a>
-
-              <!-- Modal -->
-              <div class="modal" style="position: absolute;" id="filterModal" role="dialog" data-backdrop="false">
-                <div class="modal-dialog">
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Select a filter</h4>
-                    </div>
-                    <div class="modal-body setmargin">
-                      <div style="display: block;">
-                        <% var FilterList = ["filter1-01.png","filter2-01.png","filter3-01.png","filter5-01.png","filter7-01.png"]; %>
-                        <%for(var i=0;i<3;i++){ %>
-                        <div style="display: inline-block; height:30%; margin:10px 10px">
-                          <% for(var j=0;j<2 && i*2+j <FilterList.length;j++){ %>
-                          <img id="<%=i*2+j %>" class="filtersend" data-dismiss="modal" style="width:30%;" src="/images/Style2/<%=FilterList[i*2+j] %>"] />
-                          <% } %>
-                        </div>
-                        <% } %>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-          </center>
-        </center>
-
-        <div class="container">
-          <div class="card" style="width: 50%;">
-            <img class="card-img-top" src="./images/post8.png" style="width: 100%">
-            <div class="card-img-overlay">
-              <h1 id ="first_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">대 :</h1>
-              <h1 id ="second_letter" class="card-tilte" style="position: relative; left: 12%; top:8%">학 :</h1>
-            </div>
-          </div>
         </div>
-  </body>
+        <div id = "uploadMent" style="position: absolute; width: 100%; height: 100%; top: 30%; left: 0px; right: 0px; margin-left: auto; margin-right: auto; pointer-events: none;">
+          <h3 style="color: grey;"> 사진을 골라 주세요. </h3>
+        </div>
+        <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
+          <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
+            <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+          </label>
+            <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
+            <input type="text" id="filePath" style="display: none;"/>
+        </form>
+      </div>
+
+      <div class="textBlock" style="text-align: start; padding-left: 7%; padding-bottom: 3%; height: 20%;">
+        <h3 class="first_letter" id="show_first" style="display: inline;"> 대 </h3> <h4 id="first_line" style="display: inline;"> 머리 </h4>
+        <br>
+        <h3 class="second_letter" id="show_second" style="display: inline;"> 학 </h3> <h4 id="second_line" style="display: inline;"> 학주선생님 </h4>
+      </div>
+</div>
+    </center>
+    
+    
+    <div style="max-width: 800px; width: 90%; height: 8vh; margin: 3% auto 3% auto;">
+      <img class="l_arrow" align="left" style="height: 8vh; width: auto;" src = "/images/l_arrow_empty.png"> 
+      <img class="r_arrow" align="right" style="height: 8vh; width: auto;" src = "/images/r_arrow_empty.png"> 
+      <button onclick="capture()">*savetest*</button>
+    </div>
+
 
   <script>
 
 var timerId = 0;
 $(document).ready(function(){
+
+
+  $(".styleImages").click(function(){
+    $("#progressBar").css("display", "block");
+    var filenameOb = document.getElementById("filePath");
+    var filename = filenameOb.value;
+    var stylenum = $(this).attr("id");
+
+    $('#filter_img').attr("src",$(this).attr("src"));
+    $.post('/ajax/style', {stylenum: stylenum, filename: filename });
+    timerId = setInterval("check_file()", 5000); 
+  });
+
   $("span.close").click(function(){
     $("#myModal").css('display','none');
   });
 
+  $("img.l_arrow").hover(function(){
+  $(this).attr("src","/images/l_arrow_colored.png");
+  },
+  function(){
+  $(this).attr("src","/images/l_arrow_empty.png");
+  });
+
+  $("img.r_arrow").hover(function(){
+  $(this).attr("src","/images/r_arrow_colored.png");
+  },
+  function(){
+  $(this).attr("src","/images/r_arrow_empty.png");
+  });
+
+  $("img.r_arrow").click(function(){
+    $("#tagList").css('display','none');
+    $("#styleList").fadeIn();
+  });
+
+  $("img.l_arrow").click(function(){
+    $("#tagList").fadeIn();
+    $("#styleList").css('display','none');
+  });
+
   $("a.tag").click(function(){
-    $("input#first").val("")
-      $("input#second").val("")
-      $("#myModal").css('display','block');  
+    $("input#first").val("");
+    $("input#second").val("");
+    $("#myModal").css('display','block');  
+    var id = $(this).attr('id');
+    $('a.tag').removeClass("active");
+    $(this).addClass("active");
+    var letters ="<%= tagList %>";
+    var tagList = letters.split(',');
+    //first Letter is tagList[id][1];
+    //second Letter is tagList[id][2];
+    $('h3.first_letter').text(tagList[id][1]);
+    $('h3.second_letter').text(tagList[id][2]);
   });
 
   $(window).click(function(e){
     if( e.target.id == "myModal")
     {
       $("#myModal").css('display','none');
+    $('h3.first_letter').text("");
+    $('h3.second_letter').text("");
+    $("h4#first_line").text("");
+    $("h4#second_line").text("");
     }
   });
 
   $("button#mySubmit").click(function(){
-    //f input $("input#first").val());
+    //f input $("input#first").val()_;
     //s input$("input#second").val());
     $("h4#first_line").text($("input#first").val());
     $("h4#second_line").text($("input#second").val());
@@ -143,7 +152,7 @@ $(document).ready(function(){
   $('#fileInput').on('change', function () {
     var form = $('#fileForm')[0];
     var formData = new FormData(form);
-    console.log("it's changed");
+    $("#uploadMent").css("display", "none");
 
     $.ajax({
       type: 'post',
@@ -166,28 +175,8 @@ $(document).ready(function(){
   // Send to DB
   $('.filtersend').click(function(){
 
-    var filenameOb = document.getElementById("filePath");
-    var filename = filenameOb.value;
-    var stylenum = $(this).attr("id");
-
-    $('#filter_img').attr("src",$(this).attr("src"));
-    $.post('/ajax/style', {stylenum: stylenum, filename: filename });
-    timerId = setInterval("check_file()", 5000); 
-    $(".main").moveDown();
-
   });
 
-  $('button.tag').click(function(){
-    var id = $(this).attr('id');
-    $('button.tag').removeClass("active");
-    $(this).addClass("active");
-    var letters ="<%= tagList %>";
-    var tagList = letters.split(',')
-      //first Letter is tagList[id][1];
-      //second Letter is tagList[id][2];
-      $('h3#first_letter').text(tagList[id][1]);
-    $('h3#second_letter').text(tagList[id][2]);
-  });
 });
 
 function check_file(){
@@ -201,11 +190,14 @@ function check_file(){
   console.log('check_file run');
 
   if(http.status!=404){
+    $("#progressBar").css("display", "none");
+    $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
     clearInterval(timerId);  
   }
 
-}
 
+
+}
 function capture(){
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){
     console.log('html2canvas exc');  
@@ -229,26 +221,6 @@ function saveAs(uri, filename) {
     window.open(uri);
   }
 }
-var slidesPerView;
-if($('body').width() >1000)
-{
-  slidesPerView= 5
-}
-else
-{
-  slidesPerView= 2
-}
-
-var swiper = new Swiper('.swiper-container', { 
-  spaceBetween: 30, 
-  freeMode: true, 
-  slidesPerView: slidesPerView,
-  pagination: { 
-    el: '.swiper-pagination', 
-    clickable: true, 
-  }, 
-});
-
 
   </script> 
   </body>
