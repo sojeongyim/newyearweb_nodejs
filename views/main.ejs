@@ -14,11 +14,7 @@
       <a class="tag <% if(i ==0 ) { %> active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
       <% } %>
     </div>
-    <div class="scrollmenu">
-      <% for(i =0 ; i<tagList.length ; i++){ %>
-      <a class="tag <% if(i ==0 ) { %> active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
-      <% } %>
-    </div>
+
 
     <div id="myModal" class="modal" data-backdrop="false" >
       <div class="modal-content">
@@ -32,6 +28,10 @@
 
     <center id="card_style">
       <div class="imageBlock" style="padding: 3%; height: 80%;">
+        <div style="position: absolute; width: 100%; height: 100%; top: 15%; left: 0px; right: 0px; margin-left: auto; margin-right: auto">
+          <h1> 처리 중입니다. </h1>
+          <div class="loader"></div>
+        </div>
         <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
           <label for="fileInput" style= "height: 100%; width: 100% margin-bottom: 0px;">
             <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
@@ -54,10 +54,6 @@
     </div>
 
 
-    <center style="margin-top: 40vh;">
-      <h1> 처리 중입니다. </h1>
-      <div class="loader"></div>
-    </center>
 
     <center style="margin-top: 10vh;">
       <center style="width: 80%; margin: auto; height: 60vh; background: beige">
@@ -203,11 +199,8 @@ $(document).ready(function(){
     $.post('/ajax/style', {stylenum: stylenum, filename: filename });
     timerId = setInterval("check_file()", 5000); 
     $(".main").moveDown();
-
   });
 
-  $('a.tag').click(function(){
-  });
 });
 
 function check_file(){
@@ -225,28 +218,6 @@ function check_file(){
   }
 
 }
-
-
-var slidesPerView;
-if($('body').width() >1000)
-{
-  slidesPerView= 5
-}
-else
-{
-  slidesPerView= 2
-}
-
-var swiper = new Swiper('.swiper-container', { 
-  spaceBetween: 30, 
-  freeMode: true, 
-  slidesPerView: slidesPerView,
-  pagination: { 
-    el: '.swiper-pagination', 
-    clickable: true, 
-  }, 
-});
-
 
   </script> 
   </body>
