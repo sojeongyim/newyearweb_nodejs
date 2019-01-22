@@ -18,21 +18,23 @@
 
     <div id="myModal" class="modal" data-backdrop="false" >
       <div class="modal-content">
-        <span class="close">&times;</span>
-        <h4 id="first_letter"> 대 </h4>
+        <h4 id="first_letter">  </h4>
         <input type="text"/>
-        <h4 id="first_letter"> 학 </h4>
+        <h4 id="first_letter">  </h4>
         <input type="text"/>
+        <button class="button"> hey </button>
       </div>
     </div>
 
     <center id="card_style">
       <div class="imageBlock" style="padding: 3%; height: 80%;">
-        <label for="fileInput" style= "height: 100%;">
-          <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
-        </label>
-          <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
-          <input type="text" id="filePath" style="display: none;"/>
+        <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
+          <label for="fileInput" style= "height: 100%; width: 100%">
+            <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+          </label>
+            <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
+            <input type="text" id="filePath" style="display: none;"/>
+        </form>
       </div>
 
       <div class="textBlock" style="text-align: start; padding-left: 7%; padding-bottom: 3%; height: 20%;">
@@ -90,9 +92,7 @@
 
         </div>
       </center>
-
     </center>
-
 
     <div class="container">
       <div class="card" style="width: 50%;">
@@ -140,15 +140,12 @@ $(document).ready(function(){
         console.log(data);
 
         $('#origin_image').attr("src","/"+data);
-        $(".main").moveDown();
-
       },
       error: function (err) {
         console.log(err);
       }
     });
   });
-
 
   // Send to DB
   $('.filtersend').click(function(){
