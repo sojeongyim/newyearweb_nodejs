@@ -14,14 +14,19 @@
       <a class="tag <% if(i ==0 ) { %> active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
       <% } %>
     </div>
+    <div class="scrollmenu">
+      <% for(i =0 ; i<tagList.length ; i++){ %>
+      <a class="tag <% if(i ==0 ) { %> active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
+      <% } %>
+    </div>
 
     <div id="myModal" class="modal" data-backdrop="false" >
       <div class="modal-content">
         <h3 class="first_letter">  </h4>
-        <input id="first" type="text"/>
-        <h3 class="second_letter">  </h4>
-        <input id="second" type="text"/>
-        <button id= "mySubmit" class="button"> 확인 </button>
+      <input id="first" type="text"/>
+      <h3 class="second_letter">  </h4>
+      <input id="second" type="text"/>
+      <button id= "mySubmit" class="button"> 확인 </button>
       </div>
     </div>
 
@@ -37,11 +42,16 @@
       </div>
 
       <div class="textBlock" style="text-align: start; padding-left: 7%; padding-bottom: 3%; height: 20%;">
-    <h3 class="first_letter" id="show_first" style="display: inline;"> 대 </h3> <h4 id="first_line" style="display: inline;"> 머리 </h4>
+        <h3 class="first_letter" id="show_first" style="display: inline;"> 대 </h3> <h4 id="first_line" style="display: inline;"> 머리 </h4>
         <br>
-    <h3 class="second_letter" id="show_second" style="display: inline;"> 학 </h3> <h4 id="second_line" style="display: inline;"> 학주선생님 </h4>
+        <h3 class="second_letter" id="show_second" style="display: inline;"> 학 </h3> <h4 id="second_line" style="display: inline;"> 학주선생님 </h4>
       </div>
     </center>
+
+    <div style="max-width: 800px; width: 90%; height: 8vh; margin: 3% auto 3% auto;">
+      <img class="l_arrow" align="left" style="height: 8vh; width: auto;" src = "/images/l_arrow_empty.png"> 
+      <img class="r_arrow" align="right" style="height: 8vh; width: auto;" src = "/images/r_arrow_empty.png"> 
+    </div>
 
 
     <center style="margin-top: 40vh;">
@@ -106,10 +116,24 @@
 
   <script>
 
-  var timerId = 0;
+var timerId = 0;
 $(document).ready(function(){
   $("span.close").click(function(){
     $("#myModal").css('display','none');
+  });
+
+  $("img.l_arrow").hover(function(){
+  $(this).attr("src","/images/l_arrow_colored.png");
+  },
+  function(){
+  $(this).attr("src","/images/l_arrow_empty.png");
+  });
+
+  $("img.r_arrow").hover(function(){
+  $(this).attr("src","/images/r_arrow_colored.png");
+  },
+  function(){
+  $(this).attr("src","/images/r_arrow_empty.png");
   });
 
   $("a.tag").click(function(){
@@ -170,7 +194,7 @@ $(document).ready(function(){
 
   // Send to DB
   $('.filtersend').click(function(){
-    
+
     var filenameOb = document.getElementById("filePath");
     var filename = filenameOb.value;
     var stylenum = $(this).attr("id");
@@ -188,20 +212,20 @@ $(document).ready(function(){
 
 function check_file(){
   var filenameOb = document.getElementById("filePath");
-   var filename = filenameOb.value;
-   //console.log(timerId);
+  var filename = filenameOb.value;
+  //console.log(timerId);
 
-   var http = new XMLHttpRequest();
-   http.open('HEAD',"/images/Result/"+filename, false);
-   http.send();
-   console.log('check_file run');
-   
-   if(http.status!=404){
-   clearInterval(timerId);  
-   }
+  var http = new XMLHttpRequest();
+  http.open('HEAD',"/images/Result/"+filename, false);
+  http.send();
+  console.log('check_file run');
 
-   }
- 
+  if(http.status!=404){
+    clearInterval(timerId);  
+  }
+
+}
+
 
 var slidesPerView;
 if($('body').width() >1000)
