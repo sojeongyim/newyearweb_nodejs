@@ -10,7 +10,8 @@
   width: 80%;
   height: 60vh;
   margin: auto;
-    box-shadow: 5px 5px 15px grey;
+  max-width: 800px;
+  box-shadow: 5px 5px 15px grey;
 
 }
 
@@ -65,11 +66,15 @@ h4 {
   font-family: dovemayo;
 }
 
+h3 {
+  font-family: dovemayo;
+}
 
 
 
 div.scrollmenu {
   width: 90%;
+  max-width: 800px;
   padding: 14px;
   margin: auto;
 
@@ -85,15 +90,27 @@ div.scrollmenu a {
   padding: 14px;
   text-decoration: none;
 
-    border: 2px solid #4a6a99;
-      border-radius: 10px;
+  border: 2px solid #4a6a99;
+  border-radius: 10px;
 }
 
 div.scrollmenu a.active {
-color: white;
+  color: white;
   background-color: #4a6a99;
 }
 div.scrollmenu a:hover {
-color: white;
-  background-color: #4a6a99;
+  color: white;
+  background-color: #a9bec4;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  margin-top: 2vh;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
