@@ -76,7 +76,7 @@ div.scrollmenu {
   width: 90%;
   max-width: 800px;
   padding: 14px;
-  margin: auto;
+  margin: 5px auto 5px auto;
 
 /*  background-color: #EFE2AC;*/
   overflow: auto;
@@ -114,3 +114,8 @@ div.scrollmenu a:hover {
   display: inline-block;
   font-size: 16px;
 }
+
+img.styleImages{
+  height: 100%;
+  width: auto;
+  }
