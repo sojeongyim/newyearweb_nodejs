@@ -12,8 +12,8 @@
     <div class="scrollmenu" id="tagList">
       <% for(i =0 ; i<tagList.length ; i++){ %>
       <a class="tag 
-      <% if(i ==0 ) { %> 
-      active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
+        <% if(i ==0 ) { %> 
+        active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
       <% } %>
     </div>
     <!--    style slider-->
@@ -58,20 +58,19 @@
         <h3 class="second_letter" id="show_second" style="display: inline;"> 학 </h3> <h4 id="second_line" style="display: inline;"> 학주선생님 </h4>
       </div>
     </center>
-    
-    
+
+
     <div style="max-width: 800px; width: 90%; height: 8vh; margin: 3% auto 3% auto;">
       <img class="l_arrow" align="left" style="height: 8vh; width: auto;" src = "/images/l_arrow_empty.png"> 
       <img class="r_arrow" align="right" style="height: 8vh; width: auto;" src = "/images/r_arrow_empty.png"> 
     </div>
 
 
-  <script>
-
+    <script>
 var timerId = 0;
+var step = 0;
+
 $(document).ready(function(){
-
-
   $(".styleImages").click(function(){
     $("#progressBar").css("display", "block");
     var filenameOb = document.getElementById("filePath");
@@ -88,17 +87,17 @@ $(document).ready(function(){
   });
 
   $("img.l_arrow").hover(function(){
-  $(this).attr("src","/images/l_arrow_colored.png");
+    $(this).attr("src","/images/l_arrow_colored.png");
   },
   function(){
-  $(this).attr("src","/images/l_arrow_empty.png");
+    $(this).attr("src","/images/l_arrow_empty.png");
   });
 
   $("img.r_arrow").hover(function(){
-  $(this).attr("src","/images/r_arrow_colored.png");
+    $(this).attr("src","/images/r_arrow_colored.png");
   },
   function(){
-  $(this).attr("src","/images/r_arrow_empty.png");
+    $(this).attr("src","/images/r_arrow_empty.png");
   });
 
   $("img.r_arrow").click(function(){
@@ -130,10 +129,10 @@ $(document).ready(function(){
     if( e.target.id == "myModal")
     {
       $("#myModal").css('display','none');
-    $('h3.first_letter').text("");
-    $('h3.second_letter').text("");
-    $("h4#first_line").text("");
-    $("h4#second_line").text("");
+      $('h3.first_letter').text("");
+      $('h3.second_letter').text("");
+      $("h4#first_line").text("");
+      $("h4#second_line").text("");
     }
   });
 
@@ -161,9 +160,10 @@ $(document).ready(function(){
       contentType: false,
       success: function (data) {
         $('#filePath').val(data);
-        console.log(data);
-
-        $('#origin_image').attr("src","/"+data);
+        if(data.indexOf("jpg")!=-1 || data.indexOf("png")!=-1 )
+        {
+          $('#origin_image').attr("src","/"+data);
+        }
       },
       error: function (err) {
         console.log(err);
@@ -190,13 +190,12 @@ function check_file(){
 
   if(http.status!=404){
     $("#progressBar").css("display", "none");
-    $('#origin_image').attr("src","/Result/"+data);
+    $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
     clearInterval(timerId);  
   }
-
 }
 
-  </script> 
+    </script> 
   </body>
 </html>
 
