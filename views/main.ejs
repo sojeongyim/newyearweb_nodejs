@@ -16,7 +16,7 @@
         <h2 style="text-align: center;"> 문구가 들어가요 </h2>
         <div class="scrollmenu">
           <% for(i =0 ; i<tagList.length ; i++){ %>
-          <a class="tag <% if(i ==0 ) { %> active <% } %> "id="<%= i %>" href="#"><%= tagList[i] %> </a>
+          <a class="<% if(i ==0 ) { %> active <% } %> "id="<%= i %>" href="#"><%= tagList[i] %> </a>
           <% } %>
         </div>
 
@@ -147,6 +147,7 @@
 
     <script>
 
+  var timerId = 0;
 $(document).ready(function(){
   // Open Styles
 
@@ -180,21 +181,27 @@ $(document).ready(function(){
     afterMove: function(index) {
     },
   });
+  
 
   // Send to DB
   $('.filtersend').click(function(){
+    
     var filenameOb = document.getElementById("filePath");
     var filename = filenameOb.value;
-    var stylenum = $(this).attr("id");         
+    var stylenum = $(this).attr("id");
+
     $('#filter_img').attr("src",$(this).attr("src"));
     $.post('/ajax/style', {stylenum: stylenum, filename: filename });
+    
+    timerId = setInterval("check_file()", 5000); 
+    
     $(".main").moveDown();
 
   });
 
-  $('a.tag').click(function(){
+  $('button.tag').click(function(){
     var id = $(this).attr('id');
-    $('a.tag').removeClass("active");
+    $('button.tag').removeClass("active");
     $(this).addClass("active");
     var letters ="<%= tagList %>";
     var tagList = letters.split(',')
@@ -205,16 +212,22 @@ $(document).ready(function(){
   });
 });
 
-var http = new XMLHttpRequest();
-while(http.status==404){
-  setTimeout(function(){ 
-    http.open('HEAD',"/images/Result/<%=uploadfile%>", false);
-    http.send();
-    console.log(http.status!=404); 
-  },5000);
+function check_file(){
+   var filenameOb = document.getElementById("filePath");
+   var filename = filenameOb.value;
+   //console.log(timerId);
 
-}
+   var http = new XMLHttpRequest();
+   http.open('HEAD',"/images/Result/"+filename, false);
+   http.send();
+   console.log('check_file run');
+   
+   if(http.status!=404){
+   clearInterval(timerId);  
+   }
 
+   }
+ 
 function textPrint() {
   var text1 = document.getElementById("input1");
   var text2 = document.getElementById("input2");
