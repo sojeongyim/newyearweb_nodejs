@@ -16,7 +16,7 @@
         <h2 style="text-align: center;"> 문구가 들어가요 </h2>
         <div class="scrollmenu">
           <% for(i =0 ; i<tagList.length ; i++){ %>
-          <a class="<% if(i ==0 ) { %> active <% } %> "id="<%= i %>" href="#"><%= tagList[i] %> </a>
+          <a class="tag <% if(i ==0 ) { %> active <% } %> "id="<%= i %>" href="#"><%= tagList[i] %> </a>
           <% } %>
         </div>
 
@@ -192,9 +192,9 @@ $(document).ready(function(){
 
   });
 
-  $('button.tag').click(function(){
+  $('a.tag').click(function(){
     var id = $(this).attr('id');
-    $('button.tag').removeClass("active");
+    $('a.tag').removeClass("active");
     $(this).addClass("active");
     var letters ="<%= tagList %>";
     var tagList = letters.split(',')
