@@ -26,24 +26,14 @@
     }
     .scrollmenu
     {
-    height: 11vh;    
+    height: 13vh;    
     }
-    .swiper-wrapper
-    {
-        padding-top:30vh;
-    }
-    
-    
     
 }
 /*tablet device*/
 
 @media screen and (min-width:769px)
 {
-    #cardslider
-    {
-    padding-top: 12vh;    
-    }
     .imageBlock img
     {
        height: 630px;
@@ -101,10 +91,6 @@
     }
     #second_line{
         font-size:3em;
-    }
-    .swiper-wrapper
-    {
-        padding-top:40vh;
     }
 
     

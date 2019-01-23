@@ -1,3 +1,26 @@
+.myTop {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  padding: 0px 11px;
+  margin: 1vh auto ;
+  height: 8vh;
+}
+.myTop .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.myTop .page {
+  color: #9b7f0a;
+  position: absolute;
+  font-size: 13px;
+  top: 0;
+  right: 0;
+  margin: 4px;
+}
+  
+
 #category {
   margin-top: 2vh;
   margin-bottom: 2vh;
@@ -6,7 +29,7 @@
 
 #card_style{
   width: 80%;
-  height: 60vh;
+  height: 53vh;
   margin: auto;
   max-width: 800px;
   box-shadow: 5px 5px 15px grey;
@@ -66,54 +89,89 @@ h4 {
 
 h3 {
   font-family: dovemayo;
+  color: white;
 }
 
-
+input {
+  background: #ffefe1;
+}
 
 div.scrollmenu {
-  width: 90%;
+  width: 100%;
   max-width: 800px;
-  padding: 14px;
-  margin: 5px auto 5px auto;
+  margin: 2vh auto;
 
 /*  background-color: #EFE2AC;*/
   overflow: auto;
   white-space: nowrap;
 }
 
+#uploadPhoto {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 4vh auto;
+  height: 9vh;
+  text-align: center;
+}
+#uploadBut {
+  color: #72441e;
+  margin: auto;
+  text-align: center;
+  font-weight: bold;
+  width: 50%;
+  position: relative;
+  padding: 30px;
+  border: 2px solid #ba5815;
+  border-radius: 10px;
+  display: inline;
+}
+
+
 div.scrollmenu a {
   display: inline-block;
-  color: black;
+  color: #72441e;
   text-align: center;
-  padding: 14px;
+  padding: 25px 22px;
   text-decoration: none;
+  font-weight: bold;
 
-  border: 2px solid #4a6a99;
+  border: 1px solid #ba5815;
   border-radius: 10px;
 }
 
 div.scrollmenu a.active {
   color: white;
-  background-color: #4a6a99;
+  background-color: #ba5815;
 }
 div.scrollmenu a:hover {
-  color: white;
-  background-color: #a9bec4;
+  background-color: #edb564;
 }
 
 .button {
-  background-color: #4CAF50; /* Green */
+  width: 50%;
+  margin: auto;
+  color: #603208;
+  font-weight: bold;
+  background-color: #fcb765; /* Green */
   margin-top: 2vh;
   border: none;
+  border-radius: 25px;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 img.styleImages{
   height: 100%;
   width: auto;
   }
+
+#cardslider{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}

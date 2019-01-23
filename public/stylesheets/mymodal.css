@@ -1,5 +1,6 @@
 /* The Modal (background) */
 .modal {
+  opacity: 0.9;
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -14,10 +15,11 @@
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 35vh auto; /* 15% from the top and centered */
-  padding: 20px;
+  background-color: #6d3a08;
+  margin: 25vh auto; 
+  padding: 0px 20px 10px ;
   border: 1px solid #888;
+  border-radius: 25px;
   width: 80%; /* Could be more or less, depending on screen size */
   max-width: 700px;
 }
