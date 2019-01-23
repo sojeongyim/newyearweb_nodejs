@@ -1,12 +1,19 @@
 /*mobile device*/
 @media screen and (max-width:768px)
 {
-/*
-    #cardslider
+    #index1_b
     {
-    padding-top: 15vh;    
+       margin-bottom: 50px; 
     }
-*/
+    #a1{
+        margin-left: 80%;
+    }
+    #a2{
+        margin-left: 10%;
+    }
+    #tagList{
+        margin-top:1%;
+    }
     .imageBlock img
     {
         width: 100% ; 
@@ -28,12 +35,49 @@
     {
     height: 13vh;    
     }
+    .swiper-wrapper
+    {
+        padding-top:30vh;
+    }
+    #beforeNext
+    {
+    max-width: 800px; width: 80%; height: 8vh; margin: 3% auto 3% auto;
+    }
+    
     
 }
 /*tablet device*/
 
 @media screen and (min-width:769px)
 {
+    #index1_b
+    {
+       margin-bottom: 100px; 
+    }
+    #a1{
+        margin-left: 80%;
+        font-size: 2em;
+    }
+    #a2{
+        margin-left: 10%;
+    font-size: 2.5em;
+    }
+    #tagList{
+        margin-top:-5%; 
+        padding-bottom: 10%;
+    }
+    #styleList{
+        position:relative; top:10px; padding:0; height: 10vh;
+    }
+    
+    #cardslider
+    {
+    padding-top: 0; 
+        position:relative;
+        bottom:25%;
+        width:100%;
+/*        margin-left: 25vw;*/
+    }
     .imageBlock img
     {
        height: 630px;
@@ -92,12 +136,51 @@
     #second_line{
         font-size:3em;
     }
+    .swiper-wrapper
+    {
+        padding-top:40vh;
+    }
+    #beforeNext
+    {
+    max-width: 800px; width: 90%; height: 8vh; margin: 3% auto 3% auto;
+    }
 
     
 }
 /*desktop*/
 @media screen and (min-width:1100px)
 {
+    body{
+        background-size: 50% 100vh;
+    }
+    #cardslider
+    {
+    padding-top: 0; 
+        position:relative;
+        bottom:25%;
+        width:50%;
+        margin-left: 25vw;
+        margin-right: 25vw;
+    }
+    #index1_b
+    {
+       margin-bottom: 100px; 
+    }
+     #a1{
+        margin-left: 65%;
+         font-size: 1em;
+    }
+    #a2{
+        margin-left: 35%;
+        font-size: 1.2em;
+    }
+    #tagList{
+    padding-top: 3%;
+    padding-bottom: 100px;
+    }
+    #styleList{
+        position:relative; top:10px; padding:0;
+    }
     #index1
     {
 background-size: 50% 100vh;
@@ -130,8 +213,9 @@ background-size: 50% 100vh;
     #card_style
     {
     width: 30%;   
-        height: 70%;
-        margin-top: 30px;
+        height: 60%;
+        margin-top: 20px;
+/*        position:relative; top:-8%;*/
     }
     .textBlock
     {
@@ -151,6 +235,10 @@ background-size: 50% 100vh;
     }
     #second_line{
         font-size:2em;
+    }
+     #beforeNext
+    {
+    max-width: 800px; width: 40vw; height: 8vh; margin-top:20px;
     }
     
 }
