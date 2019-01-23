@@ -9,8 +9,7 @@ head{
 }
 body
 {
-/*  background: #EFE2AC;*/
-    background: url("../images/index2.png") no-repeat center center;
+  background: #f4d995;
   max-width: 100%;
   height: auto;
   max-width: none !important;
