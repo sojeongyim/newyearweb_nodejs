@@ -176,14 +176,14 @@
         font-size: 5em;
     }
     #first_line{
-        font-size: 4em;
+        font-size: 3em;
     }
     
     #show_second{
         font-size: 5em;
     }
     #second_line{
-        font-size: 4em;
+        font-size: 3em;
     }
     
     .swiper-wrapper
@@ -205,8 +205,15 @@
         height: 100%;
         width: 30%;
     }
-
-    
+    .info{
+        font-size:3em;
+    }
+    .page{
+        font-size:1.5em;
+    }
+    #uploadBut{
+        font-size:4em;
+    }
 }
 /*desktop*/
 @media screen and (min-width:1100px)
@@ -318,5 +325,11 @@ background-size: 50% 100vh;
         height: 100%;
         width: 15%;
     }
-    
+    #uploadBut{
+        font-size:2em;
+    }
+    .info{
+        top:10%;
+        font-size: 2em;
+    }
 }
