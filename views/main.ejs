@@ -7,10 +7,6 @@
   </head>
 
   <body>
-  <div id="anounce">
-  <h8 id="a1">(1/2)</h8>
-  <h6 id="a2">1. 이행시를 입력하세요</h6>      
-  </div>
 
     <div class='myTop'>
       <div class="info">1. 이행시를 입력하세요.</div>
@@ -30,10 +26,13 @@
     </div>
     <!--    style slider-->
     <div class="scrollmenu reactUI step3" id="styleList" style="display: none; padding: 0;">
-      <%for(i=1;i<9;i++){%>   
+      <%for(i=1;i<10;i++){%>   
       <!-- should be changed -->
-      <img id = "8" class="styleImages" src="/images/<%=i%>.jpg">
+      <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
       <% }%>        
+    </div>
+    <div class="reactUI step4" id="uploadPhoto" style="display: none;" >
+      <div id="uploadBut" class="resetBut" style="top: 2.5vh; padding-left: 20%; padding-right: 20%;">카드 다시 만들기 </div>
     </div>
 
     <div id="myModal" class="modal" data-backdrop="false" >
@@ -90,11 +89,16 @@ $(document).ready(function(){
 
     $('#filter_img').attr("src",$(this).attr("src"));
     $.post('/ajax/style', {stylenum: stylenum, filename: filename });
-    timerId = setInterval("check_file()", 5000); 
+    timerId = setInterval("check_file()", 1000); 
   });
 
   $("#uploadBut").click(function(){
     $('#origin_image').click();
+  });
+
+  $(".resetBut").click(function(){
+    cur_Step=1;
+    updateUI();
   });
 
   $("span.close").click(function(){
@@ -161,7 +165,7 @@ $(document).ready(function(){
   $('#fileInput').on('change', function () {
     var form = $('#fileForm')[0];
     var formData = new FormData(form);
-    $("#uploadMent").css("display", "none");
+    $("#progressBar").css("display", "block");
 
     $.ajax({
       type: 'post',
@@ -170,6 +174,7 @@ $(document).ready(function(){
       processData: false,
       contentType: false,
       success: function (data) {
+    $("#progressBar").css("display", "none");
         $('#filePath').val(data);
         if(data.indexOf("jpg")!=-1 || data.indexOf("png")!=-1 )
         {
@@ -177,6 +182,7 @@ $(document).ready(function(){
         }
       },
       error: function (err) {
+    $("#progressBar").css("display", "none");
         console.log(err);
       }
     });
@@ -218,27 +224,39 @@ function capture(){
 function updateUI()
 {
   $('.reactUI').css('display','none');
+      $("body").css('background','#f4d995');
   switch(cur_Step){
     case 1:
       $("img.l_arrow").css('display','none');
+      $(".info").text("1. 이행시를 입력하세요.");
+      $(".page").text("(1/3)");
       $('.step1').fadeIn();
       break;
     case 2:
+
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
+      $(".info").text("2. 사진을 선택하세요.");
+      $(".page").text("(2/3)");
       $('.step2').fadeIn();
       break;
     case 3:
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
+      $(".info").text("3. 그림 스타일을 선택하세요.");
+      $(".page").text("(3/3)");
       $('.step3').fadeIn();
       break;
     case 4:
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
+      $(".info").text("4. 완료버튼을 눌러 카드를 저장, 공유해보세요!");
+      $(".page").text("");
       $('.step4').fadeIn();
       break;
     case 5:
+      $("body").css('background','#6b3300');
+      $(".info").text("");
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','none');
       $('.step5').fadeIn();
