@@ -4,6 +4,8 @@ var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser'); 
+
 //var mysql = require('mysql');
 //var dbconfig = require('./routes/database.js') 
 //var connection = mysql.createConnection(dbconfig);
@@ -21,6 +23,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
+app.use(bodyParser({limit: '50mb'}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
