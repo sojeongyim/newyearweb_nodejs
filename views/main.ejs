@@ -1,98 +1,93 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-	<head>		
-		<% include header %>
-		<title>Paintly.AIcard.main</title>
-	</head>
+  <head>		
+    <% include header %>
+    <title>Paintly.AIcard.main</title>
+  </head>
 
-	<body>
-		<div class='myTop'>
-			<div class="info">1. 이행시를 입력하세요.</div>
-			<div class="page">(1/3)</div>
-		</div>
-		<% var tagList = ["대학", "취직", "연애", "자녀", "성적", "연봉", "결혼", "직접 쓰기"]; %>
-		<!--    tag slider-->
-		<div class="scrollmenu reactUI step1" id="tagList">
-			<% for(i =0 ; i<tagList.length ; i++){ %>
-			<a class="tag 
-				<% if(i ==0 ) { %> 
-				active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
-			<% } %>
-		</div>
-		<div class="reactUI step2" id="uploadPhoto" style="display: none;" >
-			<div id="uploadBut">사진 고르기 <img style="width: 60px; height: 60px;"src="/images/album_icon.png"> </div>
-		</div>
-		<!--    style slider-->
-		<div class="scrollmenu reactUI step3" id="styleList" style="display: none; padding: 0;">
-			<%for(i=1;i<10;i++){%>   
-			<!-- should be changed -->
-			<img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
-			<% }%>        
-		</div>
-		<div class="reactUI step4" id="uploadPhoto" style="display: none;" >
-			<div id="uploadBut" class="resetBut" style="top: 2.5vh; padding-left: 20%; padding-right: 20%;">카드 다시 만들기 </div>
-		</div>
+  <body>
 
-		<div id="myModal" class="modal" data-backdrop="false" >
-			<div class="modal-content">
-				<h3 class="first_letter">  </h4>
-			<input id="first" type="text"/>
-			<h3 class="second_letter">  </h4>
-			<input id="second" type="text"/>
-			<button id= "mySubmit" class="button">입력 완료 </button>
-			</div>
-		</div>
+    <div class='myTop'>
+      <div class="info">1. 사진을 선택해주세요.</div>
+      <div class="page">(1/3)</div>
+    </div>
 
-		<center id="card_style"> 
-			<div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%;">
-				<div class="imageBlock" style="padding: 3%; height: 80%;">
-					<div id = "progressBar" style="display: none; position: absolute; width: 100%; height: 100%; top: 15%; left: 0px; right: 0px; margin-left: auto; margin-right: auto">
-						<h1> 처리 중입니다. </h1>
-						<div class="loader"></div>
-					</div>
-					<form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
-						<label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-							<img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
-						</label>
-							<input id="fileInput" name="fileInput" type="file" style="display: none;"/>
-							<input type="text" id="filePath" style="display: none;"/>
-					</form>
-				</div>
 
-				<div class="textBlock" style="text-align: start; padding-left: 7%; padding-bottom: 3%; height: 20%;">
-					<h3 class="first_letter" id="show_first" style="color: black; display: inline;">이</h3> <h4 id="first_line" style="display: inline;">곳은 이행시를 입력하는 곳입니다.</h4>
-					<br>
-					<h3 class="second_letter" id="show_second" style="color: black; display: inline;">원</h3> <h4 id="second_line" style="display: inline;">하는 카테고리를 선택하세요.</h4>
-				</div>
-			</div>
-		</center>
+    <div class="reactUI step1" id="uploadPhoto" >
+      <div id="uploadBut">사진 고르기 <img style="width: 60px; height: 60px;"src="/images/album_icon.png"> </div>
+    </div>
+    <!--    style slider-->
+    <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
+      <%for(i=1;i<10;i++){%>   
+      <!-- should be changed -->
+      <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
+      <% }%>        
+    </div>
+    <div class="reactUI step3" id="uploadPhoto" style="display: none;" >
+      <!--      <div id="uploadBut" class="resetBut" style="top: 2.5vh; padding-left: 20%; padding-right: 20%;">여기에서 문구 입력 </div>-->
 
-		<div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
+      <input type=text colom=30; value="20자 이내로 입력">
+    </div>
+
+    <div id="myModal" class="modal" data-backdrop="false" >
+      <div class="modal-content">
+        <h3 class="first_letter">  </h3>
+        <input id="first" type="text"/>
+        <h3 class="second_letter">  </h3>
+        <input id="second" type="text"/>
+        <button id= "mySubmit" class="button">입력 완료 </button>
+      </div>
+    </div>
+
+    <center id="card_style"> 
+      <div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%;">
+        <div class="imageBlock" style="padding: 3%; height: 80%;">
+          <div id = "progressBar" style="display: none; position: absolute; width: 100%; height: 100%; top: 15%; left: 0px; right: 0px; margin-left: auto; margin-right: auto">
+            <h1> 처리 중입니다. </h1>
+            <div class="loader"></div>
+          </div>
+          <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
+            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
+              <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+            </label>
+              <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
+              <input type="text" id="filePath" style="display: none;"/>
+          </form>
+        </div>
+
+        <div class="textBlock" style="text-align: start; padding-left: 7%; padding-bottom: 3%; height: 20%;">
+          <h3 class="first_letter" id="show_first" style="color: black; display: inline;">이</h3> <h4 id="first_line" style="display: inline;">곳은 이행시를 입력하는 곳입니다.</h4>
+          <br>
+          <h3 class="second_letter" id="show_second" style="color: black; display: inline;">원</h3> <h4 id="second_line" style="display: inline;">하는 카테고리를 선택하세요.</h4>
+        </div>
+      </div>
+    </center>
+
+    <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
       <img src="/final/nFyv7dEqWgELS6KNQAtIy3Yw.png" />
-			<img class="shareBut" id = "download" onclick="capture()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
-			<a id="kakao-link-btn" href="javascript:;">
-				<img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
-			</a>
-			<img  class="shareBut" id = "insta" src="/images/insta_logo.png"/>
-			<img  class="shareBut" id = "naver" src="/images/naver_logo.png"/>
-		</div>
+      <img class="shareBut" id = "download" onclick="capture()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
+      <a id="kakao-link-btn" href="javascript:;">
+        <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
+      </a>
+      <img  class="shareBut" id = "insta" src="/images/insta_logo.png"/>
+      <img  class="shareBut" id = "naver" src="/images/naver_logo.png"/>
+    </div>
 
-		<div id="bottomList">
-			<img class="l_arrow" align="left" style=" display: none; height: 5vh; width: auto;" src = "/images/l_arrow_empty.png"> 
-			<a class="reactUI step5" id="eventBut" style="display: none;">명절인사백서 이벤트 </a>
-			<img class="r_arrow" align="right" style="height: 5vh; width: auto;" src = "/images/r_arrow_empty.png"> 
-		</div>
+    <div id="bottomList">
+      <img class="l_arrow" align="left" style=" display: none; height: 5vh; width: auto;" src = "/images/l_arrow_empty.png"> 
+      <a class="reactUI step5" id="eventBut" style="display: none;">명절인사백서 이벤트 </a>
+      <img class="r_arrow" align="right" style="height: 5vh; width: auto;" src = "/images/r_arrow_empty.png"> 
+    </div>
 
-
-		<script>
+    <script>
 var timerId = 0;
 var cur_Step = 1;
 
 //Kakao.init('b53c59767a3c1d122013beb25feda261');
 Kakao.init('c9fce0d59aa8336cea1e41e5ed774cd2');
 Kakao.Link.createDefaultButton({
-	container: '#kakao-link-btn',
+  container: '#kakao-link-btn',
   objectType: 'feed',
   content: {
     title: 'paintlyme',
@@ -104,242 +99,241 @@ Kakao.Link.createDefaultButton({
     }
   },
   buttons: [
-    {
-      title: '카드 만들기',
+  {
+    title: '카드 만들기',
     link: {
       mobileWebUrl: 'http://paintly.me',
       webUrl: 'http://paintly.me'
     }
-    }
+  }
   ]
 });
 
 $(document).ready(function(){
-	$(".styleImages").click(function(){
-		$("#progressBar").css("display", "block");
-		var filenameOb = document.getElementById("filePath");
-		var filename = filenameOb.value;
-		var stylenum = $(this).attr("id");
+  $(".styleImages").click(function(){
+    $("#progressBar").css("display", "block");
+    var filenameOb = document.getElementById("filePath");
+    var filename = filenameOb.value;
+    var stylenum = $(this).attr("id");
 
-		$('#filter_img').attr("src",$(this).attr("src"));
-		$.post('/ajax/style', {stylenum: stylenum, filename: filename });
-		timerId = setInterval("check_file()", 1000); 
-	});
+    $('#filter_img').attr("src",$(this).attr("src"));
+    $.post('/ajax/style', {stylenum: stylenum, filename: filename });
+    timerId = setInterval("check_file()", 1000); 
+  });
 
-	$("#uploadBut").click(function(){
-		$('#origin_image').click();
-	});
+  $("#uploadBut").click(function(){
+    $('#origin_image').click();
+  });
 
-	$(".resetBut").click(function(){
-		cur_Step=1;
-		dataInit();
-		updateUI();
-	});
+  $(".resetBut").click(function(){
+    cur_Step=1;
+    dataInit();
+    updateUI();
+  });
 
-	$("span.close").click(function(){
-		$("#myModal").css('display','none');
-	});
+  $("span.close").click(function(){
+    $("#myModal").css('display','none');
+  });
 
-	$("img.l_arrow").hover(function(){
-		$(this).attr("src","/images/l_arrow_colored.png");
-	},
-	function(){
-		$(this).attr("src","/images/l_arrow_empty.png");
-	});
+  $("img.l_arrow").hover(function(){
+    $(this).attr("src","/images/l_arrow_colored.png");
+  },
+  function(){
+    $(this).attr("src","/images/l_arrow_empty.png");
+  });
 
-	$("img.r_arrow").hover(function(){
-		$(this).attr("src","/images/r_arrow_colored.png");
-	},
-	function(){
-		$(this).attr("src","/images/r_arrow_empty.png");
-	});
+  $("img.r_arrow").hover(function(){
+    $(this).attr("src","/images/r_arrow_colored.png");
+  },
+  function(){
+    $(this).attr("src","/images/r_arrow_empty.png");
+  });
 
-	$("img.r_arrow").click(function(){
-		nextStep();
-	});
+  $("img.r_arrow").click(function(){
+    nextStep();
+  });
 
-	$("img.l_arrow").click(function(){
-		prevStep();
-	});
+  $("img.l_arrow").click(function(){
+    prevStep();
+  });
 
-	$("a.tag").click(function(){
-		$("input#first").val("");
-		$("input#second").val("");
-		$("#myModal").css('display','block');  
-		var id = $(this).attr('id');
-		$('a.tag').removeClass("active");
-		$(this).addClass("active");
-		var letters ="<%= tagList %>";
-		var tagList = letters.split(',');
-		//first Letter is tagList[id][1];
-		//second Letter is tagList[id][2];
-		$('h3.first_letter').text(tagList[id][0]);
-		$('h3.second_letter').text(tagList[id][1]);
-	});
+  $("a.tag").click(function(){
+    $("input#first").val("");
+    $("input#second").val("");
+    $("#myModal").css('display','block');  
+    var id = $(this).attr('id');
+    $('a.tag').removeClass("active");
+    $(this).addClass("active");
+    var letters ="<%= tagList %>";
+    var tagList = letters.split(',');
+    //first Letter is tagList[id][1];
+    //second Letter is tagList[id][2];
+    $('h3.first_letter').text(tagList[id][0]);
+    $('h3.second_letter').text(tagList[id][1]);
+  });
 
-	$(window).click(function(e){
-		if( e.target.id == "myModal")
-		{
-			$("#myModal").css('display','none');
-			$('h3.first_letter').text("");
-			$('h3.second_letter').text("");
-			$("h4#first_line").text("");
-			$("h4#second_line").text("");
-		}
-	});
+  $(window).click(function(e){
+    if( e.target.id == "myModal")
+    {
+      $("#myModal").css('display','none');
+      $('h3.first_letter').text("");
+      $('h3.second_letter').text("");
+      $("h4#first_line").text("");
+      $("h4#second_line").text("");
+    }
+  });
 
-	$("button#mySubmit").click(function(){
-		//f input $("input#first").val()_;
-		//s input$("input#second").val());
-		$("h4#first_line").text($("input#first").val());
-		$("h4#second_line").text($("input#second").val());
-		$("#myModal").css('display','none');
-	});
+  $("button#mySubmit").click(function(){
+    //f input $("input#first").val()_;
+    //s input$("input#second").val());
+    $("h4#first_line").text($("input#first").val());
+    $("h4#second_line").text($("input#second").val());
+    $("#myModal").css('display','none');
+  });
 
 
-	// Upload Files
-	var _URL = window.URL || window.webkitURL;
-	$('#fileInput').on('change', function () {
-		var filename=$('#fileInput').val();
-		var check = false;
-		var file, img;
-		if ((file = this.files[0])) {
-			img = new Image();
-			img.onload = function () {
-				if(this.width<= 3000 && this.height <= 3000)
-				{
-					if(filename.indexOf("jpg")!=-1 || filename.indexOf("png")!=-1 )
-					{
-						var form = $('#fileForm')[0];
-						var formData = new FormData(form);
-						$("#progressBar").css("display", "block");
-						$.ajax({
-							type: 'post',
-							url: '/ajax/upload',
-							data: formData,
-							processData: false,
-							contentType: false,
-							success: function (data) {
-								$("#progressBar").css("display", "none");
-								$('#filePath').val(data);
-								if(data.indexOf("jpg")!=-1 || data.indexOf("png")!=-1 )
-								{
-									$('#origin_image').attr("src","/"+data);
-								}
-							},
-							error: function (err) {
-								$("#progressBar").css("display", "none");
-								console.log(err);
-							}
-						});
-					}
-				}
-				else
-				{
-					alert("Image is Too Big!");
-				}
-			};
-			img.src = _URL.createObjectURL(file);
-		}
-		var lim = 3000;
+  // Upload Files
+  var _URL = window.URL || window.webkitURL;
+  $('#fileInput').on('change', function () {
+    var filename=$('#fileInput').val();
+    var check = false;
+    var file, img;
+    if ((file = this.files[0])) {
+      img = new Image();
+      img.onload = function () {
+        if(this.width<= 3000 && this.height <= 3000)
+        {
+          if(filename.indexOf("jpg")!=-1 || filename.indexOf("png")!=-1 )
+          {
+            var form = $('#fileForm')[0];
+            var formData = new FormData(form);
+            $("#progressBar").css("display", "block");
+            $.ajax({
+              type: 'post',
+              url: '/ajax/upload',
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (data) {
+                $("#progressBar").css("display", "none");
+                $('#filePath').val(data);
+                if(data.indexOf("jpg")!=-1 || data.indexOf("png")!=-1 )
+                {
+                  $('#origin_image').attr("src","/"+data);
+                }
+              },
+              error: function (err) {
+                $("#progressBar").css("display", "none");
+                console.log(err);
+              }
+            });
+          }
+        }
+        else
+        {
+          alert("Image is Too Big!");
+        }
+      };
+      img.src = _URL.createObjectURL(file);
+    }
+    var lim = 3000;
 
-	});
+  });
 });
 
 function check_file(){
-	var filenameOb = document.getElementById("filePath");
-	var filename = filenameOb.value;
-	//console.log(timerId);
+  var filenameOb = document.getElementById("filePath");
+  var filename = filenameOb.value;
+  //console.log(timerId);
 
-	var http = new XMLHttpRequest();
-	http.open('HEAD',"/images/Result/"+filename, false);
-	http.send();
-	console.log('check_file run');
+  var http = new XMLHttpRequest();
+  http.open('HEAD',"/images/Result/"+filename, false);
+  http.send();
+  console.log('check_file run');
 
-	if(http.status!=404){
-		$("#progressBar").css("display", "none");
-		$('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
-		clearInterval(timerId);  
+  if(http.status!=404){
+    $("#progressBar").css("display", "none");
+    $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
+    clearInterval(timerId);  
     capture();
-	}
+  }
 }
 
 function dataInit(){
-	$('#origin_image').attr("src","/images/emptyinside.png");
-	$('#show_first').text("이");
-	$('#show_second').text("원");
-	$('#first_line').text("곳은 이행시를 입력하는 곳입니다.");
-	$('#second_line').text("하는 카테고리를 선택하세요.");
+  $('#origin_image').attr("src","/images/emptyinside.png");
+  $('#show_first').text("이");
+  $('#show_second').text("원");
+  $('#first_line').text("곳은 이행시를 입력하는 곳입니다.");
+  $('#second_line').text("하는 카테고리를 선택하세요.");
 }
 
 
 
 function capture(){
-	html2canvas(document.querySelector('#capture_card')).then(function(canvas){
-		console.log(canvas.toDataURL());  
+  html2canvas(document.querySelector('#capture_card')).then(function(canvas){
+    console.log(canvas.toDataURL());  
     saveToServer(canvas.toDataURL(), $('#filePath').val())
-		saveAs(canvas.toDataURL(), 'paintlyNewyear.png');
-	});
+      saveAs(canvas.toDataURL(), 'paintlyNewyear.png');
+  });
 }
 
 function updateUI()
 {
-	$('.reactUI').css('display','none');
-	$("body").css('background','#f4d995');
-	switch(cur_Step){
-		case 1:
-			$("img.l_arrow").css('display','none');
-			$(".info").text("1. 이행시를 입력하세요.");
-			$(".page").text("(1/3)");
-			$('.step1').fadeIn();
-			break;
-		case 2:
+  $('.reactUI').css('display','none');
+  $("body").css('background','#f4d995');
+  switch(cur_Step){
+    case 1:
+      $("img.l_arrow").css('display','none');
+      $(".info").text("1. 사진을 선택하세요.");
+      $(".page").text("(1/3)");
+      $('.step1').fadeIn();
+      break;
+    case 2:
 
-			$("img.l_arrow").css('display','block');
-			$("img.r_arrow").css('display','block');
-			$(".info").text("2. 사진을 선택하세요.");
-			$(".page").text("(2/3)");
-			$('.step2').fadeIn();
-			break;
-		case 3:
-			$("img.l_arrow").css('display','block');
-			$("img.r_arrow").css('display','block');
-			$(".info").text("3. 그림 스타일을 선택하세요.");
-			$(".page").text("(3/3)");
-			$('.step3').fadeIn();
-			break;
-		case 4:
-			$("img.l_arrow").css('display','block');
-			$("img.r_arrow").css('display','block');
-			$(".info").text("4. 완료버튼을 눌러 카드를 저장, 공유해보세요!");
-			$(".page").text("");
-			$('.step4').fadeIn();
-			break;
-		case 5:
-			$("body").css('background','#6b3300');
-			$(".info").text("");
-			$("img.l_arrow").css('display','block');
-			$("img.r_arrow").css('display','none');
-
-			$('.step5').fadeIn();
-			break;
-	}
+      $("img.l_arrow").css('display','block');
+      $("img.r_arrow").css('display','block');
+      $(".info").text("2. 그림 스타일을 선택하세요.");
+      $(".page").text("(2/3)");
+      $('.step2').fadeIn();
+      break;
+    case 3:
+      $("img.l_arrow").css('display','block');
+      $("img.r_arrow").css('display','block');
+      $(".info").text("3. 원하는 문구를 입력하세요.");
+      $(".page").text("(3/3)");
+      $('.step3').fadeIn();
+      break;
+    case 4:
+      $("body").css('background','#6b3300');
+      $(".info").text("");
+      $("img.l_arrow").css('display','block');
+      $("img.r_arrow").css('display','none');
+      $('.step5').fadeIn();
+      break;
+      //    case 5:
+      //      $("body").css('background','#6b3300');
+      //      $(".info").text("");
+      //      $("img.l_arrow").css('display','block');
+      //      $("img.r_arrow").css('display','none');
+      //      $('.step5').fadeIn();
+      //      break;
+  }
 }
 
 function nextStep(){
-	if(cur_Step <5)
-	{
-		cur_Step = cur_Step +1;
-		updateUI()
-	}
+  if(cur_Step <5)
+  {
+    cur_Step = cur_Step +1;
+    updateUI()
+  }
 }
 
 function prevStep(){
-	if(cur_Step >1 )
-	{
-		cur_Step = cur_Step -1;
-		updateUI()
-	}
+  if(cur_Step >1 )
+  {
+    cur_Step = cur_Step -1;
+    updateUI()
+  }
 }
 
 function saveToServer(uri, filename)
@@ -349,21 +343,21 @@ function saveToServer(uri, filename)
   filename = filename.split('.')[0];
   console.log("itis filename");
   console.log(filename);
-	$.post('/ajax/result', {imgURL: uri, imgName: filename });
+  $.post('/ajax/result', {imgURL: uri, imgName: filename });
 }
 
 function saveAs(uri, filename) {
-	var link = document.createElement('a');
-	if (typeof link.download === 'string') {
-		link.href = uri;
-		link.download = filename;
-		//simulate click
-		link.click();
-	} else {
-		window.open(uri);
-	}
+  var link = document.createElement('a');
+  if (typeof link.download === 'string') {
+    link.href = uri;
+    link.download = filename;
+    //simulate click
+    link.click();
+  } else {
+    window.open(uri);
+  }
 }
-		</script> 
-	</body>
+    </script> 
+  </body>
 </html>
 
