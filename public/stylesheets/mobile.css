@@ -11,6 +11,14 @@
     #a2{
         margin-left: 10%;
     }
+    #a3{
+        
+        text-align:left;
+        margin-left: 8%;
+     }
+    #tagList{
+        margin-top:1%;
+    }
     .imageBlock img
     {
         width: 100% ; 
@@ -32,6 +40,11 @@
     {
     height: 13vh;    
     }
+    
+     #retry{
+        text-align: center;
+         height: 15vh;
+    }
     .swiper-wrapper
     {
         padding-top:30vh;
@@ -40,7 +53,19 @@
     {
     max-width: 800px; width: 80%; height: 8vh; margin: 3% auto 3% auto;
     }
-    
+    .styleImages
+    {
+    margin-right: 10px;
+        margin-left: 10px;
+/*        width:40%;*/
+    }
+    img.styleImages{
+        height: 100%;
+        width: 30%;
+    }
+    #card_style{
+        margin-top:30px;
+    }
     
 }
 /*tablet device*/
@@ -53,18 +78,25 @@
     }
     #a1{
         margin-left: 80%;
-        font-size: 2em;
+        font-size: 2.3em;
+       
     }
     #a2{
+        
         margin-left: 10%;
-    font-size: 2.5em;
+    font-size: 3em;
+    }
+    #a3{
+        
+        margin-left: 2%;
+    font-size: 3em;
     }
     #tagList{
         margin-top:-5%; 
         padding-bottom: 10%;
     }
     #styleList{
-        position:relative; top:10px; padding:0; height: 10vh;
+        position:relative; top:10px; padding:0; height: 11vh;
     }
     
     #cardslider
@@ -108,7 +140,7 @@
         position:relative;
         top:5%;
 /*        margin-top:5%;margin-bottom:5%;*/
-/*        height: 11vh;*/
+        height: 11vh;
         
    
 /*    padding-top: 14px;*/
@@ -119,6 +151,11 @@
     #card_style{
     margin-top: 70px;    
     }
+    
+     #retry{
+        text-align: center;
+    }
+/*
      #first_letter
     {
         font-size:5em;
@@ -133,6 +170,22 @@
     #second_line{
         font-size:3em;
     }
+*/
+    
+    #show_first{
+        font-size: 5em;
+    }
+    #first_line{
+        font-size: 3em;
+    }
+    
+    #show_second{
+        font-size: 5em;
+    }
+    #second_line{
+        font-size: 3em;
+    }
+    
     .swiper-wrapper
     {
         padding-top:40vh;
@@ -141,8 +194,26 @@
     {
     max-width: 800px; width: 90%; height: 8vh; margin: 3% auto 3% auto;
     }
-
     
+        .styleImages
+    {
+    margin-right: 10px;
+        margin-left: 10px;
+/*        width:40%;*/
+    }
+    img.styleImages{
+        height: 100%;
+        width: 30%;
+    }
+    .info{
+        font-size:3em;
+    }
+    .page{
+        font-size:1.5em;
+    }
+    #uploadBut{
+        font-size:4em;
+    }
 }
 /*desktop*/
 @media screen and (min-width:1100px)
@@ -176,7 +247,10 @@
     padding-bottom: 100px;
     }
     #styleList{
-        position:relative; top:10px; padding:0;
+        position:relative; 
+        top:10px;
+        padding:0;
+        width: 44%;
     }
     #index1
     {
@@ -214,19 +288,22 @@ background-size: 50% 100vh;
         margin-top: 20px;
 /*        position:relative; top:-8%;*/
     }
+    #retry{
+        text-align: center;
+    }
     .textBlock
     {
         position: relative;
         bottom: 1%;
     }
-    #first_letter
+    #show_first
     {
         font-size:3em;
     }
     #first_line{
         font-size:2em;
     }
-    #second_letter{
+    #show_second{
         font-size:3em;
         
     }
@@ -238,4 +315,21 @@ background-size: 50% 100vh;
     max-width: 800px; width: 40vw; height: 8vh; margin-top:20px;
     }
     
+        .styleImages
+    {
+    margin-right: 10px;
+        margin-left: 10px;
+/*        width:40%;*/
+    }
+    img.styleImages{
+        height: 100%;
+        width: 15%;
+    }
+    #uploadBut{
+        font-size:2em;
+    }
+    .info{
+        top:10%;
+        font-size: 2em;
+    }
 }
