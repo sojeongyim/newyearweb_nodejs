@@ -9,30 +9,25 @@
   <body>
 
     <div class='myTop'>
-      <div class="info">1. 이행시를 입력하세요.</div>
+      <div class="info">1. 사진을 선택해주세요.</div>
     <div class="page">(1/3)</div>
     </div>
-    <% var tagList = ["대학", "취직", "연애", "자녀", "성적", "연봉", "결혼", "직접 쓰기"]; %>
-    <!--    tag slider-->
-    <div class="scrollmenu reactUI step1" id="tagList">
-      <% for(i =0 ; i<tagList.length ; i++){ %>
-      <a class="tag 
-        <% if(i ==0 ) { %> 
-        active <% } %>"  id="<%= i %>" href="#"><%= tagList[i] %> </a>
-      <% } %>
-    </div>
-    <div class="reactUI step2" id="uploadPhoto" style="display: none;" >
+    
+    
+    <div class="reactUI step1" id="uploadPhoto" >
       <div id="uploadBut">사진 고르기 <img style="width: 60px; height: 60px;"src="/images/album_icon.png"> </div>
     </div>
     <!--    style slider-->
-    <div class="scrollmenu reactUI step3" id="styleList" style="display: none; padding: 0;">
+    <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
       <%for(i=1;i<10;i++){%>   
       <!-- should be changed -->
       <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
       <% }%>        
     </div>
-    <div class="reactUI step4" id="uploadPhoto" style="display: none;" >
-      <div id="uploadBut" class="resetBut" style="top: 2.5vh; padding-left: 20%; padding-right: 20%;">카드 다시 만들기 </div>
+    <div class="reactUI step3" id="uploadPhoto" style="display: none;" >
+<!--      <div id="uploadBut" class="resetBut" style="top: 2.5vh; padding-left: 20%; padding-right: 20%;">여기에서 문구 입력 </div>-->
+   
+   <input type=text colom=30; value="20자 이내로 입력">
     </div>
 
     <div id="myModal" class="modal" data-backdrop="false" >
@@ -70,7 +65,7 @@
     </center>
 
 
-    <div style="max-width: 800px; width: 80%; height: 8vh; margin: 4% auto ">
+    <div id="arrow">
       <img class="l_arrow" align="left" style=" display: none; height: 5vh; width: auto;" src = "/images/l_arrow_empty.png"> 
       <img class="r_arrow" align="right" style="height: 5vh; width: auto;" src = "/images/r_arrow_empty.png"> 
     </div>
@@ -133,23 +128,6 @@ $(document).ready(function(){
     
   
     
-    
-    
-
-  $("a.tag").click(function(){
-    $("input#first").val("");
-    $("input#second").val("");
-    $("#myModal").css('display','block');  
-    var id = $(this).attr('id');
-    $('a.tag').removeClass("active");
-    $(this).addClass("active");
-    var letters ="<%= tagList %>";
-    var tagList = letters.split(',');
-    //first Letter is tagList[id][1];
-    //second Letter is tagList[id][2];
-    $('h3.first_letter').text(tagList[id][0]);
-    $('h3.second_letter').text(tagList[id][1]);
-  });
 
   $(window).click(function(e){
     if( e.target.id == "myModal")
@@ -237,7 +215,7 @@ function updateUI()
   switch(cur_Step){
     case 1:
       $("img.l_arrow").css('display','none');
-      $(".info").text("1. 이행시를 입력하세요.");
+      $(".info").text("1. 사진을 선택하세요.");
       $(".page").text("(1/3)");
       $('.step1').fadeIn();
       break;
@@ -245,31 +223,31 @@ function updateUI()
 
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
-      $(".info").text("2. 사진을 선택하세요.");
+      $(".info").text("2. 그림 스타일을 선택하세요.");
       $(".page").text("(2/3)");
       $('.step2').fadeIn();
       break;
     case 3:
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
-      $(".info").text("3. 그림 스타일을 선택하세요.");
+      $(".info").text("3. 원하는 문구를 입력하세요.");
       $(".page").text("(3/3)");
       $('.step3').fadeIn();
       break;
     case 4:
-      $("img.l_arrow").css('display','block');
-      $("img.r_arrow").css('display','block');
-      $(".info").text("4. 완료버튼을 눌러 카드를 저장, 공유해보세요!");
-      $(".page").text("");
-      $('.step4').fadeIn();
-      break;
-    case 5:
       $("body").css('background','#6b3300');
       $(".info").text("");
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','none');
       $('.step5').fadeIn();
       break;
+//    case 5:
+//      $("body").css('background','#6b3300');
+//      $(".info").text("");
+//      $("img.l_arrow").css('display','block');
+//      $("img.r_arrow").css('display','none');
+//      $('.step5').fadeIn();
+//      break;
   }
 }
 

@@ -6,46 +6,35 @@
     <title>Paintly.AIcard.main</title>
   </head>
 
-  <body>
-    <div class= "main">
-      <section id="test1">
-        <div id="index1">
-          
+  <body id=background>
+   
+        <div >
+          <h1 id="backgroundMent">설날폴라로이드 만들기</h1>
         </div>
-      </section>
-
-
-      <section>   
-        <div id="index2">  
-<!--        example cards slide-->
-       <div id="cardslider" >
+        <div id="backgroundSlider">
+             
+              
           <div class="swiper-container" > 
             <div class="swiper-wrapper" > 
               <% for(var i =1; i<7; i++) { %>
-              <div class="swiper-slide">
-                <img src="./images/post<%= i %>.png">
+              <div class="swiper-slide" >
+                <img src="./images/sample1.png">
               </div> 
             <% } %>
             </div> 
           </div>
-        </div>
-        <a class="mainButt"  href="./main">
-            <img id="index1_b" src="./images/index1_b.png">
-          </a>
-        </div>
           
+          <div class="swiper-pagination"></div>
         
-      </section>
-
-    
-      
-      
-      
-      </div>
-<footer>
-        <% include footer %>
-        <a href="#" style="font-size:2em;">Back to top</a>
-      </footer>
+        </div>
+        
+        
+        <div id="backgroundBtn">
+            <a href="main#">
+                <img class="goBtn" src="/images/rebtn.png">
+            </a>
+        </div>
+   
 
 
   </body>
@@ -57,12 +46,14 @@ $(".main").onepage_scroll({
   keyboard: false,
 
 });
-$('#file-input').change(function() {
-  $('#target').submit();
+$(document).ready(function(){
+    $("img.goBtn").hover(function(){
+        $(this).attr("src","/images/rebtncheck.png");
+    });
 });
 
 var swiper = new Swiper('.swiper-container', { 
-  slidesPerView: 3, 
+  slidesPerView: 1, 
   spaceBetween: 30, 
   freeMode: true, 
   pagination: { 
@@ -70,6 +61,8 @@ var swiper = new Swiper('.swiper-container', {
     clickable: true, 
   }, 
 });
-
+$(document).ready(function(){
+    
+})
   </script>
 </html>
