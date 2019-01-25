@@ -28,22 +28,44 @@
     </div>
 
       <center id="card_style"> 
-        <div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%; position: relative; text-align: center;">
+      
+<!--        <div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%; position: relative; text-align: center;">-->
+       
+        
+<!--
+         
+           <div class="hero-image">
+  <img id="z1" src="http://fillmurray.com/400/359" >
+</div>
+-->
+<!--<img id="z2" style="position:relative; left:10px; width:500px; top:-500px; z-index:2;" src="/images/grip.png" />-->
+<!--<img id="z3" src="http://fillmurray.com/400/359" style="position:relative; top:-700px; left:-320px; width: 180px; z-index:3"/>-->
+         
           <div id = "showInput"></div>
-          <div class="imageBlock" style="padding: 3%; height: 80%; position: relative;">
-            <div id = "progressBar" >
+<!--          <div class="imageBlock" style="padding: 3%; height: 80%; position: relative;">-->
+           <div class="hero-image">
+  <img id="z1" src="http://fillmurray.com/400/359" >
+      
+  
+</div>
+       <img id="z2" src="/images/grip.png">
+
+      </center>
+    <center>
+            <div>
+             <div id = "progressBar" >
               <h1> 처리 중입니다. </h1>
               <div class="loader"></div>
             </div>
             <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
               <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-                <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+<!--                <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >-->
               </label>
                 <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
                 <input type="text" id="filePath" style="display: none;"/>
             </form>
           </div>
-        </div>
+        
       </center>
 
       <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
