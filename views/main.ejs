@@ -19,8 +19,8 @@
     </div>
     <!--    style slider-->
     <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
-      <%for(i=1;i<10;i++){%>   
-      <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
+      <%for(i=1;i<7;i++){%>   
+      <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.jpg">
       <% }%>        
     </div>
     <div class="reactUI step3" id="txtblock" style="display: none;" >
@@ -32,7 +32,7 @@
 
           <div id = "showInput"></div>
           <div id = "progressBar">
-            <h1> 처리 중입니다. </h1>
+            <h1 id="progressMent"> 처리 중입니다. </h1>
             <div class="loader"></div>
           </div>
           <div class="something">
@@ -41,7 +41,7 @@
           <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-              <img id="origin_image" class="rotate" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+              <img id="origin_image" class="rotate" src="/images/emptyinside.png" >
             </label>
               <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
               <input type="text" id="filePath" style="display: none;"/>

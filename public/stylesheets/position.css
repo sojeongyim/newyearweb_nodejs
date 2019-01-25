@@ -28,14 +28,15 @@
   {
     width: 65vw;    
   }
-  .swiper-slide{
-    margin:0px;
-  }
+  
   .swiper-pagination
   {
     position: relative;
     margin: 1vh auto 0 auto;
   }
+    
+    
+    
   /*page1 background btn*/
   #backgroundBtn img
   {
@@ -173,6 +174,16 @@
     left:0;
     top:0;
   }
+    #progressBar{
+        margin-top: 10vh;
+    }
+    #progressMent
+    {
+    font-size: 1em;    
+    }
+    #origin_image{
+    height: 100%; width: 100% ; max-width: 1000px;
+    }
 }
 
 
@@ -241,21 +252,13 @@
   {
     margin-top:4vh;
     width:80vw;
-    /*
-    margin-left:10%; 
-    margin-right:10%; 
-    margin-top:5vh; 
-    width:78vw;
-     */
+  
     }
     .l_arrow
     {
-      width:5vw; margin-bottom:4vh;
-      /*
-      height: 5vh; 
-
-      width:10vw;
-       */
+      width:5vw; 
+        margin-bottom:4vh;
+   
     }
     .r_arrow
     {
@@ -274,7 +277,7 @@
     {
     height: 55vh;   
     margin-bottom: 3vh;
-        margin-top: 8vh;
+        margin-top: 4vh;
         width: 30vw;
     }
     #styleList
@@ -362,11 +365,11 @@
 
 
   #grip{
-    width: 100%;
+    width: 85%;
     height: 100%;
     position: absolute;
-    left:0;
-    top:0;
+    left:8vw;
+    top:5.5vh;
   }
 
   #front_img{
@@ -376,5 +379,21 @@
     left:0;
     top:0;
   }
-
+    #progressBar{
+        margin-top: 15vh;
+    }
+    #progressMent
+    {
+    font-size: 1.5em;    
+    }
+    #origin_image
+    {
+    
+    height: 100%; width: 65% ; max-width: 1000px;
+    position: relative;
+        top:5.8vh;
+        left:5.3vw;
+        transform: rotate(-11deg);
+        width: 83%;
+    }
   }
