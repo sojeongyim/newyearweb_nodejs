@@ -151,7 +151,7 @@ $(document).ready(function(){
     if ((file = this.files[0])) {
       img = new Image();
       img.onload = function () {
-        if(this.width<= 3000 && this.height <= 3000)
+        if(this.width<= 5000 && this.height <= 5000)
         {
           if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
           {
@@ -228,7 +228,7 @@ function capture2(){
     console.log(canvas.toDataURL());  
     saveAs(canvas.toDataURL(), 'paintlyNewyear.png');
   });
-  window.location.href = 'http://paintly.me/final/'+kakaoimgName;
+  window.location.href = 'http://paintly.me/final/'+$('#filePath').val();
 }
 function updateUI()
 {
@@ -258,7 +258,6 @@ function updateUI()
       break;
     case 4:
       initKakao();
-      capture();
       $("body").css('background','#6b3300');
       $(".info").text("");
       $(".page").text("");
@@ -283,10 +282,14 @@ function chkImgUpload()
 }
 
 function nextStep(){
-  if(cur_Step <5 && chkImgUpload())
+  if(cur_Step <4 && chkImgUpload())
   {
     cur_Step = cur_Step +1;
     updateUI()
+      if(cur_Step ==4)
+      {
+        capture();
+      }
 
   }
 }
