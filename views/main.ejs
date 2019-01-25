@@ -28,22 +28,27 @@
     </div>
 
       <center id="card_style"> 
-        <div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%; position: relative; text-align: center;">
+        <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
+
           <div id = "showInput"></div>
-          <div class="imageBlock" style="padding: 3%; height: 80%; position: relative;">
-            <div id = "progressBar" >
-              <h1> 처리 중입니다. </h1>
-              <div class="loader"></div>
-            </div>
-            <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
-              <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-                <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
-              </label>
-                <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
-                <input type="text" id="filePath" style="display: none;"/>
-            </form>
+          <div id = "progressBar">
+            <h1> 처리 중입니다. </h1>
+            <div class="loader"></div>
           </div>
+          <div class="something">
+          <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
+          </div>
+          <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
+              <img id="origin_image" class="rotate" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+            </label>
+              <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
+              <input type="text" id="filePath" style="display: none;"/>
+          </form>
+
         </div>
+
       </center>
 
       <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
