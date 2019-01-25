@@ -36,7 +36,7 @@
             <div class="loader"></div>
           </div>
           <div class="something">
-          <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
+            <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
           </div>
           <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
@@ -67,31 +67,8 @@
       <script>
 var timerId = 0;
 var cur_Step = 1;
+var kakaoimgName = '';
 
-//Kakao.init('b53c59767a3c1d122013beb25feda261');
-Kakao.init('c9fce0d59aa8336cea1e41e5ed774cd2');
-Kakao.Link.createDefaultButton({
-  container: '#kakao-link-btn',
-  objectType: 'feed',
-  content: {
-    title: 'paintlyme',
-    description: '# 새해 # 망함 # 실타',
-    imageUrl: 'http://paintly.me/images/kakao_logo.png',
-    link: {
-      mobileWebUrl: 'http://paintly.me',
-      webUrl: 'http://paintly.me'
-    }
-  },
-  buttons: [
-  {
-    title: '카드 만들기',
-    link: {
-      mobileWebUrl: 'http://paintly.me',
-      webUrl: 'http://paintly.me'
-    }
-  }
-  ]
-});
 
 $(document).ready(function(){
   $("#txt").on('input', function(){
@@ -194,6 +171,8 @@ $(document).ready(function(){
                 if(data.indexOf("jpg")!=-1 || data.indexOf("png")!=-1 )
                 {
                   $('#origin_image').attr("src","/"+data);
+                  $('#blurred_background').attr("src","/"+data);
+                  kakaoimgName = data;
                 }
               },
               error: function (err) {
@@ -228,6 +207,7 @@ function check_file(){
   if(http.status!=404){
     $("#progressBar").css("display", "none");
     $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
+    console.log( $('#filePath').val());
     clearInterval(timerId);  
     capture();
   }
@@ -235,13 +215,7 @@ function check_file(){
 
 function dataInit(){
   $('#origin_image').attr("src","/images/emptyinside.png");
-  $('#show_first').text("이");
-  $('#show_second').text("원");
-  $('#first_line').text("곳은 이행시를 입력하는 곳입니다.");
-  $('#second_line').text("하는 카테고리를 선택하세요.");
 }
-
-
 
 function capture(){
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){
@@ -278,6 +252,7 @@ function updateUI()
       $('.step3').fadeIn();
       break;
     case 4:
+      initKakao();
       $("body").css('background','#6b3300');
       $(".info").text("");
       $(".page").text("");
@@ -320,11 +295,7 @@ function prevStep(){
 
 function saveToServer(uri, filename)
 {
-  console.log("itis filename");
-  console.log(filename);
   filename = filename.split('.')[0];
-  console.log("itis filename");
-  console.log(filename);
   $.post('/ajax/result', {imgURL: uri, imgName: filename });
 }
 
@@ -338,6 +309,34 @@ function saveAs(uri, filename) {
   } else {
     window.open(uri);
   }
+}
+
+function initKakao()
+{
+  //Kakao.init('b53c59767a3c1d122013beb25feda261');
+  Kakao.init('c9fce0d59aa8336cea1e41e5ed774cd2');
+  Kakao.Link.createDefaultButton({
+    container: '#kakao-link-btn',
+    objectType: 'feed',
+    content: {
+      title: "설날 카드 만들기 '(OO)' 꿀!",
+      description: '#페인틀리 #설라로이드 #인싸',
+      imageUrl: 'http://paintly.me/final/'+kakaoimgName,
+      link: {
+        mobileWebUrl: 'http://paintly.me',
+        webUrl: 'http://paintly.me'
+      }
+    },
+    buttons: [
+    {
+      title: '카드 만들기',
+      link: {
+        mobileWebUrl: 'http://paintly.me',
+        webUrl: 'http://paintly.me'
+      }
+    }
+    ]
+  });
 }
       </script> 
   </body>
