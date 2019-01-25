@@ -65,7 +65,6 @@
     </center>
 
     <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
-      <img src="/final/nFyv7dEqWgELS6KNQAtIy3Yw.png" />
       <img class="shareBut" id = "download" onclick="capture()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
       <a id="kakao-link-btn" href="javascript:;">
         <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
@@ -157,20 +156,6 @@ $(document).ready(function(){
     prevStep();
   });
 
-  $("a.tag").click(function(){
-    $("input#first").val("");
-    $("input#second").val("");
-    $("#myModal").css('display','block');  
-    var id = $(this).attr('id');
-    $('a.tag').removeClass("active");
-    $(this).addClass("active");
-    var letters ="<%= tagList %>";
-    var tagList = letters.split(',');
-    //first Letter is tagList[id][1];
-    //second Letter is tagList[id][2];
-    $('h3.first_letter').text(tagList[id][0]);
-    $('h3.second_letter').text(tagList[id][1]);
-  });
 
   $(window).click(function(e){
     if( e.target.id == "myModal")
