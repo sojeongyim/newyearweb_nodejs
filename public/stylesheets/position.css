@@ -133,23 +133,30 @@
     /*page1, page2 left,right arrow btn*/
     #arrow
     {
-
+        margin-top:4vh;
+        width:80vw;
+/*
         margin-left:10%; 
         margin-right:10%; 
         margin-top:5vh; 
         width:78vw;
+*/
     }
     .l_arrow
     {
-        
+        width:5vw; margin-bottom:4vh;
+/*
         height: 5vh; 
 
         width:10vw;
+*/
     }
     .r_arrow
-    {
+    {width:5vw; margin-bottom:4vh;
+/*
        height: 5vh; 
        width:10vw;
+*/
     }
    
     
