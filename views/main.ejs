@@ -19,8 +19,8 @@
     </div>
     <!--    style slider-->
     <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
-      <%for(i=1;i<7;i++){%>   
-      <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.jpg">
+      <%for(i=1;i<10;i++){%>   
+      <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
       <% }%>        
     </div>
     <div class="reactUI step3" id="txtblock" style="display: none;" >
@@ -170,6 +170,7 @@ $(document).ready(function(){
                 $('#origin_image').attr("src","/"+data);
                 $('#blurred_background').attr("src","/"+data);
                 kakaoimgName = data;
+                console.log(kakaoimgName);
               },
               error: function (err) {
                 $("#progressBar").css("display", "none");
@@ -330,7 +331,7 @@ function initKakao()
     content: {
       title: "설날 카드 만들기 '(OO)' 꿀!",
       description: '#페인틀리 #설라로이드 #인싸',
-      imageUrl: 'http://paintly.me/final/'+kakaoimgName,
+      imageUrl: 'http://paintly.me/final/'+$('#filePath').val(),
       link: {
         mobileWebUrl: 'http://paintly.me',
         webUrl: 'http://paintly.me'
