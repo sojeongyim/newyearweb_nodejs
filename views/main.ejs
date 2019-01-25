@@ -6,7 +6,7 @@
     <title>Paintly.AIcard.main</title>
   </head>
 
-  <body>
+  <body id="mainBackground">
 
     <div class='myTop'>
       <div class="info">1. 사진을 선택해주세요.</div>
@@ -24,10 +24,10 @@
       <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
       <% }%>        
     </div>
-    <div class="reactUI step3" id="uploadPhoto" style="display: none;" >
+    <div class="reactUI step3" id="txtblock" style="display: none;" >
 <!--      <div id="uploadBut" class="resetBut" style="top: 2.5vh; padding-left: 20%; padding-right: 20%;">여기에서 문구 입력 </div>-->
    
-   <input type=text colom=30; value="20자 이내로 입력">
+   <input id="txt" type="text" placeholder="20자 이내로 입력" >
     </div>
 
     <div id="myModal" class="modal" data-backdrop="false" >
@@ -66,8 +66,8 @@
 
 
     <div id="arrow">
-      <img class="l_arrow" align="left" style=" display: none; height: 5vh; width: auto;" src = "/images/l_arrow_empty.png"> 
-      <img class="r_arrow" align="right" style="height: 5vh; width: auto;" src = "/images/r_arrow_empty.png"> 
+      <img class="l_arrow" align="left" style=" display: none;" src = "/images/l_arrow_empty.png"> 
+      <img class="r_arrow" align="right" src = "/images/r_arrow_empty.png"> 
     </div>
 
 

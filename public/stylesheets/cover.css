@@ -1,4 +1,19 @@
 #background
 {
- background-color:beige;
+    background-color:rgb(244,217,149);
+    background-image:url('../images/index1.png') ;
+}
+#mainBackground
+{
+    background-color:rgb(244,217,149);
+}
+ #backgroundMent    
+{
+        font-family: dovemayo;
+        color: black;
+}
+.info
+{
+    font-family: dovemayo;
+        color: black;
 }
