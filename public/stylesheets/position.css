@@ -3,7 +3,7 @@
 {
 
   .rotate {
-    margin-top: 5px;
+    margin-top: 4vh;
   }
 
   /*page1 background img*/
@@ -140,9 +140,9 @@
   .something::after{
     display: block;
     position: relative;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 96%);
     margin-top: -100%;
-    height: 150px;
+    height: 60%;
     width: 100%;
     content: '';
 

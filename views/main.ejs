@@ -36,7 +36,7 @@
             <div class="loader"></div>
           </div>
           <div class="something">
-          <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
+            <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
           </div>
           <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
@@ -51,7 +51,7 @@
       </center>
 
       <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
-        <img class="shareBut" id = "download" onclick="capture()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
+        <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
         </a>
@@ -66,31 +66,8 @@
       <script>
 var timerId = 0;
 var cur_Step = 1;
+var kakaoimgName = '';
 
-//Kakao.init('b53c59767a3c1d122013beb25feda261');
-Kakao.init('c9fce0d59aa8336cea1e41e5ed774cd2');
-Kakao.Link.createDefaultButton({
-  container: '#kakao-link-btn',
-  objectType: 'feed',
-  content: {
-    title: 'paintlyme',
-    description: '# 새해 # 망함 # 실타',
-    imageUrl: 'http://paintly.me/images/kakao_logo.png',
-    link: {
-      mobileWebUrl: 'http://paintly.me',
-      webUrl: 'http://paintly.me'
-    }
-  },
-  buttons: [
-  {
-    title: '카드 만들기',
-    link: {
-      mobileWebUrl: 'http://paintly.me',
-      webUrl: 'http://paintly.me'
-    }
-  }
-  ]
-});
 
 $(document).ready(function(){
   $("#txt").on('input', function(){
@@ -176,7 +153,7 @@ $(document).ready(function(){
       img.onload = function () {
         if(this.width<= 3000 && this.height <= 3000)
         {
-          if(filename.indexOf("jpg")!=-1 || filename.indexOf("png")!=-1 )
+          if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
           {
             var form = $('#fileForm')[0];
             var formData = new FormData(form);
@@ -190,10 +167,9 @@ $(document).ready(function(){
               success: function (data) {
                 $("#progressBar").css("display", "none");
                 $('#filePath').val(data);
-                if(data.indexOf("jpg")!=-1 || data.indexOf("png")!=-1 )
-                {
-                  $('#origin_image').attr("src","/"+data);
-                }
+                $('#origin_image').attr("src","/"+data);
+                $('#blurred_background').attr("src","/"+data);
+                kakaoimgName = data;
               },
               error: function (err) {
                 $("#progressBar").css("display", "none");
@@ -201,10 +177,14 @@ $(document).ready(function(){
               }
             });
           }
+          else
+          {
+            alert("올바른 사진을 선택 해 주세요.");
+          }
         }
         else
         {
-          alert("Image is Too Big!");
+          alert("작은 이미지를 사용 해 주세요.");
         }
       };
       img.src = _URL.createObjectURL(file);
@@ -227,29 +207,29 @@ function check_file(){
   if(http.status!=404){
     $("#progressBar").css("display", "none");
     $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
+    console.log( $('#filePath').val());
     clearInterval(timerId);  
-    capture();
   }
 }
 
 function dataInit(){
   $('#origin_image').attr("src","/images/emptyinside.png");
-  $('#show_first').text("이");
-  $('#show_second').text("원");
-  $('#first_line').text("곳은 이행시를 입력하는 곳입니다.");
-  $('#second_line').text("하는 카테고리를 선택하세요.");
 }
-
-
 
 function capture(){
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){
     console.log(canvas.toDataURL());  
     saveToServer(canvas.toDataURL(), $('#filePath').val())
-      saveAs(canvas.toDataURL(), 'paintlyNewyear.png');
   });
 }
 
+function capture2(){
+  html2canvas(document.querySelector('#capture_card')).then(function(canvas){
+    console.log(canvas.toDataURL());  
+    saveAs(canvas.toDataURL(), 'paintlyNewyear.png');
+  });
+  window.location.href = 'http://paintly.me/final/'+kakaoimgName;
+}
 function updateUI()
 {
   $('.reactUI').css('display','none');
@@ -277,6 +257,8 @@ function updateUI()
       $('.step3').fadeIn();
       break;
     case 4:
+      initKakao();
+      capture();
       $("body").css('background','#6b3300');
       $(".info").text("");
       $(".page").text("");
@@ -319,11 +301,7 @@ function prevStep(){
 
 function saveToServer(uri, filename)
 {
-  console.log("itis filename");
-  console.log(filename);
   filename = filename.split('.')[0];
-  console.log("itis filename");
-  console.log(filename);
   $.post('/ajax/result', {imgURL: uri, imgName: filename });
 }
 
@@ -337,6 +315,34 @@ function saveAs(uri, filename) {
   } else {
     window.open(uri);
   }
+}
+
+function initKakao()
+{
+  //Kakao.init('b53c59767a3c1d122013beb25feda261');
+  Kakao.init('c9fce0d59aa8336cea1e41e5ed774cd2');
+  Kakao.Link.createDefaultButton({
+    container: '#kakao-link-btn',
+    objectType: 'feed',
+    content: {
+      title: "설날 카드 만들기 '(OO)' 꿀!",
+      description: '#페인틀리 #설라로이드 #인싸',
+      imageUrl: 'http://paintly.me/final/'+kakaoimgName,
+      link: {
+        mobileWebUrl: 'http://paintly.me',
+        webUrl: 'http://paintly.me'
+      }
+    },
+    buttons: [
+    {
+      title: '카드 만들기',
+      link: {
+        mobileWebUrl: 'http://paintly.me',
+        webUrl: 'http://paintly.me'
+      }
+    }
+    ]
+  });
 }
       </script> 
   </body>
