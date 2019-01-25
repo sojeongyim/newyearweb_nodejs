@@ -272,9 +272,10 @@
     }
     #card_style
     {
-    height: 60vh;   
+    height: 55vh;   
     margin-bottom: 3vh;
-        margin-top: 3vh;
+        margin-top: 8vh;
+        width: 30vw;
     }
     #styleList
     {
@@ -291,5 +292,89 @@
         height: 11vh;
         width: 30vw;
     }
+    #blurred_background{
+        width: 30vw;
+        height: 55vh;
+    }
+    
+  #showInput {
+    position: absolute;
+    top: 5%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 25px;
+    font-family: dovemayo;
+    z-index: 5;
+  }
+  #progressBar{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+  }
+  #card_style{
+    width: 40vw;
+    height: 60vh;
+    overflow: hidden;
+  }
+
+  #blurred_background{
+    overflow: hidden;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    filter: blur(3px);
+  }
+  .something
+  {
+    position: absolute;
+    width: 50vw;
+    height: 100%;
+  }
+    
+  .something::after{
+    display: block;
+    position: relative;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
+    margin-top: -440px;
+    height: 100%;
+    width: 100%;
+    content: '';
+
+  }
+
+  .gradiation::after{
+    display: block;
+    position: relative;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
+    margin-top: -400px;
+    height: 100%;
+    width: 100%;
+    content: '';
+  }
+
+
+  #grip{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+  }
+
+  #front_img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+  }
 
   }
