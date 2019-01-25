@@ -1,61 +1,155 @@
 /*mobile device*/
-@media screen and (max-width:768px)
+@media screen and (max-width:415px)
 {
+    /*page1 background img*/
     #background
     {
         background-size:100% 100%;
-        background-image:url('../images/index1.png');
+/*        background-image:url('../images/index1.png');*/
     }
+    /*page1 background comment*/
     #backgroundMent
     {
-        font-family: dovemayo;
-        color: black;
         text-align: center;
         margin-top:20%;        
     }
+    /*page1 background img slider*/
     #backgroundSlider
     {
         margin-top: 10vh;
         text-align: center;
+    }
+    .swiper-slide img
+    {
+    width: 50vw;    
     }
     .swiper-slide{
         margin:0px;
     }
     .swiper-pagination
     {
-        margin-left: 50%;
+        margin-left: 47vw;
     }
+    /*page1 background btn*/
     #backgroundBtn img
     {
         width:70vw;
         margin-left:15%;
-        margin-top:10vh;
+        margin-top:4vh;
     }
-    #arrow{
-        max-width: 800px; 
-        width: 80%; 
-        height: 8vh; 
-        margin-top: 15%;     
-    }
-    .styleImages
+    /*page1, page2 left,right arrow btn*/
+    #arrow
     {
-        width:25%;
+
+        margin-left:10%; 
+        margin-right:10%; 
+        margin-top:5vh; 
+        width:78vw;
+    }
+    .l_arrow
+    {
+        
+        height: 5vh; 
+
+        width:10vw;
+    }
+    .r_arrow
+    {
+       height: 5vh; 
+       width:10vw;
+    }
+    /*page2 style slider    */
+    #styleList
+    {
+        height: 10%;
+    }
+    /*page2 txt block*/
+    #txtblock
+    {
+        text-align: center;
+        margin-top:2vh;
+        height: 12vh;    
+    }
+    #txt
+    {
+        text-align: center;
+        width: 50vw;
+        height: 9vh;
     }
 }
 
 
 
 /*desktop*/
-@media screen and (min-width:1100px)
+@media screen and (min-width:416px)
 {
     
     #background{
-    background-size:50% 100%;
+        background-size:50% 100%;
+        background-repeat: no-repeat;
+        background-position: 50%;   
         width: 50%;
         margin-left: 25%;
-        margin-left: 25%;
-       
+        
     
+        
+    }
+    /*page1 background comment*/
+    #backgroundMent
+    {
+        text-align: center;
+        margin-top:8vh;
+        width: 30vw;
+        margin-left: 10vw;
+        
+    }
+     /*page1 background img slider*/
+    #backgroundSlider
+    {
+        margin-top: 3vh;
+        text-align: center;
+    }
+    .swiper-slide img
+    {
+    width: 25vw;    
+    }
+    .swiper-slide{
+        margin:0px;
+    }
+    .swiper-pagination
+    {
+        margin-left: 24vw;
+        margin-top:1vh;
+        margin-bottom: 2vh;
+    }
+    /*page1 background btn*/
+    #backgroundBtn img
+    {
+        width:20vw;
+        margin-left:15vw;
+        margin-top:4vh;
+        margin-bottom: 4vh;
+    }
+    /*page1, page2 left,right arrow btn*/
+    #arrow
+    {
+
+        margin-left:10%; 
+        margin-right:10%; 
+        margin-top:5vh; 
+        width:78vw;
+    }
+    .l_arrow
+    {
+        
+        height: 5vh; 
+
+        width:10vw;
+    }
+    .r_arrow
+    {
+       height: 5vh; 
+       width:10vw;
     }
    
     
