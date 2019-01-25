@@ -368,7 +368,7 @@
     width: 85%;
     height: 100%;
     position: absolute;
-    left:8vw;
+    left:6vw;
     top:5.5vh;
   }
 
@@ -392,7 +392,7 @@
     height: 100%; width: 65% ; max-width: 1000px;
     position: relative;
         top:5.8vh;
-        left:5.3vw;
+        left:3.2vw;
         transform: rotate(-11deg);
         width: 83%;
     }
