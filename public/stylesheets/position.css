@@ -150,9 +150,10 @@
   }
   .swiper-pagination
   {
-    margin-left: 24vw;
+    margin-left: 20vw;
     margin-top:1vh;
     margin-bottom: 2vh;
+    width:10vw;
   }
   /*page1 background btn*/
     
@@ -161,6 +162,7 @@
     font-weight: bold;
     font-size: 24px;
     text-align: center;
+    margin-top:10vh;
   }
   #startBtn a{
     color: #72441e;
