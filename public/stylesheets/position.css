@@ -181,6 +181,9 @@
     {
     font-size: 1em;    
     }
+    #origin_image{
+    height: 100%; width: 100% ; max-width: 1000px;
+    }
 }
 
 
@@ -362,10 +365,10 @@
 
 
   #grip{
-    width: 100%;
+    width: 85%;
     height: 100%;
     position: absolute;
-    left:3vw;
+    left:8vw;
     top:5.5vh;
   }
 
@@ -385,8 +388,12 @@
     }
     #origin_image
     {
+    
+    height: 100%; width: 65% ; max-width: 1000px;
     position: relative;
-        top:5.5vh;
-        left:3.4vw;
+        top:5.8vh;
+        left:5.3vw;
+        transform: rotate(-11deg);
+        width: 83%;
     }
   }
