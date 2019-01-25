@@ -28,8 +28,7 @@
 
 
 #card_style{
-  width: 80%;
-  height: 53vh;
+  width: 90%;
   margin: auto;
   max-width: 800px;
   box-shadow: 5px 5px 15px grey;
@@ -201,4 +200,10 @@ div#bottomList{
   font-weight:bold;
   color:#fffbeb;
   background-color:#edbf70;
+}
+
+input[type="text"]
+{
+  font-size: 18px;
+  font-family: dovemayo;
 }

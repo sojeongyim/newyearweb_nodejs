@@ -9,7 +9,7 @@
   <body id="mainBackground">
 
     <div class='myTop'>
-      <div class="info">1. 사진을 선택해주세요.</div>
+      <div class="info">1. 사진을 선택하세요.</div>
       <div class="page">(1/3)</div>
     </div>
 
@@ -20,66 +20,46 @@
     <!--    style slider-->
     <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
       <%for(i=1;i<10;i++){%>   
-      <!-- should be changed -->
       <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
       <% }%>        
     </div>
     <div class="reactUI step3" id="txtblock" style="display: none;" >
-<!--      <div id="uploadBut" class="resetBut" style="top: 2.5vh; padding-left: 20%; padding-right: 20%;">여기에서 문구 입력 </div>-->
-   
-   <input id="txt" type="text" placeholder="20자 이내로 입력" >
+      <input id="txt" type="text" placeholder="20자 이내로 입력" >
     </div>
 
-    <div id="myModal" class="modal" data-backdrop="false" >
-      <div class="modal-content">
-        <h3 class="first_letter">  </h3>
-        <input id="first" type="text"/>
-        <h3 class="second_letter">  </h3>
-        <input id="second" type="text"/>
-        <button id= "mySubmit" class="button">입력 완료 </button>
-      </div>
-    </div>
-
-    <center id="card_style"> 
-      <div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%;">
-        <div class="imageBlock" style="padding: 3%; height: 80%;">
-          <div id = "progressBar" style="display: none; position: absolute; width: 100%; height: 100%; top: 15%; left: 0px; right: 0px; margin-left: auto; margin-right: auto">
-            <h1> 처리 중입니다. </h1>
-            <div class="loader"></div>
+      <center id="card_style"> 
+        <div id="capture_card" style="width:100%; height:100%; background: url('/images/card_background.png'); background-size: 100%; position: relative; text-align: center;">
+          <div id = "showInput"></div>
+          <div class="imageBlock" style="padding: 3%; height: 80%; position: relative;">
+            <div id = "progressBar" >
+              <h1> 처리 중입니다. </h1>
+              <div class="loader"></div>
+            </div>
+            <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
+              <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
+                <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
+              </label>
+                <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
+                <input type="text" id="filePath" style="display: none;"/>
+            </form>
           </div>
-          <form action="/upload" method="post" style= "height: 100%;" enctype="multipart/form-data" id="fileForm">
-            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-              <img id="origin_image" src="/images/emptyinside.png" style=" height: 100%; width: 100% ; max-width: 1000px;" >
-            </label>
-              <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
-              <input type="text" id="filePath" style="display: none;"/>
-          </form>
         </div>
+      </center>
 
-        <div class="textBlock" style="text-align: start; padding-left: 7%; padding-bottom: 3%; height: 20%;">
-          <h3 class="first_letter" id="show_first" style="color: black; display: inline;">이</h3> <h4 id="first_line" style="display: inline;">곳은 이행시를 입력하는 곳입니다.</h4>
-          <br>
-          <h3 class="second_letter" id="show_second" style="color: black; display: inline;">원</h3> <h4 id="second_line" style="display: inline;">하는 카테고리를 선택하세요.</h4>
-        </div>
+      <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
+        <img class="shareBut" id = "download" onclick="capture()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
+        <a id="kakao-link-btn" href="javascript:;">
+          <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
+        </a>
       </div>
-    </center>
 
-    <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
-      <img class="shareBut" id = "download" onclick="capture()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
-      <a id="kakao-link-btn" href="javascript:;">
-        <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
-      </a>
-      <img  class="shareBut" id = "insta" src="/images/insta_logo.png"/>
-      <img  class="shareBut" id = "naver" src="/images/naver_logo.png"/>
-    </div>
+      <div id="bottomList">
+        <img class="l_arrow" align="left" style=" display: none; height: 5vh; width: auto;" src = "/images/l_arrow_empty.png"> 
+        <a class="reactUI step5" id="eventBut" style="display: none;">명절인사백서 이벤트 </a>
+        <img class="r_arrow" align="right" style="height: 5vh; width: auto;" src = "/images/r_arrow_empty.png"> 
+      </div>
 
-    <div id="bottomList">
-      <img class="l_arrow" align="left" style=" display: none; height: 5vh; width: auto;" src = "/images/l_arrow_empty.png"> 
-      <a class="reactUI step5" id="eventBut" style="display: none;">명절인사백서 이벤트 </a>
-      <img class="r_arrow" align="right" style="height: 5vh; width: auto;" src = "/images/r_arrow_empty.png"> 
-    </div>
-
-    <script>
+      <script>
 var timerId = 0;
 var cur_Step = 1;
 
@@ -109,6 +89,10 @@ Kakao.Link.createDefaultButton({
 });
 
 $(document).ready(function(){
+  $("#txt").on('input', function(){
+    $('#showInput').text($(this).val());
+  });
+
   $(".styleImages").click(function(){
     $("#progressBar").css("display", "block");
     var filenameOb = document.getElementById("filePath");
@@ -291,25 +275,33 @@ function updateUI()
     case 4:
       $("body").css('background','#6b3300');
       $(".info").text("");
+      $(".page").text("");
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','none');
       $('.step5').fadeIn();
       break;
-      //    case 5:
-      //      $("body").css('background','#6b3300');
-      //      $(".info").text("");
-      //      $("img.l_arrow").css('display','block');
-      //      $("img.r_arrow").css('display','none');
-      //      $('.step5').fadeIn();
-      //      break;
+  }
+}
+
+function chkImgUpload()
+{
+  if($('#fileInput').val()=='')
+  {
+    alert("사진을 선택 해주세요.");
+    return false;
+  }
+  else
+  {
+    return true;
   }
 }
 
 function nextStep(){
-  if(cur_Step <5)
+  if(cur_Step <5 && chkImgUpload())
   {
     cur_Step = cur_Step +1;
     updateUI()
+
   }
 }
 
@@ -342,7 +334,7 @@ function saveAs(uri, filename) {
     window.open(uri);
   }
 }
-    </script> 
+      </script> 
   </body>
 </html>
 
