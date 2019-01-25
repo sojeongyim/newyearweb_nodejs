@@ -51,7 +51,7 @@
       </center>
 
       <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
-        <img class="shareBut" id = "download" onclick="capture()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
+        <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
         </a>
@@ -153,7 +153,7 @@ $(document).ready(function(){
       img.onload = function () {
         if(this.width<= 3000 && this.height <= 3000)
         {
-          if(filename.indexOf("jpg")!=-1 || filename.indexOf("png")!=-1 )
+          if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
           {
             var form = $('#fileForm')[0];
             var formData = new FormData(form);
@@ -167,12 +167,9 @@ $(document).ready(function(){
               success: function (data) {
                 $("#progressBar").css("display", "none");
                 $('#filePath').val(data);
-                if(data.indexOf("jpg")!=-1 || data.indexOf("png")!=-1 )
-                {
-                  $('#origin_image').attr("src","/"+data);
-                  $('#blurred_background').attr("src","/"+data);
-                  kakaoimgName = data;
-                }
+                $('#origin_image').attr("src","/"+data);
+                $('#blurred_background').attr("src","/"+data);
+                kakaoimgName = data;
               },
               error: function (err) {
                 $("#progressBar").css("display", "none");
@@ -180,10 +177,14 @@ $(document).ready(function(){
               }
             });
           }
+          else
+          {
+            alert("올바른 사진을 선택 해 주세요.");
+          }
         }
         else
         {
-          alert("Image is Too Big!");
+          alert("작은 이미지를 사용 해 주세요.");
         }
       };
       img.src = _URL.createObjectURL(file);
@@ -208,7 +209,6 @@ function check_file(){
     $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
     console.log( $('#filePath').val());
     clearInterval(timerId);  
-    capture();
   }
 }
 
@@ -220,10 +220,15 @@ function capture(){
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){
     console.log(canvas.toDataURL());  
     saveToServer(canvas.toDataURL(), $('#filePath').val())
-      saveAs(canvas.toDataURL(), 'paintlyNewyear.png');
   });
 }
 
+function capture2(){
+  html2canvas(document.querySelector('#capture_card')).then(function(canvas){
+    console.log(canvas.toDataURL());  
+    saveAs(canvas.toDataURL(), 'paintlyNewyear.png');
+  });
+}
 function updateUI()
 {
   $('.reactUI').css('display','none');
@@ -252,6 +257,7 @@ function updateUI()
       break;
     case 4:
       initKakao();
+      capture();
       $("body").css('background','#6b3300');
       $(".info").text("");
       $(".page").text("");
