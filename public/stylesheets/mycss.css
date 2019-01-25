@@ -207,3 +207,16 @@ input[type="text"]
   font-size: 18px;
   font-family: dovemayo;
 }
+#fileForm{
+  height: 58%;
+  width: 43%;
+  margin-bottom: 0px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 20%;
+}
+.rotate{
+  transform: rotate(-10deg);
+}
