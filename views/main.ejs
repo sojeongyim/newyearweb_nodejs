@@ -47,15 +47,20 @@
             <h1 id="progressMent"> 처리 중입니다. </h1>
             <div class="loader"></div>
           </div>
-          
+          <!-- 
+          <div>
+            <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/>
+            <img src="/images/kakao.png" style="background-color:gray; opacity: 0.5; z-index: 5;"/>
+          </div> -->
           
            
            
             <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
             <div class="something">
-              <img id="blurred_background" style="background-color:grey;"></img> 
+              <img id="blurred_background" style="background-color:lightgray;"></img> 
             </div>
             <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+            <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/>
             <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
               <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
                 <img onload="offProgress()" id="origin_image" class="rotate" style="background-color:grey;" >
