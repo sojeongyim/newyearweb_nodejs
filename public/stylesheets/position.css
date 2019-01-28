@@ -1,5 +1,5 @@
 /*mobile device*/
-@media screen and (max-width:415px)
+@media screen and (max-width:1024px)
 {
 
   .rotate {
@@ -11,13 +11,26 @@
   {
     background-size:100% 100%;
     /*        background-image:url('../images/index1.png');*/
-  }
+ margin:0 auto;
+    }
+/*    index_main*/
+    #index_main
+    {
+    margin-top: 15vh;
+        margin-bottom: 15vh;
+    }
+    
+    
   /*page1 background comment*/
   #backgroundMent
   {
     text-align: center;
     margin-top:20%;        
   }
+    #backgroundMent2
+    {
+    text-align: center;    
+    }
   /*page1 background img slider*/
   #backgroundSlider
   {
@@ -189,15 +202,17 @@
 
 
 /*desktop*/
-@media screen and (min-width:416px)
+@media screen and (min-width:1025px)
 {
 
-  #background{
+  #background
+    {
     background-size:50% 100%;
     background-repeat: no-repeat;
     background-position: 50%;   
     width: 50%;
-    margin-left: 25%;
+/*    margin-left: 25%;*/
+        margin:0 auto;
 
 
 
@@ -211,6 +226,10 @@
     margin-left: 10vw;
 
   }
+     #backgroundMent2
+    {
+    text-align: center;    
+    }
   /*page1 background img slider*/
   #backgroundSlider
   {
