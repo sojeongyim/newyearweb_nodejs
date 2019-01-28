@@ -7,20 +7,40 @@
   </head>
 
   <body id=background>
-
-    <div id="index_main" >
-      <h1 id="backgroundMent">페인틀리 신년카드 만들기</h1>
-      <h4 id="backgroundMent2">추억이 담긴 사진으로 고마운 분들에게 나만의 새해 인사를 전해보세요.</h4>
-
-      <div id="backgroundSlider">
-        <div class="swiper-container" > 
-          <div class="swiper-wrapper" > 
-            <% for(var i =1; i<8; i++) { %>
-            <div class="swiper-slide" >
-              <img src="./images/sample<%=i%>.jpg" >
+        <div id="index_container">
+            <div id="idx1">
+                <h1 id="backgroundMent">설날 폴라로이드 만들기</h1>
+          <div id="startBtn">
+            <a href="main">만들어 볼까요?
+            </a>
+        </div>    
+            </div>
+            
+        
+        <div id="idx2">
+             
+              
+          <div class="swiper-container" style="text-align:center; height:95%;"> 
+            <div class="swiper-wrapper" > 
+              <% for(var i =1; i<8; i++) { %>
+              <div class="swiper-slide" >
+                <img src="./images/sample<%=i%>.jpg" >
+              </div> 
+            <% } %>
             </div> 
-              <% } %>
-          </div> 
+          </div>
+          
+          <div class="swiper-pagination"></div>
+        
+        </div>
+        <div id="idx1">
+                
+          <div id="startBtn">
+            <a href="main">만들러 가기 >>
+            </a>
+        </div>    
+            </div>
+        
         </div>
 
         <div class="swiper-pagination"></div>
