@@ -18,10 +18,17 @@ router.post('/upload', function(req, res)
     form.parse(req, function (error, fields, files) {
       // 파일 전송이 요청되면 이곳으로 온다.
       //         // 에러와 필드 정보, 파일 객체가 넘어온다.
-      var path = files.fileInput[0].path;
+     
+    
+    
+    var path = files.fileInput[0].path;
+      console.log('fileinput[0].path');
       console.log(path.split('/')[1]);
       res.send(path.split('/')[1]); // 파일과 예외 처리를 한 뒤 브라우저로 응답해준다.
-    });
+  
+    
+    
+     });
   }); 
 
 router.post('/style', function(req, res)

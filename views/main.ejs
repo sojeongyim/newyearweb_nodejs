@@ -174,16 +174,56 @@ $(document).ready(function(){
 
   // Upload Files
   var _URL = window.URL || window.webkitURL;
-  $('#fileInput').on('change', function () {
+  $('#fileInput').on('change', function (e) {
+   
     var filename=$('#fileInput').val();
     var file, img;
+
     if ((file = this.files[0])) {
       img = new Image();
       if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
       {
+/*
+        loadImage(
+            e.target.files[0],
+            function(img){
+              console.log('orientation');
+              var imgURI = img.toDataURL("image/png");
+              console.log(imgURI);
+
+              $('#origin_image').attr("src",imgURI);
+              $('#blurred_background').attr("src",imgURI);
+
+
+               $.ajax({
+                type: 'post',
+                url: '/ajax/upload',
+                data: :imgURI,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                 // $('#filePath').val(data);
+                 kakaoimgName = data;
+                },
+                error: function (err) {
+                  offProgress()
+                }
+              });
+
+    
+            },
+            {
+              maxWidth: 600,
+              orientation: true}
+        );
+*/
         img.onload = function () {
           if(this.width<= 5000 && this.height <= 5000)
           {
+
+            
+
+
             var form = $('#fileForm')[0];
             var formData = new FormData(form);
             onProgress()
@@ -210,6 +250,10 @@ $(document).ready(function(){
             alert("작은 이미지를 사용 해 주세요.");
           }
         };
+
+      //
+
+
       }
       else
       {
