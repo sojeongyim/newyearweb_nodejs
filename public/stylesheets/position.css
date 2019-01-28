@@ -232,6 +232,26 @@
     object-position: center;
     object-fit: cover;
   }
+    #stepBar img
+    {
+        width: 100vw;
+    }
+    #test img
+    {
+   width: 20vw; 
+    }
+    #test{
+  
+        width: 40vw;
+        padding: 50px 0px;
+        border: 1px solid #ff9800;
+        background-color: #ff9800;
+        text-align: center;
+        color: black;
+        opacity: 0.7;
+
+
+    }
 }
 
 
@@ -420,7 +440,7 @@
       display: block;
       position: relative;
       background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
-      margin-top: -60vh;
+      margin-top: -65vh;
       height: 100%;
       width: 100%;
       content: '';
@@ -433,7 +453,7 @@
       width: 85%;
       height: 100%;
       position: absolute;
-      left:6vw;
+      left:4vw;
       top:5.5vh;
     }
 
@@ -457,7 +477,7 @@
       height: 100%; width: 65% ; max-width: 1000px;
       position: relative;
       top:5.8vh;
-      left:3.2vw;
+      left:1.8vw;
       transform: rotate(-10deg);
       width: 83%;
       object-position: center;
