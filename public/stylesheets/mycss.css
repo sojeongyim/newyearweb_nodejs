@@ -91,9 +91,6 @@ h3 {
   color: white;
 }
 
-input {
-  background: #ffefe1;
-}
 
 div.scrollmenu {
   width: 100%;
@@ -109,8 +106,8 @@ div.scrollmenu {
   position: relative;
   width: 100%;
   max-width: 800px;
-  margin: 4vh auto;
-  height: 9vh;
+  margin: 2vh auto;
+  height: 14vh;
   text-align: center;
 }
 #uploadBut {

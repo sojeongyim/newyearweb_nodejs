@@ -11,26 +11,26 @@
   {
     background-size:100% 100%;
     /*        background-image:url('../images/index1.png');*/
- margin:0 auto;
-    }
-/*    index_main*/
-    #index_main
-    {
+    margin:0 auto;
+  }
+  /*    index_main*/
+  #index_main
+  {
     margin-top: 15vh;
-        margin-bottom: 15vh;
-    }
-    
-    
+    margin-bottom: 15vh;
+  }
+
+
   /*page1 background comment*/
   #backgroundMent
   {
     text-align: center;
     margin-top:20%;        
   }
-    #backgroundMent2
-    {
+  #backgroundMent2
+  {
     text-align: center;    
-    }
+  }
   /*page1 background img slider*/
   #backgroundSlider
   {
@@ -209,18 +209,35 @@
 @media screen and (min-width:1025px)
 {
 
+
+  #txt {
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border: none;
+    text-align: center;
+      background: rgba(255,255,255,0.0);
+
+
+  }
+
   #background
-    {
+  {
     background-size:50% 100%;
     background-repeat: no-repeat;
     background-position: 50%;   
     width: 50%;
-/*    margin-left: 25%;*/
-        margin:0 auto;
-
-
-
+    /*    margin-left: 25%;*/
+    margin:0 auto;
   }
+  #uploadPhoto
+  {
+  font-size : 40px;
+  padding-top : 40px;
+  }
+
   /*page1 background comment*/
   #backgroundMent
   {
@@ -230,10 +247,10 @@
     margin-left: 10vw;
 
   }
-     #backgroundMent2
-    {
+  #backgroundMent2
+  {
     text-align: center;    
-    }
+  }
   /*page1 background img slider*/
   #backgroundSlider
   {
@@ -257,11 +274,10 @@
   /*page1 background btn*/
 
   #startBtn{
-    margin: 5vh;
+    margin: 6vh;
     font-weight: bold;
     font-size: 24px;
     text-align: center;
-    margin-top:10vh;
   }
   #startBtn a{
     color: #72441e;
@@ -306,6 +322,7 @@
     #styleList
     {
       height: 14vh;    
+      width: 40%;
     }
     #txtblock
     {
@@ -343,8 +360,8 @@
       z-index: 5;
     }
     #card_style{
-      width: 40vw;
-      height: 60vh;
+      width: 30vw;
+      height: 30vw;
       overflow: hidden;
     }
 
@@ -409,7 +426,7 @@
       position: relative;
       top:5.8vh;
       left:3.2vw;
-      transform: rotate(-11deg);
+      transform: rotate(-10deg);
       width: 83%;
       object-position: center;
       object-fit: cover;

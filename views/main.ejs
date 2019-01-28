@@ -8,48 +8,47 @@
 
   <body id="mainBackground">
 
-    <div class='myTop'>
-      <div class="info">1. 사진을 선택하세요.</div>
-      <div class="page">(1/3)</div>
-    </div>
-
     <div class="reactUI step1" id="uploadPhoto" >
-      <div id="uploadBut">사진 고르기 <img style="width: 60px; height: 60px;"src="/images/album_icon.png"> </div>
+      사진을 올려주세요.
     </div>
-    <!--    style slider-->
-    <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
-      <%for(i=1;i<10;i++){%>   
-      <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
-      <% }%>        
-    </div>
-    <div class="reactUI step3" id="txtblock" style="display: none;" >
-      <input id="txt" type="text" maxlength="20" placeholder="20자 이내로 입력" >
-    </div>
+      <!--    style slider-->
+      <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
+        <%for(i=1;i<6;i++){%>   
+        <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
+        <% }%>        
+      </div>
+      <div class="reactUI step3" id="uploadPhoto" style="display: none;">
+        메세지를 넣어주세요.
+      </div>
+      <div class="reactUI step4" id="uploadPhoto" style="display: none;">
+        카드를 공유하세요!
+      </div>
+
 
       <center id="card_style"> 
         <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
 
-          <div id = "showInput"></div>
           <div id = "progressBar">
             <h1 id="progressMent"> 처리 중입니다. </h1>
             <div class="loader"></div>
           </div>
-          <div class="something">
-            <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
-          </div>
-          <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
-          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
-            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-              <img onload="offProgress()" id="origin_image" class="rotate" src="/images/emptyinside.png" >
-            </label>
-              <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-              <input type="text" id="filePath" style="display: none;"/>
-          </form>
+            <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
+            <div class="something">
+              <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
+            </div>
+            <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+            <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+              <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
+                <img onload="offProgress()" id="origin_image" class="rotate" src="/images/emptyinside.png" >
+              </label>
+                <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+                <input type="text" id="filePath" style="display: none;"/>
+            </form>
 
         </div>
       </center>
 
-      <div class=" reactUI step5 " id="shareList" style="display: none; text-align: center;">
+      <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
@@ -58,7 +57,6 @@
 
       <div id="bottomList">
         <img class="l_arrow" align="left" style=" display: none; height: 5vh; width: auto;" src = "/images/l_arrow_empty.png"> 
-        <a class="reactUI step5" id="eventBut" style="display: none;">명절인사백서 이벤트 </a>
         <img class="r_arrow" align="right" style="height: 5vh; width: auto;" src = "/images/r_arrow_empty.png"> 
       </div>
 
@@ -78,16 +76,13 @@ function offProgress()
 }
 
 $(document).ready(function(){
-  $("#txt").on('input', function(){
-    $('#showInput').text($(this).val());
-  });
 
   $(".styleImages").click(function(){
     var filenameOb = document.getElementById("filePath");
     if(filenameOb.value !='')
     {
-onProgress()
-      var filename = filenameOb.value;
+      onProgress()
+        var filename = filenameOb.value;
       var stylenum = $(this).attr("id");
 
       $('#filter_img').attr("src",$(this).attr("src"));
@@ -173,22 +168,22 @@ onProgress()
             var formData = new FormData(form);
             onProgress()
 
-            $.ajax({
-              type: 'post',
-              url: '/ajax/upload',
-              data: formData,
-              processData: false,
-              contentType: false,
-              success: function (data) {
-                $('#filePath').val(data);
-                $('#origin_image').attr("src","/"+data);
-                $('#blurred_background').attr("src","/"+data);
-                kakaoimgName = data;
-              },
-              error: function (err) {
-                offProgress()
-              }
-            });
+              $.ajax({
+                type: 'post',
+                url: '/ajax/upload',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                  $('#filePath').val(data);
+                  $('#origin_image').attr("src","/"+data);
+                  $('#blurred_background').attr("src","/"+data);
+                  kakaoimgName = data;
+                },
+                error: function (err) {
+                  offProgress()
+                }
+              });
           }
           else
           {
@@ -238,36 +233,30 @@ function capture2(){
 function updateUI()
 {
   $('.reactUI').css('display','none');
-  $("body").css('background','#f4d995');
   switch(cur_Step){
     case 1:
       $("img.l_arrow").css('display','none');
-      $(".info").text("1. 사진을 선택하세요.");
-      $(".page").text("(1/3)");
+      $('#fileInput').prop('disabled', false);
       $('.step1').fadeIn();
       break;
     case 2:
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
-      $(".info").text("2. 그림 스타일을 선택하세요.");
-      $(".page").text("(2/3)");
       $('.step2').fadeIn();
+      $('#fileInput').prop('disabled', true);
       break;
     case 3:
+      $("#txt").focus();
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
-      $(".info").text("3. 원하는 문구를 입력하세요.");
-      $(".page").text("(3/3)");
       $('.step3').fadeIn();
+      $('#fileInput').prop('disabled', true);
       break;
     case 4:
       initKakao();
-      $("body").css('background','#6b3300');
-      $(".info").text("");
-      $(".page").text("");
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','none');
-      $('.step5').fadeIn();
+      $('.step4').fadeIn();
       $('#fileInput').prop('disabled', true);
       break;
   }
@@ -275,7 +264,8 @@ function updateUI()
 
 function chkImgUpload()
 {
-  if($('#fileInput').val()=='' || $('#origin_image').attr("src").indexOf('empty')!=-1)
+//$('#fileInput').val()=='' ||  
+  if($('#origin_image').attr("src").indexOf('empty')!=-1)
   {
     alert("사진을 선택 해주세요.");
     return false;
@@ -316,7 +306,7 @@ function saveToServer(uri, filename)
 function saveAs(uri, filename) {
   var link = document.createElement('a');
   var filename = filename.split('.')[0]+".png"; 
-   if (typeof link.download === 'string') {
+  if (typeof link.download === 'string') {
     link.href = uri;
     link.download = filename;
     link.click();
