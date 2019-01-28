@@ -143,6 +143,8 @@
     bottom:0;
     right:0;
     filter: blur(3px);
+    object-position: center;
+    object-fit: cover;
   }
   .something
   {
@@ -196,6 +198,8 @@
   }
   #origin_image{
     height: 100%; width: 100% ; max-width: 1000px;
+    object-position: center;
+    object-fit: cover;
   }
 }
 
@@ -353,6 +357,8 @@
       bottom:0;
       right:0;
       filter: blur(3px);
+      object-position: center;
+      object-fit: cover;
     }
     .something
     {
@@ -405,5 +411,7 @@
       left:3.2vw;
       transform: rotate(-11deg);
       width: 83%;
+      object-position: center;
+      object-fit: cover;
     }
   }
