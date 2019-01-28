@@ -42,13 +42,35 @@ router.post('/style', function(req, res)
 
   });
 
-router.post('/result', function(req, res, next)
+router.post('/result', function(req, res)
   {
     var dataURI=req.body.imgURL;
     var imgName=req.body.imgName;
     var filePath = './temp/final/' + imgName;
 
     imageDataURI.outputFile(dataURI, filePath).then(res => console.log(res));
+
+    var answer={'result': 'ok'};
+    res.json(answer);
+  });
+
+router.post('/delete', function(req, res, next)
+  {
+    var filename=req.body.filename;
+    var filepath= './public/images/Result/';
+    filepath = filepath + filename;
+    console.log(filepath);
+
+    fs.access(filepath, error => {
+      if (!error) {
+      console.log("It is in something");
+        fs.unlink(filepath,function(error){
+          console.log(error);
+        });
+      } else {
+        console.log(error);
+      }
+    });
 
     var answer={'result': 'ok'};
     res.json(answer);

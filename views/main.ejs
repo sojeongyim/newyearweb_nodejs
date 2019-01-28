@@ -13,7 +13,6 @@
       <div class="page">(1/3)</div>
     </div>
 
-
     <div class="reactUI step1" id="uploadPhoto" >
       <div id="uploadBut">사진 고르기 <img style="width: 60px; height: 60px;"src="/images/album_icon.png"> </div>
     </div>
@@ -24,7 +23,7 @@
       <% }%>        
     </div>
     <div class="reactUI step3" id="txtblock" style="display: none;" >
-      <input id="txt" type="text" placeholder="20자 이내로 입력" >
+      <input id="txt" type="text" maxlength="20" placeholder="20자 이내로 입력" >
     </div>
 
       <center id="card_style"> 
@@ -73,16 +72,29 @@ $(document).ready(function(){
   $("#txt").on('input', function(){
     $('#showInput').text($(this).val());
   });
+  $('#ttt').click(function()
+      {
+        console.log("clicked");
+        $.post('/ajax/delete', {filename: 'abc.jpg'});
+
+      });
 
   $(".styleImages").click(function(){
-    $("#progressBar").css("display", "block");
     var filenameOb = document.getElementById("filePath");
-    var filename = filenameOb.value;
-    var stylenum = $(this).attr("id");
+    if(filenameOb.value !='')
+    {
+      $("#progressBar").css("display", "block");
+      var filename = filenameOb.value;
+      var stylenum = $(this).attr("id");
 
-    $('#filter_img').attr("src",$(this).attr("src"));
-    $.post('/ajax/style', {stylenum: stylenum, filename: filename });
-    timerId = setInterval("check_file()", 1000); 
+      $('#filter_img').attr("src",$(this).attr("src"));
+      $.post('/ajax/style', {stylenum: stylenum, filename: filename });
+      timerId = setInterval("check_file()", 1000); 
+    }
+    else
+    {
+      alert('올바른 사진을 업로드 해 주세요.');
+    }
   });
 
   $("#uploadBut").click(function(){
@@ -141,19 +153,17 @@ $(document).ready(function(){
     $("#myModal").css('display','none');
   });
 
-
   // Upload Files
   var _URL = window.URL || window.webkitURL;
   $('#fileInput').on('change', function () {
     var filename=$('#fileInput').val();
-    var check = false;
     var file, img;
     if ((file = this.files[0])) {
       img = new Image();
-      img.onload = function () {
-        if(this.width<= 5000 && this.height <= 5000)
-        {
-          if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
+      if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
+      {
+        img.onload = function () {
+          if(this.width<= 5000 && this.height <= 5000)
           {
             var form = $('#fileForm')[0];
             var formData = new FormData(form);
@@ -170,28 +180,24 @@ $(document).ready(function(){
                 $('#origin_image').attr("src","/"+data);
                 $('#blurred_background').attr("src","/"+data);
                 kakaoimgName = data;
-                //console.log("kakaoimgName: "+kakaoimgName);
               },
               error: function (err) {
                 $("#progressBar").css("display", "none");
-                console.log("ajaxerror: "+err);
               }
             });
           }
           else
           {
-            alert("올바른 사진을 선택 해 주세요.");
+            alert("작은 이미지를 사용 해 주세요.");
           }
-        }
-        else
-        {
-          alert("작은 이미지를 사용 해 주세요.");
-        }
-      };
+        };
+      }
+      else
+      {
+        alert("사진을 업로드 해 주세요.");
+      }
       img.src = _URL.createObjectURL(file);
     }
-    var lim = 3000;
-
   });
 });
 
@@ -202,7 +208,6 @@ function check_file(){
   var http = new XMLHttpRequest();
   http.open('HEAD',"/images/Result/"+filename, false);
   http.send();
-  console.log('check_file run');
 
   if(http.status!=404){
     $("#progressBar").css("display", "none");
@@ -239,7 +244,6 @@ function updateUI()
       $('.step1').fadeIn();
       break;
     case 2:
-
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $(".info").text("2. 그림 스타일을 선택하세요.");
@@ -261,13 +265,14 @@ function updateUI()
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','none');
       $('.step5').fadeIn();
+      $('#fileInput').prop('disabled', true);
       break;
   }
 }
 
 function chkImgUpload()
 {
-  if($('#fileInput').val()=='')
+  if($('#fileInput').val()=='' || $('#origin_image').attr("src").indexOf('empty')!=-1)
   {
     alert("사진을 선택 해주세요.");
     return false;
@@ -287,7 +292,6 @@ function nextStep(){
       {
         capture();
       }
-
   }
 }
 
