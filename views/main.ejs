@@ -40,9 +40,9 @@
           <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-              <img id="origin_image" class="rotate" src="/images/emptyinside.png" >
+              <img onload="offProgress()" id="origin_image" class="rotate" src="/images/emptyinside.png" >
             </label>
-              <input id="fileInput" name="fileInput" type="file" style="display: none;"/>
+              <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
               <input type="text" id="filePath" style="display: none;"/>
           </form>
 
@@ -67,6 +67,15 @@ var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
 
+function onProgress()
+{
+  $("#progressBar").css("display", "block");
+}
+
+function offProgress()
+{
+  $("#progressBar").css("display", "none");
+}
 
 $(document).ready(function(){
   $("#txt").on('input', function(){
@@ -83,7 +92,7 @@ $(document).ready(function(){
     var filenameOb = document.getElementById("filePath");
     if(filenameOb.value !='')
     {
-      $("#progressBar").css("display", "block");
+onProgress()
       var filename = filenameOb.value;
       var stylenum = $(this).attr("id");
 
@@ -167,7 +176,8 @@ $(document).ready(function(){
           {
             var form = $('#fileForm')[0];
             var formData = new FormData(form);
-            $("#progressBar").css("display", "block");
+            onProgress()
+
             $.ajax({
               type: 'post',
               url: '/ajax/upload',
@@ -175,14 +185,13 @@ $(document).ready(function(){
               processData: false,
               contentType: false,
               success: function (data) {
-                $("#progressBar").css("display", "none");
                 $('#filePath').val(data);
                 $('#origin_image').attr("src","/"+data);
                 $('#blurred_background').attr("src","/"+data);
                 kakaoimgName = data;
               },
               error: function (err) {
-                $("#progressBar").css("display", "none");
+                offProgress()
               }
             });
           }
@@ -210,7 +219,6 @@ function check_file(){
   http.send();
 
   if(http.status!=404){
-    $("#progressBar").css("display", "none");
     $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
     clearInterval(timerId);  
   }
