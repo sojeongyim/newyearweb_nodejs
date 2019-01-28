@@ -25,6 +25,21 @@
       </div>
 
 
+     
+<!--
+     <div id="test">
+         <img src="/images/kakao.png">
+         <img src="/images/download.png">
+     </div>
+-->
+     
+     <div id="stepBar">
+<img id="s1" src="/images/1_3.png">
+<img id="s2" src="/images/2_3.png" style="display:none;">
+<img id="s3" src="/images/3_3.png" style="display:none;">
+             
+     </div>
+     
       <center id="card_style"> 
         <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
 
@@ -32,18 +47,18 @@
             <h1 id="progressMent"> 처리 중입니다. </h1>
             <div class="loader"></div>
           </div>
-          <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
-          <div class="something">
-            <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
-          </div>
-          <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
-          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
-            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-              <img onload="offProgress()" id="origin_image" class="rotate" src="/images/emptyinside.png" >
-            </label>
-              <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-              <input type="text" id="filePath" style="display: none;"/>
-          </form>
+            <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
+            <div class="something">
+              <img id="blurred_background" style="background-color:grey;"></img> 
+            </div>
+            <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+            <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+              <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
+                <img onload="offProgress()" id="origin_image" class="rotate" style="background-color:grey;" >
+              </label>
+                <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+                <input type="text" id="filePath" style="display: none;"/>
+            </form>
 
         </div>
       </center>
@@ -126,6 +141,7 @@ $(document).ready(function(){
 
   $("img.r_arrow").click(function(){
     nextStep();
+    
   });
 
   $("img.l_arrow").click(function(){
@@ -238,20 +254,29 @@ function updateUI()
       $("img.l_arrow").css('display','none');
       $('#fileInput').prop('disabled', false);
       $('.step1').fadeIn();
+      $("#s1").css('display','block');
+      $("#s2").css('display','none');
+      $("#s3").css('display','none');  
       break;
     case 2:
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step2').fadeIn();
       $('#fileInput').prop('disabled', true);
-      break;
+      $("#s2").css('display','block');
+      $("#s1").css('display','none');
+      $("#s3").css('display','none');  
+    break;
     case 3:
       $("#txt").focus();
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step3').fadeIn();
       $('#fileInput').prop('disabled', true);
-      break;
+      $("#s3").css('display','block');
+      $("#s2").css('display','none');
+      $("#s1").css('display','none');  
+          break;
     case 4:
       initKakao();
       $("img.l_arrow").css('display','block');
