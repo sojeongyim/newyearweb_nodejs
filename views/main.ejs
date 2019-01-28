@@ -32,18 +32,18 @@
             <h1 id="progressMent"> 처리 중입니다. </h1>
             <div class="loader"></div>
           </div>
-            <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
-            <div class="something">
-              <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
-            </div>
-            <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
-            <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
-              <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-                <img onload="offProgress()" id="origin_image" class="rotate" src="/images/emptyinside.png" >
-              </label>
-                <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-                <input type="text" id="filePath" style="display: none;"/>
-            </form>
+          <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
+          <div class="something">
+            <img id="blurred_background"src ="/images/Picasso.jpg"></img> 
+          </div>
+          <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
+              <img onload="offProgress()" id="origin_image" class="rotate" src="/images/emptyinside.png" >
+            </label>
+              <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+              <input type="text" id="filePath" style="display: none;"/>
+          </form>
 
         </div>
       </center>
@@ -61,9 +61,9 @@
       </div>
 
       <script>
-var timerId = 0;
-var cur_Step = 1;
-var kakaoimgName = '';
+        var timerId = 0;
+        var cur_Step = 1;
+        var kakaoimgName = '';
 
 function onProgress()
 {
@@ -264,7 +264,7 @@ function updateUI()
 
 function chkImgUpload()
 {
-//$('#fileInput').val()=='' ||  
+  //$('#fileInput').val()=='' ||  
   if($('#origin_image').attr("src").indexOf('empty')!=-1)
   {
     alert("사진을 선택 해주세요.");
@@ -280,11 +280,11 @@ function nextStep(){
   if(cur_Step <4 && chkImgUpload())
   {
     cur_Step = cur_Step +1;
+    if(cur_Step ==4)
+    {
+      capture();
+    }
     updateUI()
-      if(cur_Step ==4)
-      {
-        capture();
-      }
   }
 }
 
@@ -317,6 +317,7 @@ function saveAs(uri, filename) {
 
 function initKakao()
 {
+  Kakao.cleanup();
   var ori_filename = $('#filePath').val();
   var final_filename = ori_filename.split('.')[0]+".png";
   //Kakao.init('b53c59767a3c1d122013beb25feda261');
@@ -329,8 +330,8 @@ function initKakao()
       description: '#페인틀리 #설라로이드 #인싸',
       imageUrl: 'http://paintly.me/final/'+final_filename,
       link: {
-        mobileWebUrl: 'http://paintly.me',
-        webUrl: 'http://paintly.me'
+        mobileWebUrl: 'http://paintly.me/main/'+final_filename,
+        webUrl: 'http://paintly.me/main/'+final_filename
       }
     },
     buttons: [
