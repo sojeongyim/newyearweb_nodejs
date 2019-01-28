@@ -28,15 +28,15 @@
   {
     width: 65vw;    
   }
-  
+
   .swiper-pagination
   {
     position: relative;
     margin: 1vh auto 0 auto;
   }
-    
-    
-    
+
+
+
   /*page1 background btn*/
   #backgroundBtn img
   {
@@ -92,9 +92,9 @@
   }
   #startBtn a{
     color: #72441e;
-      border: 2px solid #ba5815;
-      padding: 14px 16px;
-      border-radius: 15px;
+    border: 2px solid #ba5815;
+    padding: 14px 16px;
+    border-radius: 15px;
   }
   #showInput {
     position: absolute;
@@ -174,16 +174,16 @@
     left:0;
     top:0;
   }
-    #progressBar{
-        margin-top: 10vh;
-    }
-    #progressMent
-    {
+  #progressBar{
+    margin-top: 10vh;
+  }
+  #progressMent
+  {
     font-size: 1em;    
-    }
-    #origin_image{
+  }
+  #origin_image{
     height: 100%; width: 100% ; max-width: 1000px;
-    }
+  }
 }
 
 
@@ -232,8 +232,8 @@
     width:10vw;
   }
   /*page1 background btn*/
-    
-    #startBtn{
+
+  #startBtn{
     margin: 5vh;
     font-weight: bold;
     font-size: 24px;
@@ -242,158 +242,149 @@
   }
   #startBtn a{
     color: #72441e;
-      border: 2px solid #ba5815;
-      padding: 14px 16px;
-      border-radius: 15px;
+    border: 2px solid #ba5815;
+    padding: 14px 16px;
+    border-radius: 15px;
   }
-    
+
   /*page1, page2 left,right arrow btn*/
   #arrow
   {
     margin-top:4vh;
     width:80vw;
-  
-    }
-    .l_arrow
-    {
-      width:5vw; 
-        margin-bottom:4vh;
-   
-    }
-    .r_arrow
-    {
-      width:5vw; margin-bottom:4vh;
-      /*
-      height: 5vh; 
-      width:10vw;
-       */
+
+  }
+  .l_arrow
+  {
+    width:5vw; 
+    margin-bottom:4vh;
+
+  }
+  .r_arrow
+  {
+    width:5vw; margin-bottom:4vh;
+    /*
+    height: 5vh; 
+    width:10vw;
+     */
     }
     #capture_card
     {
-        width:100%;
-        height: 60vh;
+      width:100%;
+      height: 60vh;
     }
     #card_style
     {
-    height: 55vh;   
-    margin-bottom: 3vh;
-        margin-top: 4vh;
-        width: 30vw;
+      height: 55vh;   
+      margin-bottom: 3vh;
+      margin-top: 4vh;
+      width: 30vw;
     }
     #styleList
     {
-    height: 14vh;    
+      height: 14vh;    
     }
     #txtblock
     {
-    text-align: center;
-    margin-top: 3vh;
-    margin-bottom: 4vh;
+      text-align: center;
+      margin-top: 3vh;
+      margin-bottom: 4vh;
     }
     #txt
     {
-        height: 11vh;
-        width: 30vw;
+      height: 11vh;
+      width: 30vw;
     }
     #blurred_background{
-        width: 30vw;
-        height: 55vh;
+      width: 30vw;
+      height: 55vh;
     }
-    
-  #showInput {
-    position: absolute;
-    top: 5%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    font-size: 25px;
-    font-family: dovemayo;
-    z-index: 5;
-  }
-  #progressBar{
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    z-index: 5;
-  }
-  #card_style{
-    width: 40vw;
-    height: 60vh;
-    overflow: hidden;
-  }
 
-  #blurred_background{
-    overflow: hidden;
-    width:100%;
-    height:100%;
-    left:0;
-    top:0;
-    bottom:0;
-    right:0;
-    filter: blur(3px);
-  }
-  .something
-  {
-    position: absolute;
-    width: 50vw;
-    height: 100%;
-  }
-    
-  .something::after{
-    display: block;
-    position: relative;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
-    margin-top: -440px;
-    height: 100%;
-    width: 100%;
-    content: '';
-
-  }
-
-  .gradiation::after{
-    display: block;
-    position: relative;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
-    margin-top: -400px;
-    height: 100%;
-    width: 100%;
-    content: '';
-  }
-
-
-  #grip{
-    width: 85%;
-    height: 100%;
-    position: absolute;
-    left:6vw;
-    top:5.5vh;
-  }
-
-  #front_img{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left:0;
-    top:0;
-  }
+    #showInput {
+      position: absolute;
+      top: 5%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      font-size: 25px;
+      font-family: dovemayo;
+      z-index: 5;
+    }
     #progressBar{
-        margin-top: 15vh;
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+      z-index: 5;
+    }
+    #card_style{
+      width: 40vw;
+      height: 60vh;
+      overflow: hidden;
+    }
+
+    #blurred_background{
+      overflow: hidden;
+      width:100%;
+      height:100%;
+      left:0;
+      top:0;
+      bottom:0;
+      right:0;
+      filter: blur(3px);
+    }
+    .something
+    {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .something::after{
+      display: block;
+      position: relative;
+      background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
+      margin-top: -60vh;
+      height: 100%;
+      width: 100%;
+      content: '';
+
+    }
+
+
+
+    #grip{
+      width: 85%;
+      height: 100%;
+      position: absolute;
+      left:6vw;
+      top:5.5vh;
+    }
+
+    #front_img{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left:0;
+      top:0;
+    }
+    #progressBar{
+      margin-top: 15vh;
     }
     #progressMent
     {
-    font-size: 1.5em;    
+      font-size: 1.5em;    
     }
     #origin_image
     {
-    
-    height: 100%; width: 65% ; max-width: 1000px;
-    position: relative;
-        top:5.8vh;
-        left:3.2vw;
-        transform: rotate(-11deg);
-        width: 83%;
+
+      height: 100%; width: 65% ; max-width: 1000px;
+      position: relative;
+      top:5.8vh;
+      left:3.2vw;
+      transform: rotate(-11deg);
+      width: 83%;
     }
   }
