@@ -66,15 +66,9 @@
           <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
 
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
-            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-              <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
 
-              <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
-                  <img class="shareBut" id = "download" onclick="DownloadCard()" style="display: inline-block; position: absolute; float: left;" src="/images/download.png"/>
-                <a id="kakao-link-btn" href="javascript:;">
-                  <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png" style="float: left;position: absolute;"/>
-                </a>
-              </div>
+            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
+              <img onload="offProgress()" id="origin_image" class="rotate" style="display: inline-block; pointer-events: none;" src="/images/grey.png"/>
 
             </label>
             <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
@@ -304,49 +298,54 @@ function initKakao()
     objectType: 'feed',
     content: {
       title: "설날 카드 만들기 '(OO)' 꿀!",
-      description: '#페인틀리 #설라로이드 #인싸',
-      imageUrl: 'http://paintly.me/final/'+final_filename,
-      link: {
-        mobileWebUrl: 'http://paintly.me/main/'+final_filename,
-        webUrl: 'http://paintly.me/main/'+final_filename
+        description: '#페인틀리 #설라로이드 #인싸',
+        imageUrl: 'http://paintly.me/final/'+final_filename,
+        link: {
+          mobileWebUrl: 'http://paintly.me/main/'+final_filename,
+          webUrl: 'http://paintly.me/main/'+final_filename
+        }
+      },
+      buttons: [
+      {
+        title: '카드 만들기',
+        link: {
+          mobileWebUrl: 'http://paintly.me',
+          webUrl: 'http://paintly.me'
+        }
       }
-    },
-    buttons: [
-    {
-      title: '카드 만들기',
-      link: {
-        mobileWebUrl: 'http://paintly.me',
-        webUrl: 'http://paintly.me'
-      }
-    }
-    ]
-  });
-}
-
-function genFileName() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i <24; i++)
-  {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
+      ]
+    });
   }
 
-  return text;
-}
+  function genFileName() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-
-$(document).ready(function(){
-
-
-  $(".styleImages").click(function(){
-    var filenameOb = document.getElementById("filePath");
-    if(filenameOb.value !='')
+    for (var i = 0; i <24; i++)
     {
-      onProgress();
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
+  }
+
+
+  $(document).ready(function(){
+
+
+    $(".styleImages").click(function(){
+      var filenameOb = document.getElementById("filePath");
+      if(filenameOb.value !='')
+      {
+        onProgress();
 
       var filename = filenameOb.value;
       var stylenum = $(this).attr("id");
+
+     // for(var i=1;i<6;i++){
+     // document.getElementById("1").style.opacity=0.1;  
+     // }
+      
 
       $('#filter_img').attr("src",$(this).attr("src"));
       $.post('/ajax/delete', {filename: filename });

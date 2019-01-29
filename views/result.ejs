@@ -13,10 +13,30 @@
           <img style="width: 100%; height: 100%;" src="/final/<%= filename %>"/>  
         </center>
       </div>
-      <div>
-        <img style="margin: 20px; padding : 4px; background: grey; opacity: 0.6; height: 60px;"src="/images/download.png"/> 
-        <a style="margin: 20px; padding : 20px; background: grey; opacity: 0.6; color: white; "href="/main">설날 폴라로이드 만들기</a>
+      <div id="resultBottom" style="">
+        <img onclick="DownloadCard()" style=" "src="/images/download.png"/> 
+        <div>
+          <a href="/main">설날 폴라로이드 만들기</a>
+        </div>
       </div>
     </div>
   </body>
+
+  <script>
+
+function DownloadCard(){
+  console.log("asdfasdf");
+  var link = document.createElement('a');
+  var filename = '<%= filename %>';  
+  var uagent = navigator.userAgent.toLowerCase();
+
+  link.href = "/final/"+filename;
+  link.download = filename;
+  link.click();
+  if (uagent.search("iphone") > -1){
+    window.location.href="/final/"+filename;
+  }
+}
+  </script>
+
 </html>
