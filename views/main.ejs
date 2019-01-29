@@ -9,10 +9,11 @@
   <body id="mainBackground">
 
     <div class="reactUI step1" id="uploadPhoto" >
-      사진을 올려주세요.
+      사진을 올려주세요. 
     </div>
       <!--    style slider-->
       <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
+
         <%for(i=1;i<6;i++){%>   
         <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
         <% }%>        
@@ -33,12 +34,7 @@
      </div>
 -->
      
-     <div id="stepBar">
-<img id="s1" src="/images/1_3.png">
-<img id="s2" src="/images/2_3.png" style="display:none;">
-<img id="s3" src="/images/3_3.png" style="display:none;">
-             
-     </div>
+     
      
       <center id="card_style"> 
         <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
@@ -47,6 +43,12 @@
             <h1 id="progressMent"> 처리 중입니다. </h1>
             <div class="loader"></div>
           </div>
+          <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+        <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
+        <a id="kakao-link-btn" href="javascript:;">
+          <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
+        </a>
+      </div>
           
           
            
@@ -67,16 +69,33 @@
         </div>
       </center>
 
-      <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+      <!-- <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
         </a>
-      </div>
+      </div> -->
+
+<div id="stepBar" style="text-align: center;">
+<img id="s1" src="/images/1_3.png">
+<img id="s2" src="/images/2_3.png" style="display:none;">
+<img id="s3" src="/images/3_3.png" style="display:none;">
+             
+     </div>
 
       <div id="bottomList">
-        <img class="l_arrow" align="left" style=" display: none; height: 5vh; width: auto;" src = "/images/l_arrow_empty.png"> 
-        <img class="r_arrow" align="right" style="height: 5vh; width: auto;" src = "/images/r_arrow_empty.png"> 
+        <!-- message write-->
+      <!--   <img class="l_arrow1" align="left" style="  height: 5vh; width: auto; display: none;" src = "/images/arrow1.png"> 
+        <img class="l_arrow2" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow2.png"> 
+        <img class="r_arrow4" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow4.png" >
+        <img class="r_arrow3" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow3.png" >
+          <img class="r_arrow10" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow10.png" >
+            <img class="r_arrow9" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow9.png" >
+            <img class="l_arrow5" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow5.png"> 
+            <img class="l_arrow6" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow6.png"> 
+             -->
+ <img class="l_arrow" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/l_arrow_empty.png"> 
+  <img class="r_arrow" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/r_arrow_empty.png" >
       </div>
 
       <script>
@@ -92,6 +111,8 @@ function onProgress()
 function offProgress()
 {
   $("#progressBar").css("display", "none");
+  cur_Step=cur_Step+1;
+  updateUI();
 }
 
 $(document).ready(function(){
@@ -174,7 +195,12 @@ $(document).ready(function(){
 
   // Upload Files
   var _URL = window.URL || window.webkitURL;
-  $('#fileInput').on('change', function () {
+  $('#fileInput').on('change', function () 
+  {
+    // cur_Step = cur_Step +1;
+    // updateUI();
+    // $("#bottomList").css('display','block');
+
     var filename=$('#fileInput').val();
     var file, img;
     if ((file = this.files[0])) {
@@ -256,11 +282,15 @@ function updateUI()
   switch(cur_Step){
     case 1:
       $("img.l_arrow").css('display','none');
+      $("img.r_arrow").css('display','none');
+      
       $('#fileInput').prop('disabled', false);
       $('.step1').fadeIn();
       $("#s1").css('display','block');
       $("#s2").css('display','none');
-      $("#s3").css('display','none');  
+      $("#s3").css('display','none');
+
+
       break;
     case 2:
       $("img.l_arrow").css('display','block');
@@ -284,7 +314,7 @@ function updateUI()
     case 4:
       initKakao();
       $("img.l_arrow").css('display','block');
-      $("img.r_arrow").css('display','none');
+      $("img.r_arrow").css('display','block');
       $('.step4').fadeIn();
       $('#fileInput').prop('disabled', true);
       break;
@@ -293,7 +323,8 @@ function updateUI()
 
 function chkImgUpload()
 {
-//$('#fileInput').val()=='' ||  
+//$('#fileInput').val()=='' || 
+
   if($('#origin_image').attr("src").indexOf('empty')!=-1)
   {
     alert("사진을 선택 해주세요.");
