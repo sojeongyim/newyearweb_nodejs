@@ -12,12 +12,15 @@
       사진을 올려주세요. 
     </div>
       <!--    style slider-->
-      <div class="scrollmenu reactUI step2" id="styleList" style="display: none;">
-
+      <div class="reactUI step2" id="styleListMent" style="display: none;">
+       <h1  style="font-size:1em; margin-top:0;text-align: center;">style</h1>
+    </div>
+      <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
         <%for(i=1;i<6;i++){%>   
         <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
-        <% }%>        
+        <% }%>
       </div>
+
       <div class="reactUI step3" id="uploadPhoto" style="display: none;">
         메세지를 넣어주세요.
       </div>
@@ -56,17 +59,15 @@
             <img src="/images/kakao.png" style="background-color:gray; opacity: 0.5; z-index: 5;"/>
           </div> -->
           
-           
-           
             <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
             <div class="something">
               <img id="blurred_background" style="background-color:lightgray;"></img> 
             </div>
             <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
-            <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/>
+            <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
             <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
               <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-                <img onload="offProgress()" id="origin_image" class="rotate" style="background-color:grey;" >
+                <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
               </label>
                 <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
                 <input type="text" id="filePath" style="display: none;"/>
@@ -83,9 +84,9 @@
       </div>
 
 <div id="stepBar" style="text-align: center;">
-<img id="s1" src="/images/1_3.png">
-<img id="s2" src="/images/2_3.png" style="display:none;">
-<img id="s3" src="/images/3_3.png" style="display:none;">
+<img id="s1" src="/images/1_3.png"  style="text-align: center; margin:0 auto;">
+<img id="s2" src="/images/2_3.png" style="display:none;text-align: center; margin:0 auto;">
+<img id="s3" src="/images/3_3.png" style="display:none;text-align: center; margin:0 auto;">
              
      </div>
 
@@ -105,9 +106,9 @@
       </div>
 
       <script>
-var timerId = 0;
-var cur_Step = 1;
-var kakaoimgName = '';
+        var timerId = 0;
+        var cur_Step = 1;
+        var kakaoimgName = '';
 
 function onProgress()
 {
@@ -117,8 +118,6 @@ function onProgress()
 function offProgress()
 {
   $("#progressBar").css("display", "none");
-  cur_Step=cur_Step+1;
-  updateUI();
 }
 
 $(document).ready(function(){
@@ -204,12 +203,9 @@ $(document).ready(function(){
   //var _URL = window.URL || window.webkitURL;
   $('#fileInput').on('change', function () 
   {
-    // cur_Step = cur_Step +1;
-    // updateUI();
-    // $("#bottomList").css('display','block');
-
     var filename=$('#fileInput').val();
     var file, img;
+    console.log("changed");
     
     if ((file = this.files[0])) {
      // img = new Image();
@@ -218,7 +214,6 @@ $(document).ready(function(){
 
         var newFilename = genFileName()+'.png';
         onProgress();
-
         loadImage(
             file,
             function(img){
@@ -250,6 +245,9 @@ $(document).ready(function(){
       }
    //  img.src = _URL.createObjectURL(file);
     }
+     cur_Step = cur_Step +1;
+     updateUI();
+     $("#bottomList").css('display','block');
   });
 });
 
@@ -291,14 +289,11 @@ function updateUI()
     case 1:
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
-      
       $('#fileInput').prop('disabled', false);
       $('.step1').fadeIn();
       $("#s1").css('display','block');
       $("#s2").css('display','none');
       $("#s3").css('display','none');
-
-
       break;
     case 2:
       $("img.l_arrow").css('display','block');
@@ -331,8 +326,6 @@ function updateUI()
 
 function chkImgUpload()
 {
-//$('#fileInput').val()=='' || 
-
   if($('#origin_image').attr("src").indexOf('empty')!=-1)
   {
     alert("사진을 선택 해주세요.");
@@ -348,11 +341,11 @@ function nextStep(){
   if(cur_Step <4 && chkImgUpload())
   {
     cur_Step = cur_Step +1;
+    if(cur_Step ==4)
+    {
+      capture();
+    }
     updateUI()
-      if(cur_Step ==4)
-      {
-        capture();
-      }
   }
 }
 
@@ -385,6 +378,7 @@ function saveAs(uri, filename) {
 
 function initKakao()
 {
+  Kakao.cleanup();
   var ori_filename = $('#filePath').val();
   var final_filename = ori_filename.split('.')[0]+".png";
   //Kakao.init('b53c59767a3c1d122013beb25feda261');
@@ -397,8 +391,8 @@ function initKakao()
       description: '#페인틀리 #설라로이드 #인싸',
       imageUrl: 'http://paintly.me/final/'+final_filename,
       link: {
-        mobileWebUrl: 'http://paintly.me',
-        webUrl: 'http://paintly.me'
+        mobileWebUrl: 'http://paintly.me/main/'+final_filename,
+        webUrl: 'http://paintly.me/main/'+final_filename
       }
     },
     buttons: [

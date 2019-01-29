@@ -2,12 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  var filename;
-  if(req.session.filename){
-    filename=req.session.filename;
-  }
-  res.render('main', { title: 'Express',uploadfile:filename});
+router.get('/', function(req, res) {
+  res.render('main', { title: 'Express'});
+});
+
+router.get('/:filename', function(req, res, next) {
+  var filename = req.params.filename
+  res.render('result', { title: 'Express',filename:filename});
 });
 
 module.exports = router;
