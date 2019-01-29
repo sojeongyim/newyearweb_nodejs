@@ -50,7 +50,19 @@
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
             <div class="gradient"/>
+            </div>
+            <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+            <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
+            <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+              <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
+                <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
+              </label>
+                <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+                <input type="text" id="filePath" style="display: none;"/>
+            </form>
+
           </div>
+
           <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
           <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
@@ -68,6 +80,8 @@
           </form>
 
         </div>
+
+
       </center>
 
      <!--  <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
@@ -104,14 +118,46 @@ var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
 
+function check_file(){
+  var filenameOb = document.getElementById("filePath");
+  var filename = filenameOb.value;
+
+  var http = new XMLHttpRequest();
+  http.open('HEAD',"/images/Result/"+filename, false);
+  http.send();
+
+  if(http.status!=404){
+    setTimeout("style_img_load()",1000);
+  }
+}
 function onProgress()
 {
   $("#progressBar").css("display", "block");
+  $(".styleImages").unbind('click');
 }
 
 function offProgress()
 {
   $("#progressBar").css("display", "none");
+  $(".styleImages").click(function(){
+    var filenameOb = document.getElementById("filePath");
+    if(filenameOb.value !='')
+    {
+      onProgress();
+      //click_disable();
+      var filename = filenameOb.value;
+      var stylenum = $(this).attr("id");
+
+      $('#filter_img').attr("src",$(this).attr("src"));
+      $.post('/ajax/delete', {filename: filename });
+      $.post('/ajax/style', {stylenum: stylenum, filename: filename });
+      timerId = setInterval("check_file()", 1000); 
+    }
+    else
+    {
+      alert('올바른 사진을 업로드 해 주세요.');
+    }
+  });
 }
 
 $(document).ready(function(){
@@ -240,18 +286,6 @@ $(document).ready(function(){
     }
   });
 
-  function check_file(){
-    var filenameOb = document.getElementById("filePath");
-    var filename = filenameOb.value;
-
-    var http = new XMLHttpRequest();
-    http.open('HEAD',"/images/Result/"+filename, false);
-    http.send();
-
-    if(http.status!=404){
-      setTimeout("style_img_load()",1000);
-    }
-  }
 
   function style_img_load(){
     console.log('load function exe after waitimg 1sec');
