@@ -391,7 +391,8 @@
     }
     #styleList
     {
-      height: 16vh;    
+      height: 10vh;
+      margin-top: 3%;    
       width: 40%;
     }
     #txtblock
