@@ -185,6 +185,44 @@ $(document).ready(function(){
 
   //var _URL = window.URL || window.webkitURL;
   $('#fileInput').on('change', function () 
+  {
+    var filename=$('#fileInput').val();
+    var file, img;
+    console.log("changed");
+    
+    if ((file = this.files[0])) {
+     // img = new Image();
+      if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
+      {
+
+        var newFilename = genFileName()+'.png';
+        onProgress();
+        loadImage(
+            file,
+            function(img){
+              console.log('orientation');
+              var imgURI = img.toDataURL();
+              console.log(imgURI);
+
+              $('#origin_image').attr("src",imgURI);
+              $('#blurred_background').attr("src",imgURI);
+              console.log(newFilename);
+
+                 $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
+                     function(data,status){
+                       console.log('upload complete');
+                      $('#filePath').val(newFilename);
+                      kakaoimgName = newFilename;
+                      offProgress();   
+                     });
+                  
+           
+            },
+            {
+              orientation: true}
+        );
+      }
+      else
       {
         var filename=$('#fileInput').val();
         var file, img;
