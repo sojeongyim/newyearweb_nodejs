@@ -400,7 +400,7 @@ $(document).ready(function(){
   $('#fileInput').on('change', function (){
     onProgress();
     var filename=$('#fileInput').val();
-    var file, img;
+    var file;
 
     if ((file = this.files[0])) {
       if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
@@ -412,13 +412,15 @@ $(document).ready(function(){
             function(img){
               var imgURI = img.toDataURL();
 
+                  $('#origin_image').attr("src",imgURI);
+                  $('#blurred_background').attr("src",imgURI);
+                  onProgress(); 
 
               $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
                   function(data,status){
-                    console.log(data)
-                      console.log(status)
-                      $('#origin_image').attr("src",imgURI);
-                    $('#blurred_background').attr("src",imgURI);
+                    
+                    //$('#origin_image').attr("src",imgURI);
+                    //$('#blurred_background').attr("src",imgURI);
 
                     $('#filePath').val(newFilename);
                     kakaoimgName = newFilename;
