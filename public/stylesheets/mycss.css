@@ -78,16 +78,18 @@
 }
 
 @font-face {
-  font-family: dovemayo;
-  src: url("/fonts/dovemayo.otf");
+    font-family: UhBee mysen;
+    src: url("/fonts/UhBee mysen.ttf"),
+    url("/fonts/UhBeemysen.eot?#iefix") format('embedded-opentype'),
+    url("/fonts/UhBeemysen.woff") format('woff');
 }
 
 h4 {
-  font-family: dovemayo;
+  font-family: UhBee mysen;
 }
 
 h3 {
-  font-family: dovemayo;
+  font-family: UhBee mysen;
   color: white;
 }
 
@@ -202,7 +204,7 @@ div#bottomList{
 input[type="text"]
 {
   font-size: 35px;
-  font-family: dovemayo;
+  font-family: UhBee mysen;
 }
 #fileForm{
   height: 53%;
