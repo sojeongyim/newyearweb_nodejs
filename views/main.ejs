@@ -40,79 +40,69 @@
 
 
 
-          
-          
-  
-          
-          
+
+
+
+
+
 
           <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
-            </div>
-            <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
-            <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
-            <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
-              <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-                <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
-              </label>
-                <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-                <input type="text" id="filePath" style="display: none;"/>
-            </form>
-
           </div>
-
           <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
           <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
+
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
               <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
               <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
-            <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; position: absolute; float: left;" src="/images/download_logo.png"/>
-            <a id="kakao-link-btn" href="javascript:;">
-              <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png" style="float: left;position: absolute;"/>
-            </a>
-          </div>
+                  <img class="shareBut" id = "download" onclick="DownloadCard()" style="display: inline-block; position: absolute; float: left;" src="/images/download_logo.png"/>
+                <a id="kakao-link-btn" href="javascript:;">
+                  <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png" style="float: left;position: absolute;"/>
+                </a>
+              </div>
             </label>
-              <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-              <input type="text" id="filePath" style="display: none;"/>
+            <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+            <input type="text" id="filePath" style="display: none;"/>
           </form>
 
         </div>
 
 
+
       </center>
 
-     <!--  <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+      <!--  <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
-          <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
+        <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
         </a>
-      </div> -->
+        </div> -->
 
-      <div id="stepBar" style="text-align: center;">
-        <img id="s1" src="/images/1_3.png"  style="text-align: center; margin:0 auto;">
-        <img id="s2" src="/images/2_3.png" style="display:none;text-align: center; margin:0 auto;">
-        <img id="s3" src="/images/3_3.png" style="display:none;text-align: center; margin:0 auto;">
+        <div id="stepBar" style="text-align: center;">
+          <img id="s1" src="/images/1_3.png"  style="text-align: center; margin:0 auto;">
+          <img id="s2" src="/images/2_3.png" style="display:none;text-align: center; margin:0 auto;">
+          <img id="s3" src="/images/3_3.png" style="display:none;text-align: center; margin:0 auto;">
 
-      </div>
+        </div>
 
-      <div id="bottomList">
-        <!-- message write-->
-        <!--   <img class="l_arrow1" align="left" style="  height: 5vh; width: auto; display: none;" src = "/images/arrow1.png"> 
-          <img class="l_arrow2" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow2.png"> 
-          <img class="r_arrow4" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow4.png" >
-          <img class="r_arrow3" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow3.png" >
-          <img class="r_arrow10" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow10.png" >
-          <img class="r_arrow9" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow9.png" >
-          <img class="l_arrow5" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow5.png"> 
-          <img class="l_arrow6" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow6.png"> 
-        -->
-          <img class="l_arrow" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/l_arrow_empty.png"> 
-          <img class="r_arrow" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/r_arrow_empty.png" >
-      </div>
+        <div id="bottomList">
+          <!-- message write-->
+          <!--   <img class="l_arrow1" align="left" style="  height: 5vh; width: auto; display: none;" src = "/images/arrow1.png"> 
+            <img class="l_arrow2" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow2.png"> 
+            <img class="r_arrow4" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow4.png" >
+            <img class="r_arrow3" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow3.png" >
+            <img class="r_arrow10" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow10.png" >
+            <img class="r_arrow9" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow9.png" >
+            <img class="l_arrow5" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow5.png"> 
+            <img class="l_arrow6" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow6.png"> 
+          -->
+            <img class="l_arrow" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/l_arrow_empty.png"> 
+            <img class="r_arrow" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/r_arrow_empty.png" >
+        </div>
 
-          <script>
+            <script>
 var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
@@ -160,12 +150,6 @@ function capture(){
   });
 }
 
-function capture2(){
-  html2canvas(document.querySelector('#capture_card')).then(function(canvas){
-    saveAs(canvas.toDataURL(),$('#filePath').val());
-
-  });
-}
 function updateUI()
 {
   $('.reactUI').css('display','none');
@@ -252,16 +236,19 @@ function saveToServer(uri, filename)
   $.post('/ajax/result', {imgURL: uri, imgName: filename });
 }
 
-function saveAs(uri, filename) {
+function DownloadCard(){
   var link = document.createElement('a');
-  var filename = filename.split('.')[0]+".png"; 
-  if (typeof link.download === 'string') {
-    link.href = uri;
+  var filename = $('#filePath').val().split('.')[0]+".png";
+  var uagent = navigator.userAgent.toLowerCase();
+  console.log('iphone test');
+  console.log(uagent);
+
+    link.href = "/final/"+filename;
     link.download = filename;
     link.click();
-  } else {
-    window.open(uri);
-  }
+    if (uagent.search("iphone") > -1){
+      window.location.href="/final/"+filename;
+    }
 }
 
 function initKakao()
@@ -441,7 +428,7 @@ $(document).ready(function(){
 
 });
 
-          </script> 
+            </script> 
   </body>
 </html>
 
