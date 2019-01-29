@@ -113,7 +113,7 @@
   /*page2 style slider    */
   #styleList
   {
-    height: 14vh;
+    height: 12vh;
   }
   /*page2 txt block*/
   #txtblock
@@ -292,17 +292,30 @@
     padding: 4%;
     opacity: 0.9;
   }
+  #download img
+  {
+    height: 13vh;
+    width: 22vw;
+  }
 
   #kakao
   {
     margin-top: -77%;
-    height: 18%;
+    /*height: 18%;*/
     /*margin-left: 10%;*/
     margin-right: 10%;
     background: grey;
     padding: 4%;
     opacity: 0.9;
+    height: 18vh;
+  width: 26vw;
   }
+/*  #kakao img
+  {
+  height: 17vh;
+  width: 25vw;
+  }*/
+
   div.gradient{
 
     position:absolute;
