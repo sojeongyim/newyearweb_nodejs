@@ -230,10 +230,14 @@ $(document).ready(function(){
               $('#blurred_background').attr("src",imgURI);
               console.log(newFilename);
 
-                 $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename });
-                 $('#filePath').val(newFilename);
-                 kakaoimgName = newFilename;
-                offProgress();    
+                 $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
+                     function(data,status){
+                       console.log('upload complete');
+                      $('#filePath').val(newFilename);
+                      kakaoimgName = newFilename;
+                      offProgress();   
+                     });
+                  
            
             },
             {
