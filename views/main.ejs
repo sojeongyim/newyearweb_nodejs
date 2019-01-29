@@ -21,8 +21,6 @@
         <% }%>
       </div>
 
-
-
       <div class="reactUI step3" id="uploadPhoto" style="display: none;">
         메세지를 넣어주세요.
       </div>
@@ -120,8 +118,6 @@ function onProgress()
 function offProgress()
 {
   $("#progressBar").css("display", "none");
-  cur_Step=cur_Step+1;
-  updateUI();
 }
 
 $(document).ready(function(){
@@ -207,12 +203,9 @@ $(document).ready(function(){
   //var _URL = window.URL || window.webkitURL;
   $('#fileInput').on('change', function () 
   {
-    // cur_Step = cur_Step +1;
-    // updateUI();
-    // $("#bottomList").css('display','block');
-
     var filename=$('#fileInput').val();
     var file, img;
+    console.log("changed");
     
     if ((file = this.files[0])) {
      // img = new Image();
@@ -221,7 +214,6 @@ $(document).ready(function(){
 
         var newFilename = genFileName()+'.png';
         onProgress();
-
         loadImage(
             file,
             function(img){
@@ -249,6 +241,9 @@ $(document).ready(function(){
       }
    //  img.src = _URL.createObjectURL(file);
     }
+     cur_Step = cur_Step +1;
+     updateUI();
+     $("#bottomList").css('display','block');
   });
 });
 
