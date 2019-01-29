@@ -13,17 +13,20 @@
     </div>
       <!--    style slider-->
       <div class="reactUI step2" id="styleListMent" style="display: none;">
-        <h1  style="font-size:1em; margin-top:0;text-align: center;">style</h1>
+       <!--  <h1  style="font-size:1em; margin-top:0;text-align: center;">style</h1> -->
       </div>
       <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
         <%for(i=1;i<6;i++){%>   
-        <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
+        <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.jpg">
         <% }%>
       </div>
 
       <div class="reactUI step3" id="uploadPhoto" style="display: none;">
         메세지를 넣어주세요.
       </div>
+      <!-- <div class="reactUI step4" id="uploadPhoto" style="display: none;">
+        카드가 완성되었어요.
+      </div> -->
       <div class="reactUI step4" id="uploadPhoto" style="display: none;">
         카드를 공유하세요!
       </div>
@@ -33,56 +36,58 @@
         <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
 
           <div id = "progressBar">
-            <h1 id="progressMent"> 처리 중입니다. </h1>
+            <!-- <h1 id="progressMent"> 처리 중입니다. </h1> -->
             <div class="loader"></div>
           </div>
 
-
-
-
+          <!-- <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+            <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; position: absolute; height: 5vh; width: auto;" src="/images/download_logo.png"/>
+            <a id="kakao-link-btn" href="javascript:;">
+              <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
+            </a>
+          </div> -->
           
-          
-  
-          
-          
-
           <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
           <div class="something">
-            <img id="blurred_background" style="background-color:lightgray;"></img> 
-            <div class="gradient"/>
-            </div>
-            <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
-            <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
-            <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
-              <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-                <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
-              </label>
-                <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-                <input type="text" id="filePath" style="display: none;"/>
-            </form>
-
+            <img id="blurred_background" style="background-color:lightgray;">
           </div>
-
-          <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+          <img id="grip" class="rotate"  src ="/images/grip.png">
           <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
               <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
-              <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
-            <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; position: absolute; float: left;" src="/images/download_logo.png"/>
-            <a id="kakao-link-btn" href="javascript:;">
-              <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png" style="float: left;position: absolute;"/>
+              
+
+              <!-- <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+            
+              <div class="shareBut" id = "download" onclick="capture2()">
+                <img src="/images/download_logo.png" style="float: left;"/>
+              </div>
+              <div id="kakao-link-btn">
+              <a href="javascript:;">
+            <img class="shareBut" id = "kakao"  style="position: absolute;" src="/images/kakao_logo.png"/>
             </a>
           </div>
+          </div> -->
+
             </label>
               <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
               <input type="text" id="filePath" style="display: none;"/>
           </form>
 
         </div>
-
-
       </center>
+      <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+            
+              <div class="shareBut" id = "download" onclick="capture2()">
+                <img src="/images/download_logo.png" style="float: left;"/>
+              </div>
+              <div id="kakao-link-btn">
+              <a href="javascript:;">
+            <img class="shareBut" id = "kakao"  style="position: absolute;" src="/images/kakao_logo.png"/>
+            </a>
+          </div>
+          </div>
 
      <!--  <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
@@ -111,6 +116,7 @@
         -->
           <img class="l_arrow" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/l_arrow_empty.png"> 
           <img class="r_arrow" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/r_arrow_empty.png" >
+          <img class="resetBut" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/arrow6.png" >
       </div>
 
           <script>
@@ -118,46 +124,14 @@ var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
 
-function check_file(){
-  var filenameOb = document.getElementById("filePath");
-  var filename = filenameOb.value;
-
-  var http = new XMLHttpRequest();
-  http.open('HEAD',"/images/Result/"+filename, false);
-  http.send();
-
-  if(http.status!=404){
-    setTimeout("style_img_load()",1000);
-  }
-}
 function onProgress()
 {
   $("#progressBar").css("display", "block");
-  $(".styleImages").unbind('click');
 }
 
 function offProgress()
 {
   $("#progressBar").css("display", "none");
-  $(".styleImages").click(function(){
-    var filenameOb = document.getElementById("filePath");
-    if(filenameOb.value !='')
-    {
-      onProgress();
-      //click_disable();
-      var filename = filenameOb.value;
-      var stylenum = $(this).attr("id");
-
-      $('#filter_img').attr("src",$(this).attr("src"));
-      $.post('/ajax/delete', {filename: filename });
-      $.post('/ajax/style', {stylenum: stylenum, filename: filename });
-      timerId = setInterval("check_file()", 1000); 
-    }
-    else
-    {
-      alert('올바른 사진을 업로드 해 주세요.');
-    }
-  });
 }
 
 $(document).ready(function(){
@@ -198,17 +172,21 @@ $(document).ready(function(){
 
   $("img.l_arrow").hover(function(){
     $(this).attr("src","/images/l_arrow_colored.png");
-  },
+  }
+  ,
   function(){
     $(this).attr("src","/images/l_arrow_empty.png");
-  });
+  }
+  );
 
   $("img.r_arrow").hover(function(){
     $(this).attr("src","/images/r_arrow_colored.png");
-  },
+  }
+  ,
   function(){
     $(this).attr("src","/images/r_arrow_empty.png");
-  });
+  }
+  );
 
   $("img.r_arrow").click(function(){
     nextStep();
@@ -238,218 +216,233 @@ $(document).ready(function(){
     $("h4#second_line").text($("input#second").val());
     $("#myModal").css('display','none');
   });
+});
 
-  // Upload Files
+// Upload Files
 
-  //var _URL = window.URL || window.webkitURL;
-  $('#fileInput').on('change', function (){
-    onProgress();
-    var filename=$('#fileInput').val();
-    var file, img;
-    console.log("changed");
+//var _URL = window.URL || window.webkitURL;
+$('#fileInput').on('change', function (){
+  onProgress();
+  var filename=$('#fileInput').val();
+  var file, img;
+  console.log("changed");
 
-    if ((file = this.files[0])) {
-      if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
-      {
-
-        var newFilename = genFileName()+'.png';
-        loadImage(
-            file,
-            function(img){
-              console.log('orientation');
-              var imgURI = img.toDataURL();
-              console.log(imgURI);
-
-              $('#origin_image').attr("src",imgURI);
-              $('#blurred_background').attr("src",imgURI);
-              console.log(newFilename);
-
-              $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
-                  function(data,status){
-                    console.log('upload complete');
-                    $('#filePath').val(newFilename);
-                    kakaoimgName = newFilename;
-                    offProgress();   
-                  });
-            },
-            {
-              orientation: true}
-        );
-      }
-      else
-      {
-        alert("사진을 업로드 해 주세요.");
-      }
-      cur_Step = cur_Step +1;
-      updateUI();
-      $("#bottomList").css('display','block');
-    }
-  });
-
-
-  function style_img_load(){
-    console.log('load function exe after waitimg 1sec');
-    $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
-    console.log("result->fimename: "+ $('#filePath').val());
-    clearInterval(timerId); 
-  }
-
-  function dataInit(){
-    $('#origin_image').attr("src","/images/emptyinside.png");
-  }
-
-  function capture(){
-    html2canvas(document.querySelector('#capture_card')).then(function(canvas){ 
-      saveToServer(canvas.toDataURL(), $('#filePath').val());
-    });
-  }
-
-  function capture2(){
-    html2canvas(document.querySelector('#capture_card')).then(function(canvas){
-      saveAs(canvas.toDataURL(),$('#filePath').val());
-    });
-  }
-  function updateUI()
+  if ((file = this.files[0])) 
   {
-    $('.reactUI').css('display','none');
-    switch(cur_Step){
-      case 1:
-        $("img.l_arrow").css('display','none');
-        $("img.r_arrow").css('display','none');
-        $('#fileInput').prop('disabled', false);
-        $('.step1').fadeIn();
-        $("#s1").css('display','block');
-        $("#s2").css('display','none');
-        $("#s3").css('display','none');
-        break;
-      case 2:
-        $("img.l_arrow").css('display','block');
-        $("img.r_arrow").css('display','block');
-        $('.step2').fadeIn();
-        $('#fileInput').prop('disabled', true);
-        $("#s2").css('display','block');
-        $("#s1").css('display','none');
-        $("#s3").css('display','none');  
-        break;
-      case 3:
-        $("#txt").focus();
-        $("img.l_arrow").css('display','block');
-        $("img.r_arrow").css('display','block');
-        $('.step3').fadeIn();
-        $('#fileInput').prop('disabled', true);
-        $("#s3").css('display','block');
-        $("#s2").css('display','none');
-        $("#s1").css('display','none');  
-        break;
-      case 4:
-        initKakao();
-        $("#txt").css('display','block')
-          .css('background','transparent');
-        $("img.l_arrow").css('display','block');
-        $("img.r_arrow").css('display','block');
-        $('.step4').fadeIn();
-        $('#fileInput').prop('disabled', true);
-        break;
-    }
-  }
-
-  function chkImgUpload()
-  {
-    if($('#origin_image').attr("src").indexOf('empty')!=-1)
+    if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
     {
-      alert("사진을 선택 해주세요.");
-      return false;
+
+      var newFilename = genFileName()+'.png';
+      loadImage(
+          file,
+          function(img){
+            console.log('orientation');
+            var imgURI = img.toDataURL();
+            console.log(imgURI);
+
+            $('#origin_image').attr("src",imgURI);
+            $('#blurred_background').attr("src",imgURI);
+            console.log(newFilename);
+
+            $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
+                function(data,status){
+                  console.log('upload complete');
+                  $('#filePath').val(newFilename);
+                  kakaoimgName = newFilename;
+                  offProgress();   
+                });
+          },
+          {
+            orientation: true}
+      );
     }
     else
     {
-      return true;
+      alert("사진을 업로드 해 주세요.");
     }
-  }
-
-  function nextStep(){
-    if(cur_Step <4 && chkImgUpload())
-    {
-      cur_Step = cur_Step +1;
-      if(cur_Step ==4)
-      {
-        capture();
-        $('#blurred_background').attr("src","/background/"+$('#filePath').val());
-
-      }
-      updateUI()
-    }
-  }
-
-  function prevStep(){
-    if(cur_Step >1 )
-    {
-      cur_Step = cur_Step -1;
-      updateUI()
-    }
-  }
-
-  function saveToServer(uri, filename)
-  {
-    filename = filename.split('.')[0];
-    //console.log("saveToServer/filename: "+filename);
-    $.post('/ajax/result', {imgURL: uri, imgName: filename });
-  }
-
-  function saveAs(uri, filename) {
-    var link = document.createElement('a');
-    var filename = filename.split('.')[0]+".png"; 
-    if (typeof link.download === 'string') {
-      link.href = uri;
-      link.download = filename;
-      link.click();
-    } else {
-      window.open(uri);
-    }
-  }
-
-  function initKakao()
-  {
-    Kakao.cleanup();
-    var ori_filename = $('#filePath').val();
-    var final_filename = ori_filename.split('.')[0]+".png";
-    //Kakao.init('b53c59767a3c1d122013beb25feda261');
-    Kakao.init('c9fce0d59aa8336cea1e41e5ed774cd2');
-    Kakao.Link.createDefaultButton({
-      container: '#kakao-link-btn',
-      objectType: 'feed',
-      content: {
-        title: "설날 카드 만들기 '(OO)' 꿀!",
-        description: '#페인틀리 #설라로이드 #인싸',
-        imageUrl: 'http://paintly.me/final/'+final_filename,
-        link: {
-          mobileWebUrl: 'http://paintly.me/main/'+final_filename,
-          webUrl: 'http://paintly.me/main/'+final_filename
-        }
-      },
-      buttons: [
-      {
-        title: '카드 만들기',
-        link: {
-          mobileWebUrl: 'http://paintly.me',
-          webUrl: 'http://paintly.me'
-        }
-      }
-      ]
-    });
-  }
-
-  function genFileName() {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (var i = 0; i <24; i++)
-    {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-
-    return text;
+    cur_Step = cur_Step +1;
+    updateUI();
+    $("#bottomList").css('display','block');
   }
 });
+
+function check_file(){
+  var filenameOb = document.getElementById("filePath");
+  var filename = filenameOb.value;
+
+  var http = new XMLHttpRequest();
+  http.open('HEAD',"/images/Result/"+filename, false);
+  http.send();
+
+  if(http.status!=404){
+    setTimeout("style_img_load()",1000);
+  }
+}
+
+function style_img_load(){
+  console.log('load function exe after waitimg 1sec');
+  $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
+  console.log("result->fimename: "+ $('#filePath').val());
+  clearInterval(timerId); 
+}
+
+function dataInit(){
+  $('#origin_image').attr("src","/images/emptyinside.png");
+}
+
+function capture(){
+  html2canvas(document.querySelector('#capture_card')).then(function(canvas){ 
+    saveToServer(canvas.toDataURL(), $('#filePath').val());
+  });
+}
+
+function capture2(){
+  html2canvas(document.querySelector('#capture_card')).then(function(canvas){
+    saveAs(canvas.toDataURL(),$('#filePath').val());
+  });
+}
+function updateUI()
+{
+  $('.reactUI').css('display','none');
+  $(".resetBut").css('display','none');
+  switch(cur_Step){
+    case 1:
+      $("img.l_arrow").css('display','none');
+      $("img.r_arrow").css('display','none');
+      $('#fileInput').prop('disabled', false);
+      $('.step1').fadeIn();
+      $("#s1").css('display','block');
+      $("#s2").css('display','none');
+      $("#s3").css('display','none');
+      break;
+    case 2:
+      $("img.l_arrow").css('display','block');
+      $("img.r_arrow").css('display','block');
+      $('.step2').fadeIn();
+      $('#fileInput').prop('disabled', true);
+      $("#s2").css('display','block');
+      $("#s1").css('display','none');
+      $("#s3").css('display','none');  
+      break;
+    case 3:
+      $("#txt").focus();
+      $("img.l_arrow").css('display','block');
+      $("img.r_arrow").css('display','block');
+      $('.step3').fadeIn();
+      $('#fileInput').prop('disabled', true);
+      $("#s3").css('display','block');
+      $("#s2").css('display','none');
+      $("#s1").css('display','none');  
+      break;
+    case 4:
+      initKakao();
+      $("#txt").css('display','block')
+        .css('background','transparent');
+      $("img.l_arrow").css('display','block');
+      $("img.r_arrow").css('display','none');
+      $(".resetBut").css('display','block');
+      $('.step4').fadeIn();
+      $('#fileInput').prop('disabled', true);
+      break;
+  }
+}
+
+function chkImgUpload()
+{
+  if($('#origin_image').attr("src").indexOf('empty')!=-1)
+  {
+    alert("사진을 선택 해주세요.");
+    return false;
+  }
+  else
+  {
+    return true;
+  }
+}
+
+function nextStep(){
+  if(cur_Step <4 && chkImgUpload())
+  {
+    cur_Step = cur_Step +1;
+    if(cur_Step ==4)
+    {
+      capture();
+      $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+
+    }
+    updateUI()
+  }
+}
+
+function prevStep(){
+  if(cur_Step >1 )
+  {
+    cur_Step = cur_Step -1;
+    updateUI()
+  }
+}
+
+function saveToServer(uri, filename)
+{
+  filename = filename.split('.')[0];
+  //console.log("saveToServer/filename: "+filename);
+  $.post('/ajax/result', {imgURL: uri, imgName: filename });
+}
+
+function saveAs(uri, filename) {
+  var link = document.createElement('a');
+  var filename = filename.split('.')[0]+".png"; 
+  if (typeof link.download === 'string') {
+    link.href = uri;
+    link.download = filename;
+    link.click();
+  } else {
+    window.open(uri);
+  }
+}
+
+function initKakao()
+{
+  Kakao.cleanup();
+  var ori_filename = $('#filePath').val();
+  var final_filename = ori_filename.split('.')[0]+".png";
+  //Kakao.init('b53c59767a3c1d122013beb25feda261');
+  Kakao.init('c9fce0d59aa8336cea1e41e5ed774cd2');
+  Kakao.Link.createDefaultButton({
+    container: '#kakao-link-btn',
+    objectType: 'feed',
+    content: {
+      title: "설날 카드 만들기 '(OO)' 꿀!",
+      description: '#페인틀리 #설라로이드 #인싸',
+      imageUrl: 'http://paintly.me/final/'+final_filename,
+      link: {
+        mobileWebUrl: 'http://paintly.me/main/'+final_filename,
+        webUrl: 'http://paintly.me/main/'+final_filename
+      }
+    },
+    buttons: [
+    {
+      title: '카드 만들기',
+      link: {
+        mobileWebUrl: 'http://paintly.me',
+        webUrl: 'http://paintly.me'
+      }
+    }
+    ]
+  });
+}
+
+function genFileName() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i <24; i++)
+  {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+
+  return text;
+}
           </script> 
   </body>
 </html>

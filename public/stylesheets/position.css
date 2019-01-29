@@ -56,7 +56,7 @@
   {
     text-align: center;
       margin-top: 8%;
-          font-size: 1.5em;
+          font-size: 2em;
   }
   /*page1 background img slider*/
   #backgroundSlider
@@ -160,8 +160,8 @@
     z-index: 5;
   }
   #card_style{
-    width: 90vw;
-    height: 90vw;
+    width: 100vw;
+    height: 100vw;
     overflow: hidden;
   }
 
@@ -208,7 +208,7 @@
 
   #grip{
     width: 100%;
-    height: 100%;
+    height: 105%;
     position: absolute;
     left:0;
     top:0;
@@ -229,11 +229,13 @@
     font-size: 1em;    
   }
   #origin_image{
-    height: 95%; width: 100% ; max-width: 1000px;
+    height: 100%; 
+    width: 100% ;
+     max-width: 1000px;
     object-position: center;
     object-fit: cover;
     position:relative;
-    transform: rotate(-10deg);
+    transform: rotate(-9deg);
   }
     #stepBar img
     {
@@ -250,24 +252,40 @@
     
 #index_btn img
 {
-  width:40vw;
+/*  width:40vw;*/
    height:8vh;
 }
 #uploadPhoto
   {
   margin-top: 3vh;
-  font-size:1.5em;
+  font-size:2em;
   height: 8vh;
   }
+  #txt {
+    color: white;
+    border-radius: 25px;
+    width: 80%;
+    position: absolute;
+    top: 1vh;
+    left: 0;
+    right: 0;
+    margin: 1% auto;
+    z-index: 2;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-family: UhBee mysen;
+}
   img.styleImages{
-  height: 80%;
-  width: auto;
+  height: 100%;
+  width: 19%;
   }
   #styleListMent
   {
     height: 2vh;
-    margin-top:2vh;
   }
+    margin-top:2vh;
 #txt {
     color: white;
     border-radius: 25px;
@@ -282,9 +300,35 @@
     text-align: center;
     background: black;
     opacity: 0.4;
+  font-size: 2em;
   }
+#download{
+  margin-top:-77%;
+  margin-left: 10%;
+/*height: 30%;*/
+  /*margin-right: 10%;*/
+  position: absolute;
+background: grey;
+padding: 4%;
+opacity: 0.9;
+}
 
-
+  #kakao
+    {
+      margin-top: -77%;
+      height: 18%;
+      /*margin-left: 10%;*/
+  margin-right: 10%;
+background: grey;
+padding: 4%;
+opacity: 0.9;
+    }
+ /*   img.shareBut{
+     
+      background-color:grey;
+       padding:4%;
+     }*/
+/*
       #kakao
     {
       margin-left: -40%;
@@ -297,7 +341,7 @@
       background-color:grey;
        padding:2%;
      }
-
+*/
     div.gradient{
     position:absolute;
     width: 100%;
@@ -527,6 +571,7 @@
       position: absolute;
       left:4vw;
       top:5.5vh;
+      /*transform:rotate(-9deg);*/
     }
 
     #front_img{
@@ -597,5 +642,10 @@
     top: 0;
     background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
     }
+
+   /* #mainBackground
+    {
+      background-image: url("/images/pettern2.jpg");
+    }*/
     }
 

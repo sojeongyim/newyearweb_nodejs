@@ -1,15 +1,16 @@
 #background
 {
     background-color:white;
-  
+  font-family: UhBee mysen;
 }
 #mainBackground
 {
     background-color:white;
+    font-family: UhBee mysen;
 }
  #backgroundMent    
 {
-        font-family: dovemayo;
+        font-family: UhBee mysen;
         color: black;
 }
 .info
