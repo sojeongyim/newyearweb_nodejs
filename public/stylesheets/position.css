@@ -612,9 +612,6 @@
     object-position: center;
     object-fit: cover;
   }
-  #progressBar{
-    margin-top: 15vh;
-  }
   #progressMent
   {
     font-size: 2em;    
@@ -716,9 +713,6 @@
     position: absolute;
     left:0;
     top:0;
-  }
-  #progressBar{
-    margin-top: 15vh;
   }
   #progressMent
   {
