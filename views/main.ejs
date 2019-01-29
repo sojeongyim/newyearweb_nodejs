@@ -80,12 +80,12 @@
         </div>
       </center>
 
-      <!-- <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+       <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
         </a>
-      </div> -->
+      </div>
 
 <div id="stepBar" style="text-align: center;">
 <img id="s1" src="/images/1_3.png"  style="text-align: center; margin:0 auto;">
@@ -205,7 +205,8 @@ $(document).ready(function(){
   });
 
   // Upload Files
-  var _URL = window.URL || window.webkitURL;
+
+  //var _URL = window.URL || window.webkitURL;
   $('#fileInput').on('change', function () 
   {
     // cur_Step = cur_Step +1;
@@ -214,45 +215,41 @@ $(document).ready(function(){
 
     var filename=$('#fileInput').val();
     var file, img;
+    
     if ((file = this.files[0])) {
-      img = new Image();
+     // img = new Image();
       if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
       {
-        img.onload = function () {
-          if(this.width<= 5000 && this.height <= 5000)
-          {
-            var form = $('#fileForm')[0];
-            var formData = new FormData(form);
-            onProgress()
 
-              $.ajax({
-                type: 'post',
-                url: '/ajax/upload',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                  $('#filePath').val(data);
-                  $('#origin_image').attr("src","/"+data);
-                  $('#blurred_background').attr("src","/"+data);
-                  kakaoimgName = data;
-                },
-                error: function (err) {
-                  offProgress()
-                }
-              });
-          }
-          else
-          {
-            alert("작은 이미지를 사용 해 주세요.");
-          }
-        };
+        var newFilename = genFileName()+'.png';
+        onProgress();
+
+        loadImage(
+            file,
+            function(img){
+              console.log('orientation');
+              var imgURI = img.toDataURL();
+              console.log(imgURI);
+
+              $('#origin_image').attr("src",imgURI);
+              $('#blurred_background').attr("src",imgURI);
+              console.log(newFilename);
+
+                 $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename });
+                 $('#filePath').val(newFilename);
+                 kakaoimgName = newFilename;
+                offProgress();    
+           
+            },
+            {
+              orientation: true}
+        );
       }
       else
       {
         alert("사진을 업로드 해 주세요.");
       }
-      img.src = _URL.createObjectURL(file);
+   //  img.src = _URL.createObjectURL(file);
     }
   });
 });
@@ -283,6 +280,7 @@ function capture(){
 }
 
 function capture2(){
+  $('#blurred_background').attr("src","/background/"+$('#filePath').val());
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){
     saveAs(canvas.toDataURL(),$('#filePath').val());
   });
@@ -411,6 +409,16 @@ function initKakao()
     }
     ]
   });
+}
+
+function genFileName() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i <24; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }
       </script> 
   </body>
