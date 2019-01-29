@@ -17,7 +17,7 @@
       </div>
       <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
         <%for(i=1;i<6;i++){%>   
-        <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.jpg">
+        <img id = "<%= i %>" class="styleImages" onclick="style_click(<%= i %>)" src="/images/thumbs/<%=i%>.jpg">
         <% }%>
       </div>
 
@@ -120,6 +120,10 @@ function check_file(){
   if(http.status!=404){
     setTimeout("style_img_load()",1000);
     clearInterval(timerId); 
+    for(var i=1;i<6;i++){
+        document.getElementById(i).style.opacity=1;  
+        document.getElementById(i).onclick= style_click;
+    }
   }
 }
 function onProgress()
@@ -290,11 +294,8 @@ function initKakao()
     return text;
   }
 
+  function style_click(Id){
 
-  $(document).ready(function(){
-
-
-    $(".styleImages").click(function(){
       var filenameOb = document.getElementById("filePath");
       if(filenameOb.value !='')
       {
@@ -302,27 +303,34 @@ function initKakao()
 
       var filename = filenameOb.value;
       var stylenum = $(this).attr("id");
+
+      if(stylenum ==undefined){
+        stylenum = Id;
+      }      
+     // console.log('attr ID: '+$(this).attr("id"));
+     
+      for(var i=1;i<6;i++){
+      //  if(Id!=i){
+          document.getElementById(i).style.opacity=0.5;  
+      //  }
+          document.getElementById(i).onclick= null;
+      }
       
-      document.getElementById("1").disabled = true;
-     // $('#1').prop('disabled', true);
-
-
-     // for(var i=1;i<6;i++){
-     // document.getElementById("1").style.opacity=0.1;  
-     // }
-      
-
-      $('#filter_img').attr("src",$(this).attr("src"));
+     //console.log('Id:  '+Id);
       $.post('/ajax/delete', {filename: filename });
-      $.post('/ajax/style', {stylenum: stylenum, filename: filename });
+      $.post('/ajax/style', {stylenum: stylenum , filename: filename });
+
       timerId = setInterval("check_file()", 1000); 
     }
     else
     {
       alert('올바른 사진을 업로드 해 주세요.');
     }
-  });
 
+  }
+
+  $(document).ready(function(){
+   
   $("#uploadBut").click(function(){
     $('#origin_image').click();
   });
