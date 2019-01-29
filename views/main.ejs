@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-  <head>		
+  <head>    
     <% include header %>
     <title>Paintly.AIcard.main</title>
   </head>
@@ -63,7 +63,7 @@
       <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
             
               <div class="shareBut" id = "download" onclick="DownloadCard()">
-                <img src="/images/download_logo.png" style="float: left;"/>
+                <img src="/images/download.png" style="float: left;"/>
               </div>
               <div id="kakao-link-btn">
               <a href="javascript:;">
@@ -152,6 +152,7 @@ function capture(){
 function updateUI()
 {
   $('.reactUI').css('display','none');
+  $(".resetBut").css('display','none');
   switch(cur_Step){
     case 1:
       $("img.l_arrow").css('display','none');
@@ -185,8 +186,9 @@ function updateUI()
       initKakao();
       $("#txt").css('display','block')
         .css('background','transparent');
-      $("img.l_arrow").css('display','block');
-      $("img.r_arrow").css('display','block');
+      $("img.l_arrow").css('display','none');
+      $("img.r_arrow").css('display','none');
+      $(".resetBut").css('display','block');
       $('.step4').fadeIn();
       $('#fileInput').prop('disabled', true);
       break;
@@ -435,4 +437,3 @@ function initKakao()
             </script> 
   </body>
 </html>
-
