@@ -65,11 +65,7 @@
           <div class="shareBut" id = "download" onclick="DownloadCard()">
             <img src="/images/download.png" style="float: left;"/>
           </div>
-          <div id="kakao-link-btn">
-            <a href="javascript:;">
-              <img class="shareBut" id = "kakao"  style="position: absolute;" src="/images/kakao_logo.png"/>
-            </a>
-          </div>
+          
           <div id="kakao-link-btn">
             <a href="javascript:;">
               <img class="shareBut" id = "kakao"  style="position: absolute;" src="/images/kakao_logo.png"/>
@@ -125,11 +121,7 @@ function check_file(){
   if(http.status!=404){
     setTimeout("style_img_load()",1000);
     clearInterval(timerId); 
-    for(var i=1;i<6;i++){
-      document.getElementById(i).style.opacity=1;  
-      document.getElementById(i).onclick= style_click;
-    }
-  }
+     }
 }
 function onProgress()
 {
@@ -139,7 +131,12 @@ function onProgress()
 function offProgress()
 {
   $("#progressBar").css("display", "none");
-
+  if(cur_Step == 2){
+    for(var i=1;i<6;i++){
+     document.getElementById(i).style.opacity=1;  
+     document.getElementById(i).onclick= style_click;
+    }
+  }
 }
 
 function style_img_load(){
@@ -317,9 +314,9 @@ function style_click(Id){
     // console.log('attr ID: '+$(this).attr("id"));
 
     for(var i=1;i<6;i++){
-      //  if(Id!=i){
+       if(stylenum != i){
       document.getElementById(i).style.opacity=0.5;  
-      //  }
+        }
       document.getElementById(i).onclick= null;
     }
 
@@ -343,9 +340,7 @@ $(document).ready(function(){
   });
 
   $(".resetBut").click(function(){
-    cur_Step=1;
-    dataInit();
-    updateUI();
+    location.reload();
   });
 
   $("span.close").click(function(){
@@ -436,8 +431,6 @@ $(document).ready(function(){
                   }).fail(function(error){
                 alert("파일을 확인 해 주세요.");
                 location.reload();
-
-
               });
             },
             {
