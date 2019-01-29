@@ -178,93 +178,46 @@ $(document).ready(function(){
   });
 
   // Upload Files
-  var _URL = window.URL || window.webkitURL;
-  $('#fileInput').on('change', function (e) {
-   
-    var filename=$('#fileInput').val();
-    var file, img;
+// var _URL = window.URL || window.webkitURL;
+  $('#fileInput').on('change', function () {
+
+   var filename=$('#fileInput').val();
+   var file, img;
 
     if ((file = this.files[0])) {
-      img = new Image();
+     // img = new Image();
       if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
       {
-/*
+
+        var newFilename = genFileName()+'.png';
+        onProgress();
+
         loadImage(
-            e.target.files[0],
+            file,
             function(img){
               console.log('orientation');
-              var imgURI = img.toDataURL("image/png");
+              var imgURI = img.toDataURL();
               console.log(imgURI);
 
               $('#origin_image').attr("src",imgURI);
               $('#blurred_background').attr("src",imgURI);
+              console.log(newFilename);
 
-
-               $.ajax({
-                type: 'post',
-                url: '/ajax/upload',
-                data: :imgURI,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                 // $('#filePath').val(data);
-                 kakaoimgName = data;
-                },
-                error: function (err) {
-                  offProgress()
-                }
-              });
-
-    
+                 $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename });
+                 $('#filePath').val(newFilename);
+                 kakaoimgName = newFilename;
+                offProgress();    
+           
             },
             {
-              maxWidth: 600,
               orientation: true}
         );
-*/
-        img.onload = function () {
-          if(this.width<= 5000 && this.height <= 5000)
-          {
-
-            
-
-
-            var form = $('#fileForm')[0];
-            var formData = new FormData(form);
-            onProgress()
-
-              $.ajax({
-                type: 'post',
-                url: '/ajax/upload',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                  $('#filePath').val(data);
-                  $('#origin_image').attr("src","/"+data);
-                  $('#blurred_background').attr("src","/"+data);
-                  kakaoimgName = data;
-                },
-                error: function (err) {
-                  offProgress()
-                }
-              });
-          }
-          else
-          {
-            alert("작은 이미지를 사용 해 주세요.");
-          }
-        };
-
-      //
-
-
       }
       else
       {
         alert("사진을 업로드 해 주세요.");
       }
-      img.src = _URL.createObjectURL(file);
+   //  img.src = _URL.createObjectURL(file);
     }
   });
 });
@@ -421,6 +374,16 @@ function initKakao()
     }
     ]
   });
+}
+
+function genFileName() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i <24; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }
       </script> 
   </body>
