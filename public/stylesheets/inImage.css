@@ -1,0 +1,13 @@
+#inImgTop {
+  width: 100%;
+  position: absolute;
+  top: 5%;
+  text-align: center;
+  z-index: 1;
+}
+
+#inImgTop p{
+  font-family: dovemayo;
+  color: white;
+  font-size: 35px;
+}
