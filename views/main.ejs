@@ -13,17 +13,20 @@
     </div>
       <!--    style slider-->
       <div class="reactUI step2" id="styleListMent" style="display: none;">
-        <h1  style="font-size:1em; margin-top:0;text-align: center;">style</h1>
+       <!--  <h1  style="font-size:1em; margin-top:0;text-align: center;">style</h1> -->
       </div>
       <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
         <%for(i=1;i<6;i++){%>   
-        <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.png">
+        <img id = "<%= i %>" class="styleImages" src="/images/thumbs/<%=i%>.jpg">
         <% }%>
       </div>
 
       <div class="reactUI step3" id="uploadPhoto" style="display: none;">
         메세지를 넣어주세요.
       </div>
+      <!-- <div class="reactUI step4" id="uploadPhoto" style="display: none;">
+        카드가 완성되었어요.
+      </div> -->
       <div class="reactUI step4" id="uploadPhoto" style="display: none;">
         카드를 공유하세요!
       </div>
@@ -33,9 +36,17 @@
         <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
 
           <div id = "progressBar">
-            <h1 id="progressMent"> 처리 중입니다. </h1>
+            <!-- <h1 id="progressMent"> 처리 중입니다. </h1> -->
             <div class="loader"></div>
           </div>
+
+
+          
+          <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
+          <div class="something">
+            <img id="blurred_background" style="background-color:lightgray;">
+          </div>
+          <img id="grip" class="rotate"  src ="/images/grip.png">
 
 
 
@@ -51,17 +62,14 @@
             <img id="blurred_background" style="background-color:lightgray;"></img> 
           </div>
           <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+
           <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
 
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="origin_image" class="rotate" style="display: inline-block; pointer-events: none;" src="/images/emptyinside.png"/>
-              <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
-                  <img class="shareBut" id = "download" onclick="DownloadCard()" style="display: inline-block; position: absolute; float: left;" src="/images/download_logo.png"/>
-                <a id="kakao-link-btn" href="javascript:;">
-                  <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png" style="float: left;position: absolute;"/>
-                </a>
-              </div>
+              <img onload="offProgress()" id="origin_image" class="rotate" style="display: inline-block; pointer-events: none;" src="/images/grey.png"/>
+
             </label>
             <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
@@ -69,9 +77,18 @@
 
         </div>
 
-
-
       </center>
+      <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+            
+              <div class="shareBut" id = "download" onclick="capture2()">
+                <img src="/images/download_logo.png" style="float: left;"/>
+              </div>
+              <div id="kakao-link-btn">
+              <a href="javascript:;">
+            <img class="shareBut" id = "kakao"  style="position: absolute;" src="/images/kakao_logo.png"/>
+            </a>
+          </div>
+          </div>
 
       <!--  <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
@@ -87,6 +104,23 @@
 
         </div>
 
+
+      <div id="bottomList">
+        <!-- message write-->
+        <!--   <img class="l_arrow1" align="left" style="  height: 5vh; width: auto; display: none;" src = "/images/arrow1.png"> 
+          <img class="l_arrow2" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow2.png"> 
+          <img class="r_arrow4" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow4.png" >
+          <img class="r_arrow3" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow3.png" >
+          <img class="r_arrow10" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow10.png" >
+          <img class="r_arrow9" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow9.png" >
+          <img class="l_arrow5" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow5.png"> 
+          <img class="l_arrow6" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow6.png"> 
+        -->
+          <img class="l_arrow" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/l_arrow_empty.png"> 
+          <img class="r_arrow" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/r_arrow_empty.png" >
+          <img class="resetBut" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/arrow6.png" >
+      </div>
+
         <div id="bottomList">
           <!-- message write-->
           <!--   <img class="l_arrow1" align="left" style="  height: 5vh; width: auto; display: none;" src = "/images/arrow1.png"> 
@@ -101,6 +135,7 @@
             <img class="l_arrow" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/l_arrow_empty.png"> 
             <img class="r_arrow" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/r_arrow_empty.png" >
         </div>
+
 
             <script>
 var timerId = 0;
@@ -340,17 +375,21 @@ function initKakao()
 
   $("img.l_arrow").hover(function(){
     $(this).attr("src","/images/l_arrow_colored.png");
-  },
+  }
+  ,
   function(){
     $(this).attr("src","/images/l_arrow_empty.png");
-  });
+  }
+  );
 
   $("img.r_arrow").hover(function(){
     $(this).attr("src","/images/r_arrow_colored.png");
-  },
+  }
+  ,
   function(){
     $(this).attr("src","/images/r_arrow_empty.png");
-  });
+  }
+  );
 
   $("img.r_arrow").click(function(){
     nextStep();
@@ -380,6 +419,7 @@ function initKakao()
     $("h4#second_line").text($("input#second").val());
     $("#myModal").css('display','none');
   });
+});
 
   // Upload Files
 

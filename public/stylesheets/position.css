@@ -55,8 +55,11 @@
   #backgroundMent
   {
     text-align: center;
+
+     
     margin-top: 8%;
-    font-size: 1.5em;
+    font-size: 2em;
+
   }
   /*page1 background img slider*/
   #backgroundSlider
@@ -111,7 +114,7 @@
   /*page2 style slider    */
   #styleList
   {
-    height: 10vh;
+    height: 14vh;
   }
   /*page2 txt block*/
   #txtblock
@@ -131,7 +134,7 @@
     margin-top: 15%;
     margin-bottom: 15%;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2em;
     text-align: center;
   }
   #startBtn a{
@@ -146,7 +149,7 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-    font-size: 25px;
+    font-size: 2em;
     font-family: dovemayo;
     z-index: 5;
   }
@@ -160,8 +163,8 @@
     z-index: 5;
   }
   #card_style{
-    width: 90vw;
-    height: 90vw;
+    width: 100vw;
+    height: 100vw;
     overflow: hidden;
   }
 
@@ -198,7 +201,7 @@
 
   #grip{
     width: 100%;
-    height: 100%;
+    height: 105%;
     position: absolute;
     left:0;
     top:0;
@@ -216,49 +219,71 @@
   }
   #progressMent
   {
-    font-size: 1em;    
+    font-size: 2em;    
   }
   #origin_image{
-    height: 95%; width: 100% ; max-width: 1000px;
+    height: 100%; 
+    width: 100% ;
+     max-width: 1000px;
     object-position: center;
     object-fit: cover;
     position:relative;
-    transform: rotate(-10deg);
+    transform: rotate(-9deg);
   }
-  #stepBar img
+    #stepBar img
+    {
+        width: 100%;
+        text-align: center;
+    }
+    #stepBar{
+      margin:2vh auto;
+    }
+    #test img
+    {
+   width: 20vw; 
+    }
+    
+#index_btn img
+{
+/*  width:40vw;*/
+   height:8vh;
+}
+#uploadPhoto
   {
-    width: 100%;
-    text-align: center;
-  }
-  #stepBar{
-    margin:2vh auto;
-  }
-  #test img
-  {
-    width: 20vw; 
-  }
+  margin-top: 3vh;
+  font-size:2em;
+  height: 8vh;}
 
-  #index_btn img
-  {
-    width:40vw;
-    height:8vh;
   }
-  #uploadPhoto
-  {
-    margin-top: 3vh;
-    font-size:1.5em;
-    height: 8vh;
-  }
+  #txt {
+    color: white;
+    border-radius: 25px;
+    width: 80%;
+    position: absolute;
+    top: 1vh;
+    left: 0;
+    right: 0;
+    margin: 1% auto;
+    z-index: 2;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-family: UhBee mysen;
+}
   img.styleImages{
-    height: 80%;
-    width: auto;
+
+  height: 100%;
+  width: 19%;
+
   }
   #styleListMent
   {
     height: 2vh;
-    margin-top:2vh;
   }
-  #txt {
+
+#txt {
+ margin-top:2vh;
     color: white;
     border-radius: 25px;
     width: 80%;
@@ -272,23 +297,50 @@
     text-align: center;
     background: black;
     opacity: 0.4;
+  font-size: 2em;
   }
-
+#download{
+  margin-top:-77%;
+  margin-left: 10%;
+/*height: 30%;*/
+  /*margin-right: 10%;*/
+  position: absolute;
+background: grey;
+padding: 4%;
+opacity: 0.9;
+}
 
   #kakao
-  {
-    margin-left: -40%;
-    height: 10vh;
+    {
+      margin-top: -77%;
+      height: 18%;
+      /*margin-left: 10%;*/
+  margin-right: 10%;
+background: grey;
+padding: 4%;
+opacity: 0.9;
+    }
+ /*   img.shareBut{
+     
+      background-color:grey;
+       padding:4%;
+     }*/
+/*
+      #kakao
+    {
+      margin-left: -40%;
+      height: 10vh;
 
-  }
-  img.shareBut{
-    height: 10vh;
-    margin-top:-90%;
-    background-color:grey;
-    padding:2%;
-  }
+    }
+    img.shareBut{
+      height: 10vh;
+      margin-top:-90%;
+      background-color:grey;
+       padding:2%;
+     }
+*/
+    div.gradient{
 
-  div.gradient{
     position:absolute;
     width: 100%;
     height: 100%;
@@ -363,7 +415,8 @@ opacity: 0.6;
   }
   #uploadPhoto
   {
-    font-size : 40px;
+    
+
     padding-top : 40px;
     font-size: 2em;
   }
@@ -375,7 +428,7 @@ opacity: 0.6;
     margin-top:14vh;
     width: 30vw;
     margin-left: 10vw;
-    font-size: 1.5em;
+    font-size: 2em;
     margin-bottom: 10vh;
 
   }
@@ -409,7 +462,7 @@ opacity: 0.6;
   #startBtn{
     margin: 6vh;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2em;
     text-align: center;
   }
   #startBtn a{
@@ -422,6 +475,9 @@ opacity: 0.6;
   /*page1, page2 left,right arrow btn*/
   #arrow
   {
+
+
+
     margin-top:4vh;
     width:80vw;
 
@@ -433,57 +489,187 @@ opacity: 0.6;
   }
   .r_arrow
   {
-    width: 5vw; 
-    margin-bottom: 4vh;
+
+    width:5vw; margin-bottom:4vh;
+    /*
+    height: 5vh; 
+    width:10vw;
+     */
+    }
+    #capture_card
+    {
+      width:100%;
+      height: 60vh;
+    }
+    #card_style
+    {
+      height: 55vh;   
+      margin-bottom: 3vh;
+      margin-top: 4vh;
+      width: 30vw;
+    }
+    #styleList
+    {
+      height: 10vh;
+      margin-top: 3%;    
+      width: 40%;
+    }
+    #txtblock
+    {
+      text-align: center;
+      margin-top: 3vh;
+      margin-bottom: 4vh;
+    }
+    #txt
+    {
+      height: 11vh;
+      width: 30vw;
+    }
+    #blurred_background{
+      width: 30vw;
+      height: 55vh;
+    }
+
+    #showInput {
+      position: absolute;
+      top: 5%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      font-size: 2em;
+      font-family: dovemayo;
+      z-index: 5;
+    }
+    #progressBar{
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0px;
+      top: 0px;
+      z-index: 5;
+    }
+    #card_style{
+      width: 30vw;
+      height: 30vw;
+      overflow: hidden;
+    }
+
+    #blurred_background{
+      overflow: hidden;
+      width:100%;
+      height:100%;
+      left:0;
+      top:0;
+      bottom:0;
+      right:0;
+      filter: blur(3px);
+      object-position: center;
+      object-fit: cover;
+    }
+    .something
+    {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+/*
+    .something::after{
+      display: block;
+      position: relative;
+      background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
+      margin-top: -65vh;
+      height: 100%;
+      width: 100%;
+      content: '';
+      }
+
+
+
+    .something::after{
+      display: block;
+      position: relative;
+      background-image: linear-gradient(to bottom, rgba(111,106,106) 0, #fff 100%);
+      margin-top: -58vh;
+      height: 130%;
+      width: 100%;
+      content: '';
+
+    }
+    */
+
+    #grip{
+      width: 85%;
+      height: 100%;
+      position: absolute;
+      left:4vw;
+      top:5.5vh;
+      /*transform:rotate(-9deg);*/
+    }
+
+    #front_img{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left:0;
+      top:0;
+    }
+    #progressBar{
+      margin-top: 15vh;
+    }
+    #progressMent
+    {
+      font-size: 2em;    
+    }
+    #origin_image
+    {
+
+      height: 93%; width: 65% ; max-width: 1000px;
+      position: relative;
+      top:5.8vh;
+      left:1.8vw;
+      transform: rotate(-10deg);
+      width: 83%;
+      object-position: center;
+      object-fit: cover;
+    }
+
+    #index_btn
+    {
+      text-align: center;
+      margin:10vh auto;
+    }
+    #index_btn img
+    {
+      width:50%;
+    }
+    #stepBar img
+    {
+        width: 30%;
+        text-align: center;
+    }
+    div#bottomList{
+      width: 35%;
+      text-align: center;
+    }
+
+    #kakao
+    {
+      margin-left: -40%;
+      height: 10vh;
+
+    }
+    img.shareBut{
+      height: 10vh;
+      margin-top:-90%;
+      background-color:grey;
+       padding:2%;
+    }
   }
 
-  #capture_card
-  {
-    width:100%;
-    height: 60vh;
-  }
-  #card_style
-  {
-    height: 55vh;   
-    margin-bottom: 3vh;
-    margin-top: 4vh;
-    width: 30vw;
-  }
-  #styleList
-  {
-    height: 10vh;
-    margin-top: 3%;    
-    width: 40%;
-  }
-  #txtblock
-  {
-    text-align: center;
-    margin-top: 3vh;
-    margin-bottom: 4vh;
-  }
-  #txt
-  {
-    height: 11vh;
-    width: 30vw;
-  }
-  #blurred_background{
-    width: 30vw;
-    height: 55vh;
-  }
 
-  #showInput {
-    position: absolute;
-    top: 5%;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    font-size: 25px;
-    font-family: dovemayo;
-    z-index: 5;
-  }
-  #progressBar{
-    display: none;
-    position: absolute;
+    div.gradient{
+    position:absolute;
     width: 100%;
     height: 100%;
     left: 0px;
@@ -520,6 +706,15 @@ opacity: 0.6;
     position: absolute;
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #727272 96%);
     top: 0;
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
+    }
+
+   /* #mainBackground
+    {
+      background-image: url("/images/pettern2.jpg");
+    }*/
+    }
+=======
     height: 100%;
     width: 100%;
     content: '';
@@ -546,7 +741,7 @@ opacity: 0.6;
   }
   #progressMent
   {
-    font-size: 1.5em;    
+    font-size: 2em;    
   }
   #origin_image
   {
@@ -620,4 +815,5 @@ opacity: 0.6;
  transform: translateY(-50%);
   }
 }
+>>>>>>> 2a8616cee7a238a393109248e2ededf32b8275e3
 
