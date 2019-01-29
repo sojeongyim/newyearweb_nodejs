@@ -124,7 +124,7 @@
   {
     text-align: center;
     width: 50vw;
-    height: 9vh;
+    height: 7vh;
   }
 
   #startBtn{
@@ -266,7 +266,21 @@
     height: 2vh;
     margin-top:2vh;
   }
-
+#txt {
+    color: white;
+    border-radius: 25px;
+    width: 80%;
+    position: absolute;
+    top: 1vh;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 2;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+  }
 }
 
 
@@ -277,16 +291,19 @@
 
 
   #txt {
-
+    color: white;
+    border-radius: 25px;
+    width: 80%;
     position: absolute;
-    top: 0;
+    top: 1vh;
     left: 0;
+    right: 0;
+    margin: 0 auto;
     z-index: 2;
     border: none;
     text-align: center;
-      background: rgba(255,255,255,0.0);
-
-
+    background: black;
+    opacity: 0.4;
   }
 
   #background
