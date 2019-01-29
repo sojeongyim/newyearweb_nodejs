@@ -75,12 +75,12 @@
         </div>
       </center>
 
-      <!-- <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+       <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
         </a>
-      </div> -->
+      </div>
 
 <div id="stepBar" style="text-align: center;">
 <img id="s1" src="/images/1_3.png">
@@ -275,6 +275,7 @@ function capture(){
 }
 
 function capture2(){
+  $('#blurred_background').attr("src","/background/"+$('#filePath').val());
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){
     saveAs(canvas.toDataURL(),$('#filePath').val());
   });
