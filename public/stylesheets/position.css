@@ -380,10 +380,6 @@
     right: 0px;
     left: 0px;
   }
-
-
-
-
 }
 
 
@@ -391,7 +387,6 @@
 /*desktop*/
 @media screen and (min-width:1025px)
 {
-
   #download{
     margin-top:-25%;
     margin-left: 35%;
