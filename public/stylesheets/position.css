@@ -113,7 +113,7 @@
   /*page2 style slider    */
   #styleList
   {
-    height: 14vh;
+    height: 12vh;
   }
   /*page2 txt block*/
   #txtblock
@@ -284,7 +284,7 @@
   }
   #download{
     margin-top:-77%;
-    margin-left: 10%;
+    margin-left: 15%;
     /*height: 30%;*/
     /*margin-right: 10%;*/
     position: absolute;
@@ -292,17 +292,30 @@
     padding: 4%;
     opacity: 0.9;
   }
+  #download img
+  {
+    height: 13vh;
+    width: 22vw;
+  }
 
   #kakao
   {
     margin-top: -77%;
-    height: 18%;
+    /*height: 18%;*/
     /*margin-left: 10%;*/
     margin-right: 10%;
     background: grey;
     padding: 4%;
     opacity: 0.9;
+    height: 18vh;
+  width: 26vw;
   }
+/*  #kakao img
+  {
+  height: 17vh;
+  width: 25vw;
+  }*/
+
   div.gradient{
 
     position:absolute;
@@ -342,6 +355,34 @@
     font-size: 20px; 
     transform: translateY(-50%);
   }
+#progressBar {
+    margin-top: 15vh;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    left: 0px;
+    z-index: 3;
+}
+  .loader
+  {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+  }
+
+
+
 
 }
 
@@ -351,6 +392,64 @@
 @media screen and (min-width:1025px)
 {
 
+  #download{
+    margin-top:-25%;
+    margin-left: 35%;
+    /*height: 30%;*/
+    /*margin-right: 10%;*/
+    position: absolute;
+    background: grey;
+    padding: 4%;
+    opacity: 0.9;
+  }
+  #download img
+  {
+    height: 3vh;
+    width: 3vw;
+  }
+
+  #kakao
+  {
+    margin-top: -25%;
+    /*height: 18%;*/
+    /*margin-left: 10%;*/
+    margin-right: 10%;
+    background: grey;
+    padding: 4%;
+    opacity: 0.9;
+    height: 18vh;
+  width: 10vw;
+  }
+  #kakao img
+  {
+    width: 30%;
+  }
+
+#progressBar {
+    margin-top: 15vh;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    left: 0px;
+    z-index: 3;
+}
+  .loader
+  {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+  }
 
   #txt {
     color: white;
@@ -557,7 +656,7 @@
     text-align: center;
   }
 
-  #kakao
+  /*#kakao
   {
     margin-left: -40%;
     height: 10vh;
@@ -569,7 +668,7 @@
     background-color:grey;
     padding:2%;
   }
-
+*/
 
   div.gradient{
     position:absolute;
@@ -652,17 +751,13 @@
   {
     width:50%;
   }
-  #stepBar img
-  {
-    width: 30%;
-    text-align: center;
-  }
+  
   div#bottomList{
     width: 35%;
     text-align: center;
   }
 
-  #kakao
+  /*#kakao
   {
     margin-left: -40%;
     height: 10vh;
@@ -673,7 +768,7 @@
     margin-top:-90%;
     background-color:grey;
     padding:2%;
-  }
+  }*/
   div#resultBottom{
     position: relative; 
     height: 10vh; 
