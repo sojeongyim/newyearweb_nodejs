@@ -46,12 +46,14 @@
             <h1 id="progressMent"> 처리 중입니다. </h1>
             <div class="loader"></div>
           </div>
-          <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+
+
+         <!--<div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
         </a>
-      </div>
+         </div>-->
           
           <!-- 
           <div>
@@ -76,7 +78,7 @@
         </div>
       </center>
 
-       <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+  <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
@@ -251,6 +253,10 @@ $(document).ready(function(){
   });
 });
 
+function click_disable(){
+  $('.styleImages').click(false);
+}
+
 function check_file(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
@@ -260,10 +266,15 @@ function check_file(){
   http.send();
 
   if(http.status!=404){
+    setTimeout("style_img_load()",1000);
+  }
+}
+
+function style_img_load(){
+    console.log('load function exe after waitimg 1sec');
     $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
     console.log("result->fimename: "+ $('#filePath').val());
-    clearInterval(timerId);  
-  }
+    clearInterval(timerId); 
 }
 
 function dataInit(){
@@ -277,8 +288,7 @@ function capture(){
 }
 
 function capture2(){
-  $('#blurred_background').attr("src","/background/"+$('#filePath').val());
-  html2canvas(document.querySelector('#capture_card')).then(function(canvas){
+    html2canvas(document.querySelector('#capture_card')).then(function(canvas){
     saveAs(canvas.toDataURL(),$('#filePath').val());
   });
 }
@@ -316,6 +326,7 @@ function updateUI()
           break;
     case 4:
       initKakao();
+
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step4').fadeIn();
@@ -344,6 +355,8 @@ function nextStep(){
     if(cur_Step ==4)
     {
       capture();
+      $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+
     }
     updateUI()
   }
