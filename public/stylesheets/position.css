@@ -2,36 +2,36 @@
 @media screen and (max-width:1024px)
 {
 
-/*    index container*/
-    #index_container
-    {
+  /*    index container*/
+  #index_container
+  {
     width: 100vw;
-        height: 100vh;
-        margin: 0px auto;
-        padding: 1vw;
-        border: 1px white;
-    
-    }
-    #idx1
-    {
-    
-        border: 1px solid white;
-        width: 100vw;
-        margin-bottom: 3vh;
-        height: 6vh;
-    }
-    #idx2
-    {
-        width: 100vw;
-        margin-bottom: 4vh;
-        margin-top: 2vh;
-        float: left;
-        border: 1px solid white;
-        height: 60vh;
+    height: 100vh;
+    margin: 0px auto;
+    padding: 1vw;
+    border: 1px white;
 
-    }
-    
-    
+  }
+  #idx1
+  {
+
+    border: 1px solid white;
+    width: 100vw;
+    margin-bottom: 3vh;
+    height: 6vh;
+  }
+  #idx2
+  {
+    width: 100vw;
+    margin-bottom: 4vh;
+    margin-top: 2vh;
+    float: left;
+    border: 1px solid white;
+    height: 60vh;
+
+  }
+
+
   .rotate {
     margin-top: 4vh;
   }
@@ -55,8 +55,11 @@
   #backgroundMent
   {
     text-align: center;
-      margin-top: 8%;
-          font-size: 2em;
+
+     
+    margin-top: 8%;
+    font-size: 2em;
+
   }
   /*page1 background img slider*/
   #backgroundSlider
@@ -67,7 +70,7 @@
   .swiper-slide img
   {
     width: 100%;
-      height: 140%;
+    height: 140%;
   }
 
   .swiper-pagination
@@ -75,9 +78,9 @@
     position: relative;
     margin: 1vh auto 0 auto;
   }
-    .swiper-container{
-     text-align:center; height:95%;   
-    }
+  .swiper-container{
+    text-align:center; height:95%;   
+  }
 
 
   /*page1 background btn*/
@@ -111,7 +114,7 @@
   /*page2 style slider    */
   #styleList
   {
-    height: 10vh;
+    height: 14vh;
   }
   /*page2 txt block*/
   #txtblock
@@ -129,9 +132,9 @@
 
   #startBtn{
     margin-top: 15%;
-      margin-bottom: 15%;
+    margin-bottom: 15%;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2em;
     text-align: center;
   }
   #startBtn a{
@@ -146,7 +149,7 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-    font-size: 25px;
+    font-size: 2em;
     font-family: dovemayo;
     z-index: 5;
   }
@@ -183,27 +186,17 @@
     width: 100%;
     height: 100%;
   }
-/*  .something::after{
+
+  .something::after{
     display: block;
-    position: relative;
+    position: absolute;
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #727272 96%);
-    margin-top: -115%;
+    top: 0;
     height: 60%;
     width: 100%;
     content: '';
 
   }
-
-  .gradiation::after{
-    display: block;
-    position: relative;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #fff 100%);
-    margin-top: -150px;
-    height: 150px;
-    width: 100%;
-    content: '';
-  }
-*/
 
 
   #grip{
@@ -226,7 +219,7 @@
   }
   #progressMent
   {
-    font-size: 1em;    
+    font-size: 2em;    
   }
   #origin_image{
     height: 100%; 
@@ -259,7 +252,8 @@
   {
   margin-top: 3vh;
   font-size:2em;
-  height: 8vh;
+  height: 8vh;}
+
   }
   #txt {
     color: white;
@@ -278,15 +272,18 @@
     font-family: UhBee mysen;
 }
   img.styleImages{
+
   height: 100%;
   width: 19%;
+
   }
   #styleListMent
   {
     height: 2vh;
   }
-    margin-top:2vh;
+
 #txt {
+ margin-top:2vh;
     color: white;
     border-radius: 25px;
     width: 80%;
@@ -343,13 +340,14 @@ opacity: 0.9;
      }
 */
     div.gradient{
+
     position:absolute;
     width: 100%;
     height: 100%;
     top: 0;
     background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
 
-    }
+  }
 }
 
 
@@ -386,9 +384,10 @@ opacity: 0.9;
   }
   #uploadPhoto
   {
-  font-size : 40px;
-  padding-top : 40px;
-  font-size: 2em;
+    
+
+    padding-top : 40px;
+    font-size: 2em;
   }
 
   /*page1 background comment*/
@@ -398,7 +397,7 @@ opacity: 0.9;
     margin-top:14vh;
     width: 30vw;
     margin-left: 10vw;
-    font-size: 1.5em;
+    font-size: 2em;
     margin-bottom: 10vh;
 
   }
@@ -426,13 +425,13 @@ opacity: 0.9;
     margin-bottom: 2vh;
     width:10vw;
   }
-    
+
   /*page1 background btn*/
 
   #startBtn{
     margin: 6vh;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 2em;
     text-align: center;
   }
   #startBtn a{
@@ -445,6 +444,9 @@ opacity: 0.9;
   /*page1, page2 left,right arrow btn*/
   #arrow
   {
+
+
+
     margin-top:4vh;
     width:80vw;
 
@@ -453,10 +455,10 @@ opacity: 0.9;
   {
     width:5vw; 
     margin-bottom:4vh;
-
   }
   .r_arrow
   {
+<<<<<<< HEAD
     width:5vw; margin-bottom:4vh;
     /*
     height: 5vh; 
@@ -503,7 +505,7 @@ opacity: 0.9;
       left: 0;
       right: 0;
       margin: 0 auto;
-      font-size: 25px;
+      font-size: 2em;
       font-family: dovemayo;
       z-index: 5;
     }
@@ -586,7 +588,7 @@ opacity: 0.9;
     }
     #progressMent
     {
-      font-size: 1.5em;    
+      font-size: 2em;    
     }
     #origin_image
     {
@@ -639,6 +641,39 @@ opacity: 0.9;
     position:absolute;
     width: 100%;
     height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+  }
+  #card_style{
+    width: 30vw;
+    height: 30vw;
+    overflow: hidden;
+  }
+
+  #blurred_background{
+    overflow: hidden;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    filter: blur(3px);
+    object-position: center;
+    object-fit: cover;
+  }
+  .something
+  {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .something::after{
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #727272 96%);
     top: 0;
     background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
     }
@@ -648,4 +683,79 @@ opacity: 0.9;
       background-image: url("/images/pettern2.jpg");
     }*/
     }
+=======
+    height: 100%;
+    width: 100%;
+    content: '';
+
+  }
+
+  #grip{
+    width: 85%;
+    height: 100%;
+    position: absolute;
+    left:4vw;
+    top:5.5vh;
+  }
+
+  #front_img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+  }
+  #progressBar{
+    margin-top: 15vh;
+  }
+  #progressMent
+  {
+    font-size: 2em;    
+  }
+  #origin_image
+  {
+
+    height: 93%; width: 65% ; max-width: 1000px;
+    position: relative;
+    top:5.8vh;
+    left:1.8vw;
+    transform: rotate(-10deg);
+    width: 83%;
+    object-position: center;
+    object-fit: cover;
+  }
+
+  #index_btn
+  {
+    text-align: center;
+    margin:10vh auto;
+  }
+  #index_btn img
+  {
+    width:50%;
+  }
+  #stepBar img
+  {
+    width: 30%;
+    text-align: center;
+  }
+  div#bottomList{
+    width: 35%;
+    text-align: center;
+  }
+
+  #kakao
+  {
+    margin-left: -40%;
+    height: 10vh;
+
+  }
+  img.shareBut{
+    height: 10vh;
+    margin-top:-90%;
+    background-color:grey;
+    padding:2%;
+  }
+}
+>>>>>>> 2a8616cee7a238a393109248e2ededf32b8275e3
 
