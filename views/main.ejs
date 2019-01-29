@@ -54,8 +54,8 @@
           <!-- <img src="/images/download.png" style="background-color:gray; opacity: 0.5; z-index: 5"/> -->
 
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
-            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
-              <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
+            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
+              <img onload="offProgress()" id="origin_image" class="rotate" style="display: inline-block; pointer-events: none;" src="/images/emptyinside.png"/>
               <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
                   <img class="shareBut" id = "download" onclick="DownloadCard()" style="display: inline-block; position: absolute; float: left;" src="/images/download_logo.png"/>
                 <a id="kakao-link-btn" href="javascript:;">
@@ -303,6 +303,8 @@ $(document).ready(function(){
     if(filenameOb.value !='')
     {
       onProgress();
+      $(this).attr("opacity","0.1");
+      $(this).attr("filter","alpha(opacity=10)");
 
       var filename = filenameOb.value;
       var stylenum = $(this).attr("id");
