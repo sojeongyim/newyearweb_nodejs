@@ -16,9 +16,10 @@
         <!--  <h1  style="font-size:1em; margin-top:0;text-align: center;">style</h1> -->
       </div>
       <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
-        <%for(i=1;i<6;i++){%>   
-        <img id = "<%= i %>" class="styleImages" onclick="style_click(<%= i %>)" src="/images/thumbs/<%=i%>.jpg">
-        <% }%>
+        <%var list=["8","9","5","7","4"]%>
+        <%for(var i=0;i<list.length;i++){%>
+        <img id =<%= list[i]%> class="styleImages" onclick="style_click(<%=list[i]%>)" src="/images/thumbs/<%=i+1%>.jpg">
+        <%}%>
       </div>
 
       <div class="reactUI step3" id="uploadPhoto" style="display: none;">
@@ -96,6 +97,7 @@ var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
 var styleCheck = false;
+var list = ['8','9','5','7','4'];
 
 function check_file(){
 
@@ -122,9 +124,9 @@ function offProgress()
 {
   $("#progressBar").css("display", "none");
   if(cur_Step == 2){
-    for(var i=1;i<6;i++){
-     document.getElementById(i).style.opacity=1;  
-     document.getElementById(i).onclick= style_click;
+     for(var i=0;i<list.length;i++){
+     document.getElementById(list[i]).style.opacity=1;  
+     document.getElementById(list[i]).onclick= style_click;
     }
   }
 }
@@ -307,12 +309,12 @@ function style_click(Id){
       stylenum = Id;
     }      
     // console.log('attr ID: '+$(this).attr("id"));
-
-    for(var i=1;i<6;i++){
-       if(stylenum != i){
-      document.getElementById(i).style.opacity=0.5;  
+        
+    for(var i=0;i<list.length;i++){
+       if(stylenum != list[i]){
+      document.getElementById(list[i]).style.opacity=0.5;  
         }
-      document.getElementById(i).onclick= null;
+      document.getElementById(list[i]).onclick= null;
     }
 
     //console.log('Id:  '+Id);
@@ -363,15 +365,11 @@ $(document).ready(function(){
             function(img){
               var imgURI = img.toDataURL();
 
-                  $('#origin_image').attr("src",imgURI);
-                  $('#blurred_background').attr("src",imgURI);
-                  onProgress(); 
-
               $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
                   function(data,status){
                     
-                    //$('#origin_image').attr("src",imgURI);
-                    //$('#blurred_background').attr("src",imgURI);
+                    $('#origin_image').attr("src",imgURI);
+                    $('#blurred_background').attr("src",imgURI);
 
                     $('#filePath').val(newFilename);
                     kakaoimgName = newFilename;
