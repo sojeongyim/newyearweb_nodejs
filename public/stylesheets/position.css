@@ -111,7 +111,7 @@
   /*page2 style slider    */
   #styleList
   {
-    height: 13vh;
+    height: 16vh;
   }
   /*page2 txt block*/
   #txtblock
@@ -236,6 +236,7 @@
     #stepBar img
     {
         width: 100vw;
+        text-align: center;
     }
     #stepBar{
       margin:2vh auto;
@@ -266,7 +267,15 @@
   margin-top: 8vh;
   font-size:1.5em;
   }
-
+  img.styleImages{
+  height: 80%;
+  width: auto;
+  }
+  #styleListMent
+  {
+    height: 2vh;
+    margin-top:2vh;
+  }
 
 }
 
@@ -303,15 +312,18 @@
   {
   font-size : 40px;
   padding-top : 40px;
+  font-size: 2em;
   }
 
   /*page1 background comment*/
   #backgroundMent
   {
     text-align: center;
-    margin-top:8vh;
+    margin-top:14vh;
     width: 30vw;
     margin-left: 10vw;
+    font-size: 1.5em;
+    margin-bottom: 10vh;
 
   }
   #backgroundMent2
@@ -389,7 +401,7 @@
     }
     #styleList
     {
-      height: 14vh;    
+      height: 16vh;    
       width: 40%;
     }
     #txtblock
@@ -498,5 +510,15 @@
       width: 83%;
       object-position: center;
       object-fit: cover;
+    }
+
+    #index_btn
+    {
+      text-align: center;
+      margin:10vh auto;
+    }
+    #index_btn img
+    {
+      width:50%;
     }
   }
