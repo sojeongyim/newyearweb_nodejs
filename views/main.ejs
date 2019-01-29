@@ -303,12 +303,14 @@ function initKakao()
       if(filenameOb.value !='')
       {
         onProgress();
-        document.getElementById("1").style.opacity=0.1;
-        $(this).attr("opacity","0.1");
-        $(this).attr("filter","alpha(opacity=10)");
 
       var filename = filenameOb.value;
       var stylenum = $(this).attr("id");
+
+     // for(var i=1;i<6;i++){
+     // document.getElementById("1").style.opacity=0.1;  
+     // }
+      
 
       $('#filter_img').attr("src",$(this).attr("src"));
       $.post('/ajax/delete', {filename: filename });
