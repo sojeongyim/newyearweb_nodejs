@@ -183,11 +183,11 @@
     width: 100%;
     height: 100%;
   }
-  .something::after{
+/*  .something::after{
     display: block;
     position: relative;
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #727272 96%);
-    margin-top: -100%;
+    margin-top: -115%;
     height: 60%;
     width: 100%;
     content: '';
@@ -203,7 +203,7 @@
     width: 100%;
     content: '';
   }
-
+*/
 
 
   #grip{
@@ -281,6 +281,14 @@
     background: black;
     opacity: 0.4;
   }
+
+    div.gradient{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
+    }
 }
 
 
@@ -471,7 +479,7 @@
       width: 100%;
       height: 100%;
     }
-
+/*
     .something::after{
       display: block;
       position: relative;
@@ -480,10 +488,21 @@
       height: 100%;
       width: 100%;
       content: '';
+      }
+
+
+
+    .something::after{
+      display: block;
+      position: relative;
+      background-image: linear-gradient(to bottom, rgba(111,106,106) 0, #fff 100%);
+      margin-top: -58vh;
+      height: 130%;
+      width: 100%;
+      content: '';
 
     }
-
-
+    */
 
     #grip{
       width: 85%;
@@ -538,4 +557,12 @@
       width: 35%;
       text-align: center;
     }
-  }
+
+    div.gradient{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
+    }
+    }
