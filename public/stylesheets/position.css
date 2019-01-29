@@ -276,7 +276,18 @@
     height: 2vh;
     margin-top:2vh;
   }
+#txt {
 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    border: none;
+    text-align: center;
+      background: rgba(255,255,255,0.0);
+
+
+  }
 }
 
 
