@@ -108,6 +108,7 @@ function check_file(){
 
   if(http.status!=404){
     styleCheck = true;
+    $("img.r_arrow").attr('src', '/images/r_arrow.png');
     setTimeout("style_img_load()",1000);
     clearInterval(timerId); 
   }
