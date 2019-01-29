@@ -36,12 +36,14 @@
             <h1 id="progressMent"> 처리 중입니다. </h1>
             <div class="loader"></div>
           </div>
-          <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
-            <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
+
+          <!-- <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+            <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; position: absolute; height: 5vh; width: auto;" src="/images/download_logo.png"/>
             <a id="kakao-link-btn" href="javascript:;">
               <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
             </a>
-          </div>
+          </div> -->
+          
           <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
@@ -51,6 +53,12 @@
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px;">
               <img onload="offProgress()" id="origin_image" class="rotate" style="background-image: url('/images/grey.png'); background-size:100%;" >
+              <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+            <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; position: absolute; float: left;" src="/images/download_logo.png"/>
+            <a id="kakao-link-btn" href="javascript:;">
+              <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png" style="float: left;position: absolute;"/>
+            </a>
+          </div>
             </label>
               <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
               <input type="text" id="filePath" style="display: none;"/>
@@ -59,12 +67,12 @@
         </div>
       </center>
 
-      <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
+     <!--  <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
         <img class="shareBut" id = "download" onclick="capture2()" style="display: inline-block; height: 5vh; width: auto;" src="/images/download_logo.png"/>
         <a id="kakao-link-btn" href="javascript:;">
           <img  class="shareBut" id = "kakao" src="/images/kakao_logo.png"/>
         </a>
-      </div>
+      </div> -->
 
       <div id="stepBar" style="text-align: center;">
         <img id="s1" src="/images/1_3.png"  style="text-align: center; margin:0 auto;">

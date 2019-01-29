@@ -229,9 +229,11 @@
     font-size: 1em;    
   }
   #origin_image{
-    height: 100%; width: 100% ; max-width: 1000px;
+    height: 95%; width: 100% ; max-width: 1000px;
     object-position: center;
     object-fit: cover;
+    position:relative;
+    transform: rotate(-10deg);
   }
     #stepBar img
     {
@@ -281,6 +283,19 @@
     background: black;
     opacity: 0.4;
   }
+
+      #kakao
+    {
+      margin-left: -40%;
+      height: 10vh;
+
+    }
+    img.shareBut{
+      height: 10vh;
+      margin-top:-90%;
+      background-color:grey;
+       padding:2%;
+    }
 }
 
 
@@ -520,7 +535,7 @@
     #origin_image
     {
 
-      height: 100%; width: 65% ; max-width: 1000px;
+      height: 93%; width: 65% ; max-width: 1000px;
       position: relative;
       top:5.8vh;
       left:1.8vw;
@@ -547,5 +562,17 @@
     div#bottomList{
       width: 35%;
       text-align: center;
+    }
+    #kakao
+    {
+      margin-left: -40%;
+      height: 10vh;
+
+    }
+    img.shareBut{
+      height: 10vh;
+      margin-top:-90%;
+      background-color:grey;
+       padding:2%;
     }
   }
