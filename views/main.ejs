@@ -263,48 +263,49 @@ function initKakao()
     objectType: 'feed',
     content: {
       title: "설날 카드 만들기 '(OO)' 꿀!",
-      description: '#페인틀리 #설라로이드 #인싸',
-      imageUrl: 'http://paintly.me/final/'+final_filename,
-      link: {
-        mobileWebUrl: 'http://paintly.me/main/'+final_filename,
-        webUrl: 'http://paintly.me/main/'+final_filename
+        description: '#페인틀리 #설라로이드 #인싸',
+        imageUrl: 'http://paintly.me/final/'+final_filename,
+        link: {
+          mobileWebUrl: 'http://paintly.me/main/'+final_filename,
+          webUrl: 'http://paintly.me/main/'+final_filename
+        }
+      },
+      buttons: [
+      {
+        title: '카드 만들기',
+        link: {
+          mobileWebUrl: 'http://paintly.me',
+          webUrl: 'http://paintly.me'
+        }
       }
-    },
-    buttons: [
-    {
-      title: '카드 만들기',
-      link: {
-        mobileWebUrl: 'http://paintly.me',
-        webUrl: 'http://paintly.me'
-      }
-    }
-    ]
-  });
-}
-
-function genFileName() {
-  var text = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i <24; i++)
-  {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
+      ]
+    });
   }
 
-  return text;
-}
+  function genFileName() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-
-$(document).ready(function(){
-
-
-  $(".styleImages").click(function(){
-    var filenameOb = document.getElementById("filePath");
-    if(filenameOb.value !='')
+    for (var i = 0; i <24; i++)
     {
-      onProgress();
-      $(this).attr("opacity","0.1");
-      $(this).attr("filter","alpha(opacity=10)");
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    return text;
+  }
+
+
+  $(document).ready(function(){
+
+
+    $(".styleImages").click(function(){
+      var filenameOb = document.getElementById("filePath");
+      if(filenameOb.value !='')
+      {
+        onProgress();
+        document.getElementById("1").style.opacity=0.1;
+        $(this).attr("opacity","0.1");
+        $(this).attr("filter","alpha(opacity=10)");
 
       var filename = filenameOb.value;
       var stylenum = $(this).attr("id");

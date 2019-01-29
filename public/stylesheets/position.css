@@ -296,6 +296,37 @@
     background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
 
   }
+
+
+
+  div#resultBottom{
+position: relative; 
+height: 10vh; 
+margin-top: 5vh;
+  }
+  div#resultBottom img {
+height: 100%; 
+position: absolute; 
+left: 0; 
+top: 0; 
+background: grey; 
+opacity: 0.6;
+  }
+  div#resultBottom div {
+position: absolute; 
+right: 0; 
+height: 100%;
+background: grey; 
+opacity: 0.6;
+  }
+  div#resultBottom div a {
+ color: white;
+ position: relative;
+ top: 30%; 
+ font-size: 20px; 
+ transform: translateY(-50%);
+  }
+
 }
 
 
@@ -560,6 +591,33 @@
     margin-top:-90%;
     background-color:grey;
     padding:2%;
+  }
+  div#resultBottom{
+position: relative; 
+height: 10vh; 
+margin-top: 5vh;
+  }
+  div#resultBottom img {
+height: 100%; 
+position: absolute; 
+left: 0; 
+top: 0; 
+background: grey; 
+opacity: 0.6;
+  }
+  div#resultBottom div {
+position: absolute; 
+right: 0; 
+height: 100%;
+background: grey; 
+opacity: 0.6;
+  }
+  div#resultBottom div a {
+ color: white;
+ position: relative;
+ top: 30%; 
+ font-size: 30px; 
+ transform: translateY(-50%);
   }
 }
 
