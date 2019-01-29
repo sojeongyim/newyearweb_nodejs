@@ -764,12 +764,13 @@
     margin-top: 5vh;
   }
   div#resultBottom img {
-    height: 100%; 
     position: absolute; 
     left: 5%; 
+    height: 100%; 
     top: 0; 
     background: grey; 
     opacity: 0.6;
+    padding: 10px;
   }
   div#resultBottom div {
     position: absolute; 
@@ -777,6 +778,7 @@
     height: 100%;
     background: grey; 
     opacity: 0.6;
+    padding: 10px;
   }
   div#resultBottom div a {
     color: white;
