@@ -39,24 +39,6 @@
             <!-- <h1 id="progressMent"> 처리 중입니다. </h1> -->
             <div class="loader"></div>
           </div>
-
-
-          
-          <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
-          <div class="something">
-            <img id="blurred_background" style="background-color:lightgray;">
-          </div>
-          <img id="grip" class="rotate"  src ="/images/grip.png">
-
-
-
-
-
-
-
-
-
-
           <input class="reactUI step3" style="display: none;" id="txt" type="text" autofocus maxlength="20" placeholder="20자 이내로 입력" >
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
@@ -80,7 +62,7 @@
       </center>
       <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
             
-              <div class="shareBut" id = "download" onclick="capture2()">
+              <div class="shareBut" id = "download" onclick="DownloadCard()">
                 <img src="/images/download_logo.png" style="float: left;"/>
               </div>
               <div id="kakao-link-btn">
@@ -121,29 +103,12 @@
           <img class="resetBut" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/arrow6.png" >
       </div>
 
-        <div id="bottomList">
-          <!-- message write-->
-          <!--   <img class="l_arrow1" align="left" style="  height: 5vh; width: auto; display: none;" src = "/images/arrow1.png"> 
-            <img class="l_arrow2" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow2.png"> 
-            <img class="r_arrow4" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow4.png" >
-            <img class="r_arrow3" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow3.png" >
-            <img class="r_arrow10" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow10.png" >
-            <img class="r_arrow9" align="right" style="height: 5vh; width: auto;display: none;" src = "/images/arrow9.png" >
-            <img class="l_arrow5" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow5.png"> 
-            <img class="l_arrow6" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/arrow6.png"> 
-          -->
-            <img class="l_arrow" align="left" style="  height: 5vh; width: auto;display: none;" src = "/images/l_arrow_empty.png"> 
-            <img class="r_arrow" align="right" style="height: 5vh; width: auto; display:none; " src = "/images/r_arrow_empty.png" >
-        </div>
-
-
             <script>
 var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
 
 function check_file(){
-  console.log('call check_file()');
 
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
@@ -169,7 +134,6 @@ function offProgress()
 }
 
 function style_img_load(){
-  console.log('load function exe after waitimg 1sec');
   $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
 }
 
@@ -267,7 +231,6 @@ function prevStep(){
 function saveToServer(uri, filename)
 {
   filename = filename.split('.')[0];
-  //console.log("saveToServer/filename: "+filename);
   $.post('/ajax/result', {imgURL: uri, imgName: filename });
 }
 
@@ -275,8 +238,6 @@ function DownloadCard(){
   var link = document.createElement('a');
   var filename = $('#filePath').val().split('.')[0]+".png";
   var uagent = navigator.userAgent.toLowerCase();
-  console.log('iphone test');
-  console.log(uagent);
 
     link.href = "/final/"+filename;
     link.download = filename;
@@ -341,7 +302,10 @@ function initKakao()
 
       var filename = filenameOb.value;
       var stylenum = $(this).attr("id");
-      $('#1').prop('disabled', true);
+      
+      document.getElementById("1").disabled = true;
+     // $('#1').prop('disabled', true);
+
 
      // for(var i=1;i<6;i++){
      // document.getElementById("1").style.opacity=0.1;  
@@ -419,7 +383,6 @@ function initKakao()
     $("h4#second_line").text($("input#second").val());
     $("#myModal").css('display','none');
   });
-});
 
   // Upload Files
 
@@ -428,7 +391,6 @@ function initKakao()
     onProgress();
     var filename=$('#fileInput').val();
     var file, img;
-    console.log("changed");
 
     if ((file = this.files[0])) {
       if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
@@ -438,17 +400,13 @@ function initKakao()
         loadImage(
             file,
             function(img){
-              console.log('orientation');
               var imgURI = img.toDataURL();
-              console.log(imgURI);
 
 
               $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
                   function(data,status){
-                    console.log('upload complete');
                     $('#origin_image').attr("src",imgURI);
                     $('#blurred_background').attr("src",imgURI);
-                    console.log(newFilename);
 
                     $('#filePath').val(newFilename);
                     kakaoimgName = newFilename;

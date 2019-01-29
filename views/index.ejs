@@ -7,50 +7,38 @@
   </head>
 
   <body id=background>
-        <div id="index_container">
-            <div id="idx1">
-                <h1 id="backgroundMent">설날 폴라로이드 만들기</h1>
-            </div>
-            
-        
-        <div id="idx2">
-          <div class="swiper-container" style="text-align:center; height:95%;"> 
-            <div class="swiper-wrapper" > 
-              <% for(var i =1; i<8; i++) { %>
-              <div class="swiper-slide" >
-                <img src="./images/sample<%=i%>.jpg" >
-              </div> 
-            <% } %>
+    <div id="index_container">
+      <div id="idx1">
+        <h1 id="backgroundMent">설날 폴라로이드 만들기</h1>
+      </div>
+
+
+      <div id="idx2">
+        <div class="swiper-container" style="text-align:center; height:95%;"> 
+          <div class="swiper-wrapper" > 
+            <% for(var i =1; i<8; i++) { %>
+            <div class="swiper-slide" >
+              <img src="./images/sample<%=i%>.jpg" >
             </div> 
-          </div>
-          
-          <div class="swiper-pagination"></div>
-        
+              <% } %>
+          </div> 
         </div>
 
-        <div id="idx1">
-                
-          <div id="index_btn" style="text-align: center;">
-            <a href="main">
-              <img src="./images/index_btn.png" style="text-align: center;">
-            </a>
+        <div class="swiper-pagination"></div>
+
+      </div>
+
+      <div id="idx1">
+
+        <div id="index_btn" style="text-align: center;">
+          <a href="main">
+            <img src="./images/index_btn.png" style="text-align: center;">
+          </a>
         </div>    
-            </div>
-        
-        </div>
+      </div>
 
-       
-
-
-
-
-
-
-
-
-  </body>
-
-  <script>
+    </div>
+    <script>
 $(".main").onepage_scroll({
 
   loop: false,
@@ -75,5 +63,6 @@ var swiper = new Swiper('.swiper-container', {
 $(document).ready(function(){
 
 })
-  </script>
+    </script>
+  </body>
 </html>

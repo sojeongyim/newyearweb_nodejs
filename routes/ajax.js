@@ -12,7 +12,6 @@ router.post('/upload', function(req, res)
     var dataURI=req.body.imgURL;
     var imgName=req.body.imgName;
     var filePath = './temp/' + imgName;
-    console.log(filePath);
 
     imageDataURI.outputFile(dataURI, filePath).then(res => console.log(res));
 
@@ -28,7 +27,6 @@ router.post('/style', function(req, res)
 
     connection.query('INSERT INTO image VALUES(?,?,?)',[filename,stylenum,0],function(err, rows, fields){
       if (!err){
-        console.log('The solution is: ', rows);
         var answer={'result': 'ok'};
         res.json(answer);
 
@@ -56,11 +54,9 @@ router.post('/delete', function(req, res, next)
     var filename=req.body.filename;
     var filepath= './public/images/Result/';
     filepath = filepath + filename;
-    console.log(filepath);
 
     fs.access(filepath, error => {
       if (!error) {
-      console.log("It is in something");
         fs.unlink(filepath,function(error){
           console.log(error);
         });
