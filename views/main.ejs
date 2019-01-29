@@ -109,8 +109,9 @@ $(document).ready(function(){
     var filenameOb = document.getElementById("filePath");
     if(filenameOb.value !='')
     {
+  $(".styleImages").unbind('click');
       onProgress();
-      //click_disable();
+      
       var filename = filenameOb.value;
       var stylenum = $(this).attr("id");
 
@@ -204,16 +205,21 @@ $('#fileInput').on('change', function (){
             var imgURI = img.toDataURL();
             console.log(imgURI);
 
-            $('#origin_image').attr("src",imgURI);
-            $('#blurred_background').attr("src",imgURI);
-            console.log(newFilename);
-
             $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
                 function(data,status){
                   console.log('upload complete');
+                  $('#origin_image').attr("src",imgURI);
+                  $('#blurred_background').attr("src",imgURI);
+                  console.log(newFilename);
+
                   $('#filePath').val(newFilename);
                   kakaoimgName = newFilename;
                   offProgress();   
+
+                  cur_Step = cur_Step +1;
+                  updateUI();
+                  $("#bottomList").css('display','block');
+
                 });
           },
           {
@@ -224,11 +230,14 @@ $('#fileInput').on('change', function (){
     {
       alert("사진을 업로드 해 주세요.");
     }
-    cur_Step = cur_Step +1;
-    updateUI();
-    $("#bottomList").css('display','block');
   }
 });
+
+function click_disable(){
+  $(".styleImages").click(false);
+
+}
+
 
 function check_file(){
   var filenameOb = document.getElementById("filePath");
@@ -239,6 +248,8 @@ function check_file(){
   http.send();
 
   if(http.status!=404){
+    console.log("result->fimename: "+ $('#filePath').val());
+    clearInterval(timerId); 
     setTimeout("style_img_load()",1000);
   }
 }
@@ -246,9 +257,7 @@ function check_file(){
 function style_img_load(){
   console.log('load function exe after waitimg 1sec');
   $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
-  console.log("result->fimename: "+ $('#filePath').val());
-  clearInterval(timerId); 
-}
+  }
 
 function dataInit(){
   $('#origin_image').attr("src","/images/emptyinside.png");
