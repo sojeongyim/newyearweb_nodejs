@@ -760,6 +760,42 @@ div.gradient{
 margin-left: -40%;
 height: 10vh;
 
+  }
+  img.shareBut{
+    height: 10vh;
+    margin-top:-90%;
+    background-color:grey;
+    padding:2%;
+  }*/
+  div#resultBottom{
+    position: relative; 
+    height: 10vh; 
+    margin-top: 5vh;
+  }
+  div#resultBottom img {
+    position: absolute; 
+    left: 5%; 
+    height: 100%; 
+    top: 0; 
+    background: grey; 
+    opacity: 0.6;
+    padding: 10px;
+  }
+  div#resultBottom div {
+    position: absolute; 
+    right: 5%; 
+    height: 100%;
+    background: grey; 
+    opacity: 0.6;
+    padding: 10px;
+  }
+  div#resultBottom div a {
+    color: white;
+    position: relative;
+    top: 30%; 
+    font-size: 30px; 
+    transform: translateY(-50%);
+  }
 }
 img.shareBut{
 height: 10vh;
