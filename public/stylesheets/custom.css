@@ -9,7 +9,9 @@
 
 /* mainBackground */
 #card_style {box-shadow:none}
-#fileForm {top:20%;left:21%;width:55%;height:49%}
+#grip {z-index:11}
+#hiddenBox {position:absolute;top:20%;left:21%;z-index:10;width:55%;height:50%;background-color:#ff0}
+#fileForm {top:20%;left:21%;width:56%;height:51%}
 
 /* nav */
 div#bottomList {position:relative;width:95%}
