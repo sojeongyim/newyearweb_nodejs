@@ -125,6 +125,10 @@ function offProgress()
 function style_img_load(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
+
+	var num = Math.random();
+	filename = filename+"?v=" + num;
+
   $('#origin_image').attr("src","/images/Result/"+filename);
 }
 
