@@ -1,0 +1,34 @@
+/* 희정_190130 */
+
+/* viewing-page-1 */
+#index_container,
+#idx1,
+#idx2,
+#idx3 {padding:0;border:0 none}
+#idx2 {height:auto}
+
+/* mainBackground */
+#card_style {box-shadow:none}
+#fileForm {top:20%;left:21%;width:55%;height:49%}
+
+/* nav */
+div#bottomList {position:relative;width:95%}
+.btn_nav,
+.btn_nav img {width:auto;height:5vh}
+.btn_nav_l,
+.btn_nav_r {position:absolute;top:0;}
+.btn_nav_l {left:0;}
+.btn_nav_r {right:0}
+.btn_nav span {display:none}
+
+#styleList {display:flex;height:auto;justify-content:space-between}
+
+
+
+@media screen and (min-width: 768px) {
+  #idx1 {font-size:2rem}
+}
+
+@media screen and (min-width: 320px) {
+  #idx1 {margin-bottom:1vh;font-size:1.5rem}
+}
