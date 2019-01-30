@@ -388,9 +388,26 @@ div#resultBottom div a {
 /*desktop*/
 @media screen and (min-width:1025px)
 {
+
+#index_container
+  {
+  width: 30%;
+    height: 85%;
+    background: #fff;
+   margin:0 auto;
+  }
+  #background
+  {
+   margin:3% auto;
+    background: white;
+  }
+
+
+
+
   #download{
     margin-top:-25%;
-    margin-left: 35%;
+    margin-left: 40%;
     /*height: 30%;*/
     /*margin-right: 10%;*/
     position: absolute;
@@ -398,6 +415,8 @@ div#resultBottom div a {
     padding: 4%;
     opacity: 0.9;
   }
+
+
   #download img
   {
     height: 3vh;
@@ -463,19 +482,9 @@ div#resultBottom div a {
     opacity: 0.4;
   }
 
-  #background
-  {
-    background-size:50% 100%;
-    background-repeat: no-repeat;
-    background-position: 50%;   
-    width: 50%;
-    /*    margin-left: 25%;*/
-    margin:0 auto;
-  }
+
   #uploadPhoto
   {
-
-
     padding-top : 2vh;
     font-size: 2em;
     height:8vh;
@@ -485,11 +494,8 @@ div#resultBottom div a {
   #backgroundMent
   {
     text-align: center;
-    margin-top:2vh;
-    width: 30vw;
-    margin-left: 10vw;
-    font-size: 2em;
-    margin-bottom: 2vh;
+    font-size:3em;
+    margin:2% auto;
 
   }
   #backgroundMent2
@@ -504,17 +510,15 @@ div#resultBottom div a {
   }
   .swiper-slide img
   {
-    width: 25vw;    
+    width: 100%;    
   }
   .swiper-slide{
     margin:0px;
   }
   .swiper-pagination
   {
-    margin-left: 20vw;
-    margin-top:1vh;
-    margin-bottom: 2vh;
-    width:10vw;
+    width:10%;
+    transform: translate3d(100%,0,0);
   }
 
   /*page1 background btn*/
@@ -630,15 +634,6 @@ div#resultBottom div a {
     object-fit: cover;
   }
 
-  #index_btn
-  {
-    text-align: center;
-    margin:10vh auto;
-  }
-  #index_btn img
-  {
-    width:50%;
-  }
   #stepBar img
   {
     width: 30%;
@@ -745,10 +740,20 @@ div.gradient{
   width:50%;
 }
 
-div#bottomList{
-  width: 35%;
-  text-align: center;
-}
+  #index_btn
+  {
+    text-align: center;
+    margin:7% auto;
+  }
+  #index_btn img
+  {
+    width:100%;
+  }
+  
+  div#bottomList{
+    width: 35%;
+    text-align: center;
+  }
 
 /*#kakao
 {
