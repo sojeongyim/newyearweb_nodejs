@@ -1,0 +1,38 @@
+/* 희정_190130 */
+
+/* viewing-page-1 */
+#index_container,
+#idx1,
+#idx2,
+#idx3 {padding:0;border:0 none}
+#idx2 {height:auto}
+
+/* mainBackground */
+#card_style {box-shadow:none}
+#grip {z-index:11}
+#hiddenBox {position:absolute;top:20%;left:21%;z-index:12;width:55%;height:50%;background-color:transparent}
+#fileForm {top:19%;left:20%;width:57%;height:52%}
+
+/* nav_하단버튼 글자 */
+div#bottomList {position:relative;width:95%}
+.btn_nav,
+.btn_nav img {width:auto;height:5vh}
+.btn_nav_l,
+.btn_nav_r {position:absolute;top:0}
+.btn_nav_l {left:0}
+.btn_nav_r {right:0}
+.btn_nav span {/*display:inline-block;*/display:none;width:150px;font-size:13px;line-height:18px;font-family:NanumGothic,'Nanum Gothic',HelveticaNeue,Arial,sans-serif}
+.btn_nav_l span {padding-left:6px;text-align:left}
+.btn_nav_r span {padding-right:6px;text-align:right}
+
+#styleList {display:flex;height:auto;justify-content:space-between}
+.something::after {background-image:linear-gradient(to top, transparent 0, #000 96%);mix-blend-mode:multiply}
+
+
+@media screen and (min-width: 768px) {
+  #idx1 {font-size:2rem}
+}
+
+@media screen and (min-width: 320px) {
+  #idx1 {margin-bottom:1vh;font-size:1.5rem}
+}

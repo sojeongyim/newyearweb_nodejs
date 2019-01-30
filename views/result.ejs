@@ -29,12 +29,12 @@ function DownloadCard(){
   var link = document.createElement('a');
   var filename = '<%= filename %>';  
   var uagent = navigator.userAgent.toLowerCase();
-
   link.href = "/final/"+filename;
   link.download = filename;
   link.click();
+
   if (uagent.search("iphone") > -1){
-    window.location.href="/final/"+filename;
+    window.location.href="/main/final/"+filename;
   }
 }
   </script>
