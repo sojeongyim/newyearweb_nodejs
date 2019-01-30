@@ -572,9 +572,13 @@ div#resultBottom div a {
     margin-top: 4vh;
     width: 30vw;
   }
+  #styleList
+  {
+    height: 15%;
+  }
   #styleList img
   {
-    width: 19%;
+    width: 15%;
     height: 100%;
   }
   #txtblock
@@ -641,8 +645,9 @@ div#resultBottom div a {
 
   #stepBar img
   {
-    width: 100%;
+    width: 30%;
     text-align: center;
+
   }
   div#bottomList{
     width: 35%;
