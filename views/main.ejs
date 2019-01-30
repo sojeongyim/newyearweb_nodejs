@@ -113,7 +113,7 @@ function offProgress()
 }
 
 function style_img_load(){
-  $('#origin_image').attr("src","/images/Result/"+$('#filePath').val());
+  $('#origin_image').attr("src","/images/grey.png");
 }
 
 
@@ -137,6 +137,8 @@ function updateUI()
   }
   switch(cur_Step){
     case 1:
+      $('#origin_image').attr("src","/images/grey.png");
+      $('#blurred_background').attr("src","");
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
       $('#fileInput').prop('disabled', false);
@@ -178,7 +180,7 @@ function updateUI()
 
 function chkImgUpload()
 {
-  if($('#origin_image').attr("src").indexOf('empty')!=-1)
+  if($('#origin_image').attr("src").indexOf('grey')!=-1)
   {
     alert("사진을 선택 해주세요.");
     return false;
