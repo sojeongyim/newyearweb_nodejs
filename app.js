@@ -24,7 +24,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-app.use(bodyParser({limit: '10mb'}));
+app.use(bodyParser({limit: '30mb'}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

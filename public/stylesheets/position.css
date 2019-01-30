@@ -290,7 +290,7 @@
     position: absolute;
     background: grey;
     padding: 4%;
-    opacity: 0.9;
+    opacity: 0.7;
   }
   #download img
   {
@@ -306,7 +306,7 @@
     margin-right: 10%;
     background: grey;
     padding: 4%;
-    opacity: 0.9;
+    opacity: 0.7;
     height: 18vh;
   width: 26vw;
   }
@@ -475,19 +475,20 @@
   {
 
 
-    padding-top : 40px;
+    padding-top : 2vh;
     font-size: 2em;
+    height:8vh;
   }
 
   /*page1 background comment*/
   #backgroundMent
   {
     text-align: center;
-    margin-top:10vh;
+    margin-top:2vh;
     width: 30vw;
     margin-left: 10vw;
     font-size: 2em;
-    margin-bottom: 10vh;
+    margin-bottom: 2vh;
 
   }
   #backgroundMent2
@@ -562,11 +563,9 @@
     margin-top: 4vh;
     width: 30vw;
   }
-  #styleList
+  #styleList img
   {
-    height: 10vh;
-    margin-top: 3%;    
-    width: 40%;
+    width: 15%;
   }
   #txtblock
   {
@@ -576,7 +575,8 @@
   }
   #txt
   {
-    height: 11vh;
+    height: 7vh;
+    margin-top:5%;
     width: 30vw;
   }
   #blurred_background{
@@ -786,4 +786,5 @@
     transform: translateY(-50%);
   }
 }
+
 
