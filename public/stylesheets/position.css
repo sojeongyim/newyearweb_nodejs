@@ -400,13 +400,20 @@ div#resultBottom div a {
    margin:3% auto;
     background: white;
   }
+  #maincontainer
+  {
+  width: 30%;
+    height: 85%;
+    background: #fff;
+   margin:2% auto;
+  }
 
 
 
 
   #download{
     margin-top:-25%;
-    margin-left: 40%;
+    margin-left: 38%;
     /*height: 30%;*/
     /*margin-right: 10%;*/
     position: absolute;
@@ -425,9 +432,7 @@ div#resultBottom div a {
   #kakao
   {
     margin-top: -25%;
-    /*height: 18%;*/
-    /*margin-left: 10%;*/
-    margin-right: 10%;
+    margin-left:2%;
     background: grey;
     padding: 4%;
     opacity: 0.9;
@@ -484,8 +489,8 @@ div#resultBottom div a {
 
   #uploadPhoto
   {
-    padding-top : 2vh;
-    font-size: 2em;
+    margin:2% auto;
+    font-size: 3em;
     height:8vh;
   }
 
@@ -569,7 +574,8 @@ div#resultBottom div a {
   }
   #styleList img
   {
-    width: 15%;
+    width: 19%;
+    height: 100%;
   }
   #txtblock
   {
@@ -635,7 +641,7 @@ div#resultBottom div a {
 
   #stepBar img
   {
-    width: 30%;
+    width: 100%;
     text-align: center;
   }
   div#bottomList{
@@ -749,7 +755,7 @@ div.gradient{
   }
   
   div#bottomList{
-    width: 35%;
+    width: 100%;
     text-align: center;
   }
 
