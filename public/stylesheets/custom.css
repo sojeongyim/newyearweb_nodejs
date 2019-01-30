@@ -10,7 +10,7 @@
 /* mainBackground */
 #card_style {box-shadow:none}
 #grip {z-index:11}
-#hiddenBox {position:absolute;top:20%;left:21%;z-index:10;width:55%;height:50%;background-color:transparent}
+#hiddenBox {position:absolute;top:20%;left:21%;z-index:12;width:55%;height:50%;background-color:transparent}
 #fileForm {top:19%;left:20%;width:57%;height:52%}
 
 /* nav_하단버튼 글자 */

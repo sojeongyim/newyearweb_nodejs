@@ -13,7 +13,7 @@
     </div>
       <!--    style slider-->
       <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
-        <%var list=["8","9","5","7","4"]%>
+        <%var list=["11","9","5","10","4"]%>
         <%for(var i=0;i<list.length;i++){%>
         <img id =<%= list[i]%> class="styleImages" onclick="style_click(<%=list[i]%>)" src="/images/thumbs/<%=i+1%>.jpg">
         <%}%>
@@ -51,14 +51,12 @@
 
       </center>
       <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
-
-        <div class="shareBut" id = "download" onclick="DownloadCard()">
+        <div class="shareBut" id = "download" onclick="DownloadCard()" style="border-radius:10px;">
           <img src="/images/download.png" style="float: left;"/>
         </div>
-
         <div id="kakao-link-btn">
           <a href="javascript:;">
-            <img class="shareBut" id = "kakao"  style="position: absolute;" src="/images/kakao_logo.png"/>
+            <img class="shareBut" id = "kakao"  style="position: absolute; border-radius:10px;" src="/images/kakao_logo.png"/>
           </a>
         </div>
       </div>
@@ -85,12 +83,12 @@
           <img class="resetBut" align="right" style="display:none" src = "/images/arrow6.png" >
         </div>
       </div>
-        <script>
+      <script>
 var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
-var styleCheck = true;
-var list = ['8','9','5','7','4'];
+var styleCheck = false;
+var list = ['11','9','5','10','4'];
 
 function check_file(){
 
@@ -117,15 +115,21 @@ function offProgress()
 {
   $("#progressBar").css("display", "none");
   if(cur_Step == 2){
-     for(var i=0;i<list.length;i++){
-     document.getElementById(list[i]).style.opacity=1;  
-     document.getElementById(list[i]).onclick= style_click;
+    for(var i=0;i<list.length;i++){
+      document.getElementById(list[i]).style.opacity=1;  
+      document.getElementById(list[i]).onclick= style_click;
     }
   }
 }
 
 function style_img_load(){
-  $('#origin_image').attr("src","/images/grey.png");
+  var filenameOb = document.getElementById("filePath");
+  var filename = filenameOb.value;
+
+	var num = Math.random();
+	filename = filename+"?v=" + num;
+
+  $('#origin_image').attr("src","/images/Result/"+filename);
 }
 
 
@@ -149,6 +153,7 @@ function updateUI()
   }
   switch(cur_Step){
     case 1:
+      styleCheck=false;
       $('#origin_image').attr("src","/images/grey.png");
       $('#blurred_background').attr("src","");
       $("img.l_arrow").css('display','none');
@@ -183,6 +188,7 @@ function updateUI()
       initKakao();
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
+      $(".shareBut").css('z-index', '99');
       $(".resetBut").css('display','block');
       $('.step4').fadeIn();
       $('#fileInput').prop('disabled', true);
@@ -211,10 +217,14 @@ function nextStep(){
       cur_Step = cur_Step +1;
       if(cur_Step ==4)
       {
-        capture();
-        $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+
+      $("#txt").css('display', 'none');
+      $("#inImgTop p").text($("#txt").val());
+       capture();
+       $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+      }else{
+        updateUI()
       }
-      updateUI()
     }
   }
   else
@@ -224,7 +234,11 @@ function nextStep(){
 }
 
 function prevStep(){
-  if(cur_Step >1 )
+  if(cur_Step ==2 )
+  {
+    location.reload();
+  }
+  if(cur_Step >2 )
   {
     cur_Step = cur_Step -1;
     updateUI()
@@ -234,13 +248,17 @@ function prevStep(){
 function saveToServer(uri, filename)
 {
   filename = filename.split('.')[0];
-  $.post('/ajax/result', {imgURL: uri, imgName: filename });
+  $.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
+  updateUI(); 
+  }
+  );
 }
 
 function DownloadCard(){
   var link = document.createElement('a');
   var filename = $('#filePath').val().split('.')[0]+".png";
   var uagent = navigator.userAgent.toLowerCase();
+  console.log(uagent);
 
   link.href = "/final/"+filename;
   link.download = filename;
@@ -248,7 +266,7 @@ function DownloadCard(){
   if (uagent.search("iphone") > -1){
     console.log('iphone');
     console.log(uagent);
-    window.location.href="/final/"+filename;
+    window.location.href="/main/final/"+filename;
   }
 }
 
@@ -305,15 +323,15 @@ function style_click(Id){
     var filename = filenameOb.value;
     var stylenum = $(this).attr("id");
 
-    if(stylenum ==undefined){
+    if(stylenum == undefined){
       stylenum = Id;
     }      
     // console.log('attr ID: '+$(this).attr("id"));
-        
+
     for(var i=0;i<list.length;i++){
-       if(stylenum != list[i]){
-      document.getElementById(list[i]).style.opacity=0.5;  
-        }
+      if(stylenum != list[i]){
+        document.getElementById(list[i]).style.opacity=0.5;  
+      }
       document.getElementById(list[i]).onclick= null;
     }
 
@@ -332,8 +350,12 @@ function style_click(Id){
 
 $(document).ready(function(){
 
+
   $(".resetBut").click(function(){
     location.reload();
+  });
+  $("#hiddenBox").click(function(){
+    $("#fileInput").click();
   });
 
   $("img.r_arrow").click(function(){
@@ -361,7 +383,7 @@ $(document).ready(function(){
 
               $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
                   function(data,status){
-                    
+
                     $('#origin_image').attr("src",imgURI);
                     $('#blurred_background').attr("src",imgURI);
 
@@ -373,7 +395,7 @@ $(document).ready(function(){
                     updateUI();
                     $("#bottomList").css('display','block');
 
-                  }).fail(function(error){
+                  }).fail(function(xhr, status, error ){
                 alert("파일을 확인 해 주세요.");
                 location.reload();
               });
@@ -389,6 +411,6 @@ $(document).ready(function(){
     }
   });
 });  
-        </script> 
+      </script> 
   </body>
 </html>

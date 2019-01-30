@@ -14,10 +14,8 @@
         </center>
       </div>
       <div id="resultBottom" style="">
-        <img onclick="DownloadCard()" style=" "src="/images/download.png"/> 
-        <div>
-          <a href="/main">설날 폴라로이드 만들기</a>
-        </div>
+        <img class="down" onclick="DownloadCard()" style=" "src="/images/download2.png"/> 
+        <img class="start" onclick="DownloadCard()" style=" "src="/images/next2.png"/> 
       </div>
     </div>
   </body>
@@ -29,12 +27,12 @@ function DownloadCard(){
   var link = document.createElement('a');
   var filename = '<%= filename %>';  
   var uagent = navigator.userAgent.toLowerCase();
-
   link.href = "/final/"+filename;
   link.download = filename;
   link.click();
+
   if (uagent.search("iphone") > -1){
-    window.location.href="/final/"+filename;
+    window.location.href="/main/final/"+filename;
   }
 }
   </script>
