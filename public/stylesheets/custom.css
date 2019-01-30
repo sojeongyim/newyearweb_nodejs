@@ -26,7 +26,7 @@ div#bottomList {position:relative;width:95%}
 .btn_nav_r span {padding-right:6px;text-align:right}
 
 #styleList {display:flex;height:auto;justify-content:space-between}
-
+.something::after {background-image:linear-gradient(to top, transparent 0, #000 96%);mix-blend-mode:multiply}
 
 
 @media screen and (min-width: 768px) {
