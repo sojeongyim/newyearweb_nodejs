@@ -400,6 +400,13 @@
    margin:3% auto;
     background: white;
   }
+  #maincontainer
+  {
+  width: 30%;
+    height: 85%;
+    background: #fff;
+   margin:2% auto;
+  }
 
 
 
@@ -425,8 +432,6 @@
   #kakao
   {
     margin-top: -25%;
-    /*height: 18%;*/
-    /*margin-left: 10%;*/
     margin-right: 10%;
     background: grey;
     padding: 4%;
@@ -484,8 +489,8 @@
 
   #uploadPhoto
   {
-    padding-top : 2vh;
-    font-size: 2em;
+    margin:2% auto;
+    font-size: 3em;
     height:8vh;
   }
 
@@ -569,7 +574,8 @@
   }
   #styleList img
   {
-    width: 15%;
+    width: 19%;
+    height: 100%;
   }
   #txtblock
   {
@@ -635,7 +641,7 @@
 
   #stepBar img
   {
-    width: 30%;
+    width: 100%;
     text-align: center;
   }
   div#bottomList{
@@ -737,7 +743,7 @@
   }
   
   div#bottomList{
-    width: 35%;
+    width: 100%;
     text-align: center;
   }
 
