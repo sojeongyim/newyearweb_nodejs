@@ -333,28 +333,23 @@ div#resultBottom{
   height: 10vh; 
   margin-top: 5vh;
 }
-div#resultBottom img {
-  height: 100%; 
+div#resultBottom .down {
+  height: 60%; 
   position: absolute; 
   left: 5%; 
   top: 0; 
   background: grey; 
   opacity: 0.6;
 }
-div#resultBottom div {
+div#resultBottom .start {
+  height: 60%; 
   position: absolute; 
   right: 5%; 
-  height: 100%;
+  top: 0; 
   background: grey; 
   opacity: 0.6;
 }
-div#resultBottom div a {
-  color: white;
-  position: relative;
-  top: 30%; 
-  font-size: 20px; 
-  transform: translateY(-50%);
-}
+
 #progressBar {
   margin-top: 15vh;
   position: absolute;
@@ -654,100 +649,86 @@ div#resultBottom div a {
     text-align: center;
   }
 
-  /*#kakao
+  div.gradient{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 5;
+  }
+
+  #blurred_background{
+    overflow: hidden;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    bottom:0;
+    right:0;
+    filter: blur(3px);
+    object-position: center;
+    object-fit: cover;
+  }
+  .something
   {
-  margin-left: -40%;
-  height: 10vh;
 
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
-  img.shareBut{
-  height: 10vh;
-  margin-top:-90%;
-  background-color:grey;
-  padding:2%;
+
+  .something::after{
+    display: block;
+    position: absolute;
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, black 96%);
+    top: 0;
+    height: 60%;
+    width: 100%;
+    content: '';
   }
-   */
 
-div.gradient{
-  position:absolute;
-  width: 100%;
-  height: 100%;
-  left: 0px;
-  top: 0px;
-  z-index: 5;
-}
+  #grip{
+    width: 85%;
+    height: 100%;
+    position: absolute;
+    left:4vw;
+    top:5.5vh;
+  }
 
-#blurred_background{
-  overflow: hidden;
-  width:100%;
-  height:100%;
-  left:0;
-  top:0;
-  bottom:0;
-  right:0;
-  filter: blur(3px);
-  object-position: center;
-  object-fit: cover;
-}
-.something
-{
+  #front_img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left:0;
+    top:0;
+  }
+  #progressMent
+  {
+    font-size: 2em;    
+  }
+  #origin_image
+  {
 
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
+    height: 93%; width: 65% ; max-width: 1000px;
+    position: relative;
+    top:5.8vh;
+    left:1.8vw;
+    transform: rotate(-10deg);
+    width: 83%;
+    object-position: center;
+    object-fit: cover;
+  }
 
-.something::after{
-  display: block;
-  position: absolute;
-  background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, black 96%);
-  top: 0;
-  height: 60%;
-  width: 100%;
-  content: '';
-}
-
-#grip{
-  width: 85%;
-  height: 100%;
-  position: absolute;
-  left:4vw;
-  top:5.5vh;
-}
-
-#front_img{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left:0;
-  top:0;
-}
-#progressMent
-{
-  font-size: 2em;    
-}
-#origin_image
-{
-
-  height: 93%; width: 65% ; max-width: 1000px;
-  position: relative;
-  top:5.8vh;
-  left:1.8vw;
-  transform: rotate(-10deg);
-  width: 83%;
-  object-position: center;
-  object-fit: cover;
-}
-
-#index_btn
-{
-  text-align: center;
-  margin:10vh auto;
-}
-#index_btn img
-{
-  width:50%;
-}
+  #index_btn
+  {
+    text-align: center;
+    margin:10vh auto;
+  }
+  #index_btn img
+  {
+    width:50%;
+  }
 
   #index_btn
   {
@@ -758,87 +739,44 @@ div.gradient{
   {
     width:100%;
   }
-  
+
   div#bottomList{
     width: 100%;
     text-align: center;
   }
-
-/*#kakao
-{
-margin-left: -40%;
-height: 10vh;
-
-  }
-  img.shareBut{
-    height: 10vh;
-    margin-top:-90%;
-    background-color:grey;
-    padding:2%;
-  }*/
   div#resultBottom{
     position: relative; 
     height: 10vh; 
     margin-top: 5vh;
   }
-  div#resultBottom img {
+  div#resultBottom .down {
     position: absolute; 
     left: 5%; 
-    height: 100%; 
+    height: 60%; 
     top: 0; 
     background: grey; 
     opacity: 0.6;
-    padding: 10px;
   }
-  div#resultBottom div {
+  div#resultBottom .start {
     position: absolute; 
     right: 5%; 
-    height: 100%;
+    height: 60%; 
+    top: 0; 
     background: grey; 
     opacity: 0.6;
-    padding: 10px;
   }
-  div#resultBottom div a {
-    color: white;
-    position: relative;
-    top: 30%; 
-    font-size: 30px; 
-    transform: translateY(-50%);
+
+  img.shareBut{
+    height: 10vh;
+    margin-top:-90%;
+    background-color:grey;
+    padding:2%;
   }
-}
-img.shareBut{
-height: 10vh;
-margin-top:-90%;
-background-color:grey;
-padding:2%;
-}*/
-div#resultBottom{
-position: relative; 
-height: 10vh; 
-margin-top: 5vh;
-}
-div#resultBottom img {
-height: 100%; 
-position: absolute; 
-left: 5%; 
-top: 0; 
-background: grey; 
-opacity: 0.6;
-}
-div#resultBottom div {
-position: absolute; 
-right: 5%; 
-height: 100%;
-background: grey; 
-opacity: 0.6;
-}
-div#resultBottom div a {
-color: white;
-position: relative;
-top: 30%; 
-font-size: 30px; 
-transform: translateY(-50%);
-}
+  div#resultBottom{
+    position: relative; 
+    height: 10vh; 
+    margin-top: 5vh;
+  }
 }
 
 
