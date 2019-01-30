@@ -13,15 +13,17 @@
 #hiddenBox {position:absolute;top:20%;left:21%;z-index:10;width:55%;height:50%;background-color:transparent}
 #fileForm {top:19%;left:20%;width:57%;height:52%}
 
-/* nav */
+/* nav_하단버튼 글자 */
 div#bottomList {position:relative;width:95%}
 .btn_nav,
 .btn_nav img {width:auto;height:5vh}
 .btn_nav_l,
-.btn_nav_r {position:absolute;top:0;}
-.btn_nav_l {left:0;}
+.btn_nav_r {position:absolute;top:0}
+.btn_nav_l {left:0}
 .btn_nav_r {right:0}
-.btn_nav span {display:none}
+.btn_nav span {/*display:inline-block;*/display:none;width:150px;font-size:13px;line-height:18px;font-family:NanumGothic,'Nanum Gothic',HelveticaNeue,Arial,sans-serif}
+.btn_nav_l span {padding-left:6px;text-align:left}
+.btn_nav_r span {padding-right:6px;text-align:right}
 
 #styleList {display:flex;height:auto;justify-content:space-between}
 
