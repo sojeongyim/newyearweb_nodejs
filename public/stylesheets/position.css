@@ -181,7 +181,6 @@
   }
   .something
   {
-    mix-blend-mode: exclusion;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -681,7 +680,6 @@ div.gradient{
 }
 .something
 {
-  mix-blend-mode: exclusion;
 
   position: absolute;
   width: 100%;
