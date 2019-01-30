@@ -26,8 +26,13 @@ div#bottomList {position:relative;width:95%}
 .btn_nav_r span {padding-right:6px;text-align:right}
 
 #styleList {display:flex;height:auto;justify-content:space-between}
-.something::after {background-image:linear-gradient(to top, transparent 0, #000 96%);mix-blend-mode:multiply}
+.something::after {background-image:linear-gradient(to top, transparent 0, rgba(0,0,0,.7) 96%);mix-blend-mode:multiply}
 
+
+
+/* #download {opacity:.85}
+#download img,
+#kakao {width:100px;height:100px} */
 
 @media screen and (min-width: 768px) {
   #idx1 {font-size:2rem}
