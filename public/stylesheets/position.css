@@ -413,7 +413,7 @@
 
   #download{
     margin-top:-25%;
-    margin-left: 40%;
+    margin-left: 38%;
     /*height: 30%;*/
     /*margin-right: 10%;*/
     position: absolute;
@@ -432,7 +432,7 @@
   #kakao
   {
     margin-top: -25%;
-    margin-right: 10%;
+    margin-left:2%;
     background: grey;
     padding: 4%;
     opacity: 0.9;
