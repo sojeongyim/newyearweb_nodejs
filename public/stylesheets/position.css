@@ -181,6 +181,7 @@
   }
   .something
   {
+    mix-blend-mode: exclusion;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -189,7 +190,7 @@
   .something::after{
     display: block;
     position: absolute;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #727272 96%);
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, black 96%);
     top: 0;
     height: 60%;
     width: 100%;
@@ -308,78 +309,78 @@
     padding: 4%;
     opacity: 0.7;
     height: 18vh;
-  width: 26vw;
+    width: 26vw;
   }
-/*  #kakao img
+  /*  #kakao img
   {
   height: 17vh;
   width: 25vw;
   }*/
 
-  div.gradient{
+div.gradient{
 
-    position:absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
 
-  }
-
-
-
-  div#resultBottom{
-    position: relative; 
-    height: 10vh; 
-    margin-top: 5vh;
-  }
-  div#resultBottom img {
-    height: 100%; 
-    position: absolute; 
-    left: 5%; 
-    top: 0; 
-    background: grey; 
-    opacity: 0.6;
-  }
-  div#resultBottom div {
-    position: absolute; 
-    right: 5%; 
-    height: 100%;
-    background: grey; 
-    opacity: 0.6;
-  }
-  div#resultBottom div a {
-    color: white;
-    position: relative;
-    top: 30%; 
-    font-size: 20px; 
-    transform: translateY(-50%);
-  }
-#progressBar {
-    margin-top: 15vh;
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    bottom: 0px;
-    margin: auto;
-    left: 0px;
-    z-index: 3;
 }
-  .loader
-  {
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #3498db;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
-    position: absolute;
-    margin: auto;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
-  }
+
+
+
+div#resultBottom{
+  position: relative; 
+  height: 10vh; 
+  margin-top: 5vh;
+}
+div#resultBottom img {
+  height: 100%; 
+  position: absolute; 
+  left: 5%; 
+  top: 0; 
+  background: grey; 
+  opacity: 0.6;
+}
+div#resultBottom div {
+  position: absolute; 
+  right: 5%; 
+  height: 100%;
+  background: grey; 
+  opacity: 0.6;
+}
+div#resultBottom div a {
+  color: white;
+  position: relative;
+  top: 30%; 
+  font-size: 20px; 
+  transform: translateY(-50%);
+}
+#progressBar {
+  margin-top: 15vh;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+  left: 0px;
+  z-index: 3;
+}
+.loader
+{
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+}
 }
 
 
@@ -413,14 +414,14 @@
     padding: 4%;
     opacity: 0.9;
     height: 18vh;
-  width: 10vw;
+    width: 10vw;
   }
   #kakao img
   {
     width: 30%;
   }
 
-#progressBar {
+  #progressBar {
     margin-top: 15vh;
     position: absolute;
     right: 0px;
@@ -429,7 +430,7 @@
     margin: auto;
     left: 0px;
     z-index: 3;
-}
+  }
   .loader
   {
     border: 7px solid #f3f3f3;
@@ -650,141 +651,144 @@
 
   /*#kakao
   {
-    margin-left: -40%;
-    height: 10vh;
+  margin-left: -40%;
+  height: 10vh;
 
   }
   img.shareBut{
-    height: 10vh;
-    margin-top:-90%;
-    background-color:grey;
-    padding:2%;
+  height: 10vh;
+  margin-top:-90%;
+  background-color:grey;
+  padding:2%;
   }
-*/
+   */
 
-  div.gradient{
-    position:absolute;
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    top: 0px;
-    z-index: 5;
-  }
+div.gradient{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: 5;
+}
 
-  #blurred_background{
-    overflow: hidden;
-    width:100%;
-    height:100%;
-    left:0;
-    top:0;
-    bottom:0;
-    right:0;
-    filter: blur(3px);
-    object-position: center;
-    object-fit: cover;
-  }
-  .something
-  {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
+#blurred_background{
+  overflow: hidden;
+  width:100%;
+  height:100%;
+  left:0;
+  top:0;
+  bottom:0;
+  right:0;
+  filter: blur(3px);
+  object-position: center;
+  object-fit: cover;
+}
+.something
+{
+  mix-blend-mode: exclusion;
 
-  .something::after{
-    display: block;
-    position: absolute;
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, #727272 96%);
-    top: 0;
-    background-image: linear-gradient(to top, rgba(255,0,0,0), rgba(111,106,106,1));
-  }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
+.something::after{
+  display: block;
+  position: absolute;
+  background-image: linear-gradient(to top, rgba(255, 255, 255, 0) 0, black 96%);
+  top: 0;
+  height: 60%;
+  width: 100%;
+  content: '';
+}
 
-  #grip{
-    width: 85%;
-    height: 100%;
-    position: absolute;
-    left:4vw;
-    top:5.5vh;
-  }
+#grip{
+  width: 85%;
+  height: 100%;
+  position: absolute;
+  left:4vw;
+  top:5.5vh;
+}
 
-  #front_img{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left:0;
-    top:0;
-  }
-  #progressMent
-  {
-    font-size: 2em;    
-  }
-  #origin_image
-  {
+#front_img{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left:0;
+  top:0;
+}
+#progressMent
+{
+  font-size: 2em;    
+}
+#origin_image
+{
 
-    height: 93%; width: 65% ; max-width: 1000px;
-    position: relative;
-    top:5.8vh;
-    left:1.8vw;
-    transform: rotate(-10deg);
-    width: 83%;
-    object-position: center;
-    object-fit: cover;
-  }
+  height: 93%; width: 65% ; max-width: 1000px;
+  position: relative;
+  top:5.8vh;
+  left:1.8vw;
+  transform: rotate(-10deg);
+  width: 83%;
+  object-position: center;
+  object-fit: cover;
+}
 
-  #index_btn
-  {
-    text-align: center;
-    margin:10vh auto;
-  }
-  #index_btn img
-  {
-    width:50%;
-  }
-  
-  div#bottomList{
-    width: 35%;
-    text-align: center;
-  }
+#index_btn
+{
+  text-align: center;
+  margin:10vh auto;
+}
+#index_btn img
+{
+  width:50%;
+}
 
-  /*#kakao
-  {
-    margin-left: -40%;
-    height: 10vh;
+div#bottomList{
+  width: 35%;
+  text-align: center;
+}
 
-  }
-  img.shareBut{
-    height: 10vh;
-    margin-top:-90%;
-    background-color:grey;
-    padding:2%;
-  }*/
-  div#resultBottom{
-    position: relative; 
-    height: 10vh; 
-    margin-top: 5vh;
-  }
-  div#resultBottom img {
-    height: 100%; 
-    position: absolute; 
-    left: 5%; 
-    top: 0; 
-    background: grey; 
-    opacity: 0.6;
-  }
-  div#resultBottom div {
-    position: absolute; 
-    right: 5%; 
-    height: 100%;
-    background: grey; 
-    opacity: 0.6;
-  }
-  div#resultBottom div a {
-    color: white;
-    position: relative;
-    top: 30%; 
-    font-size: 30px; 
-    transform: translateY(-50%);
-  }
+/*#kakao
+{
+margin-left: -40%;
+height: 10vh;
+
+}
+img.shareBut{
+height: 10vh;
+margin-top:-90%;
+background-color:grey;
+padding:2%;
+}*/
+div#resultBottom{
+position: relative; 
+height: 10vh; 
+margin-top: 5vh;
+}
+div#resultBottom img {
+height: 100%; 
+position: absolute; 
+left: 5%; 
+top: 0; 
+background: grey; 
+opacity: 0.6;
+}
+div#resultBottom div {
+position: absolute; 
+right: 5%; 
+height: 100%;
+background: grey; 
+opacity: 0.6;
+}
+div#resultBottom div a {
+color: white;
+position: relative;
+top: 30%; 
+font-size: 30px; 
+transform: translateY(-50%);
+}
 }
 
 

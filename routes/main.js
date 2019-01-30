@@ -7,8 +7,14 @@ router.get('/', function(req, res) {
 });
 
 router.get('/:filename', function(req, res, next) {
-  var filename = req.params.filename
+  var filename = req.params.filename;
   res.render('result', { title: 'Express',filename:filename});
+});
+
+
+router.get('/final/:filename',function(req,res,next){
+  var filename = req.params.filename;
+  res.render('final',{title: 'Express',filename:filename});
 });
 
 module.exports = router;

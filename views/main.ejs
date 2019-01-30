@@ -13,7 +13,7 @@
       </div>
         <!--    style slider-->
         <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
-          <%var list=["8","9","6","7","4"]%>
+          <%var list=["11","9","5","10","4"]%>
           <%for(var i=0;i<list.length;i++){%>
           <img id =<%= list[i]%> class="styleImages" onclick="style_click(<%=list[i]%>)" src="/images/thumbs/<%=i+1%>.jpg">
           <%}%>
@@ -78,7 +78,7 @@ var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
 var styleCheck = false;
-var list = ['8','9','6','7','4'];
+var list = ['11','9','5','10','4'];
 
 function check_file(){
 
@@ -227,6 +227,7 @@ function DownloadCard(){
   var link = document.createElement('a');
   var filename = $('#filePath').val().split('.')[0]+".png";
   var uagent = navigator.userAgent.toLowerCase();
+console.log(uagent);
 
   link.href = "/final/"+filename;
   link.download = filename;
@@ -234,19 +235,7 @@ function DownloadCard(){
  if (uagent.search("iphone") > -1){
     console.log('iphone');
     console.log(uagent);
-    window.location.href="/final/"+filename;
-
-    //swal({ 
-    //    title: "Guide",
-    //       text: "사진을 꾹 눌러 다운로드 해주세요",
-    //           type: "success"
-    //}).then(function() {
-    //  window.location.href="/final/"+filename;
-    //  console.log('The Ok Button was clicked.');
-    //});
-
-   // alert("사진을 꾹 눌러 다운로드 해주세요");
-
+    window.location.href="/main/final/"+filename;
   }
 }
 
@@ -303,7 +292,7 @@ function style_click(Id){
     var filename = filenameOb.value;
     var stylenum = $(this).attr("id");
 
-    if(stylenum ==undefined){
+    if(stylenum == undefined){
       stylenum = Id;
     }      
     // console.log('attr ID: '+$(this).attr("id"));
