@@ -69,6 +69,14 @@ $(document).ready(function(){
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 
 });
+window.history.pushState(null, null, 'survey');
+
+
+
+$(window).bind("popstate", function(e) {
+    window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
+});
+
 
   </script>
 

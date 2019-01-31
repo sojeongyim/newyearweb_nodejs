@@ -15,6 +15,7 @@ var mainRouter = require('./routes/main');
 var uploadRouter = require('./routes/upload');
 var ajaxRouter = require('./routes/ajax');
 var filterpickRouter = require('./routes/filterpick');
+var surveyRouter = require('./routes/survey');
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/main', mainRouter);
 app.use('/upload',uploadRouter);
 app.use('/ajax',ajaxRouter);
 app.use('/filterpick',filterpickRouter);
+app.use('/survey', surveyRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
