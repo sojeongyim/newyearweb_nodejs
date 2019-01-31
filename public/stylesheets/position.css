@@ -275,7 +275,7 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-    z-index: 2;
+    z-index: 13;
     border: none;
     text-align: center;
     background: black;
@@ -332,20 +332,15 @@ div#resultBottom{
   position: relative; 
   height: 10vh; 
   margin-top: 5vh;
+  text-align: center;
 }
 div#resultBottom .down {
   height: 60%; 
-  position: absolute; 
-  left: 5%; 
-  top: 0; 
   background: grey; 
   opacity: 0.6;
 }
 div#resultBottom .start {
   height: 60%; 
-  position: absolute; 
-  right: 5%; 
-  top: 0; 
   background: grey; 
   opacity: 0.6;
 }
@@ -358,7 +353,7 @@ div#resultBottom .start {
   bottom: 0px;
   margin: auto;
   left: 0px;
-  z-index: 3;
+  z-index: 13;
 }
 .loader
 {
@@ -386,9 +381,13 @@ div#resultBottom .start {
 #index_container
   {
   width: 30%;
-    height: 85%;
+    height: auto;
     background: #fff;
    margin:0 auto;
+  }
+  #resultImg
+  {
+    width: 100%;
   }
   #background
   {
@@ -447,7 +446,7 @@ div#resultBottom .start {
     bottom: 0px;
     margin: auto;
     left: 0px;
-    z-index: 3;
+    z-index: 13;
   }
   .loader
   {
@@ -474,7 +473,7 @@ div#resultBottom .start {
     left: 0;
     right: 0;
     margin: 0 auto;
-    z-index: 2;
+    z-index: 13;
     border: none;
     text-align: center;
     background: black;

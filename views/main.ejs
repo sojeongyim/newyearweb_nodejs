@@ -38,11 +38,11 @@
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
           </div>
-          <img id="grip" class="rotate"  src ="/images/grip.png"></img> 
+          <img id="grip" class="rotate"  src ="/images/grip_editted.png"></img> 
           <div id="hiddenBox" class="rotate"></div>
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="origin_image" class="rotate" style="display: inline-block; pointer-events: none;" src="/images/grey.png"/>
+              <img onload="offProgress()" id="origin_image" class="rotate" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/grey.png"/>
             </label>
             <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
@@ -50,16 +50,31 @@
         </div>
 
       </center>
-      <div class=" reactUI step4 " id="shareList" style="display: none; text-align: center;">
-        <div class="shareBut" id = "download" onclick="DownloadCard()" style="border-radius:10px;">
-          <img src="/images/download.png" style="float: left;"/>
+
+      <div class="reactUI step4 " id="testShare">
+        <div id="testImage">
+          <div id = "downButton" style = "left: 0;"class = "butt" onclick="DownloadCard()" >
+            <a style="cursor: pointer; display: block; height: 100%; width: 100%;">
+            <img src="/images/download.png"/>
+            </a>
+          </div>
+          <div id = "kakaoButton" style = "right: 0;"class = "butt" onclick="KakaoShare()" >
+            <a style="cursor: pointer; display: block; height: 100%; width: 100%;">
+            <img src="/images/kakao_logo.png"/>
+            </a>
+          </div>
         </div>
+      </div>
+
+      <!-- real Kakao Butt -->
+      <div  id="shareList" style="display: none; text-align: center;">
         <div id="kakao-link-btn">
           <a href="javascript:;">
             <img class="shareBut" id = "kakao"  style="position: absolute; border-radius:10px;" src="/images/kakao_logo.png"/>
           </a>
         </div>
       </div>
+
 
       <div id="stepBar" style="text-align: center;">
         <img id="s1" src="/images/1_3.png"  style="text-align: center; margin:0 auto;">
@@ -81,9 +96,11 @@
         </div>
         <div class="btn_nav">
           <img class="resetBut" align="right" style="display:none" src = "/images/arrow6.png" >
+          <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
         </div>
       </div>
       <script>
+
 var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
@@ -91,7 +108,6 @@ var styleCheck = false;
 var list = ['11','9','5','10','4'];
 
 function check_file(){
-
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
 
@@ -101,11 +117,11 @@ function check_file(){
 
   if(http.status!=404){
     styleCheck = true;
-    $("img.r_arrow").attr('src', '/images/r_arrow.png');
     setTimeout("style_img_load()",1000);
     clearInterval(timerId); 
   }
 }
+
 function onProgress()
 {
   $("#progressBar").css("display", "block");
@@ -126,10 +142,11 @@ function style_img_load(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
 
-	var num = Math.random();
-	filename = filename+"?v=" + num;
+  var num = Math.random();
+  filename = filename+"?v=" + num;
 
   $('#origin_image').attr("src","/images/Result/"+filename);
+  $("img.r_arrow").attr('src', '/images/arrow3.png');
 }
 
 
@@ -143,14 +160,7 @@ function updateUI()
 {
   $('.reactUI').css('display','none');
   $(".resetBut").css('display','none');
-  if(styleCheck==false)
-  {
-    $("img.r_arrow").attr('src', '/images/r_arrow_dis.png');
-  }
-  else
-  {
-    $("img.r_arrow").attr('src', '/images/r_arrow.png');
-  }
+  $(".backToText").css('display','none');
   switch(cur_Step){
     case 1:
       styleCheck=false;
@@ -165,6 +175,15 @@ function updateUI()
       $("#s3").css('display','none');
       break;
     case 2:
+      if(styleCheck==false)
+      {
+        $("img.r_arrow").attr('src', '/images/arrow4.png');
+      }
+      else
+      {
+      $("img.r_arrow").attr('src','/images/arrow3.png');
+      }
+      $("img.l_arrow").attr('src','/images/arrow2.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step2').fadeIn();
@@ -175,6 +194,10 @@ function updateUI()
       break;
     case 3:
       $("#txt").focus();
+      $("#txt").val('');
+      $("#inImgTop p").text("");
+      $("img.l_arrow").attr('src','/images/arrow11.png');
+      $("img.r_arrow").attr('src','/images/arrow8.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step3').fadeIn();
@@ -185,11 +208,13 @@ function updateUI()
       break;
     case 4:
       $("#inImgTop p").text($("#txt").val());
+      $("#txt").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
       $(".shareBut").css('z-index', '99');
       $(".resetBut").css('display','block');
+      $(".backToText").css('display','block');
       $('.step4').fadeIn();
       $('#fileInput').prop('disabled', true);
       break;
@@ -217,11 +242,12 @@ function nextStep(){
       cur_Step = cur_Step +1;
       if(cur_Step ==4)
       {
-
-      $("#txt").css('display', 'none');
-      $("#inImgTop p").text($("#txt").val());
-       capture();
-       $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+        $("img.l_arrow").css('display','none');
+        $("img.r_arrow").css('display','none');
+        $("#txt").css('display', 'none');
+        $("#inImgTop p").text($("#txt").val());
+        capture();
+        $('#blurred_background').attr("src","/background/"+$('#filePath').val());
       }else{
         updateUI()
       }
@@ -249,7 +275,7 @@ function saveToServer(uri, filename)
 {
   filename = filename.split('.')[0];
   $.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
-  updateUI(); 
+    updateUI(); 
   }
   );
 }
@@ -270,6 +296,9 @@ function DownloadCard(){
   }
 }
 
+function KakaoShare(){
+$('#kakao-link-btn').click();
+}
 function initKakao()
 {
   Kakao.cleanup();
@@ -354,6 +383,9 @@ $(document).ready(function(){
   $(".resetBut").click(function(){
     location.reload();
   });
+  $(".backToText").click(function(){
+    prevStep();
+  });
   $("#hiddenBox").click(function(){
     $("#fileInput").click();
   });
@@ -367,13 +399,13 @@ $(document).ready(function(){
   });
 
   $('#fileInput').on('change', function (){
-    onProgress();
     var filename=$('#fileInput').val();
     var file;
 
     if ((file = this.files[0])) {
       if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
       {
+        onProgress();
 
         var newFilename = genFileName()+'.png';
         loadImage(

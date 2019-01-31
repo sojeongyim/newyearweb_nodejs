@@ -1,0 +1,78 @@
+/*mobile device*/
+@media screen and (max-width:1024px)
+{
+  #testShare {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: -15%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 12vh;
+    z-index: 99;
+  }
+
+  #testImage {
+    position: relative;
+    display: inline-flex;
+    height: 100%;
+    width: 60%;
+  }
+
+  .butt {
+    position: absolute;
+    height: 100%; 
+    top: 0;
+  }
+
+  .butt img {
+    background: grey;
+    height: 100%;
+    width: auto;
+    padding: 15px;
+    border-radius: 15px;
+    opacity: 0.85;
+  }
+}
+
+/*desktop*/
+@media screen and (min-width:1025px)
+{
+  #testShare {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: -17vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 15vh;
+    z-index: 99;
+  }
+
+  #testImage {
+    position: relative;
+    display: inline-flex;
+    height: 100%;
+    width: 20vw;
+  }
+
+  .butt {
+    position: absolute;
+    height: 100%; 
+    top: 0;
+  }
+
+  .butt img {
+    background: grey;
+    height: 100%;
+    width: auto;
+    padding: 40px;
+    border-radius: 15px;
+  }
+}
