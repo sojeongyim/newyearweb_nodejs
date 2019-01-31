@@ -335,12 +335,12 @@ div#resultBottom{
   text-align: center;
 }
 div#resultBottom .down {
-  height: 60%; 
+  height: 80%; 
   background: grey; 
   opacity: 0.6;
 }
 div#resultBottom .start {
-  height: 60%; 
+  height: 80%; 
   background: grey; 
   opacity: 0.6;
 }
