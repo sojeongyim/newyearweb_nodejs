@@ -332,20 +332,15 @@ div#resultBottom{
   position: relative; 
   height: 10vh; 
   margin-top: 5vh;
+  text-align: center;
 }
 div#resultBottom .down {
   height: 60%; 
-  position: absolute; 
-  left: 8%; 
-  top: 0; 
   background: grey; 
   opacity: 0.6;
 }
 div#resultBottom .start {
   height: 60%; 
-  position: absolute; 
-  right: 8%; 
-  top: 0; 
   background: grey; 
   opacity: 0.6;
 }
