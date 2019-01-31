@@ -53,3 +53,15 @@ div#bottomList {position:relative;width:95%}
 }
 
 
+@media screen and (min-width: 320px) {
+  #idx1 {margin-bottom:1vh;font-size:1.5rem}
+}
+@media screen and (min-width: 1025px)
+{
+#fileForm {
+    top: 19%;
+    left: 10%;
+    width: 67%;
+    height: 52%;}
+
+}
