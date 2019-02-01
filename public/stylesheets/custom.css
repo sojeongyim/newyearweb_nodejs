@@ -58,6 +58,10 @@ div#bottomList {position:relative;width:95%}
 }
 @media screen and (min-width: 1025px)
 {
+  div#bottomList
+  {position:relative; 
+    width:30%;
+  }
 #fileForm {
     top: 14%;
     left: 9%;

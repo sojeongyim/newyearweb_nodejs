@@ -330,18 +330,20 @@ div.gradient{
 
 
 div#resultBottom{
+  margin: auto;
+  width: 80%;
   position: relative; 
   height: 10vh; 
   margin-top: 5vh;
   text-align: center;
 }
 div#resultBottom .down {
-  height: 80%; 
+  height: 60%; 
   background: grey; 
   opacity: 0.6;
 }
 div#resultBottom .start {
-  height: 80%; 
+  height: 60%; 
   background: grey; 
   opacity: 0.6;
 }
