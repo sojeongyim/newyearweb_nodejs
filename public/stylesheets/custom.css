@@ -53,8 +53,8 @@ div#bottomList {position:relative;width:95%}
   #idx1 {font-size:2rem}
   #kakao,
   #download img {width:150px;height:150px}
- /*#fileForm {top:13%;left:7%;width:65%;height:60%}*/
- div#bottomList {position:relative;width:30%}
+ #fileForm {top:13%;left:7%;width:65%;height:60%}
+ /*div#bottomList {position:relative;width:30%}*/
  #fileForm {
     top: 10%;
     left: 8%;
@@ -66,9 +66,11 @@ div#bottomList {position:relative;width:95%}
 @media screen and (min-width: 1025px)
 {
 div#bottomList {position:relative;width:30%}
-#fileForm {
+#fileForm 
+{
     top: 19%;
     left: 10%;
     width: 67%;
     height: 52%;}
+
 }
