@@ -57,12 +57,13 @@ div#bottomList {position:relative;width:95%}
 }
 
 
-@media screen and (min-width: 320px) {
+/*@media screen and (min-width: 320px) {
   #idx1 {margin-bottom:1vh;font-size:1.5rem}
 #fileForm {top:17%;left:20%;width:54%;height:52%}
-}
+}*/
 @media screen and (min-width: 1025px)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   div#bottomList
@@ -76,16 +77,20 @@ div#bottomList {position:relative;width:30%}
 /*div#bottomList {position:relative;width:30%}
 >>>>>>> 5e58bf9c84c8fd3e3e98ecbff9969175ac113671
 #fileForm {
+=======
+div#bottomList {position:relative;width:30%}
+
+/*#fileForm {
+>>>>>>> 36dc1a3bf9dc63e497864c1a560bdc14b4da285b
     top: 10%;
     left: 7%;
     width: 65%;
     height: 60%;
 }*/
+
 #fileForm {
     top: 19%;
     left: 10%;
     width: 67%;
     height: 52%;}
-
-
 }
