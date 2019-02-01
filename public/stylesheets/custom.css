@@ -54,6 +54,7 @@ div#bottomList {position:relative;width:95%}
   #kakao,
   #download img {width:150px;height:150px}
  /*#fileForm {top:13%;left:7%;width:65%;height:60%}*/
+ div#bottomList {position:relative;width:30%}
  #fileForm {
     top: 10%;
     left: 8%;
