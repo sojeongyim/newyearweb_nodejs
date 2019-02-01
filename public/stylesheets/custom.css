@@ -62,18 +62,7 @@ div#bottomList {position:relative;width:30%}
 }
 }
 
-@media screen and (min-width: 1020px) {
-  #idx1 {font-size:2rem}
-  #kakao,
-  #download img {width:150px;height:150px}
-div#bottomList {position:relative;width:95%}
-#fileForm {
-    top: 18%;
-    left: 19%;
-    width: 55%;
-    height: 55%;
-}
-}
+
 
 
 
