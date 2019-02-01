@@ -49,11 +49,10 @@ div#bottomList {position:relative;width:95%}
   #download img {width:130px;height:130px}
 #fileForm {top:17%;left:20%;width:54%;height:52%}
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
   #idx1 {font-size:2rem}
   #kakao,
   #download img {width:150px;height:150px}
-/*#fileForm {top:17%;left:20%;width:54%;height:52%}*/
 div#bottomList {position:relative;width:30%}
 #fileForm {
     top: 12%;
@@ -63,7 +62,7 @@ div#bottomList {position:relative;width:30%}
 }
 }
 
-@media screen and (min-width: 1024px)
+@media screen and (min-width: 1025px)
 {
 div#bottomList {position:relative;width:30%}
 
