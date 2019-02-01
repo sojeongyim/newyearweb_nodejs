@@ -1,7 +1,7 @@
 /*mobile device*/
 @media screen and (max-width:1024px)
 {
-  
+
   /*    index container*/
   #idx1_ment{
     width: 90%
@@ -402,7 +402,7 @@ div#bottomList {position:relative;width:30%}
   }
   #background
   {
-   margin:3% auto;
+   margin:0 auto;
     background: white;
   }
   #maincontainer
