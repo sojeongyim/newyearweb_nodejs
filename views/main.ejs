@@ -7,8 +7,8 @@
   </head>
 
   <body id="mainBackground">
-
-    <div class="reactUI step1" id="uploadPhoto" >
+   
+    <div class="reactUI step1" id="uploadPhoto" style="display: none;" >
       사진을 올려주세요. 
     </div>
       <!--    style slider-->
@@ -36,7 +36,8 @@
           <div id = "inImgTop">
             <p> </p>
           </div>
-          <input class="reactUI step3" style="display: none;letter-spacing:-1px" id="txt" type="text" autofocus maxlength="12" placeholder="12자 이내로 입력" >
+          <textarea class="reactUI step3" id="txt" data-limit-rows=true rows=2 placeholder="maximun 24" wrap=hard autofocus maxlength="25" style="font-size: 1.5em;display: block;letter-spacing:-1px"> 
+</textarea>
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
           </div>
