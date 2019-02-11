@@ -26,7 +26,34 @@
         카드를 공유하세요!
       </div>
 
+
+      <!-- Valentine -->
       <center id="card_style"> 
+        <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
+          <div id = "progressBar">
+            <div class="loader"></div>
+          </div>
+          <div id = "inImgTop">
+            <p> </p>
+          </div>
+          <input class="reactUI step3" style="display: none;letter-spacing:-1px" id="txt" type="text" autofocus maxlength="12" placeholder="12자 이내로 입력" >
+          <div class="something">
+            <img id="blurred_background" style="background-color:lightgray;"></img> 
+          </div>
+          <img id="grip2"  src ="/images/grip2.png"></img> 
+          <div id="hiddenBox" class="rotate"></div>
+          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm2">
+            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
+              <img onload="offProgress()" id="origin_image2"  style="z-index: 11; display: inline-block; pointer-events: none;width: 100%; height: 100%;" src="/images/grey2.png"/>
+            </label>
+            <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+            <input type="text" id="filePath" style="display: none;"/>
+          </form>
+        </div>
+      </center>
+
+<!-- Polaroid -->
+<!-- <center id="card_style"> 
         <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
           <div id = "progressBar">
             <div class="loader"></div>
@@ -48,8 +75,15 @@
             <input type="text" id="filePath" style="display: none;"/>
           </form>
         </div>
-
       </center>
+ -->
+
+
+
+
+
+
+
 
       <div class="reactUI step4 " id="testShare">
         <div id="testImage">
