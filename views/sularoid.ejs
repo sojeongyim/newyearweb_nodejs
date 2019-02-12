@@ -35,7 +35,7 @@
           <div id = "inImgTop">
             <p> </p>
           </div>
-          <textarea class="reactUI step3" id="txt" data-limit-rows=true rows=2 placeholder="20자 이내로 입력" wrap=hard autofocus maxlength="22" style="font-size: 1.5em;display: block;letter-spacing:-1px"> 
+          <textarea class="reactUI step3" id="txt" data-limit-rows=true rows=2 placeholder="22자 이내로 입력" wrap=hard autofocus maxlength="22" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
 </textarea>
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
@@ -297,12 +297,14 @@ function DownloadCard(){
     console.log('iphone');
     console.log(uagent);
     window.location.href="/sularoid/final/"+filename;
-  }
-  
+  }else{
   var survey = window.open('https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform','_blank');
   survey.focus(); 
-  //window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
+ //window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
 
+  }
+  
+  
 }
 
 function KakaoShare(){
@@ -319,7 +321,9 @@ function initKakao()
     container: '#kakao-link-btn',
     objectType: 'feed',
     content: {
+
       title: "너는 나의 발렌타인♡",
+
       description: '#페인틀리 #발렌타인 #선물',
       imageUrl: 'http://paintly.me/final/'+final_filename,
       link: {

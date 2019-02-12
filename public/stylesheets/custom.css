@@ -6,6 +6,7 @@
 #idx2,
 #idx3 {padding:0;border:0 none}
 #idx2 {height:auto}
+#inImgTop2 { position: absolute;bottom:25%;left:0;right:0;margin:auto;z-index:14;font-size:1.4em;}
 
 /* mainBackground */
 #card_style {box-shadow:none}
