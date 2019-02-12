@@ -63,6 +63,17 @@ right: 0;
   width:100%; height:50%;margin:3%;
 margin-top: 8%;
 }
+
+#inImgTop2
+{
+width:50%;
+    transform: rotate(-7deg);
+    top: 54%;
+    left: 15%;
+
+}
+
+
 @media screen and (min-width: 320px) {
   #idx1 {margin-bottom:1vh;font-size:1.5rem}
   #kakao,
@@ -195,5 +206,12 @@ right: 0;
 {
   width:100%; height:50%;margin:3%;
 
+}
+#inImgTop2
+{
+    transform: rotate(-7deg);
+    width:74%;
+    top: 54%;
+    left: 15%;
 }
 }
