@@ -12,7 +12,6 @@ var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var mainRouter = require('./routes/main');
-var uploadRouter = require('./routes/upload');
 var ajaxRouter = require('./routes/ajax');
 var surveyRouter = require('./routes/survey');
 var valentineRouter = require('./routes/valentine');
@@ -41,7 +40,6 @@ app.use(express.static(path.join(__dirname, 'temp')));
 
 app.use('/', indexRouter);
 app.use('/main', mainRouter);
-app.use('/upload',uploadRouter);
 app.use('/ajax',ajaxRouter);
 app.use('/survey', surveyRouter);
 app.use('/sularoid',sularoidRouter);

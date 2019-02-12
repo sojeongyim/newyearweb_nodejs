@@ -8,7 +8,7 @@
 
   <body id="mainBackground">
    
-    <div class="reactUI step1" id="uploadPhoto" style="display: none;" >
+    <div class="reactUI step1" id="uploadPhoto" >
       사진을 올려주세요. 
     </div>
       <!--    style slider-->
@@ -41,7 +41,7 @@
           </div>
           <img id="grip" class="rotate"  src ="/images/grip_editted.png"></img> 
           <div id="hiddenBox" class="rotate"></div>
-          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+          <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
               <img onload="offProgress()" id="origin_image" class="rotate" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/grey.png"/>
             </label>
@@ -50,13 +50,6 @@
           </form>
         </div>
       </center>
-
-
-
-
-
-
-
 
 
       <div class="reactUI step4 " id="testShare">
@@ -300,12 +293,13 @@ function DownloadCard(){
   if (uagent.search("iphone") > -1){
     console.log('iphone');
     console.log(uagent);
-    window.location.href="/main/final/"+filename;
+    window.location.href="/sularoid/final/"+filename;
   }
-  else
-  {
-    window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
-  }
+  
+  var survey = window.open('https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform','_blank');
+  survey.focus(); 
+  //window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
+
 }
 
 function KakaoShare(){
@@ -326,8 +320,8 @@ function initKakao()
       description: '#페인틀리 #설라로이드 #인싸',
       imageUrl: 'http://paintly.me/final/'+final_filename,
       link: {
-        mobileWebUrl: 'http://paintly.me/main/'+final_filename,
-        webUrl: 'http://paintly.me/main/'+final_filename
+        mobileWebUrl: 'http://paintly.me/sularoid/'+final_filename,
+        webUrl: 'http://paintly.me/sularoid/'+final_filename
       }
     },
     buttons: [
