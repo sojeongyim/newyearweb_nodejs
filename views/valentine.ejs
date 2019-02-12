@@ -35,7 +35,7 @@
             <div class="loader"></div>
           </div>
           <div id = "inImgTop2">
-            <p> </p>
+            <p style="color: black;"> </p>
           </div>
           <textarea class="reactUI step3" id="txt2" data-limit-rows=true rows=2 placeholder="maximun 24" wrap=hard autofocus maxlength="25" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
 </textarea>
@@ -44,7 +44,7 @@
           <div id="hiddenBox" class="rotate"></div>
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm2">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="origin_image2"  style="z-index: 11; display: inline-block; pointer-events: none;width: 100%; height: 100%;" src="/images/grey2.png"/>
+              <img onload="offProgress()" id="origin_image2"  style="z-index: 11; display: inline-block; pointer-events: none;width: 100%; height: 100%; object-fit:cover;" src="/images/grey2.png"/>
             </label>
             <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
