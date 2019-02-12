@@ -37,7 +37,7 @@
           <div id = "inImgTop2">
             <p> </p>
           </div>
-          <textarea class="reactUI step3" id="txt" data-limit-rows=true rows=2 placeholder="maximun 24" wrap=hard autofocus maxlength="25" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
+          <textarea class="reactUI step3" id="txt2" data-limit-rows=true rows=2 placeholder="maximun 24" wrap=hard autofocus maxlength="25" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
 </textarea>
     
           <img id="grip2"  src ="/images/grip2.png"></img> 
@@ -196,9 +196,9 @@ function updateUI()
       $("#s3").css('display','none');  
       break;
     case 3:
-      $("#txt").focus();
-      $("#txt").val('');
-      $("#inImgTop p").text("");
+      $("#txt2").focus();
+      $("#txt2").val('');
+      $("#inImgTop2 p").text("");
       $("img.l_arrow").attr('src','/images/arrow11.png');
       $("img.r_arrow").attr('src','/images/arrow8.png');
       $("img.l_arrow").css('display','block');
@@ -210,8 +210,8 @@ function updateUI()
       $("#s1").css('display','none');  
       break;
     case 4:
-      $("#inImgTop p").text($("#txt").val());
-      $("#txt").val('');
+      $("#inImgTop2 p").text($("#txt2").val());
+      $("#txt2").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
@@ -247,8 +247,8 @@ function nextStep(){
       {
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
-        $("#txt").css('display', 'none');
-        $("#inImgTop p").text($("#txt").val());
+        $("#txt2").css('display', 'none');
+        $("#inImgTop2 p").text($("#txt2").val());
         capture();
         $('#blurred_background').attr("src","/background/"+$('#filePath').val());
       }else{
