@@ -87,7 +87,7 @@
 
     <div id="bottomList">
       <div class="btn_nav btn_nav_l">
-        <img class="l_arrow" align="left" style="display:none" src = "/images/l_arrow.png"> 
+        <img class="l_arrow" align="left" style="display:block" src = "/images/arrow0.png"> 
         <span class="tit_l_1">사진 다시<br>고르기</span>
         <span class="tit_l_2">스타일<br>고르기</span>
         <span class="tit_l_3">메시지<br>다시 쓰기</span>
@@ -263,11 +263,12 @@ function nextStep(){
 }
 
 function prevStep(){
-  if(cur_Step ==2 )
+  if(cur_Step==1){
+  window.location.href="http://paintly.me/main"
+  }else if(cur_Step ==2 )
   {
     location.reload();
-  }
-  if(cur_Step >2 )
+  }else if(cur_Step >2 )
   {
     cur_Step = cur_Step -1;
     updateUI()
