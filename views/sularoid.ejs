@@ -8,7 +8,7 @@
 
   <body id="mainBackground">
    
-    <div class="reactUI step1" id="uploadPhoto" style="display: none;" >
+    <div class="reactUI step1" id="uploadPhoto" >
       사진을 올려주세요. 
     </div>
       <!--    style slider-->
@@ -300,7 +300,7 @@ function DownloadCard(){
   if (uagent.search("iphone") > -1){
     console.log('iphone');
     console.log(uagent);
-    window.location.href="/main/final/"+filename;
+    window.location.href="/sularoid/final/"+filename;
   }
   else
   {
@@ -326,8 +326,8 @@ function initKakao()
       description: '#페인틀리 #설라로이드 #인싸',
       imageUrl: 'http://paintly.me/final/'+final_filename,
       link: {
-        mobileWebUrl: 'http://paintly.me/main/'+final_filename,
-        webUrl: 'http://paintly.me/main/'+final_filename
+        mobileWebUrl: 'http://paintly.me/sularoid/'+final_filename,
+        webUrl: 'http://paintly.me/sularoid/'+final_filename
       }
     },
     buttons: [

@@ -37,7 +37,7 @@ router.post('/', function(req, res, next)
   });
 
   form.on('close',function(){
-    res.render('main',{title: 'Upload',uploadfile: filename});
+    res.render('sularoid',{title: 'Upload',uploadfile: filename});
     });
 
   form.on('progress',function(byteRead,byteExpected){
