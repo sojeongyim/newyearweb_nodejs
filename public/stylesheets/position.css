@@ -284,6 +284,32 @@
     opacity: 0.4;
     font-size: 2em;
   }
+   #txt2 {
+    margin-top:2vh;
+    color: white;
+    border-radius: 25px;
+    width: 80%;
+    position: absolute;
+    top: 2%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 13;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-size: 2em;
+  }
+  #txt2
+  {
+    height: 15%;
+    width: 70%;
+    padding-left: 20%;
+    padding-right: 20%;
+    top: 60%;
+    transform: rotate(5deg);
+  }
   #download{
     margin-top:-77%;
     margin-left: 15%;
@@ -598,7 +624,24 @@ div#resultBottom .start {
     margin-top: 3vh;
     margin-bottom: 4vh;
   }
-  #txt
+  #txt2 {
+    margin-top:2vh;
+    color: white;
+    border-radius: 25px;
+    width: 80%;
+    position: absolute;
+    top: 2%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 13;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-size: 2em;
+  }
+  #txt2
   {
     height: 15%;
     width: 70%;
