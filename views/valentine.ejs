@@ -7,134 +7,126 @@
   </head>
 
   <body id="mainBackground">
-   
-    <div class="reactUI step1" id="uploadPhoto" style="display: none;" >
+
+    <div class="reactUI step1" id="uploadPhoto">
       사진을 올려주세요. 
     </div>
-      <!--    style slider-->
-      <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
-        <%var list=["11","9","5","10","4"]%>
-        <%for(var i=0;i<list.length;i++){%>
-        <img id =<%= list[i]%> class="styleImages" onclick="style_click(<%=list[i]%>)" src="/images/thumbs/<%=i+1%>.jpg">
-        <%}%>
-      </div>
+    <!--    style slider-->
+    <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
+      <%var list=["11","9","5","10","4"]%>
+      <%for(var i=0;i<list.length;i++){%>
+      <img id =<%= list[i]%> class="styleImages" onclick="style_click(<%=list[i]%>)" src="/images/thumbs/<%=i+1%>.jpg">
+      <%}%>
+    </div>
 
-      <div class="reactUI step3" id="uploadPhoto" style="display: none;">
-        메세지를 넣어주세요.
-      </div>
-      <div class="reactUI step4" id="uploadPhoto" style="display: none;">
-        카드를 공유하세요!
-      </div>
+    <div class="reactUI step3" id="uploadPhoto" style="display: none;">
+      메세지를 넣어주세요.
+    </div>
+    <div class="reactUI step4" id="uploadPhoto" style="display: none;">
+      카드를 공유하세요!
+    </div>
 
 
-      <!-- Valentine -->
-      <center id="card_style"> 
-        <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
-          <div id = "progressBar">
-            <div class="loader"></div>
-          </div>
-          <div id = "inImgTop">
-            <p> </p>
-          </div>
-          <textarea class="reactUI step3" id="txt" data-limit-rows=true rows=2 placeholder="maximun 24" wrap=hard autofocus maxlength="25" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
-</textarea>
-          <div class="something">
-            <img id="blurred_background" style="background-color:lightgray;"></img> 
-          </div>
-          <img id="grip2"  src ="/images/grip2.png"></img> 
-          <div id="hiddenBox" class="rotate"></div>
-          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm2">
-            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="origin_image2"  style="z-index: 11; display: inline-block; pointer-events: none;width: 100%; height: 100%;" src="/images/grey2.png"/>
-            </label>
-            <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-            <input type="text" id="filePath" style="display: none;"/>
-          </form>
+    <!-- Valentine -->
+    <center id="card_style"> 
+      <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
+        <div id = "progressBar">
+          <div class="loader"></div>
         </div>
-      </center>
-
-<!-- Polaroid -->
-<!-- <center id="card_style"> 
-        <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
-          <div id = "progressBar">
-            <div class="loader"></div>
-          </div>
-          <div id = "inImgTop">
-            <p> </p>
-          </div>
-          <input class="reactUI step3" style="display: none;letter-spacing:-1px" id="txt" type="text" autofocus maxlength="12" placeholder="12자 이내로 입력" >
-          <div class="something">
-            <img id="blurred_background" style="background-color:lightgray;"></img> 
-          </div>
-          <img id="grip" class="rotate"  src ="/images/grip_editted.png"></img> 
-          <div id="hiddenBox" class="rotate"></div>
-          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
-            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="origin_image" class="rotate" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/grey.png"/>
-            </label>
-            <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-            <input type="text" id="filePath" style="display: none;"/>
-          </form>
+        <div id = "inImgTop">
+          <p> </p>
         </div>
+        <textarea class="reactUI step3" id="txt" data-limit-rows=true rows=2 placeholder="maximun 24" wrap=hard autofocus maxlength="25" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
+        </textarea>
+        <div class="something">
+          <img id="blurred_background" style="background-color:lightgray;"></img> 
+        </div>
+        <img id="grip2"  src ="/images/grip2.png"></img> 
+        <div id="hiddenBox" class="rotate"></div>
+        <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm2">
+          <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
+            <img onload="offProgress()" id="origin_image2"  style="z-index: 11; display: inline-block; pointer-events: none;width: 100%; height: 100%;" src="/images/grey2.png"/>
+          </label>
+          <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+          <input type="text" id="filePath" style="display: none;"/>
+        </form>
+      </div>
+    </center>
+
+    <!-- Polaroid -->
+    <!-- <center id="card_style"> 
+      <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
+      <div id = "progressBar">
+      <div class="loader"></div>
+      </div>
+      <div id = "inImgTop">
+      <p> </p>
+      </div>
+      <input class="reactUI step3" style="display: none;letter-spacing:-1px" id="txt" type="text" autofocus maxlength="12" placeholder="12자 이내로 입력" >
+      <div class="something">
+      <img id="blurred_background" style="background-color:lightgray;"></img> 
+      </div>
+      <img id="grip" class="rotate"  src ="/images/grip_editted.png"></img> 
+      <div id="hiddenBox" class="rotate"></div>
+      <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+      <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
+      <img onload="offProgress()" id="origin_image" class="rotate" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/grey.png"/>
+      </label>
+      <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+      <input type="text" id="filePath" style="display: none;"/>
+      </form>
+      </div>
       </center>
- -->
-
-
-
-
-
-
-
-
-      <div class="reactUI step4 " id="testShare">
-        <div id="testImage">
-          <div id = "downButton" style = "left: 0;"class = "butt" onclick="DownloadCard()" >
-            <a style="cursor: pointer; display: block; height: 100%; width: 100%;">
+    -->
+    <div class="reactUI step4 " id="testShare">
+      <div id="testImage">
+        <div id = "downButton" style = "left: 0;"class = "butt" onclick="DownloadCard()" >
+          <a style="cursor: pointer; display: block; height: 100%; width: 100%;">
             <img src="/images/downL.png"/>
-            </a>
-          </div>
-          <div id = "kakaoButton" style = "right: 0;"class = "butt" onclick="KakaoShare()" >
-            <a style="cursor: pointer; display: block; height: 100%; width: 100%;">
-            <img src="/images/kakaoL.png"/>
-            </a>
-          </div>
+          </a>
         </div>
-      </div>
-
-      <!-- real Kakao Butt -->
-      <div  id="shareList" style="display: none; text-align: center;">
-        <div id="kakao-link-btn">
-          <a href="javascript:;">
-            <img class="shareBut" id = "kakao"  style="position: absolute; border-radius:10px;" src="/images/kakao_logo.png"/>
+        <div id = "kakaoButton" style = "right: 0;"class = "butt" onclick="KakaoShare()" >
+          <a style="cursor: pointer; display: block; height: 100%; width: 100%;">
+            <img src="/images/kakaoL.png"/>
           </a>
         </div>
       </div>
+    </div>
 
-
-      <div id="stepBar" style="text-align: center;">
-        <img id="s1" src="/images/1_3.png"  style="text-align: center; margin:0 auto;">
-        <img id="s2" src="/images/2_3.png" style="display:none;text-align: center; margin:0 auto;">
-        <img id="s3" src="/images/3_3.png" style="display:none;text-align: center; margin:0 auto;">
+    <!-- real Kakao Butt -->
+    <div  id="shareList" style="display: none; text-align: center;">
+      <div id="kakao-link-btn">
+        <a href="javascript:;">
+          <img class="shareBut" id = "kakao"  style="position: absolute; border-radius:10px;" src="/images/kakao_logo.png"/>
+        </a>
       </div>
+    </div>
 
-      <div id="bottomList">
-        <div class="btn_nav btn_nav_l">
-          <img class="l_arrow" align="left" style="display:none" src = "/images/l_arrow.png"> 
-          <span class="tit_l_1">사진 다시<br>고르기</span>
-          <span class="tit_l_2">스타일<br>고르기</span>
-          <span class="tit_l_3">메시지<br>다시 쓰기</span>
-        </div>
-        <div class="btn_nav btn_nav_r">
-          <img class="r_arrow" align="right" style="display:none" src = "/images/r_arrow.png" >
-          <span class="tit_r_1">완성 카드<br>다시보기</span>
-          <span class="tit_r_2">새카드<br>만들기</span>
-        </div>
-        <div class="btn_nav">
-          <img class="resetBut" align="right" style="display:none" src = "/images/arrow6.png" >
-          <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
-        </div>
+
+    <div id="stepBar" style="text-align: center;">
+      <img id="s1" src="/images/1_3.png"  style="text-align: center; margin:0 auto;">
+      <img id="s2" src="/images/2_3.png" style="display:none;text-align: center; margin:0 auto;">
+      <img id="s3" src="/images/3_3.png" style="display:none;text-align: center; margin:0 auto;">
+    </div>
+
+    <div id="bottomList">
+      <div class="btn_nav btn_nav_l">
+        <img class="l_arrow" align="left" style="display:none" src = "/images/l_arrow.png"> 
+        <span class="tit_l_1">사진 다시<br>고르기</span>
+        <span class="tit_l_2">스타일<br>고르기</span>
+        <span class="tit_l_3">메시지<br>다시 쓰기</span>
       </div>
-      <script>
+      <div class="btn_nav btn_nav_r">
+        <img class="r_arrow" align="right" style="display:none" src = "/images/r_arrow.png" >
+        <span class="tit_r_1">완성 카드<br>다시보기</span>
+        <span class="tit_r_2">새카드<br>만들기</span>
+      </div>
+      <div class="btn_nav">
+        <img class="resetBut" align="right" style="display:none" src = "/images/arrow6.png" >
+        <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
+      </div>
+    </div>
+        <script>
 
 var timerId = 0;
 var cur_Step = 1;
@@ -180,7 +172,7 @@ function style_img_load(){
   var num = Math.random();
   filename = filename+"?v=" + num;
 
-  $('#origin_image').attr("src","/images/Result/"+filename);
+  $('#origin_image2').attr("src","/images/Result/"+filename);
   $("img.r_arrow").attr('src', '/images/arrow3.png');
 }
 
@@ -199,7 +191,7 @@ function updateUI()
   switch(cur_Step){
     case 1:
       styleCheck=false;
-      $('#origin_image').attr("src","/images/grey.png");
+      $('#origin_image2').attr("src","/images/grey.png");
       $('#blurred_background').attr("src","");
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
@@ -216,7 +208,7 @@ function updateUI()
       }
       else
       {
-      $("img.r_arrow").attr('src','/images/arrow3.png');
+        $("img.r_arrow").attr('src','/images/arrow3.png');
       }
       $("img.l_arrow").attr('src','/images/arrow2.png');
       $("img.l_arrow").css('display','block');
@@ -258,7 +250,7 @@ function updateUI()
 
 function chkImgUpload()
 {
-  if($('#origin_image').attr("src").indexOf('grey')!=-1)
+  if($('#origin_image2').attr("src").indexOf('grey')!=-1)
   {
     alert("사진을 선택 해주세요.");
     return false;
@@ -329,14 +321,15 @@ function DownloadCard(){
     console.log(uagent);
     window.location.href="/main/final/"+filename;
   }
-  else
-  {
-    window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
-  }
+
+  var survey = window.open('https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform','_blank');
+  survey.focus(); 
+  //window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
+
 }
 
 function KakaoShare(){
-$('#kakao-link-btn').click();
+  $('#kakao-link-btn').click();
 }
 function initKakao()
 {
@@ -446,7 +439,7 @@ $(document).ready(function(){
       {
         onProgress();
 
-        var newFilename = genFileName()+'.png';
+        var newFilename = 'val_' + genFileName()+'.png';
         loadImage(
             file,
             function(img){
@@ -455,7 +448,7 @@ $(document).ready(function(){
               $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
                   function(data,status){
 
-                    $('#origin_image').attr("src",imgURI);
+                    $('#origin_image2').attr("src",imgURI);
                     $('#blurred_background').attr("src",imgURI);
 
                     $('#filePath').val(newFilename);
@@ -482,6 +475,6 @@ $(document).ready(function(){
     }
   });
 });  
-      </script> 
+        </script> 
   </body>
 </html>

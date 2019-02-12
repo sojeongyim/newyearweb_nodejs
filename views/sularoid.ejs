@@ -41,7 +41,7 @@
           </div>
           <img id="grip" class="rotate"  src ="/images/grip_editted.png"></img> 
           <div id="hiddenBox" class="rotate"></div>
-          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm">
+          <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
               <img onload="offProgress()" id="origin_image" class="rotate" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/grey.png"/>
             </label>
@@ -50,13 +50,6 @@
           </form>
         </div>
       </center>
-
-
-
-
-
-
-
 
 
       <div class="reactUI step4 " id="testShare">
@@ -302,10 +295,11 @@ function DownloadCard(){
     console.log(uagent);
     window.location.href="/sularoid/final/"+filename;
   }
-  else
-  {
-    window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
-  }
+  
+  var survey = window.open('https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform','_blank');
+  survey.focus(); 
+  //window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
+
 }
 
 function KakaoShare(){
