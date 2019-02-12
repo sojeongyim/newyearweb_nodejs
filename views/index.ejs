@@ -66,16 +66,7 @@ $(document).ready(function()
   $("img.goBtn").hover(function(){
     $(this).attr("src","/images/rebtncheck.png");
   });
-  $('#textarea').keydown(function(){
-        var rows = $('#textarea').val().split('\n').length;
-        var maxRows = 2;
-        if( rows > maxRows){
-            alert('3줄 까지만 가능합니다');
-            modifiedText = $('#textarea').val().split("\n").slice(0, maxRows);
-            $('#textarea').val(modifiedText.join("\n"));
-        }
-    });
-});
+  
 
 var swiper = new Swiper('.swiper-container', { 
   slidesPerView: 1, 

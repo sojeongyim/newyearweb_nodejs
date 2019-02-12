@@ -600,7 +600,7 @@ div#resultBottom .start {
   }
   #txt
   {
-    height: 7vh;
+    height: 15%;
     width: 70%;
     padding-left: 20%;
     padding-right: 20%;
@@ -690,7 +690,7 @@ div#resultBottom .start {
   {
 
     position: absolute;
-    width: 100%;
+    width: 80%;
     height: 100%;
   }
 
