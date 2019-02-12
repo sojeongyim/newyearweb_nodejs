@@ -601,7 +601,13 @@ div#resultBottom .start {
   #txt
   {
     height: 7vh;
-    width: 30vw;
+    width: 70%;
+    padding-left: 20%;
+    padding-right: 20%;
+    top: 60%;
+    transform: rotate(5deg);
+
+    
   }
   #blurred_background{
     width: 30vw;

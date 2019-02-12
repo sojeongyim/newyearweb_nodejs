@@ -11,6 +11,17 @@
       <div id="idx1">
         <div id="backgroundMent">
           <img id="idx1_ment" src="./images/Asset1.png">
+   
+<!--   
+
+<textarea id="textarea" data-limit-rows=true rows=2 cols=23 placeholder="maximun 24" wrap=hard autofocus maxlength="25" style="font-size: 1em;"> 
+</textarea>
+
+ -->
+
+
+
+
         </div>
 
       </div>
@@ -48,10 +59,22 @@ $(".main").onepage_scroll({
   keyboard: false,
 
 });
-$(document).ready(function(){
+
+
+$(document).ready(function()
+{
   $("img.goBtn").hover(function(){
     $(this).attr("src","/images/rebtncheck.png");
   });
+  $('#textarea').keydown(function(){
+        var rows = $('#textarea').val().split('\n').length;
+        var maxRows = 2;
+        if( rows > maxRows){
+            alert('3줄 까지만 가능합니다');
+            modifiedText = $('#textarea').val().split("\n").slice(0, maxRows);
+            $('#textarea').val(modifiedText.join("\n"));
+        }
+    });
 });
 
 var swiper = new Swiper('.swiper-container', { 
@@ -61,11 +84,9 @@ var swiper = new Swiper('.swiper-container', {
   pagination: { 
     el: '.swiper-pagination', 
     clickable: true, 
-  }, 
+  } 
 });
-$(document).ready(function(){
 
-})
     </script>
   </body>
 </html>
