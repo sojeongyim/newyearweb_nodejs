@@ -56,7 +56,7 @@ right: 0;
 #backgroundMent {
     text-align: center;
     font-size: 2em;
-    margin: 10% auto;
+    margin: 5% auto;
 }
 #vscontainer
 {
@@ -210,8 +210,9 @@ right: 0;
 #inImgTop2
 {
     transform: rotate(-7deg);
-    width:74%;
+    width:90%;
     top: 50%;
-    left: 10%;
+    left: 12%;
+    font-size:1.45em;
 }
 }
