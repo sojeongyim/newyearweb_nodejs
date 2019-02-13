@@ -30,9 +30,9 @@
       <div id="idx2">
         <div class="swiper-container" style="text-align:center; height:95%;"> 
           <div class="swiper-wrapper" > 
-            <% for(var i =1; i<10; i++) { %>
+            <% for(var i =1; i<5; i++) { %>
             <div class="swiper-slide" >
-              <img src="./images/sample<%=i%>.jpg" >
+              <img src="./images/sample<%=i%>.png" >
             </div> 
               <% } %>
           </div> 
@@ -59,14 +59,11 @@ $(".main").onepage_scroll({
   keyboard: false,
 
 });
-
-
-$(document).ready(function()
-{
+$(document).ready(function(){
   $("img.goBtn").hover(function(){
     $(this).attr("src","/images/rebtncheck.png");
   });
-  
+});
 
 var swiper = new Swiper('.swiper-container', { 
   slidesPerView: 1, 
@@ -75,9 +72,11 @@ var swiper = new Swiper('.swiper-container', {
   pagination: { 
     el: '.swiper-pagination', 
     clickable: true, 
-  } 
+  }, 
 });
+$(document).ready(function(){
 
+})
     </script>
   </body>
 </html>
