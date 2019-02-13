@@ -68,8 +68,8 @@ margin-top: 8%;
 {
 width:50%;
     transform: rotate(-7deg);
-    top: 54%;
-    left: 15%;
+    top: 52%;
+    left:20%;
 
 }
 
@@ -117,8 +117,8 @@ width:50%;
   }
   #grip2 {
     z-index: 12;
-    width: 105%;
-    height: 90%;
+    width: 102%;
+    height: 100%;
     position: absolute;
     left: -0.5%;
     top: 0%;
@@ -165,18 +165,18 @@ width:50%;
   /*valentine*/
   #fileForm2 {
       top: 4%;
-    left: 25%;
+    left: 20%;
     width: 75%;
 
-    height: 45%;
-    transform: rotate(4deg);
+    height: 60%;
+    transform: rotate(5deg);
 
     position: relative;
   }
   #grip2 {
     z-index: 12;
-    width: 105%;
-    height: 90%;
+    width: 102%;
+    height: 102%;
     position: absolute;
     left: -0.5%;
     top: 0%;
@@ -211,8 +211,8 @@ right: 0;
 {
     transform: rotate(-7deg);
     width:90%;
-    top: 45%;
-    left: 15%;
+    top: 55%;
+    left: 11%;
     font-size:1.45em;
 }
 }
