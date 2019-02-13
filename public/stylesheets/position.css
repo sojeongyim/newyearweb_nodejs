@@ -634,11 +634,7 @@ div#resultBottom .start {
   #txt
   {
     height: 10%;
-    width: 70%;
-    padding-left: 10%;
-    padding-right: 10%;
-
-   
+    width: 100%;
   }
   #txt2 {
     margin-top:2vh;
