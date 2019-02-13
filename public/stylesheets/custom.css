@@ -68,8 +68,8 @@ margin-top: 8%;
 {
 width:50%;
     transform: rotate(-7deg);
-    top: 52%;
-    left:20%;
+    top: 58%;
+    left:13.5%;
 
 }
 
@@ -106,11 +106,11 @@ width:50%;
   #fileForm {top:17%;left:20%;width:54%;height:52%}
   /*valentine*/
   #fileForm2 {
-    top: 4%;
+   top: 0%;
 
-    left: 25%;
-    width: 75%;
-    height: 45%;
+    left: 20%;
+    width: 80%;
+    height: 62%;
     transform: rotate(4deg);
 
     position: relative;
@@ -164,11 +164,11 @@ width:50%;
   }
   /*valentine*/
   #fileForm2 {
-      top: 4%;
+      top: 1%;
     left: 20%;
-    width: 75%;
+    width: 80%;
 
-    height: 60%;
+    height: 61%;
     transform: rotate(5deg);
 
     position: relative;
