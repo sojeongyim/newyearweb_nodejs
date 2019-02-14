@@ -7,7 +7,7 @@
   </head>
 
   <body id="mainBackground">
-   
+
     <div class="reactUI step1" id="uploadPhoto" >
       사진을 올려주세요. 
     </div>
@@ -26,8 +26,8 @@
         카드를 공유하세요!
       </div>
 
-<!-- Polaroid -->
-<center id="card_style"> 
+      <!-- Polaroid -->
+      <center id="card_style"> 
         <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
           <div id = "progressBar">
             <div class="loader"></div>
@@ -36,7 +36,7 @@
             <p> </p>
           </div>
           <input class="reactUI step3" id="txt" autofocus placeholder="22자 이내로 입력" maxlength="22" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
-</input>
+          </input>
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
           </div>
@@ -57,12 +57,12 @@
         <div id="testImage">
           <div id = "downButton" style = "left: 0;"class = "butt" onclick="DownloadCard()" >
             <a style="cursor: pointer; display: block; height: 100%; width: 100%;">
-            <img src="/images/downL.png"/>
+              <img src="/images/downL.png"/>
             </a>
           </div>
           <div id = "kakaoButton" style = "right: 0;"class = "butt" onclick="KakaoShare()" >
             <a style="cursor: pointer; display: block; height: 100%; width: 100%;">
-            <img src="/images/kakaoL.png"/>
+              <img src="/images/kakaoL.png"/>
             </a>
           </div>
         </div>
@@ -101,7 +101,7 @@
           <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
         </div>
       </div>
-      <script>
+          <script>
 
 var timerId = 0;
 var cur_Step = 1;
@@ -109,42 +109,47 @@ var kakaoimgName = '';
 var styleCheck = false;
 var list = ['11','9','5','10','4'];
 
+/* Check file if style transfer is done */
 function check_file(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
-
   var http = new XMLHttpRequest();
   http.open('HEAD',"/images/Result/"+filename, false);
   http.send();
 
   if(http.status!=404){
     styleCheck = true;
+    /* Load images if process is done */
     setTimeout("style_img_load()",1000);
     clearInterval(timerId); 
   }
 }
 
+/* Show progress bar if something is onprocessing */
 function onProgress()
 {
   $("#progressBar").css("display", "block");
 }
-
+/* Turn off Progress bar nothing is processed */
 function offProgress()
 {
   $("#progressBar").css("display", "none");
   if(cur_Step == 2){
     for(var i=0;i<list.length;i++){
+      /* turn Style list into normal status*/
       document.getElementById(list[i]).style.opacity=1;  
       document.getElementById(list[i]).onclick= style_click;
     }
   }
 }
 
+/* load Stylized Images into View */
 function style_img_load(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
 
   var num = Math.random();
+  /* filename should be changed or Dummy cached Image will disturb you */
   filename = filename+"?v=" + num;
 
   $('#origin_image').attr("src","/images/Result/"+filename);
@@ -152,12 +157,14 @@ function style_img_load(){
 }
 
 
+  /* Capture Images onto Canvas and send it to server  */
 function capture(){
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){ 
     saveToServer(canvas.toDataURL(), $('#filePath').val());
   });
 }
 
+/* Manages the Changing of UI*/
 function updateUI()
 {
   $('.reactUI').css('display','none');
@@ -168,8 +175,6 @@ function updateUI()
       styleCheck=false;
       $('#origin_image').attr("src","/images/grey.png");
       $('#blurred_background').attr("src","");
-     // $("img.l_arrow").attr('src','/images/arrow0.png');
-     // $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','none');
       $('#fileInput').prop('disabled', false);
       $('.step1').fadeIn();
@@ -184,7 +189,7 @@ function updateUI()
       }
       else
       {
-      $("img.r_arrow").attr('src','/images/arrow3.png');
+        $("img.r_arrow").attr('src','/images/arrow3.png');
       }
       $("img.l_arrow").attr('src','/images/arrow2.png');
       $("img.l_arrow").css('display','block');
@@ -208,6 +213,7 @@ function updateUI()
       $("#s3").css('display','block');
       $("#s2").css('display','none');
       $("#s1").css('display','none');  
+
       break;
     case 4:
       $("#inImgTop p").text($("#txt").val());
@@ -224,6 +230,7 @@ function updateUI()
   }
 }
 
+/* check if Image is uploaded or not */
 function chkImgUpload()
 {
   if($('#origin_image').attr("src").indexOf('grey')!=-1)
@@ -264,7 +271,7 @@ function nextStep(){
 
 function prevStep(){
   if(cur_Step==1){
- window.location.href="http://paintly.me/main";
+    window.location.href="http://paintly.me/main";
   }else if(cur_Step ==2 )
   {
     location.reload();
@@ -275,6 +282,7 @@ function prevStep(){
   }
 }
 
+/* Save to Server with ajax */
 function saveToServer(uri, filename)
 {
   filename = filename.split('.')[0];
@@ -284,32 +292,41 @@ function saveToServer(uri, filename)
   );
 }
 
+/* Download cards
+   iphone - open Images
+   Android - down load Images automatically
+
+   open Survey page
+ */
 function DownloadCard(){
   var link = document.createElement('a');
   var filename = $('#filePath').val().split('.')[0]+".png";
   var uagent = navigator.userAgent.toLowerCase();
-  console.log(uagent);
 
   link.href = "/final/"+filename;
   link.download = filename;
   link.click();
   if (uagent.search("iphone") > -1){
-    console.log('iphone');
-    console.log(uagent);
     window.location.href="/sularoid/final/"+filename;
   }else{
-  var survey = window.open('https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform','_blank');
-  survey.focus(); 
- //window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
+    var survey = window.open('https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform','_blank');
+    survey.focus(); 
+    //window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSd7WoextcuhCkfh1DuDdWwz6y9nyM6u9F5P4Pmt5ykU9GhEFQ/viewform'
 
   }
-  
-  
+
+
 }
 
+/*Set Fake Kakao Button 
+  so It can be managed easily(for UI)*/
 function KakaoShare(){
-$('#kakao-link-btn').click();
+  $('#kakao-link-btn').click();
 }
+
+
+/* Init Kakao Sdk 
+   set Tags, Title, Url etc here */
 function initKakao()
 {
   Kakao.cleanup();
@@ -343,6 +360,7 @@ function initKakao()
   });
 }
 
+/* Generate Filename with Random Character */
 function genFileName() {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -368,7 +386,6 @@ function style_click(Id){
     if(stylenum == undefined){
       stylenum = Id;
     }      
-    // console.log('attr ID: '+$(this).attr("id"));
 
     for(var i=0;i<list.length;i++){
       if(stylenum != list[i]){
@@ -377,10 +394,12 @@ function style_click(Id){
       document.getElementById(list[i]).onclick= null;
     }
 
-    //console.log('Id:  '+Id);
+    /* Delete Already Existing File
+       and Put another rows into DB */
     $.post('/ajax/delete', {filename: filename });
     $.post('/ajax/style', {stylenum: stylenum , filename: filename });
 
+    /* Start Thread to tell when the file is generated */
     timerId = setInterval("check_file()", 1000); 
   }
   else
@@ -411,6 +430,8 @@ $(document).ready(function(){
     prevStep();
   });
 
+  /*When file is changed which means file is uploaded
+    It shows the preview of Images with module loadImage */
   $('#fileInput').on('change', function (){
     var filename=$('#fileInput').val();
     var file;
@@ -456,6 +477,6 @@ $(document).ready(function(){
     }
   });
 });  
-      </script> 
+          </script> 
   </body>
 </html>

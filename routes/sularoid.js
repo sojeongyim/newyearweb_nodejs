@@ -19,9 +19,5 @@ router.get('/final/:filename',function(req,res,next){
   res.render('final',{title: 'Paintly',filename:filename});
 });
 
-router.get('/survey',function(req,res,next){
-  res.render('survey',{title: 'Paintly'});
-});
-
 
 module.exports = router;
