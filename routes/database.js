@@ -1,3 +1,5 @@
+
+/* Configuration for DB */
 module.exports = {
     host     : 'localhost',
     user     : 'root',

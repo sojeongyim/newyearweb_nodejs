@@ -34,10 +34,12 @@
           <div id = "progressBar">
             <div class="loader"></div>
           </div>
-          <div id = "inImgTop2">
-            <p style="color: black;"> </p>
+          <div id ="inImgTop2">
+            <p id="l1"align:"left" style="color: black;text-align:left;"></p>
+            <p id="l2" align:"left" style="color:black; text-align:left;"></p>
+               
           </div>
-          <textarea class="reactUI step3" id="txt2" data-limit-rows=true rows=2 placeholder="22자 이내로 입력"autofocus wrap=hard maxlength="22" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
+          <textarea class="reactUI step3" id="txt2" data-limit-rows=true rows=2 cols=11  placeholder="22자 이내로 입력"autofocus wrap=hard maxlength="22" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
 </textarea>
     
           <img id="grip2"  src ="/images/grip2.png"></img> 
@@ -109,6 +111,9 @@ var cur_Step = 1;
 var kakaoimgName = '';
 var styleCheck = false;
 var list = ['11','9','5','10','4'];
+var line="";
+var line1="";
+var line2="";
 
 function check_file(){
   var filenameOb = document.getElementById("filePath");
@@ -210,7 +215,22 @@ function updateUI()
       $("#s1").css('display','none');  
       break;
     case 4:
-      $("#inImgTop2 p").text($("#txt2").val());
+      
+      line=$("#txt2").val();
+
+      if(line.length>11){
+        line1=line.substr(0,11);
+        line2=line.substr(11,21);
+      }
+      else{
+     line1=line;
+     line2="";
+      }
+      
+
+
+      $("#l1").text(line1);
+      $("#l2").text(line2);
       $("#txt2").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
@@ -248,7 +268,20 @@ function nextStep(){
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
         $("#txt2").css('display', 'none');
-        $("#inImgTop2 p").text($("#txt2").val());
+        
+        line=$("#txt2").val();
+        if(line.length>11){
+          line1=line.substr(0,11);
+          line2=line.substr(11,21);
+        }
+        else{
+          line1=line;
+          line2="";
+        }
+        
+        
+        $("#l1").text(line1);
+        $("#l2").text(line2);
         capture();
         $('#blurred_background').attr("src","/background/"+$('#filePath').val());
       }else{

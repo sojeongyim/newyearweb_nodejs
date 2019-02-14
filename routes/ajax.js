@@ -7,6 +7,10 @@ var mysql = require('mysql');
 var dbconfig = require('./database.js') 
 var connection = mysql.createConnection(dbconfig);
 
+/* Router for Ajax Communication */
+
+
+/* Get DataURI(Images) and Save it to Serverside */
 router.post('/upload', function(req, res) 
   {
     var dataURI=req.body.imgURL;
@@ -20,6 +24,9 @@ router.post('/upload', function(req, res)
 
   }); 
 
+/* Get File name, Style num
+  * insert Rows into Database (newyear.image)
+  * so Python code can detect it */
 router.post('/style', function(req, res)
   {
     var filename=req.body.filename;
@@ -37,6 +44,8 @@ router.post('/style', function(req, res)
 
   });
 
+/* Save Final (with Text) Result into Server
+ * It's used for Kakao Image URL */
 router.post('/result', function(req, res)
   {
     var dataURI=req.body.imgURL;
@@ -49,6 +58,8 @@ router.post('/result', function(req, res)
     res.json(answer);
   });
 
+/* if User already have made result, 
+ * it delete the previous results (prevents error) */
 router.post('/delete', function(req, res, next)
   {
     var filename=req.body.filename;
