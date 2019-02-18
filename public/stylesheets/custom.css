@@ -193,7 +193,7 @@ margin-top: 8%;
 }
 
 }
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 370px) {
   #kakao,
   #download img {width:110px;height:110px}
   #fileForm {top:17%;left:20%;width:54%;height:52%}
