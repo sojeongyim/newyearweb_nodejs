@@ -28,31 +28,30 @@
 
 
 
-    <!-- Valentine -->
-    <center id="card_style"> 
-      <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
-        <div id = "progressBar">
-          <div class="loader"></div>
-        </div>
-        <div id ="inImgTop2">
-          <p id="l1"align:"left" style="color: black;text-align:left;"></p>
-          <p id="l2" align:"left" style="color:black; text-align:left;"></p>
+      <!-- Valentine -->
+      <center id="card_style"> 
+        <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
+          <div id = "progressBar">
+            <div class="loader"></div>
+          </div>
+          <div id = "inImgTop2">
+            <p style="color: black;"> </p>
+          </div>
 
-        </div>
-        <textarea class="reactUI step3" id="txt2" data-limit-rows=true rows=2 cols=11  placeholder="22자 이내로 입력"autofocus wrap=hard maxlength="22" style="font-size: 1.5em;display: none;letter-spacing:-1px"> 
-        </textarea>
+          <textarea onclick="focusON()" class="reactUI step3" id="txt2" data-limit-rows="true" rows="2" placeholder="22자 이내로 입력" autofocus="" wrap="hard" maxlength="22" style="font-size: 1.5em; display:block; letter-spacing: -1px;"></textarea>
 
-        <img id="grip2"  src ="/images/grip2.png"></img> 
-        <div id="hiddenBox" class="rotate"></div>
-        <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm2">
-          <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-            <img onload="offProgress()" id="origin_image2"  style="z-index: 11; display: inline-block; pointer-events: none;width: 100%; height: 100%; object-fit:cover;" src="/images/grey2.png"/>
-          </label>
-          <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
-          <input type="text" id="filePath" style="display: none;"/>
-        </form>
-      </div>
-    </center>
+    
+          <img id="grip2"  src ="/images/grip2.png"></img> 
+          <div id="hiddenBox" class="rotate"></div>
+          <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm2">
+            <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
+              <img onload="offProgress()" id="origin_image2"  style="z-index: 11; display: inline-block; pointer-events: none;width: 100%; height: 100%; object-fit:cover;" src="/images/grey2.png"/>
+            </label>
+            <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+            <input type="text" id="filePath" style="display: none;"/>
+          </form>
+        </div>
+      </center>
 
     <div class="reactUI step4 " id="testShare">
       <div id="testImage">
@@ -80,11 +79,11 @@
 
 
 
-    <div id="stepBar" style="text-align: center;">
-      <img id="s1" src="/images/bar2.png"  style="text-align: center; margin:0 auto;">
-      <img id="s2" src="/images/bar3.png" style="display:none;text-align: center; margin:0 auto;">
-      <img id="s3" src="/images/bar4.png" style="display:none;text-align: center; margin:0 auto;">
-    </div>
+      <div id="stepBar" style="text-align: center;">
+        <img id="s1" src="/images/bar2.png"  style="text-align: center; margin:0 auto;">
+        <img id="s2" src="/images/bar3.png" style="display:none;text-align: center; margin:0 auto;">
+        <img id="s3" src="/images/bar4.png" style="display:none;text-align: center; margin:0 auto;">
+      </div>
 
 
     <div id="bottomList">
@@ -111,11 +110,8 @@ var cur_Step = 1;
 var kakaoimgName = '';
 var styleCheck = false;
 var list = ['11','9','5','10','4'];
-var line="";
-var line1="";
-var line2="";
 
-/* Check file if style transfer is done */
+
 function check_file(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
@@ -131,13 +127,11 @@ function check_file(){
   }
 }
 
-/* Show progress bar if something is onprocessing */
 function onProgress()
 {
   $("#progressBar").css("display", "block");
 }
 
-/* Turn off Progress bar nothing is processed */
 function offProgress()
 {
   $("#progressBar").css("display", "none");
@@ -149,7 +143,6 @@ function offProgress()
   }
 }
 
-/* load Stylized Images into View */
 function style_img_load(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
@@ -162,14 +155,12 @@ function style_img_load(){
 }
 
 
-/* Capture Images onto Canvas and send it to server  */
 function capture(){
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){ 
     saveToServer(canvas.toDataURL(), $('#filePath').val());
   });
 }
 
-/* Manages the Changing of UI*/
 function updateUI()
 {
   $('.reactUI').css('display','none');
@@ -218,25 +209,11 @@ function updateUI()
       $('#fileInput').prop('disabled', true);
       $("#s3").css('display','block');
       $("#s2").css('display','none');
-      $("#s1").css('display','none');  
+      $("#s1").css('display','none');
+
       break;
     case 4:
-
-      line=$("#txt2").val();
-
-      if(line.length>11){
-        line1=line.substr(0,11);
-        line2=line.substr(11,21);
-      }
-      else{
-        line1=line;
-        line2="";
-      }
-
-
-
-      $("#l1").text(line1);
-      $("#l2").text(line2);
+      $("#inImgTop2 p").text($("#txt2").val());
       $("#txt2").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
@@ -250,7 +227,6 @@ function updateUI()
   }
 }
 
-/* check if Image is uploaded or not */
 function chkImgUpload()
 {
   if($('#origin_image2').attr("src").indexOf('grey')!=-1)
@@ -264,6 +240,7 @@ function chkImgUpload()
   }
 }
 
+
 function nextStep(){
   if(styleCheck)
   {
@@ -275,20 +252,7 @@ function nextStep(){
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
         $("#txt2").css('display', 'none');
-
-        line=$("#txt2").val();
-        if(line.length>11){
-          line1=line.substr(0,11);
-          line2=line.substr(11,21);
-        }
-        else{
-          line1=line;
-          line2="";
-        }
-
-
-        $("#l1").text(line1);
-        $("#l2").text(line2);
+        $("#inImgTop2 p").text($("#txt2").val());
         capture();
         $('#blurred_background').attr("src","/background/"+$('#filePath').val());
       }else{
@@ -304,7 +268,7 @@ function nextStep(){
 
 function prevStep(){
   if(cur_Step==1){
-    window.location.href="http://paintly.me/main"
+  window.location.href="http://paintly.me/main"
   }else if(cur_Step ==2 )
   {
     location.reload();
@@ -315,7 +279,6 @@ function prevStep(){
   }
 }
 
-/* Save to Server with ajax */
 function saveToServer(uri, filename)
 {
   filename = filename.split('.')[0];
@@ -325,12 +288,6 @@ function saveToServer(uri, filename)
   );
 }
 
-/* Download cards
-   iphone - open Images
-   Android - down load Images automatically
-
-   open Survey page
- */
 function DownloadCard(){
   var link = document.createElement('a');
   var filename = $('#filePath').val().split('.')[0]+".png";
@@ -352,14 +309,9 @@ function DownloadCard(){
 
 }
 
-/*Set Fake Kakao Button 
-  so It can be managed easily(for UI)*/
 function KakaoShare(){
   $('#kakao-link-btn').click();
 }
-
-/* Init Kakao Sdk 
-   set Tags, Title, Url etc here */
 function initKakao()
 {
   Kakao.cleanup();
@@ -391,7 +343,6 @@ function initKakao()
   });
 }
 
-/* Generate Filename with Random Character */
 function genFileName() {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -427,8 +378,6 @@ function style_click(Id){
     }
 
     //console.log('Id:  '+Id);
-    /* Delete Already Existing File
-       and Put another rows into DB */
     $.post('/ajax/delete', {filename: filename });
     $.post('/ajax/style', {stylenum: stylenum , filename: filename });
 
@@ -465,8 +414,9 @@ $(document).ready(function(){
     $("#txt2").focus();
   });
 
-  /*When file is changed which means file is uploaded
-    It shows the preview of Images with module loadImage */
+
+
+ 
   $('#fileInput').on('change', function (){
     var filename=$('#fileInput').val();
     var file;
