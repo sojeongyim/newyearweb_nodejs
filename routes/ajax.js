@@ -32,7 +32,7 @@ router.post('/style', function(req, res)
     var filename=req.body.filename;
     var stylenum=req.body.stylenum;
 
-    connection.query('INSERT INTO image VALUES(?,?,?)',[filename,stylenum,0],function(err, rows, fields){
+    connection.query('INSERT INTO image(filename, stylename) VALUES(?,?)',[filename,stylenum],function(err, rows, fields){
       if (!err){
         var answer={'result': 'ok'};
         res.json(answer);
