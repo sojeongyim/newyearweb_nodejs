@@ -40,13 +40,15 @@
             <p id="p4" style="color: black;"> </p>
           </div>
 
+
           <!-- <textarea class="reactUI step3" id="txt2" data-limit-rows="true" rows="2" cols="22" placeholder="22자 이내로 입력" autofocus="" wrap="hard" maxlength="22" style="font-size: 1.5em; display:block; letter-spacing: -1px;"></textarea> -->
-           <input class="reactUI step3" id="txt2" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: block;letter-spacing:-1px"> 
+           <input class="reactUI step3" id="txt2" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: none;letter-spacing:-1px"> 
           </input>
-          <input class="reactUI step3" id="txt3" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: block;letter-spacing:-1px"> 
+          <input class="reactUI step3" id="txt3" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: none;letter-spacing:-1px"> 
           </input>
-          <input class="reactUI step3" id="txt4" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: block;letter-spacing:-1px"> 
+          <input class="reactUI step3" id="txt4" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: none;letter-spacing:-1px"> 
           </input>
+
     
           <img id="grip2"  src ="/images/grip2.png"></img> 
           <div id="hiddenBox"></div>
@@ -207,6 +209,13 @@ function updateUI()
     case 3:
       $("#txt2").focus();
       $("#txt2").val('');
+
+      $("#txt3").focus();
+      $("#txt3").val('');
+
+      $("#txt4").focus();
+      $("#txt4").val('');
+
       // $("#inImgTop2 p").text("");
       $("#p2").text("");
       $("#p3").text("");
