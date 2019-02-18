@@ -35,17 +35,24 @@
             <div class="loader"></div>
           </div>
           <div id = "inImgTop2">
-            <p style="color: black;"> </p>
+            <p id="p2" style="color: black;"> </p>
+            <p id="p3" style="color: black;"> </p>
+            <p id="p4" style="color: black;"> </p>
           </div>
 
-          <textarea onclick="focusON()" class="reactUI step3" id="txt2" data-limit-rows="true" rows="2" placeholder="22자 이내로 입력" autofocus="" wrap="hard" maxlength="22" style="font-size: 1.5em; display:block; letter-spacing: -1px;"></textarea>
-
+          <!-- <textarea class="reactUI step3" id="txt2" data-limit-rows="true" rows="2" cols="22" placeholder="22자 이내로 입력" autofocus="" wrap="hard" maxlength="22" style="font-size: 1.5em; display:block; letter-spacing: -1px;"></textarea> -->
+           <input class="reactUI step3" id="txt2" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: block;letter-spacing:-1px"> 
+          </input>
+          <input class="reactUI step3" id="txt3" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: block;letter-spacing:-1px"> 
+          </input>
+          <input class="reactUI step3" id="txt4" autofocus placeholder="5자 이내로 입력" maxlength="5" style="display: block;letter-spacing:-1px"> 
+          </input>
     
           <img id="grip2"  src ="/images/grip2.png"></img> 
-          <div id="hiddenBox" class="rotate"></div>
+          <div id="hiddenBox"></div>
           <form action="/upload" method="post"  enctype="multipart/form-data" id="fileForm2">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="origin_image2"  style="z-index: 11; display: inline-block; pointer-events: none;width: 100%; height: 100%; object-fit:cover;" src="/images/grey2.png"/>
+              <img onload="offProgress()" id="origin_image2" src="/images/grey20.png"/>
             </label>
             <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
@@ -200,7 +207,11 @@ function updateUI()
     case 3:
       $("#txt2").focus();
       $("#txt2").val('');
-      $("#inImgTop2 p").text("");
+      // $("#inImgTop2 p").text("");
+      $("#p2").text("");
+      $("#p3").text("");
+      $("#p4").text("");
+
       $("img.l_arrow").attr('src','/images/arrow11.png');
       $("img.r_arrow").attr('src','/images/arrow8.png');
       $("img.l_arrow").css('display','block');
@@ -213,8 +224,15 @@ function updateUI()
 
       break;
     case 4:
-      $("#inImgTop2 p").text($("#txt2").val());
+      // $("#inImgTop2 p").text($("#txt2").val());
+      // $("#txt2").val('');
+      $("#p2").text($("#txt2").val());
       $("#txt2").val('');
+      $("#p3").text($("#txt3").val());
+      $("#txt3").val('');
+      $("#p4").text($("#txt4").val());
+      $("#txt4").val('');
+
       initKakao();
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
@@ -252,7 +270,12 @@ function nextStep(){
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
         $("#txt2").css('display', 'none');
-        $("#inImgTop2 p").text($("#txt2").val());
+        // $("#inImgTop2 p").text($("#txt2").val());
+
+        $("#p2").text($("#txt2").val());
+        $("#p3").text($("#txt3").val());
+        $("#p4").text($("#txt4").val());
+
         capture();
         $('#blurred_background').attr("src","/background/"+$('#filePath').val());
       }else{
@@ -424,13 +447,11 @@ $(document).ready(function(){
       if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
       {
         onProgress();
-
         var newFilename = 'val_' + genFileName()+'.png';
         loadImage(
             file,
             function(img){
               var imgURI = img.toDataURL();
-
               $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
                   function(data,status){
 

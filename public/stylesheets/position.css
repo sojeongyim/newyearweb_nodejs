@@ -640,9 +640,7 @@ div#resultBottom .start {
     margin-top:2vh;
     color: white;
     border-radius: 25px;
-    width: 80%;
     position: absolute;
-    top: 2%;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -652,15 +650,55 @@ div#resultBottom .start {
     background: black;
     opacity: 0.4;
     font-size: 2em;
+     height: 7%;
+    width: 50%;
+   /* padding-left: 10%;
+    padding-right: 10%;*/
+    top: 68%;
   }
-  #txt2
-  {
-    height: 10%;
-    width: 70%;
-    padding-left: 10%;
-    padding-right: 10%;
-    top: 60%;
+ 
+ #txt3 {
+    margin-top:2vh;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 13;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-size: 1.5em;
+     height: 7%;
+    width: 50%;
+   /* padding-left: 10%;
+    padding-right: 10%;*/
+    top: 76%;
   }
+#txt4 {
+    margin-top:2vh;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 13;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-size: 1.8em;
+     height: 9%;
+    width: 50%;
+   /* padding-left: 10%;
+    padding-right: 10%;*/
+    top: 86.5%;
+  }
+
+
 
   #inImgTop2
   {
@@ -670,7 +708,7 @@ height: 15%;
     padding-left: 20%;
     padding-right: 20%;
     top: 60%;
-    transform: rotate(5deg);
+    /*transform: rotate(5deg);*/
     z-index: 1;
   }
   #blurred_background{
