@@ -362,8 +362,8 @@ font-size: 1.5em;
 #insta_p2{
   position: absolute;
   z-index: 30;
-  top: 82;
-  left: 25;
+  top: 82%;
+  left: 25%;
 }
 
 
@@ -483,8 +483,8 @@ font-size: 1.3em;
 #insta_p2{
   position: absolute;
   z-index: 30;
-  top: 82;
-  left: 25;
+  top: 82%;
+  left: 25%;
   font-size: 1.1em;
 }
 
@@ -563,8 +563,8 @@ font-size: 1.7em;
 #insta_p2{
   position: absolute;
   z-index: 30;
-  top: 82;
-  left: 25;
+  top: 82%;
+  left: 25%;
   font-size: 0.9em;
 }
 
@@ -779,13 +779,13 @@ right: 0;
     z-index: 30;
     top: 13%;
     left: 30%;
-font-size: 1.5em;
+font-size: 1.1em;
 }
 #insta_p2{
   position: absolute;
   z-index: 30;
-  top: 82;
-  left: 25;
-  font-size: 1.3em;
+  top: 81.5%;
+  left: 25%;
+  font-size: 1.1em;
 }
 }
