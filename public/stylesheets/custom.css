@@ -155,7 +155,7 @@ margin-top: 8%;
   }
 
 
-@media screen and (max-width: 370px) {
+@media screen and (min-width: 320px) {
   #idx1 {margin-bottom:1vh;font-size:1.5rem}
   #kakao,
   #download img {width:100px;height:100px}
@@ -193,7 +193,7 @@ margin-top: 8%;
 }
 
 }
-@media screen and (min-width: 374px) {
+@media screen and (min-width: 375px) {
   #kakao,
   #download img {width:110px;height:110px}
   #fileForm {top:17%;left:20%;width:54%;height:52%}
@@ -216,6 +216,18 @@ margin-top: 8%;
     left: -0.5%;
     top: 0%;
   }
+  #origin_image2 {
+    z-index: 11;
+    display: inline-block;
+    pointer-events: none;
+    width: 85%;
+    height: 85%;
+    /*transform: rotate(-4deg);*/
+    top: 20%;
+    left: -10%;
+    position: relative;
+    object-fit: cover;
+}
 
 }
 @media screen and (min-width: 425px) {
