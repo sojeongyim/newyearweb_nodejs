@@ -358,7 +358,7 @@ margin-top: 8%;
   /*valentine*/
   #fileForm2 {
     top: 4%;
-    left: 25%;
+    left: -10%;
     width: 80%;
     height: 80%;
     /* transform: rotate(4deg); */
@@ -424,6 +424,7 @@ margin-top: 8%;
       top: 0%;
     width: 65%;
     height: 65%;
+    left:25%;
     position: relative;
   }
   #grip2 {
