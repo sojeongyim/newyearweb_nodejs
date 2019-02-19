@@ -43,7 +43,7 @@
           <input class="reactUI step3" id="insta_txt2" autofocus placeholder="22자 이내로 입력" maxlength="22" style="display: none;letter-spacing:-1px"> 
           </input>
           <div class="something">
-            <img id="blurred_background" ></img> 
+            <img id="insta_background" style="width:100%; height: 100%;" ></img> 
           </div>
           <img id="insta_grip" src ="/images/insta.png"></img> 
           <div id="hiddenBox" ></div>
@@ -179,7 +179,7 @@ function updateUI()
     case 1:
       styleCheck=false;
       $('#insta_origin_image').attr("src","/images/grey.png");
-      $('#blurred_background').attr("src","");
+      $('#insta_background').attr("src","");
       $("img.r_arrow").css('display','none');
       $('#fileInput').prop('disabled', false);
       $('.step1').fadeIn();
@@ -269,7 +269,7 @@ function nextStep(){
         $("#insta_p1").text($("#insta_txt1").val());
         $("#insta_p2").text($("#insta_txt2").val());
         capture();
-        $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+        $('#insta_background').attr("src","/background/"+$('#filePath').val());
       }else{
         updateUI()
       }
@@ -463,7 +463,7 @@ $(document).ready(function(){
                   function(data,status){
 
                     $('#insta_origin_image').attr("src",imgURI);
-                    $('#blurred_background').attr("src",imgURI);
+                    $('#insta_background').attr("src",imgURI);
 
                     $('#filePath').val(newFilename);
                     kakaoimgName = newFilename;
