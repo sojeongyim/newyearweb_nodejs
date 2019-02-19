@@ -64,21 +64,23 @@ div#bottomList {position:relative;width:95%}
       left: 0;
     float: left;
     width: 45%;
-    margin-left: : 15px;
+  /*  margin-left: : 15px;
 
-    margin-top: 20%;
+    margin-top: 20%;*/
 }
 #sul1{
 right: 0;
     float: left;
     width: 45%;
     margin-left: 15px;
-    margin-top: 20%;
+    margin-bottom: 10%;
 }
 #s0{
   text-align: center; 
   margin:5% auto;
   width: 100%;
+  position: absolute;
+    top: 75%;
 }
 #backgroundMent {
     text-align: center;
@@ -571,10 +573,19 @@ font-size: 1.7em;
   left: 25%;
   font-size: 0.9em;
 }
-
-
+#s0 {
+    /* text-align: center; */
+    margin: 5% auto;
+    width: 100%;
+    position: absolute;
+    left: 0%;
+    top: 90%;
+}
 
 }
+
+
+
 @media screen and (min-width: 1000px) {
   #idx1 {font-size:2rem}
   #kakao,
@@ -608,20 +619,25 @@ font-size: 1.7em;
     float: left;
     width: 45%;
     margin-right: 15px;
-    margin-top: 20%;
+    /*margin-top: 20%;*/
 }
 #sul1{
 right: 0;
     float: left;
     width: 45%;
-    margin-left: 15px;
-    margin-top: 20%;
+    /*margin-left: 15px;*/
+    /*margin-top: 20%;*/
 }
 
   #s0{
-    margin-top:5%;
+   /* margin-top:5%;
     text-align: center;
-    width: 100%;
+    width: 100%;*/
+    margin-top: 5%;
+    left: 35%;
+    /* text-align: center; */
+    width: 30%;
+    top: 65%;
   }
 #vscontainer
 {
