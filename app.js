@@ -15,6 +15,7 @@ var mainRouter = require('./routes/main');
 var ajaxRouter = require('./routes/ajax');
 var valentineRouter = require('./routes/valentine');
 var sularoidRouter = require('./routes/sularoid');
+var instaRouter = require('./routes/insta');
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use('/main', mainRouter);
 app.use('/ajax',ajaxRouter);
 app.use('/sularoid',sularoidRouter);
 app.use('/valentine',valentineRouter);
+app.use('/insta',instaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
