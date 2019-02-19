@@ -172,10 +172,10 @@ margin-top: 8%;
   /*valentine*/
   #fileForm2 {
 
-       top: 4%;
-    left: 25%;
-    width: 100%;
-    height: 100%;
+    top: 10%;
+    left: 30%;
+    width: 75%;
+    height: 75%;
     /*transform: rotate(4deg);*/
 
     position: relative;
@@ -204,7 +204,7 @@ margin-top: 8%;
 {
     /*transform: rotate(-7deg);*/
     width:100%;
-    top: 80%;
+    top: 78%;
     left: 0%;
 /*    font-size:1.45em;*/
 }
@@ -220,7 +220,7 @@ margin-top: 8%;
 {
     /*transform: rotate(-7deg);*/
     width:100%;
-    top: 87.5%;
+    top: 86%;
     left: 0%;
 /*    font-size:1.45em;*/
 }
@@ -232,11 +232,9 @@ margin-top: 8%;
   #fileForm {top:17%;left:20%;width:54%;height:52%}
   /*valentine*/
   #fileForm2 {
-   top: 0%;
-
-    left: 20%;
-    width: 80%;
-    height: 62%;
+   top: 5%;
+    width: 65%;
+    height: 65%;
     /*transform: rotate(4deg);*/
 
     position: relative;
@@ -350,10 +348,9 @@ margin-top: 8%;
   }
   /*valentine*/
   #fileForm2 {
-      top: 1%;
-    left: 20%;
-    width: 80%;
-    height: 61%;
+      top: 0%;
+    width: 65%;
+    height: 65%;
     position: relative;
   }
   #grip2 {
@@ -410,7 +407,7 @@ right: 0;
 {
     /*transform: rotate(-7deg);*/
     width:100%;
-    top: 87.5%;
+    top: 87%;
     left: 0%;
 /*    font-size:1.45em;*/
 }
