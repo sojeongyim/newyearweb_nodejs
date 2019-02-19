@@ -38,14 +38,14 @@ div#bottomList {position:relative;width:95%}
     color: black;
     font-family: nanum Gothic;
     font-weight: bold;
-    font-size: 1em;
+    font-size: 0.8em;
     margin-bottom: 0px;
 }
 #p3{
       color: black;
     font-family: nanum Gothic;
     font-weight: normal;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 #p4{
   color: black;
@@ -213,8 +213,8 @@ margin-top: 8%;
     z-index: 11;
     display: inline-block;
     pointer-events: none;
-    width: 85%;
-    height: 85%;
+    width: 70%;
+    height: 70%;
     /*transform: rotate(-4deg);*/
     top: -5%;
     left: 1%;
@@ -233,7 +233,7 @@ margin-top: 8%;
 {
     /*transform: rotate(-7deg);*/
     width:100%;
-    top: 77%;
+    top: 75%;
     left: 0%;
 /*    font-size:1.45em;*/
 }
@@ -311,7 +311,7 @@ margin-top: 8%;
 {
     /*transform: rotate(-7deg);*/
     width:100%;
-    top: 77%;
+    top: 75%;
     left: 0%;
 /*    font-size:1.45em;*/
 }
@@ -319,7 +319,7 @@ margin-top: 8%;
 {
     /*transform: rotate(-7deg);*/
     width:100%;
-    top: 85%;
+    top: 86%;
     left: 0%;
 /*    font-size:1.45em;*/
 }
@@ -469,7 +469,7 @@ right: 0;
 {
     /*transform: rotate(-7deg);*/
     width:100%;
-    top: 77%;
+    top: 75.5%;
     left: 0%;
 /*    font-size:1.45em;*/
 }
@@ -557,11 +557,11 @@ right: 0;
   }
   #p2{
    
-    font-size: 1em;
+    font-size: 0.8em;
 
 }
 #p3{
-    font-size: 0.9em;
+    font-size: 1em;
 }
 #p4{
 
