@@ -217,7 +217,7 @@ margin-top: 8%;
     height: 85%;
     /*transform: rotate(-4deg);*/
     top: -5%;
-    left: -23%;
+    left: 1%;
     position: relative;
     object-fit: cover;
 }
@@ -245,6 +245,25 @@ margin-top: 8%;
     left: 0%;
 /*    font-size:1.45em;*/
 }
+#txt4 {
+    margin-top: 2vh;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 13;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-size: 1em;
+    height: 9%;
+    width: 50%;
+    top: 85.5%;
+}
+
 
 }
 @media screen and (min-width: 375px) {
@@ -515,4 +534,17 @@ right: 0;
     padding-right: 10%;*/
     top: 86.5%;
   }
+  #p2{
+   
+    font-size: 1em;
+
+}
+#p3{
+    font-size: 0.9em;
+}
+#p4{
+
+    font-size: 1.2em;
+}
+
 }
