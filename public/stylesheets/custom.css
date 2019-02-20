@@ -77,10 +77,10 @@ right: 0;
 }
 #s0{
   text-align: center; 
-  margin:5% auto;
+  margin:0% auto;
   width: 100%;
-  position: absolute;
-    top: 90%;
+  
+    top: 80%;
 }
 #backgroundMent {
     text-align: center;
@@ -253,7 +253,7 @@ margin-top: 8%;
 
 
 @media screen and (min-width: 320px) {
-  #idx1 {margin-bottom:1vh;font-size:1.5rem}
+  #idx1 {margin-bottom:0%; font-size:1.5rem;}
   #kakao,
   #download img {width:100px;height:100px}
   #fileForm {top:17%;left:20%;width:54%;height:52%}
@@ -634,10 +634,10 @@ right: 0;
     text-align: center;
     width: 100%;*/
     margin-top: 5%;
-    left: 35.8%;
+    left: 35%;
     /* text-align: center; */
     width: 30%;
-    top: 65%;
+    top: 70%;
   }
 #vscontainer
 {
