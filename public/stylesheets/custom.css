@@ -399,11 +399,11 @@ font-size: 1em;
     z-index: 11;
     display: inline-block;
     pointer-events: none;
-    width: 85%;
-    height: 85%;
+    width: 78%;
+    height: 78%;
     /*transform: rotate(-4deg);*/
-    top: 10%;
-    left: 27%;
+    top: 16%;
+    left: 28%;
     position: relative;
     object-fit: cover;
 }

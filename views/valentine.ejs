@@ -272,33 +272,46 @@ function chkImgUpload()
 }
 
 
-function nextStep(){
+
+function nextStep()
+{
   if(styleCheck)
   {
-    if(cur_Step <4 && chkImgUpload())
-    {
-      cur_Step = cur_Step +1;
-      if(cur_Step ==4)
-      {
-        $("img.l_arrow").css('display','none');
-        $("img.r_arrow").css('display','none');
-        $("#txt2").css('display', 'none');
-        $("#txt3").css('display', 'none');
-        $("#txt4").css('display', 'none');
-        $("#p2").text($("#txt2").val());
-        $("#p3").text($("#txt3").val());
-        $("#p4").text($("#txt4").val());
 
-        capture();
-        $('#blurred_background').attr("src","/background/"+$('#filePath').val());
-      }else{
-        updateUI()
+    if(cur_Step < 3 && chkImgUpload())
+    {
+      cur_Step=cur_Step+1;
+      updateUI();
+    }
+    else if(cur_Step == 3 && chkImgUpload())
+    {
+
+      if( $("#txt2").val()!='' && $("#txt3").val()!='' && $("#txt4").val()!='')
+      {
+        cur_Step=cur_Step+1;
+      }
+      else
+      {
+        alert("메세지를 전부 입력해주세요~");
       }
     }
-  }
-  else
-  {
-    alert("스타일을 선택 해 주세요.");
+    else
+    {
+      updateUI();
+    }
+    if(cur_Step ==4)
+    {
+      $("img.l_arrow").css('display','none');
+      $("img.r_arrow").css('display','none');
+      $("#txt2").css('display', 'none');
+      $("#txt3").css('display', 'none');
+      $("#txt4").css('display', 'none');
+      $("#p2").text($("#txt2").val());
+      $("#p3").text($("#txt3").val());
+      $("#p4").text($("#txt4").val());
+      capture();
+      $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+    }
   }
 }
 
