@@ -118,6 +118,7 @@
     </div>
         <script>
 
+
 var timerId = 0;
 var cur_Step = 1;
 var kakaoimgName = '';
@@ -272,40 +273,46 @@ function chkImgUpload()
 }
 
 
-function nextStep(){
+
+function nextStep()
+{
   if(styleCheck)
   {
-    if(cur_Step <4 && chkImgUpload())
+
+    if(cur_Step < 3 && chkImgUpload())
     {
-      cur_Step = cur_Step +1;
-      
-      if(cur_Step ==4)
+      cur_Step=cur_Step+1;
+      updateUI();
+    }
+    else if(cur_Step == 3 && chkImgUpload())
+    {
+
+      if( $("#txt2").val()!='' && $("#txt3").val()!='' && $("#txt4").val()!='')
       {
-        $("img.l_arrow").css('display','none');
-        $("img.r_arrow").css('display','none');
-        $("#txt2").css('display', 'none');
-        $("#txt3").css('display', 'none');
-        $("#txt4").css('display', 'none');
-        $("#p2").text($("#txt2").val());
-        $("#p3").text($("#txt3").val());
-        $("#p4").text($("#txt4").val());
-        capture();
-        $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+        cur_Step=cur_Step+1;
       }
       else
       {
-        updateUI()
+        alert("메세지를 전부 입력해주세요~");
       }
-
-      
     }
-  }
-  
-
-
-  else
-  {
-    alert("스타일을 선택 해 주세요.");
+    else
+    {
+      updateUI();
+    }
+    if(cur_Step ==4)
+    {
+      $("img.l_arrow").css('display','none');
+      $("img.r_arrow").css('display','none');
+      $("#txt2").css('display', 'none');
+      $("#txt3").css('display', 'none');
+      $("#txt4").css('display', 'none');
+      $("#p2").text($("#txt2").val());
+      $("#p3").text($("#txt3").val());
+      $("#p4").text($("#txt4").val());
+      capture();
+      $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+    }
   }
 }
 
@@ -367,7 +374,7 @@ function initKakao()
     objectType: 'feed',
     content: {
       title: "졸업이라 쓰고, 기적이라 읽다.",
-      description: '#졸업 #축하해 #백수',
+      description: '#졸업 #축하해 #백수 #Paintly',
       imageUrl: 'http://paintly.me/final/'+final_filename,
       link: {
         mobileWebUrl: 'http://paintly.me/main/'+final_filename,
@@ -507,6 +514,7 @@ $(document).ready(function(){
     }
   });
 });  
+        
         </script> 
   </body>
 </html>
