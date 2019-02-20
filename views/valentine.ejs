@@ -278,6 +278,7 @@ function nextStep(){
     if(cur_Step <4 && chkImgUpload())
     {
       cur_Step = cur_Step +1;
+      
       if(cur_Step ==4)
       {
         $("img.l_arrow").css('display','none');
@@ -288,14 +289,20 @@ function nextStep(){
         $("#p2").text($("#txt2").val());
         $("#p3").text($("#txt3").val());
         $("#p4").text($("#txt4").val());
-
         capture();
         $('#blurred_background').attr("src","/background/"+$('#filePath').val());
-      }else{
+      }
+      else
+      {
         updateUI()
       }
+
+      
     }
   }
+  
+
+
   else
   {
     alert("스타일을 선택 해 주세요.");
