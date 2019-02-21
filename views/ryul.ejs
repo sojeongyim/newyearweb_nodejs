@@ -32,16 +32,16 @@
           <div id = "progressBar">
             <div class="loader"></div>
           </div>
-          <div id = "rainbow_inImgTop1">
-            <p id="rainbow_p1" style="color: white;font-family: nanum Gothic;
+          <div id = "insta_inImgTop1">
+            <p id="insta_p1" style="color: white;font-family: nanum Gothic;
     font-weight: bold;"> </p>
           </div>
-          <div id = "rainbow_inImgTop2">
-            <p id="rainbow_p2" style="color: white;font-family: nanum Gothic;
+          <div id = "insta_inImgTop2">
+            <p id="insta_p2" style="color: white;font-family: nanum Gothic;
     font-weight: bold;"> </p>
           </div>
-          <div id = "rainbow_inImgTop3">
-            <p id="rainbow_p3" style="color: white;font-family: nanum Gothic;
+          <div id = "insta_inImgTop3">
+            <p id="insta_p3" style="color: white;font-family: nanum Gothic;
     font-weight: bold;"> </p>
           </div>
 
@@ -218,9 +218,10 @@ function updateUI()
       $("#rainbow_txt2").val('');
       $("#rainbow_txt3").focus();
       $("#rainbow_txt3").val('');
-      $("#rainbow_inImgTop1").text("");
-      $("#rainbow_inImgTop2").text("");
-      $("#rainbow_inImgTop3").text("");
+      
+      $("#insta_p1").text("");
+      $("#insta_p2").text("");
+      $("#insta_p3").text("");
 
       $("img.l_arrow").attr('src','/images/arrow11.png');
       $("img.r_arrow").attr('src','/images/arrow8.png');
@@ -234,11 +235,11 @@ function updateUI()
 
       break;
     case 4:
-      $("#rainbow_p1").text($("#rainbow_txt1").val());
+      $("#insta_p1").text($("#rainbow_txt1").val());
       $("#rainbow_txt1").val('');
-      $("#rainbow_p2").text($("#rainbow_txt2").val());
+      $("#insta_p2").text($("#rainbow_txt2").val());
       $("#rainbow_txt2").val('');
-      $("#rainbow_p3").text($("#rainbow_txt3").val());
+      $("#insta_p3").text($("#rainbow_txt3").val());
       $("#rainbow_txt3").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
@@ -276,12 +277,11 @@ function nextStep(){
       {
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
-        $("#rainbow_txt1").css('display', 'none');
-        $("#rainbow_txt2").css('display', 'none');
-        $("#rainbow_txt3").css('display', 'none');
-        $("#rainbow_p1").text($("#rainbow_txt1").val());
-        $("#rainbow_p2").text($("#rainbow_txt2").val());
-        $("#rainbow_p3").text($("#rainbow_txt3").val());
+        $("#insta_txt1").css('display', 'none');
+        $("#insta_txt2").css('display', 'none');
+        $("#insta_p1").text($("#rainbow_txt1").val());
+        $("#insta_p2").text($("#rainbow_txt2").val());
+        $("#insta_p3").text($("#rainbow_txt3").val());
         capture();
         $('#insta_background').attr("src","/background/"+$('#filePath').val());
       }else{
