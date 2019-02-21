@@ -1247,6 +1247,28 @@ height: 38%;
     top: 25%;
 }
 
+#rainbow_p1 {
+    color: white;
+    position: absolute;
+    z-index: 30;
+    top: 13%;
+    left: 30%;
+    font-size: 1.1em;
+}
+#rainbow_p2 {
+    position: absolute;
+    z-index: 30;
+    top: 81.5%;
+    left: 25%;
+    font-size: 1.1em;
+}
+#rainbow_p3 {
+    position: absolute;
+    z-index: 30;
+    top: 50.5%;
+    left: 25%;
+    font-size: 1.1em;
+}
 
 }
 
