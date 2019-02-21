@@ -79,7 +79,6 @@ right: 0;
   text-align: center; 
   margin:0% auto;
   width: 100%;
-  
     top: 80%;
 }
 #backgroundMent {
@@ -246,6 +245,35 @@ margin-top: 8%;
   }
 
 
+/*rainbow*/
+#rainbow_origin_image
+{
+
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    top: 105%;
+    left: 45%;
+    object-position: center;
+    object-fit: cover;
+}
+#rainbow_grip
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 12;
+    top: 0%;
+}
+#fileForm3
+  {
+    top: 40%;
+    left: 17%;
+    width: 38%;
+    height: 38%;
+}
 
 
 
@@ -581,12 +609,277 @@ font-size: 1.7em;
     left: 0%;
     top: 90%;
 }
+#uploadPhoto
+{
+font-size: 4em;
+}
+
 
 }
 
 
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
+  #idx1 {font-size:2rem}
+  #kakao,
+  #download img {width:150px;height:150px}
+  div#bottomList {position:relative;width:100%}
+  #fileForm {
+    top: 12%;
+    left: 8%;
+    width: 65%;
+    height: 60%;
+  }
+  /*valentine*/
+  #fileForm2 {
+      top: 0%;
+    width: 65%;
+    height: 65%;
+    left:25%;
+    position: relative;
+  }
+  #grip2 {
+    z-index: 12;
+    width: 102%;
+    height: 100%;
+    position: absolute;
+    left: -0.5%;
+    top: 0%;
+
+}
+#val1{
+      left: 0;
+    float: left;
+    width: 45%;
+    margin-right: 15px;
+    /*margin-top: 20%;*/
+}
+#sul1{
+right: 0;
+    float: left;
+    width: 45%;
+    /*margin-left: 15px;*/
+    /*margin-top: 20%;*/
+}
+
+  #s0{
+
+   /* margin-top:5%;
+    text-align: center;
+    width: 100%;*/
+    margin-top: 5%;
+    left: 0%;
+    /* text-align: center; */
+    width: 100%;
+    top: 70%;
+  }
+#vscontainer
+{
+  width:100%; height:50%;margin:3%;
+
+}
+#inImgTop2
+{
+    /*transform: rotate(-7deg);*/
+    width:100%;
+    top: 77%;
+    left: 0%;
+/*    font-size:1.45em;*/
+}
+#inImgTop3
+{
+    /*transform: rotate(-7deg);*/
+    width:100%;
+    top: 74.5%;
+    left: 0%;
+/*    font-size:1.45em;*/
+}
+#inImgTop4
+{
+    /*transform: rotate(-7deg);*/
+    width:100%;
+    top: 85.5%;
+    left: 0%;
+/*    font-size:1.45em;*/
+}
+#origin_image2
+{
+    z-index: 11;
+    display: inline-block;
+    pointer-events: none;
+    width: 85%;
+    height: 85%;
+   /* transform: rotate(-4deg);*/
+    top: 23%;
+    left: -10%;
+    position: relative;
+    object-fit: cover;
+}
+#txt2 {
+    margin-top:2vh;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 13;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-size: 1em;
+     height: 7%;
+    width: 50%;
+   /* padding-left: 10%;
+    padding-right: 10%;*/
+    top: 67%;
+  }
+ 
+ #txt3 {
+    margin-top:2vh;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 13;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-size: 1em;
+     height: 7%;
+    width: 50%;
+   /* padding-left: 10%;
+    padding-right: 10%;*/
+    top: 74.5%;
+  }
+#txt4 {
+    margin-top:2vh;
+    color: white;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 13;
+    border: none;
+    text-align: center;
+    background: black;
+    opacity: 0.4;
+    font-size: 1em;
+     height: 9%;
+    width: 50%;
+   /* padding-left: 10%;
+    padding-right: 10%;*/
+    top: 84.5%;
+  }
+  #p2{
+   
+    font-size: 0.8em;
+
+}
+#p3{
+    font-size: 1em;
+}
+#p4{
+
+    font-size: 1.2em;
+}
+
+
+
+/*instagram*/
+#insta_grip
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 12;
+    top:0%;
+}
+#insta_origin_image{
+    height: 85%;
+    width: 77%;
+    max-width: 1000px;
+    position: relative;
+    top: 12%;
+    left: 14.6%;
+    object-position: center;
+    object-fit: cover;
+
+}
+#insta_txt1 {
+   
+    height: 4%;
+    width: 40%;
+    top: 14.5%;
+    font-size: 1.3em;
+}
+
+#insta_txt2{
+      height: 4%;
+    width: 60%;
+    top: 83%;
+    font-size:1.3em;
+}
+#insta_p1{
+  
+    color: white;
+    position: absolute;
+    z-index: 30;
+    top: 13%;
+    left: 30%;
+font-size: 1.1em;
+}
+#insta_p2{
+  position: absolute;
+  z-index: 30;
+  top: 81.5%;
+  left: 25%;
+  font-size: 1.1em;
+}
+
+/*rainbow frame*/
+#rainbow_origin_image
+{
+
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    top: 105%;
+    left: 45%;
+    object-position: center;
+    object-fit: cover;
+}
+#rainbow_grip
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 12;
+    top: 0%;
+}
+#fileForm3
+  {
+    top: 40%;
+    left: 17%;
+    width: 38%;
+    height: 38%;
+}
+
+
+
+}
+
+
+
+@media screen and (min-width: 1025px) {
   #idx1 {font-size:2rem}
   #kakao,
   #download img {width:150px;height:150px}
@@ -630,6 +923,7 @@ right: 0;
 }
 
   #s0{
+
    /* margin-top:5%;
     text-align: center;
     width: 100%;*/
@@ -808,4 +1102,38 @@ font-size: 1.1em;
   left: 25%;
   font-size: 1.1em;
 }
+
+/*rainbow frame*/
+#rainbow_origin_image
+{
+
+    height: 100%;
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    top: 105%;
+    left: 45%;
+    object-position: center;
+    object-fit: cover;
 }
+#rainbow_grip
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 12;
+    top: 0%;
+}
+#fileForm3
+  {
+    top: 40%;
+    left: 17%;
+    width: 38%;
+    height: 38%;
+}
+
+
+
+}
+
