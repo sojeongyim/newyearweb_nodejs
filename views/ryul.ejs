@@ -9,7 +9,7 @@
   <body id="mainBackground">
 
     <div class="reactUI step1" id="uploadPhoto" >
-      rainbow사진을 올려주세요. 
+      사진을 올려주세요. 
     </div>
       <!--    style slider-->
       <div class="scrollmenu reactUI step2" id="styleList" style="display: none; text-align: center;">
@@ -33,22 +33,22 @@
             <div class="loader"></div>
           </div>
           <div id = "insta_inImgTop1">
-            <p id="insta_p1" style="color: white;font-family: nanum Gothic;
-    font-weight: bold;"> </p>
+            <p id="rainbow_p1" style="color: black;font-family:Nanum Myeongjo;
+    font-weight: 900;"> </p>
           </div>
           <div id = "insta_inImgTop2">
-            <p id="insta_p2" style="color: white;font-family: nanum Gothic;
-    font-weight: bold;"> </p>
+            <p id="rainbow_p2" style="color: black;font-family:Nanum Myeongjo;
+    font-weight: 700;"> </p>
           </div>
           <div id = "insta_inImgTop3">
-            <p id="insta_p3" style="color: white;font-family: nanum Gothic;
-    font-weight: bold;"> </p>
+            <p id="rainbow_p3" style="color: mediumpurple;font-family:Nanum Myeongjo;
+    font-weight: 900;"> </p>
           </div>
 
-          <input class="reactUI step3" id="rainbow_txt1" autofocus placeholder="15자 이내로 입력" maxlength="18" style="display: block;letter-spacing:-1px"> 
+          <input class="reactUI step3" id="rainbow_txt1" autofocus placeholder="10자 이내로 입력" maxlength="10" style="display: block;letter-spacing:-1px"> 
           </input>
-           <textarea class="reactUI step3" id="rainbow_txt2" data-limit-rows="true" rows="3" cols="26" placeholder="26자 이내로 입력!!" autofocus="" wrap="hard" maxlength="26" style="font-size: 1.5em; display:block; letter-spacing: -1px;"></textarea>
-          <input class="reactUI step3" id="rainbow_txt3" autofocus placeholder="15자 이내로 입력" maxlength="18" style="display: block;letter-spacing:-1px"> 
+           <textarea class="reactUI step3" id="rainbow_txt2" data-limit-rows="true" rows="3" cols="10" placeholder="20자 이내로 입력!!" autofocus="" wrap="hard" maxlength="20" style="font-size: 1.5em; display:block; letter-spacing: -1px;"></textarea>
+          <input class="reactUI step3" id="rainbow_txt3" autofocus placeholder="10자 이내로 입력" maxlength="10" style="display: block;letter-spacing:-1px"> 
           </input>
          
           <img id="rainbow_grip" src ="/images/rainbow_grip.png"></img> 
@@ -219,9 +219,9 @@ function updateUI()
       $("#rainbow_txt3").focus();
       $("#rainbow_txt3").val('');
       
-      $("#insta_p1").text("");
-      $("#insta_p2").text("");
-      $("#insta_p3").text("");
+      $("#rainbow_p1").text("");
+      $("#rainbow_p2").text("");
+      $("#rainbow_p3").text("");
 
       $("img.l_arrow").attr('src','/images/arrow11.png');
       $("img.r_arrow").attr('src','/images/arrow8.png');
@@ -235,11 +235,11 @@ function updateUI()
 
       break;
     case 4:
-      $("#insta_p1").text($("#rainbow_txt1").val());
+      $("#rainbow_p1").text($("#rainbow_txt1").val());
       $("#rainbow_txt1").val('');
-      $("#insta_p2").text($("#rainbow_txt2").val());
+      $("#rainbow_p2").text($("#rainbow_txt2").val());
       $("#rainbow_txt2").val('');
-      $("#insta_p3").text($("#rainbow_txt3").val());
+      $("#rainbow_p3").text($("#rainbow_txt3").val());
       $("#rainbow_txt3").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
@@ -277,11 +277,12 @@ function nextStep(){
       {
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
-        $("#insta_txt1").css('display', 'none');
-        $("#insta_txt2").css('display', 'none');
-        $("#insta_p1").text($("#rainbow_txt1").val());
-        $("#insta_p2").text($("#rainbow_txt2").val());
-        $("#insta_p3").text($("#rainbow_txt3").val());
+        $("#rainbow_txt1").css('display', 'none');
+        $("#rainbow_txt2").css('display', 'none');
+        $("#rainbow_txt3").css('display','none');
+        $("#rainbow_p1").text($("#rainbow_txt1").val());
+        $("#rainbow_p2").text($("#rainbow_txt2").val());
+        $("#rainbow_p3").text($("#rainbow_txt3").val());
         capture();
         $('#insta_background').attr("src","/background/"+$('#filePath').val());
       }else{
