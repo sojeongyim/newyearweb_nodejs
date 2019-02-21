@@ -331,7 +331,29 @@ height: 38%;
     width: 50%;
     top: 25%;
 }
+#rainbow_p1 {
+  position: absolute;
+  z-index: 30;
+  top: 18%;
+  left: 25%;
+  font-size: 2em;
+}
+#rainbow_p2 {
+  position: absolute;
+  z-index: 30;
+  top: 30%;
+  left: 35%;
+  width:45%;
+  font-size: 1.5em;
+}
+#rainbow_p3 {
 
+  position: absolute;
+  z-index: 30;
+  top: 80%;
+  left: 53%;
+  font-size: 1.1em;
+}
 
 
 
@@ -429,7 +451,7 @@ height: 38%;
 #insta_txt1 {
    
     height: 6%;
-    width: 40%;
+    width: 35%;
     top: 12.5%;
     font-size: 1.3em;
 }
@@ -989,7 +1011,8 @@ right: 0;
     left: 35%;
     /* text-align: center; */
     width: 30%;
-    top: 70%;
+    top: 80%;
+    
   }
 #vscontainer
 {
@@ -1133,7 +1156,7 @@ right: 0;
 #insta_txt1 {
    
     height: 4%;
-    width: 40%;
+    width: 35%;
     top: 14.5%;
     font-size: 1.3em;
 }
@@ -1251,7 +1274,7 @@ height: 38%;
     position: absolute;
     z-index: 30;
     top: 18%;
-    left: 25%;
+    left: 20%;
     font-size: 2.5em;
 }
 #rainbow_p2 {
