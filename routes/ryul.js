@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* Frame Select Page */
 router.get('/', function(req, res) {
-  res.render('rainbow', { title: 'Paintly'});
+  res.render('ryul', { title: 'Paintly'});
 });
 
 /* For Sharing Page */
