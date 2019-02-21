@@ -212,12 +212,16 @@ function updateUI()
       $("#s3").css('display','none');  
       break;
     case 3:
-      $("#insta_txt1").focus();
-      $("#insta_txt1").val('');
-      $("#insta_txt2").focus();
-      $("#insta_txt2").val('');
+      $("#rainbow_txt1").focus();
+      $("#rainbow_txt1").val('');
+      $("#rainbow_txt2").focus();
+      $("#rainbow_txt2").val('');
+      $("#rainbow_txt3").focus();
+      $("#rainbow_txt3").val('');
       $("#insta_p1").text("");
       $("#insta_p2").text("");
+      $("#insta_p3").text("");
+
       $("img.l_arrow").attr('src','/images/arrow11.png');
       $("img.r_arrow").attr('src','/images/arrow8.png');
       $("img.l_arrow").css('display','block');
@@ -230,10 +234,12 @@ function updateUI()
 
       break;
     case 4:
-      $("#insta_p1").text($("#insta_txt1").val());
-      $("#insta_txt1").val('');
-      $("#insta_p2").text($("#insta_txt2").val());
-      $("#insta_txt2").val('');
+      $("#insta_p1").text($("#rainbow_txt1").val());
+      $("#rainbow_txt1").val('');
+      $("#insta_p2").text($("#rainbow_txt2").val());
+      $("#rainbow_txt2").val('');
+      $("#insta_p3").text($("#rainbow_txt3").val());
+      $("#rainbow_txt3").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
@@ -272,8 +278,9 @@ function nextStep(){
         $("img.r_arrow").css('display','none');
         $("#insta_txt1").css('display', 'none');
         $("#insta_txt2").css('display', 'none');
-        $("#insta_p1").text($("#insta_txt1").val());
-        $("#insta_p2").text($("#insta_txt2").val());
+        $("#insta_p1").text($("#rainbow_txt1").val());
+        $("#insta_p2").text($("#rainbow_txt2").val());
+        $("#insta_p2").text($("#rainbow_txt3").val());
         capture();
         $('#insta_background').attr("src","/background/"+$('#filePath').val());
       }else{
