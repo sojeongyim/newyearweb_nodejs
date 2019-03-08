@@ -51,11 +51,13 @@ router.post('/user', function(req, res)
     var email=req.body.userEmail;
     dbname=name;
     dbemail=email;
+    var answer={'result':'ok'};
     console.log("here is ajax");
     console.log(dbname);
     console.log(dbemail);
     console.log("end ajax user");
-
+    res.json(answer);
+    res.render('main',{title:Paintly});
   });
 
 /* Save Final (with Text) Result into Server
