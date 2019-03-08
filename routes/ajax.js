@@ -8,8 +8,6 @@ var dbconfig = require('./database.js')
 var connection = mysql.createConnection(dbconfig);
 
 /* Router for Ajax Communication */
-
-
 /* Get DataURI(Images) and Save it to Serverside */
 router.post('/upload', function(req, res) 
   {
@@ -31,17 +29,31 @@ router.post('/style', function(req, res)
   {
     var filename=req.body.filename;
     var stylenum=req.body.stylenum;
+     var Name=req.body.userName;
+    var Email=req.body.userEmail;
 
     connection.query('INSERT INTO image(filename, stylename) VALUES(?,?)',[filename,stylenum],function(err, rows, fields){
       if (!err){
         var answer={'result': 'ok'};
         res.json(answer);
+        res.render('main',{title: 'Paintly'});
 
       }
       else
         console.log('Error while performing Query.', err);
     });
 
+  });
+router.post('/user', function(req, res)
+  {
+    var name=req.body.userName;
+    var email=req.body.userEmail;
+    var answer={'result':'ok'};
+    console.log("here is ajax");
+    console.log(name);
+    console.log(email);
+    res.json(answer);
+    res.render('main',{title:Paintly});
   });
 
 /* Save Final (with Text) Result into Server
