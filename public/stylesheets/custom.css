@@ -355,6 +355,16 @@ height: 38%;
   font-size: 1.1em;
 }
 
+#flower_origin_image {
+    height: 50%;
+    width: 50%;
+    max-width: 1000px;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    object-position: center;
+    object-fit: cover;
+}
 
 
 
