@@ -8,20 +8,117 @@ var dbconfig = require('./database.js')
 var connection = mysql.createConnection(dbconfig);
 var dbname='';
 var dbemail='';
+var originPath='./public/images/Origin/'
 /* Router for Ajax Communication */
 /* Get DataURI(Images) and Save it to Serverside */
-router.post('/upload', function(req, res) 
+router.post('/upload', function(req, res, next) {
+
+    var form = new multiparty.Form();
+    var DirName = '/root/web/paintly_newyear/public/images/Origin/'
+    form.on('field',function(name,value){
+          console.log('normal field / name = '+name+' , value = '+value);
+        });
+    
+    form.on('part',function(part){
+          var filename;
+          var size;
+          var status=3;
+          if (part.filename) {
+                  filename = part.filename;
+                  //size = part.byteCount;
+                }else{
+                        part.resume();
+
+                      } 
+
+          //console.log("Write Streaming file :"+filename);
+          var writeStream = fs.createWriteStream(DirName+filename);
+          part.pipe(writeStream);
+
+          /*part.on('data',function(chunk){
+                  console.log(filename+' read '+chunk.length + 'bytes');
+                });*/
+
+          part.on('end',function(){
+                  /*var query = "INSERT INTO video (filename, tstamp, style, uid, and_ios, status) VALUES ?";
+                  var filename_arr = filename.split("__");
+                  console.log(filename_arr);
+                  loc_tmp = filename.indexOf(filename_arr[2]);
+                  var values = [[filename, filename_arr[0], filename_arr[1], filename.slice(loc_tmp,loc_tmp+10), filename_arr[filename_arr.length-1].split('.')[0], 0]];
+                  connection.query(query, [values], function(err, result){
+                  if (err) throw err;
+                  });*/
+  
+                  console.log(filename+' Part read complete');
+                  writeStream.end();
+                });
+        });
+
+    form.on('close',function(){
+         // res.status(200).send('Upload complete');
+        });
+    
+    form.on('progress',function(byteRead,byteExpected){
+         // console.log(' Reading total  '+byteRead+'/'+byteExpected);
+        });
+    
+    form.parse(req);
+  
+ connection.query('INSERT INTO image(filename,username,useremail,status) VALUES(?,?,?,?)',[filename,dbname,dbemail,status],function(err, rows, fields){
+      if (!err){
+        var answer={'result': 'ok'};
+        res.json(answer);
+        //res.render('main',{title: 'Paintly'});
+
+      }
+      else
+        console.log('Error while performing Query.', err);
+    });
+
+
+
+
+});
+
+module.exports = router;
+
+
+/*router.post('/upload', function(req, res) 
   {
-    var dataURI=req.body.imgURL;
-    var imgName=req.body.imgName;
-    var filePath = './temp/' + imgName;
 
-    imageDataURI.outputFile(dataURI, filePath).then(res => console.log(res));
-
+    var form=new multiparty.Form();
+    //var imgName=req.body.imgName;
+    var imgName='';
+    form.on('field', function(name, value){
+      console.log(name +' + '+  value);
+    });
+    var filePath = './public/images/Origin/' + imgName;
+console.log('BBB');
+   // imageDataURI.outputFile(filePath).then(res => console.log(res));
+console.log('CCC');
     var answer={'result': 'ok'};
     res.json(answer);
 
-  }); 
+form.on('part',function(part){
+  console.log('cd');
+ var filename = part.filename;
+console.log('AAAA');
+var writeStream=fs.createWriteStream(originPath+filename); 
+writeStream.filename=filename;
+part.pipe(writeStream);
+part.on('data',function(chunk){});
+part.on('end', function(){
+writeStream.end();
+console.log("save video in Origin!");
+});
+});
+
+
+
+
+  });*/
+
+
 
 /* Get File name, Style num
   * insert Rows into Database (newyear.image)
@@ -67,7 +164,7 @@ router.post('/result', function(req, res)
   {
     var dataURI=req.body.imgURL;
     var imgName=req.body.imgName;
-    var filePath = './temp/final/' + imgName;
+    var filePath = './public/images/Result/' + imgName;
 
     imageDataURI.outputFile(dataURI, filePath).then(res => console.log(res));
 

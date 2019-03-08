@@ -47,13 +47,13 @@
           <div class="insta_something">
             <img id="insta_background" style="width:100%; height: 100%;position: absolute;top: 0%; left: 0%;" ></img> 
           </div>
-          <img id="insta_grip" src ="/images/instagramEng.png"></img> 
+          <img id="insta_grip" src ="/images/intagramEng.png"></img> 
           <div id="hiddenBox" ></div>
           <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
               <img onload="offProgress()" id="insta_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/insta_grey.png"/>
             </label>
-            <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+            <input id="fileInput" name="fileInput" type="file" accept="video/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
           </form>
         </div>
@@ -451,7 +451,7 @@ $(document).ready(function(){
     var file;
 
     if ((file = this.files[0])) {
-      if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
+      if(filename.toLowerCase().indexOf("mp4")!=-1 || filename.toLowerCase().indexOf("MP4")!=-1 || filename.toLowerCase().indexOf("mov")!=-1 || filename.toLowerCase().indexOf("MOV")!=-1)
       {
         onProgress();
 

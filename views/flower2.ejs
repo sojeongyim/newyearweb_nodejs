@@ -53,11 +53,11 @@
          
           <img id="rainbow_grip" src ="/images/tropicalFrameSXSW.png"></img> 
           <div id="hiddenBox" ></div>
-          <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm3">
+          <form name="fileForm3" action="/ajax/upload" method="post"  enctype="multipart/form-data" id="fileForm3">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="flower_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/rainbow_inner.png"/>
+              <img onload="offProgress();" id="flower_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/rainbow_inner.png">
             </label>
-            <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+            <input name="videoinput" id="fileInput" name="fileInput" type="file" accept="video/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
           </form>
         </div>
@@ -145,6 +145,7 @@ function onProgress()
 function offProgress()
 {
   $("#progressBar").css("display", "none");
+  console.log('pulse9');
   if(cur_Step == 2){
     for(var i=0;i<list.length;i++){
       /* turn Style list into normal status*/
@@ -464,38 +465,42 @@ $(document).ready(function(){
     var file;
 
     if ((file = this.files[0])) {
-      if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
+      if(filename.toLowerCase().indexOf("mp4")!=-1 || filename.toLowerCase().indexOf("MP4")!=-1 || filename.toLowerCase().indexOf("mov")!=-1 || filename.toLowerCase().indexOf("MOV")!=-1)
       {
         onProgress();
 
-        var newFilename = genFileName()+'.png';
-        loadImage(
-            file,
-            function(img){
-              var imgURI = img.toDataURL();
+        //var newFilename = genFileName()+filename.split('.')[-1];
+       // $("#fileInput").val(newFilename);
+        console.log('before post');
+        document.getElementById("fileForm3").submit();
+        console.log('hh');
+        //loadImage(
+          //  file,
+           // function(img){
+             // var imgURI = img.toDataURL();
 
-              $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
-                  function(data,status){
+              //$.post('/ajax/upload', { imgName: newFilename },
+                  //function(data,status){
 
-                    $('#flower_origin_image').attr("src",imgURI);
-                    $('#insta_background').attr("src",imgURI);
+                    //$('#flower_origin_image').attr("src",newFilename);
+                    //$('#insta_background').attr("src",newFilename);
 
-                    $('#filePath').val(newFilename);
-                    kakaoimgName = newFilename;
-                    offProgress();
+                   // $('#filePath').val(newFilename);
+                    //kakaoimgName = newFilename;
+                    //offProgress();
 
-                    cur_Step = cur_Step +1;
-                    updateUI();
-                    $("#bottomList").css('display','block');
+                   // cur_Step = cur_Step +1;
+                   // updateUI();
+                   // $("#bottomList").css('display','block');
 
-                  }).fail(function(xhr, status, error ){
-                alert("파일을 확인 해 주세요.");
-                location.reload();
-              });
-            },
-            {
-              orientation: true}
-        );
+                 // }).fail(function(xhr, status, error ){
+               // alert("파일을 확인 해 주세요.");
+               // location.reload();
+             // });
+           // },
+          //  {
+            //  orientation: true}
+      //  );
       }
       else
       {

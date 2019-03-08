@@ -46,7 +46,7 @@
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
               <img onload="offProgress()" id="origin_image" class="rotate" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/grey.png"/>
             </label>
-            <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
+            <input id="fileInput" name="fileInput" type="file" accept="video/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
           </form>
         </div>
@@ -437,7 +437,8 @@ $(document).ready(function(){
     var file;
 
     if ((file = this.files[0])) {
-      if(filename.toLowerCase().indexOf("jpg")!=-1 || filename.toLowerCase().indexOf("png")!=-1 || filename.toLowerCase().indexOf("jpeg")!=-1)
+      if(filename.toLowerCase().indexOf("MP4")!=-1 || filename.toLowerCase().indexOf("mp4")!=-1 || filename.toLowierCase().indexOf("MOV")!=-1) || filename.toLowerCase().indexOf("mov")!=-1)
+
       {
         onProgress();
 
