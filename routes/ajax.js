@@ -9,38 +9,40 @@ var connection = mysql.createConnection(dbconfig);
 var dbname='';
 var dbemail='';
 var originPath='./public/images/Origin/'
+var filename='';
+var size;
+var status=3;
+var form = new multiparty.Form();
+var DirName = '/root/web/paintly_newyear/public/images/Origin/'
+ var filename='';
+  var size;
+  var status=3;
+var temp='';
 /* Router for Ajax Communication */
 /* Get DataURI(Images) and Save it to Serverside */
 router.post('/upload', function(req, res, next) {
+  form.on('field',function(name,value){
+    console.log('normal field / name = '+name+' , value = '+value);
+  });
 
-    var form = new multiparty.Form();
-    var DirName = '/root/web/paintly_newyear/public/images/Origin/'
-    form.on('field',function(name,value){
-          console.log('normal field / name = '+name+' , value = '+value);
-        });
-    
-    form.on('part',function(part){
-          var filename;
-          var size;
-          var status=3;
-          if (part.filename) {
-                  filename = part.filename;
-                  //size = part.byteCount;
-                }else{
-                        part.resume();
+  form.on('part',function(part){
+    if (part.filename) {
+      filename = part.filename;
+      //size = part.byteCount;
+       temp=filename.split('.');
+      
+      filename=genFileName()+temp[temp.length-1];
 
-                      } 
-
-          //console.log("Write Streaming file :"+filename);
-          var writeStream = fs.createWriteStream(DirName+filename);
-          part.pipe(writeStream);
-
-          /*part.on('data',function(chunk){
+    }else{
+      part.resume();
+    } 
+    var writeStream = fs.createWriteStream(DirName+filename);
+    part.pipe(writeStream);
+    /*part.on('data',function(chunk){
                   console.log(filename+' read '+chunk.length + 'bytes');
                 });*/
-
-          part.on('end',function(){
-                  /*var query = "INSERT INTO video (filename, tstamp, style, uid, and_ios, status) VALUES ?";
+    part.on('end',function(){
+      /*var query = "INSERT INTO video (filename, tstamp, style, uid, and_ios, status) VALUES ?";
                   var filename_arr = filename.split("__");
                   console.log(filename_arr);
                   loc_tmp = filename.indexOf(filename_arr[2]);
@@ -48,37 +50,51 @@ router.post('/upload', function(req, res, next) {
                   connection.query(query, [values], function(err, result){
                   if (err) throw err;
                   });*/
-  
-                  console.log(filename+' Part read complete');
-                  writeStream.end();
-                });
-        });
-
-    form.on('close',function(){
-         // res.status(200).send('Upload complete');
-        });
-    
-    form.on('progress',function(byteRead,byteExpected){
-         // console.log(' Reading total  '+byteRead+'/'+byteExpected);
-        });
-    
-    form.parse(req);
-  
- connection.query('INSERT INTO image(filename,username,useremail,status) VALUES(?,?,?,?)',[filename,dbname,dbemail,status],function(err, rows, fields){
-      if (!err){
-        var answer={'result': 'ok'};
-        res.json(answer);
-        //res.render('main',{title: 'Paintly'});
-
-      }
-      else
-        console.log('Error while performing Query.', err);
+      
+      console.log(filename+' Part read complete');
+      writeStream.end().function(){setDB1(filename)};
     });
 
+  }); //form on part end
 
+  form.on('close',function()
+  {
+    // res.status(200).send('Upload complete');
+  });
 
+  form.on('progress',function(byteRead,byteExpected)
+  {
+    // console.log(' Reading total  '+byteRead+'/'+byteExpected);
+  });
 
+  form.parse(req);
+  
 });
+function genFileName() {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i <24; i++)
+  {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+
+  return text;
+}
+
+function setDB1(filename){
+      connection.query('INSERT INTO image(filename,username,useremail,status) VALUES(?,?,?,?)',[filename,dbname,dbemail,status],
+        function(err, rows, fields){
+        if (!err){
+          //var answer={'result': 'ok'};
+          //res.json(answer);
+          //res.render('main',{title: 'Paintly'});
+          console.log('db ok');
+        }
+        else
+          console.log('Error while performing Query.', err);
+      });
+    }
 
 module.exports = router;
 

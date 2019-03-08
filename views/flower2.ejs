@@ -57,7 +57,7 @@
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
               <img onload="offProgress();" id="flower_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/rainbow_inner.png">
             </label>
-            <input name="videoinput" id="fileInput" name="fileInput" type="file" accept="video/*" style="display: none;"/>
+            <input  id="fileInput" name="fileInput" type="file" accept="video/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
           </form>
         </div>
@@ -462,15 +462,19 @@ $(document).ready(function(){
     It shows the preview of Images with module loadImage */
   $('#fileInput').on('change', function (){
     var filename=$('#fileInput').val();
+    console.log(filename);
     var file;
 
     if ((file = this.files[0])) {
       if(filename.toLowerCase().indexOf("mp4")!=-1 || filename.toLowerCase().indexOf("MP4")!=-1 || filename.toLowerCase().indexOf("mov")!=-1 || filename.toLowerCase().indexOf("MOV")!=-1)
       {
         onProgress();
+        var temp=filename.split('.');
 
-        //var newFilename = genFileName()+filename.split('.')[-1];
-       // $("#fileInput").val(newFilename);
+        var newFilename = genFileName()+temp[temp.length-1];
+
+        console.log(newFilename);
+      // $("#fileInput").val(newFilename);
         console.log('before post');
         document.getElementById("fileForm3").submit();
         console.log('hh');
