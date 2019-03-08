@@ -55,6 +55,7 @@ router.post('/user', function(req, res)
     console.log(dbname);
     console.log(dbemail);
     console.log("end ajax user");
+    res.render('/main', {title:'Paintly'})
 
   });
 
