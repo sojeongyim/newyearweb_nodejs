@@ -18,6 +18,8 @@ var sularoidRouter = require('./routes/sularoid');
 var instaRouter = require('./routes/insta');
 var ryulRouter = require('./routes/ryul');
 var flowerRouter = require('./routes/flower');
+var flower2Router = require('./routes/flower2');
+var dbRouter =  require('./routes/db');
 
 var app = express();
 
@@ -48,6 +50,9 @@ app.use('/valentine',valentineRouter);
 app.use('/insta',instaRouter);
 app.use('/ryul',ryulRouter);
 app.use('/flower',flowerRouter);
+app.use('/flower2',flower2Router);
+
+app.use('/db', dbRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

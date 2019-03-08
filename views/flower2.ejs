@@ -33,25 +33,29 @@
             <div class="loader"></div>
           </div>
           <div id = "insta_inImgTop1">
-            <p id="insta_p1" style="color: white;font-family: nanum Gothic;
-    font-weight: bold;"> </p>
+            <p id="rainbow_p1" style="color: black;font-family:Nanum Myeongjo;
+    font-weight: 900;"> </p>
           </div>
           <div id = "insta_inImgTop2">
-            <p id="insta_p2" style="color: white;font-family: nanum Gothic;
-    font-weight: bold;"> </p>
+            <u id="rainbow_p2" style="color: black;font-family:Nanum Myeongjo;
+    font-weight: 700;"> </u>
           </div>
-          <input class="reactUI step3" id="insta_txt1" autofocus placeholder="18자 이내로 입력" maxlength="18" style="display: none;letter-spacing:-1px"> 
-          </input>
-          <input class="reactUI step3" id="insta_txt2" autofocus placeholder="18자 이내로 입력" maxlength="18" style="display: none;letter-spacing:-1px"> 
-          </input>
-          <div class="insta_something">
-            <img id="insta_background" style="width:100%; height: 100%;position: absolute;top: 0%; left: 0%;" ></img> 
+          <div id = "insta_inImgTop3">
+            <p id="rainbow_p3" style="color: mediumpurple;font-family:Nanum Myeongjo;
+    font-weight: 900;"> </p>
           </div>
-          <img id="insta_grip" src ="/images/instagramEng.png"></img> 
+
+          <input class="reactUI step3" id="rainbow_txt1" autofocus placeholder="8자 이내로 입력" maxlength="8" style="display: none;letter-spacing:-1px"> 
+          </input>
+           <textarea class="reactUI step3" id="rainbow_txt2" data-limit-rows="true" rows="3" cols="10" placeholder="20자 이내로 입력!!" autofocus="" wrap="hard" maxlength="20" style="font-size: 1.5em; display:none; letter-spacing: -1px;"></textarea>
+          <input class="reactUI step3" id="rainbow_txt3" autofocus placeholder="10자 이내로 입력" maxlength="10" style="display: none;letter-spacing:-1px"> 
+          </input>
+         
+          <img id="rainbow_grip" src ="/images/tropicakFrameSXSW.png"></img> 
           <div id="hiddenBox" ></div>
-          <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm">
+          <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm3">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="insta_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/insta_grey.png"/>
+              <img onload="offProgress()" id="flower_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/rainbow_inner.png"/>
             </label>
             <input id="fileInput" name="fileInput" type="file" accept="image/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
@@ -159,7 +163,7 @@ function style_img_load(){
   /* filename should be changed or Dummy cached Image will disturb you */
   filename = filename+"?v=" + num;
 
-  $('#insta_origin_image').attr("src","/images/Result/"+filename);
+  $('#flower_origin_image').attr("src","/images/Result/"+filename);
   $("img.r_arrow").attr('src', '/images/arrow3.png');
 }
 
@@ -180,7 +184,7 @@ function updateUI()
   switch(cur_Step){
     case 1:
       styleCheck=false;
-      $('#insta_origin_image').attr("src","/images/grey.png");
+      $('#flower_origin_image').attr("src","/images/grey.png");
       $('#insta_background').attr("src","");
       $("img.r_arrow").css('display','none');
       $('#fileInput').prop('disabled', false);
@@ -208,12 +212,17 @@ function updateUI()
       $("#s3").css('display','none');  
       break;
     case 3:
-      $("#insta_txt1").focus();
-      $("#insta_txt1").val('');
-      $("#insta_txt2").focus();
-      $("#insta_txt2").val('');
-      $("#insta_p1").text("");
-      $("#insta_p2").text("");
+      $("#rainbow_txt1").focus();
+      $("#rainbow_txt1").val('');
+      $("#rainbow_txt2").focus();
+      $("#rainbow_txt2").val('');
+      $("#rainbow_txt3").focus();
+      $("#rainbow_txt3").val('');
+      
+      $("#rainbow_p1").text("");
+      $("#rainbow_p2").text("");
+      $("#rainbow_p3").text("");
+
       $("img.l_arrow").attr('src','/images/arrow11.png');
       $("img.r_arrow").attr('src','/images/arrow8.png');
       $("img.l_arrow").css('display','block');
@@ -226,10 +235,12 @@ function updateUI()
 
       break;
     case 4:
-      $("#insta_p1").text($("#insta_txt1").val());
-      $("#insta_txt1").val('');
-      $("#insta_p2").text($("#insta_txt2").val());
-      $("#insta_txt2").val('');
+      $("#rainbow_p1").text($("#rainbow_txt1").val());
+      $("#rainbow_txt1").val('');
+      $("#rainbow_p2").text($("#rainbow_txt2").val());
+      $("#rainbow_txt2").val('');
+      $("#rainbow_p3").text($("#rainbow_txt3").val());
+      $("#rainbow_txt3").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
@@ -245,7 +256,7 @@ function updateUI()
 /* check if Image is uploaded or not */
 function chkImgUpload()
 {
-  if($('#insta_origin_image').attr("src").indexOf('grey')!=-1)
+  if($('#flower_origin_image').attr("src").indexOf('grey')!=-1)
   {
     alert("사진을 선택 해주세요.");
     return false;
@@ -266,10 +277,12 @@ function nextStep(){
       {
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
-        $("#insta_txt1").css('display', 'none');
-        $("#insta_txt2").css('display', 'none');
-        $("#insta_p1").text($("#insta_txt1").val());
-        $("#insta_p2").text($("#insta_txt2").val());
+        $("#rainbow_txt1").css('display', 'none');
+        $("#rainbow_txt2").css('display', 'none');
+        $("#rainbow_txt3").css('display','none');
+        $("#rainbow_p1").text($("#rainbow_txt1").val());
+        $("#rainbow_p2").text($("#rainbow_txt2").val());
+        $("#rainbow_p3").text($("#rainbow_txt3").val());
         capture();
         $('#insta_background').attr("src","/background/"+$('#filePath').val());
       }else{
@@ -464,7 +477,7 @@ $(document).ready(function(){
               $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
                   function(data,status){
 
-                    $('#insta_origin_image').attr("src",imgURI);
+                    $('#flower_origin_image').attr("src",imgURI);
                     $('#insta_background').attr("src",imgURI);
 
                     $('#filePath').val(newFilename);
