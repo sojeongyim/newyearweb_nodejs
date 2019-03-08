@@ -6,7 +6,8 @@ var multiparty = require('multiparty');
 var mysql = require('mysql');
 var dbconfig = require('./database.js') 
 var connection = mysql.createConnection(dbconfig);
-
+var dbname='';
+var dbemail='';
 /* Router for Ajax Communication */
 /* Get DataURI(Images) and Save it to Serverside */
 router.post('/upload', function(req, res) 
@@ -32,7 +33,7 @@ router.post('/style', function(req, res)
      var Name=req.body.userName;
     var Email=req.body.userEmail;
 
-    connection.query('INSERT INTO image(filename, stylename) VALUES(?,?)',[filename,stylenum],function(err, rows, fields){
+    connection.query('INSERT INTO image(filename, stylename,username,useremail) VALUES(?,?)',[filename,stylenum,dbname,dbemail],function(err, rows, fields){
       if (!err){
         var answer={'result': 'ok'};
         res.json(answer);
@@ -48,12 +49,13 @@ router.post('/user', function(req, res)
   {
     var name=req.body.userName;
     var email=req.body.userEmail;
-    var answer={'result':'ok'};
+    dbname=name;
+    dbemail=email;
     console.log("here is ajax");
-    console.log(name);
-    console.log(email);
-    res.json(answer);
-    res.render('main',{title:Paintly});
+    console.log(dbname);
+    console.log(dbemail);
+    console.log("end ajax user");
+
   });
 
 /* Save Final (with Text) Result into Server
