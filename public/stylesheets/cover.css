@@ -5,6 +5,32 @@
       url("/fonts/UhBeemysen.woff") format('woff');
 }
 
+.text_box{
+text-align:center;
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+font-size:20px;
+}
+
+.button_box{
+background-color: #2BC3E8;
+border: none;
+color: white;
+padding: 15px 70px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 20px;
+margin: 4px 2px;
+cursor: pointer;width:100%
+}
+
+
 #background
 {
     background-color:white;

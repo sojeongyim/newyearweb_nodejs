@@ -51,7 +51,7 @@
           <input class="reactUI step3" id="rainbow_txt3" autofocus placeholder="10자 이내로 입력" maxlength="10" style="display: none;letter-spacing:-1px"> 
           </input>
          
-          <img id="rainbow_grip" src ="/images/sxswFrames_tropical2019.png"></img> 
+          <img id="rainbow_grip" src ="/images/img/sxswFrames_flower2019.png"></img> 
           <div id="hiddenBox" ></div>
           <form name="fileForm3" action="/ajax/upload" method="post"  enctype="multipart/form-data" id="fileForm3">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
@@ -103,7 +103,7 @@
           <span class="tit_l_3">메시지<br>다시 쓰기</span>
         </div>
         <div class="btn_nav btn_nav_r">
-          <img class="r_arrow" align="right" style="display:none" src = "/images/r_arrow.png" >
+          <img class="r_arrow" align="right" style="display:none" >
           <span class="tit_r_1">완성 카드<br>다시보기</span>
           <span class="tit_r_2">새카드<br>만들기</span>
         </div>
@@ -121,7 +121,10 @@ var kakaoimgName = '';
 var styleCheck = false;
 var list = ['11','9','5','10','4'];
 var FN='';
-
+function frame()
+{
+  location.replace('../../main/'+"<%=UN%>"+"/"+"<%=UE%>");
+}
 $('#fileForm3').on('change', function () {
   //var form = $('#fileForm3')[0];
   //var form = $("#fileForm3").serialize();
@@ -144,10 +147,8 @@ $('#fileForm3').on('change', function () {
         var temp2=FN.split('.'); 
         console.log(temp2[0])
         setTimeout(function(){ $('#flower_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
-        },1000);
-
         offProgress();
-
+        },300);
         cur_Step = cur_Step +1;
         updateUI();
         $("#bottomList").css('display','block');
@@ -173,9 +174,9 @@ function check_file(){
   if(http.status!=404){
     styleCheck = true;
     /* Load images if process is done */
+    clearInterval(timerId); 
     setTimeout("style_img_load()",1000);
     console.log("styled img load finished");
-    clearInterval(timerId); 
   }
 }
 
@@ -209,8 +210,8 @@ function style_img_load(){
 
   $('#flower_origin_image').attr("src","/images/ResultImage/"+filename);
 //  $("img.r_arrow").attr('src', '/images/arrow3.png');
-  $("img.r_arrow").attr('src', '/images/btn14.png').click(function(){
-  location.replace('dbemail');
+  $("img.r_arrow").attr('src', '/images/Done_next_blue.png').click(function(){
+  location.replace('../../dbemail');
   });
 
 }
@@ -247,13 +248,13 @@ function updateUI()
       {
         //$("img.r_arrow").attr('src', '/images/arrow4.png');
           //disable message
-         $("img.r_arrow").attr('src', '/images/AnewCard_next_blue.png');
+      //   $("img.r_arrow").attr('src', '/images/AnewCard_next_blue.png');
       }
       
       else
       {
         //$("img.r_arrow").attr('src','/images/arrow3.png');
-        $("img.r_arrow").attr('src','/images/AnewCard_next_blue.png').click(function()
+        $("img.r_arrow").attr('src','/images/Done_next_blue.png').click(function()
             {location.replace('dbemail');
             });
       }
@@ -269,7 +270,6 @@ function updateUI()
       
       break;
     case 3:
-      $.post('/ajax/videoDB',{filename:FN});
       $(".resetBut").css('display','block');
       $("#s2").css('display','none');
       $("#s1").css('display','none');  
@@ -303,8 +303,9 @@ function nextStep(){
       {/*$.post('/ajax/videoDB',{filename:FN});*/
             
       cur_Step = cur_Step +1;
-      if(cur_Step ==5)
+      if(cur_Step==3) //5
       {
+        $.post('/ajax/videoDB',{filename:FN,frame:'flower2',UN:"<%= UN %>",UE:"<%= UE %>" });
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
       }else{
@@ -448,7 +449,7 @@ function style_click(Id){
        and Put another rows into DB */
     console.log("fnnfnfnf"+FN);
     $.post('/ajax/delete', {filename: FN });
-    $.post('/ajax/style', {stylenum: stylenum , filename: FN });
+    $.post('/ajax/style', {stylenum: stylenum , filename: FN, frame:'flower2',UN:"<%= UN %>",UE:"<%= UE %>" });
 
     /* Start Thread to tell when the file is generated */
     timerId = setInterval("check_file()", 1000); 
@@ -478,7 +479,7 @@ $(document).ready(function(){
   });
 
   $("img.l_arrow").click(function(){
-    prevStep();
+    frame();
   });
 
   /*When file is changed which means file is uploaded

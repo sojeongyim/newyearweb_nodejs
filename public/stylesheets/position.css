@@ -1,7 +1,17 @@
 /*mobile device*/
 @media screen and (max-width:1024px)
 {
-
+#origin_imageResult{
+  height:60%;
+  width:60%;
+  max-width:1000px;
+  position:relative;
+  top:20%;
+  left:-7%;
+  transform:rotate(-8deg);
+  object-fit:center;
+  object-position:cover;
+}
   /*    index container*/
   #idx1_ment{
     width: 90%
@@ -416,7 +426,17 @@ div#resultBottom .start {
 /*desktop*/
 @media screen and (min-width:1025px)
 {
-
+#origin_imageResult{
+  height:63%;
+  width:63%;
+  max-width:1000px;
+  position:relative;
+  top:15%;
+  left:-5%;
+  transform:rotate(-8deg);
+  object-fit:center;
+  object-position:cover;
+}
   div#bottomList {position:relative;width:30%}
 
  #fileForm 

@@ -3,9 +3,19 @@ var router = express.Router();
 
 
 /* Frame Select Page */
-router.get('/', function(req, res) {
+/*router.get('/', function(req, res) {
   res.render('main', { title: 'Paintly'});
 });
+*/
+router.get('/:userName/:userEmail', function(req, res) {
+  console.log('abcd')
+  //userName= req.query.userName;
+  //userEmail = req.query.userEmail;
+  var userName = req.params.userName;
+  var userEmail = req.params.userEmail;
+  res.render('main', { title: 'Paintly',userName:userName,userEmail:userEmail});
+});
+
 
 /* For Sharing Page */
 router.get('/:filename', function(req, res, next) {

@@ -92,13 +92,13 @@
           <span class="tit_l_3">메시지<br>다시 쓰기</span>
         </div>
         <div class="btn_nav btn_nav_r">
-          <img class="r_arrow" align="right" style="display:none" src = "/images/r_arrow.png" >
+          <img class="r_arrow" align="right" style="display:none" >
           <span class="tit_r_1">완성 카드<br>다시보기</span>
           <span class="tit_r_2">새카드<br>만들기</span>
         </div>
         <div class="btn_nav">
 <!--           <img class="resetBut" align="right" style="display:none" src = "/images/arrow6.png" > -->
-          <img class="resetBut" align="right" style="display:none" src = "/images/AnewCard_next_blue.png" >
+          <img class="resetBut" align="right" style="display:none" src = "/images/AnewCard_next_blue.png" onclick="dbemail();" >
           <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
 
         </div>
@@ -110,9 +110,79 @@ var cur_Step = 1;
 var kakaoimgName = '';
 var styleCheck = false;
 var list = ['11','9','5','10','4'];
+var FN='';
+function frame()
+{
+  location.replace('../../main/'+"<%=UN%>"+"/"+"<%=UE%>");
+}
+
+
+function dbemail(){
+  location.replace('../../dbemail');
+}
+$('#fileForm').on('change', function () {
+  //var form = $('#fileForm3')[0];
+  //var form = $("#fileForm3").serialize();
+  var formData = new FormData(); 
+  onProgress();
+  //var fileext=$('#fileInput').val().split('.')[1];
+  
+  formData.append('image', $('input[type=file]')[0].files[0]);
+  //FN = genFileName() +"."+fileext
+  //formData.append('name', FN)
+  $.ajax({
+      type: 'post',
+      url: '/ajax/upload',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        FN = data;
+        console.log('SUCCESS');
+        var temp2=FN.split('.'); 
+        console.log(temp2[0])
+        setTimeout(function(){ $('#origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
+        offProgress();
+        },300);
+
+
+        cur_Step = cur_Step +1;
+        updateUI();
+        $("#bottomList").css('display','block');
+      },
+      error: function (err) {
+        console.log(err);
+        console.log("ERROR")
+      }
+  });
+});
+
+function check_file(){
+  //var filenameOb = document.getElementById("filePath");
+  var filename = FN;
+  var temp = filename.split('.');
+  var http = new XMLHttpRequest();
+  http.open('HEAD',"/images/ResultImage/"+temp[0]+".jpg", false);
+  http.send();
+
+  if(http.status!=404){
+    styleCheck = true;
+    /* Load images if process is done */
+    clearInterval(timerId); 
+    setTimeout("style_img_load()",1000);
+    console.log("styled img load finished");
+  }
+}
+
+
+
+
+
+
+
 
 /* Check file if style transfer is done */
-function check_file(){
+/*function check_file(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
   var http = new XMLHttpRequest();
@@ -121,11 +191,10 @@ function check_file(){
 
   if(http.status!=404){
     styleCheck = true;
-    /* Load images if process is done */
     setTimeout("style_img_load()",1000);
     clearInterval(timerId); 
   }
-}
+}*/
 
 /* Show progress bar if something is onprocessing */
 function onProgress()
@@ -146,12 +215,11 @@ function offProgress()
 }
 
 /* load Stylized Images into View */
-function style_img_load(){
+/*function style_img_load(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
 
   var num = Math.random();
-  /* filename should be changed or Dummy cached Image will disturb you */
   filename = filename+"?v=" + num;
 
   $('#origin_image').attr("src","/images/Result/"+filename);
@@ -161,13 +229,27 @@ function style_img_load(){
 }
 
 
-  /* Capture Images onto Canvas and send it to server  */
 function capture(){
   html2canvas(document.querySelector('#capture_card')).then(function(canvas){ 
     saveToServer(canvas.toDataURL(), $('#filePath').val());
   });
-}
+}*/
+/* load Stylized Images into View */
+function style_img_load(){
+  var filename = FN //document.getElementById("filePath");
+  //var filename = filenameOb.value;
+  var filenameJpg=filename.split('.');
+  var num = Math.random();
+  /* filename should be changed or Dummy cached Image will disturb you */
+  filename = filenameJpg[0]+".jpg"+"?v=" + num;
 
+  $('#origin_image').attr("src","/images/ResultImage/"+filename);
+//  $("img.r_arrow").attr('src', '/images/arrow3.png');
+  $("img.r_arrow").attr('src', '/images/Done_next_blue.png').click(function(){
+  location.replace('../../dbemail');
+  });
+
+}
 /* Manages the Changing of UI*/
 function updateUI()
 {
@@ -191,13 +273,15 @@ function updateUI()
       {
         //$("img.r_arrow").attr('src', '/images/arrow4.png');
         //disable message
-         $("img.r_arrow").attr('src', '/images/btn12.png');
+        // $("img.r_arrow").attr('src', '/images/AnewCard_next_blue.png');
       }
       else
       {
         //able massege
         //$("img.r_arrow").attr('src','/images/arrow3.png');
-         $("img.r_arrow").attr('src','/images/btn8.png');
+        $("img.r_arrow").attr('src','/images/Done_next_blue.png').click(function(){
+        location.replace('dbemail');
+        });
       }
       //able image select
       // $("img.l_arrow").attr('src','/images/arrow2.png');
@@ -211,24 +295,31 @@ function updateUI()
       $("#s3").css('display','none');  
       break;
     case 3:
-      $("#txt").focus();
-      $("#txt").val('');
-      $("#inImgTop p").text("");
+     // $("#txt").focus();
+     // $("#txt").val('');
+     // $("#inImgTop p").text("");
       //$("img.l_arrow").attr('src','/images/arrow11.png');
-      $("img.l_arrow").attr('src','/images/style_back_blue.png');
+     // $("img.l_arrow").attr('src','/images/style_back_blue.png');
       // $("img.r_arrow").attr('src','/images/arrow8.png');
-      $("img.r_arrow").attr('src','/images/btn10.png');
-      $("img.l_arrow").css('display','block');
-      $("img.r_arrow").css('display','block');
-      $('.step3').fadeIn();
-      $('#fileInput').prop('disabled', true);
-      $("#s3").css('display','block');
+     // $("img.r_arrow").attr('src','/images/btn14.png').click(function(){
+     //  location.replace('dbemail'); 
+     // });
+     // $("img.l_arrow").css('display','block');
+     // $("img.r_arrow").css('display','block');
+     // $('.step3').fadeIn();
+     // $('#fileInput').prop('disabled', true);
+     // $("#s3").css('display','block');
+     // $("#s2").css('display','none');
+     // $("#s1").css('display','none');  
+      $(".resetBut").css('display','block');
       $("#s2").css('display','none');
       $("#s1").css('display','none');  
+      $("img.l_arrow").css('display','none');
+      $("img.r_arrow").css('display','none');
 
       break;
     case 4:
-      $("#inImgTop p").text($("#txt").val());
+     /* $("#inImgTop p").text($("#txt").val());
       $("#txt").val('');
       initKakao();
       $("img.l_arrow").css('display','none');
@@ -237,7 +328,7 @@ function updateUI()
       $(".resetBut").css('display','block');
       $(".backToText").css('display','block');
       $('.step4').fadeIn();
-      $('#fileInput').prop('disabled', true);
+      $('#fileInput').prop('disabled', true);*/
       break;
   }
 }
@@ -262,14 +353,9 @@ function nextStep(){
     if(cur_Step <4 && chkImgUpload())
     {
       cur_Step = cur_Step +1;
-      if(cur_Step ==4)
+      if(cur_Step ==3)
       {
-        $("img.l_arrow").css('display','none');
-        $("img.r_arrow").css('display','none');
-        $("#txt").css('display', 'none');
-        $("#inImgTop p").text($("#txt").val());
-        capture();
-        $('#blurred_background').attr("src","/background/"+$('#filePath').val());
+         $.post('/ajax/videoDB',{filename:FN, frame:'sul', UN:"<%= UN %>",UE:"<%= UE %>" });
       }else{
         updateUI()
       }
@@ -298,10 +384,10 @@ window.location.href="http://183.102.74.3:8886/main";
 function saveToServer(uri, filename)
 {
   filename = filename.split('.')[0];
-  $.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
-    updateUI(); 
-  }
-  );
+  //$.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
+    //updateUI(); 
+ // }
+ // );
 }
 
 /* Download cards
@@ -312,7 +398,7 @@ function saveToServer(uri, filename)
  */
 function DownloadCard(){
   var link = document.createElement('a');
-  var filename = $('#filePath').val().split('.')[0]+".png";
+  var filename = $('#filePath').val().split('.')[0]+".gif";
   var uagent = navigator.userAgent.toLowerCase();
 
   link.href = "/final/"+filename;
@@ -385,14 +471,15 @@ function genFileName() {
   return text;
 }
 
-function style_click(Id){
 
-  var filenameOb = document.getElementById("filePath");
-  if(filenameOb.value !='')
+/*function style_click(Id){
+
+  //var filenameOb = document.getElementById("filePath");
+  if(filenameOb. !='')
   {
     onProgress();
 
-    var filename = filenameOb.value;
+    var filename = FN;
     var stylenum = $(this).attr("id");
 
     if(stylenum == undefined){
@@ -406,12 +493,9 @@ function style_click(Id){
       document.getElementById(list[i]).onclick= null;
     }
 
-    /* Delete Already Existing File
-       and Put another rows into DB */
     $.post('/ajax/delete', {filename: filename });
-    $.post('/ajax/style', {stylenum: stylenum , filename: filename });
+    $.post('/ajax/style', {frame:'sul',UN:"<%= UN %>", UE:" <%= UE %>", stylenum: stylenum , filename: filename});
 
-    /* Start Thread to tell when the file is generated */
     timerId = setInterval("check_file()", 1000); 
   }
   else
@@ -420,12 +504,51 @@ function style_click(Id){
   }
 
 }
+*/
+       function style_click(Id){
+
+       //var filenameOb = document.getElementById("filePath");
+       filenameOb = FN
+       if(filenameOb !='')
+       {
+       onProgress();
+
+       var filename = filenameOb;
+       var stylenum = $(this).attr("id");
+
+       if(stylenum == undefined){
+       stylenum = Id;
+       }      
+
+       for(var i=0;i<list.length;i++){
+       if(stylenum != list[i]){
+       document.getElementById(list[i]).style.opacity=0.5;  
+       }
+       document.getElementById(list[i]).onclick= null;
+       }
+
+       /* Delete Already Existing File
+       and Put another rows into DB */
+       console.log("fnnfnfnf"+FN);
+       $.post('/ajax/delete', {filename: FN });
+       $.post('/ajax/style', {frame:'sul',UN:"<%= UN %>", UE:" <%= UE %>", stylenum: stylenum , filename: FN });
+
+       /* Start Thread to tell when the file is generated */
+       timerId = setInterval("check_file()", 1000); 
+       }
+       else
+       {
+       alert('올바른 사진을 업로드 해 주세요.');
+       }
+
+       }
+
 
 $(document).ready(function(){
 
 
   $(".resetBut").click(function(){
-    location.reload();
+    window.location.href='http://paintly.me';
   });
   $(".backToText").click(function(){
     prevStep();
@@ -439,12 +562,12 @@ $(document).ready(function(){
   });
 
   $("img.l_arrow").click(function(){
-    prevStep();
+    frame();
   });
 
-  /*When file is changed which means file is uploaded
-    It shows the preview of Images with module loadImage */
-  $('#fileInput').on('change', function (){
+  /*When file is changed which means file is uploaded*/
+  /*  It shows the preview of Images with module loadImage */
+ /* $('#fileInput').on('change', function (){
     var filename=$('#fileInput').val();
     var file;
 
@@ -453,42 +576,60 @@ $(document).ready(function(){
 
       {
         onProgress();
+var temp=filename.split('.');
+        var newFilename = genFileName()+'.'+temp[temp.length-1];
+            FN=newFilename;
+        var temp2=newFilename.split('.'); 
+        console.log(temp2[0]);
+        setTimeout(function(){ $('#flower_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
+        },1000);
+        console.log('hh');
 
-        var newFilename = genFileName()+'.png';
-        loadImage(
-            file,
-            function(img){
-              var imgURI = img.toDataURL();
 
-              $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
-                  function(data,status){
+          $('#filePath').val(newFilename);
+          kakaoimgName = newFilename;
+          offProgress();
 
-                    $('#origin_image').attr("src",imgURI);
-                    $('#blurred_background').attr("src",imgURI);
+          cur_Step = cur_Step +1;
+         updateUI();
+         $("#bottomList").css('display','block');
 
-                    $('#filePath').val(newFilename);
-                    kakaoimgName = newFilename;
-                    offProgress();
 
-                    cur_Step = cur_Step +1;
-                    updateUI();
-                    $("#bottomList").css('display','block');
+                                      
+       // loadImage(
+          //  file,
+           // function(img){
+            //  var imgURI = img.toDataURL();
 
-                  }).fail(function(xhr, status, error ){
-                alert("파일을 확인 해 주세요.");
-                location.reload();
-              });
-            },
-            {
-              orientation: true}
-        );
+            //  $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
+               //   function(data,status){
+
+                 //   $('#origin_image').attr("src",imgURI);
+                  //  $('#blurred_background').attr("src",imgURI);
+
+                  //  $('#filePath').val(newFilename);
+                   // kakaoimgName = newFilename;
+                   // offProgress();
+
+                  //  cur_Step = cur_Step +1;
+                   // updateUI();
+                   // $("#bottomList").css('display','block');
+
+               //   }).fail(function(xhr, status, error ){
+              //  alert("파일을 확인 해 주세요.");
+             //   location.reload();
+            //  });
+          //  },
+          //  {
+           //   orientation: true}
+       // );
       }
       else
       {
         alert("사진을 업로드 해 주세요.");
       }
     }
-  });
+  });*/
 });  
           </script> 
   </body>

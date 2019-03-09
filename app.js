@@ -60,9 +60,9 @@ app.use('/flower',flowerRouter);
 app.use('/flower2',flower2Router);
 app.use('/dbemail',dbemailRouter);
 app.use('/ajax/flower2Result', flower2ResultRouter);
-app.use('/flowerResult', flowerResultRouter);
-app.use('/instaResult', instaResultRouter);
-app.use('/sularoidResult', sularoidResultRouter);
+app.use('/ajax/flowerResult', flowerResultRouter);
+app.use('/ajax/instaResult', instaResultRouter);
+app.use('/ajax/sularoidResult', sularoidResultRouter);
 app.use('/db', dbRouter);
 
 // catch 404 and forward to error handler

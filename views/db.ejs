@@ -11,17 +11,18 @@
 
 
   <body id="background_db">
-    <div id="index_container" style="margin:10% auto;font-family:gothic;">
-      <h1>give us your name, email !</h1>
-      <form action="/ajax" method="post" style="margin:5% auto;">
-        <input id="dbName" name="userName" type="text" placeholder="name" value="test" style="text-align:center;width:80%; margin-bottom:3%;font-family:gothic;">
-        <input id="dbEmail" name="userEmail" type="text" placeholder="email" value="test" style="text-align:center; width:80%; margin-bottom:3%;font-family:gothic;">
-        <input type="button" class ="btn btn-sucess" onclick="checkAll()" value="upload" style="float:left;">
+    <div  style="auto;font-family:gothic;margin-top:40px;" align="center">
+      <h2>GIVE US YOUR EMAIL</h2>
+      <form action="/ajax" method="post" style="auto;">
+        <input id="dbName" name="userName" type="text" placeholder="name" style="font-size:20px;" class="text_box" >
+        <input id="dbEmail" name="userEmail" type="text" placeholder="email"  style="font-size:20px;" class="text_box" >
+        <input type="button" class ="button_box" onclick="checkAll()" value="UPLOAD" style="">
       </form>
     </div>
   </body>
-
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script>
+
 function checkAll()
 {
 var name=$("#dbName").val();
@@ -32,7 +33,7 @@ console.log("name is"+name);
 console.log("email is"+email);
 $.post('/ajax/user', {userName:name, userEmail:email}).done(function()
 {
-window.location.href="http://183.102.74.3:8886/main";
+window.location.href="http://paintly.me/main/"+name+"/"+email;
 });
 }
 else

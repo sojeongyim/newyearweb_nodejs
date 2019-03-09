@@ -20,11 +20,15 @@ var filename2='';
 var size;
 var temp='';
 var stylenum='';
+var frame='';
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 const ffmpeg = require('fluent-ffmpeg');
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 
+ 
+//var popupS = require('popups');
+ 
 const extractFrames = require('ffmpeg-extract-frames')
 
 
@@ -192,16 +196,25 @@ console.log("save video in Origin!");
 router.post('/style', function(req, res)
   {
     var filename=req.body.filename;
-     stylenum=req.body.stylenum;
-
+    stylenum=req.body.stylenum;
+    frame=req.body.frame;
+    UN = req.body.UN;
+    UE = req.body.UE;
+    if (frame === undefined || frame === null) {
+      frame='sul' 
+    }
     var fileNameJpg=filename.split('.');
     status=1;
-    console.log(filename, stylenum);
+    console.log('^^^^^^^^^^^^^^')
+    console.log(UN)
+    console.log(UE)
+    console.log("333333333333333")
+    console.log(filename, stylenum,frame);
     console.log('%%%%%%%%%%%%%%%%')
     console.log(req.originalUrl)
     console.log(req.path)
     console.log('-----------------')
-   connection.query('INSERT INTO image(filename, stylename,username,useremail,status,frame) VALUES(?,?,?,?,?,?)',[fileNameJpg[0]+'.jpg',stylenum,dbname,dbemail,status,'sxsw'],function(err, rows, fields){
+   connection.query('INSERT INTO image(filename, stylename,username,useremail,status,frame) VALUES(?,?,?,?,?,?)',[fileNameJpg[0]+'.jpg',stylenum,UN,UE,status,frame],function(err, rows, fields){
       if (!err){
        var answer={'result': 'ok'};
        //res.json(answer);
@@ -217,9 +230,13 @@ console.log("db finished");
 
   });
 router.post('/videoDB', function(req,res){
-var filename=req.body.filename;
-status=2;
- connection.query('INSERT INTO image(filename, stylename,username,useremail,status) VALUES(?,?,?,?,?)',[filename,stylenum,dbname,dbemail,status],function(err, rows, fields){
+  var filename=req.body.filename;
+  frame=req.body.frame;
+  UN = req.body.UN;
+  UE = req.body.UE;
+  console.log(frame+"videoDB");
+  status=2;
+  connection.query('INSERT INTO image(filename, stylename,username,useremail,status,frame) VALUES(?,?,?,?,?,?)',[filename,stylenum,UN,UE,status,frame],function(err, rows, fields){
       if (!err){
        var answer={'result': 'ok'};
        //res.json(answer);
@@ -286,16 +303,52 @@ router.post('/delete', function(req, res, next)
     var answer={'result': 'ok'};
     res.json(answer);
   });
+
+router.get('/popup', function(req, res) {
+    res.render('popup',{title:'Paintly'});
+});
+
 router.post('/findemail',function(req,res,next){
   var resultemail=req.body.userEmail;
- connection.query('select * FROM image where status=4, useremail=? ORDER BY id DESC LIMIT 1',[resultemail],function(err, rows, fields){
+  console.log('FINDEMAIL')
+  console.log(resultemail)
+  connection.query('select * FROM image where (status=4 and useremail=?) ORDER BY id DESC LIMIT 1',[resultemail],function(err, rows, fields){
       if (!err){
        var answer={'result': 'ok'};
        //res.json(answer);
-        console.log(rows[0].filename);
+        console.log(rows[0]);
+        if (rows[0] === undefined || rows[0] === null) {
+         res.redirect('popup')
+          console.log("POPUP")
+        }
+        else{
+          console.log("finded  db finished");
+
+
+          if(rows[0].frame == 'flower2')
+          {
+            console.log("here is f2");
+            res.render('flower2Result',{title:'Paintly',id:rows[0].filename.split('.')[0]})
+          }
+          else if(rows[0].frame=='flower')
+          { console.log("here is f"); 
+            res.render('flowerResult',{title:'Paintly',id:rows[0].filename.split('.')[0]})
+
+          }
+          else if(rows[0].frame=='sul'){
+            console.log("here is sul");
+            res.render('sularoidResult',{title:'Paintly',id:rows[0].filename.split('.')[0]})
+          } 
+          else if(rows[0].frame=='insta'){
+            console.log("here is insta");
+            res.render('instaResult',{title:'Paintly',id:rows[0].filename.split('.')[0]})
+          }
+          else{
+            console.log("cannot get frame")}
+
+
+        }
         //console.log(fields);
-        console.log("finded  db finished");
-        res.render('flower2Result',{title:'Paintly',id:rows[0].filename.split('.')[0]})
         //res.redirect("flower2Result");
         //res.render('flower2Result',{title:'Painlty'})
         //res.send(rows[0].filename)
@@ -308,5 +361,7 @@ router.post('/findemail',function(req,res,next){
         console.log('Error while performing Query.', err);
     });
 });
+
+
 
 module.exports = router; 

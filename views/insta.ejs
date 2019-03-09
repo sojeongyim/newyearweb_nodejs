@@ -99,12 +99,12 @@
           <span class="tit_l_3">메시지<br>다시 쓰기</span>
         </div>
         <div class="btn_nav btn_nav_r">
-          <img class="r_arrow" align="right" style="display:none" src = "/images/r_arrow.png" >
+          <img class="r_arrow" align="right" style="display:none" >
           <span class="tit_r_1">완성 카드<br>다시보기</span>
           <span class="tit_r_2">새카드<br>만들기</span>
         </div>
         <div class="btn_nav">
-          <img class="resetBut" align="right" style="display:none" src = "/images/arrow6.png" >
+          <img class="resetBut" align="right" style="display:none" src = "/images/AnewCard_next_blue.png" >
           <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
         </div>
       </div>
@@ -115,9 +115,14 @@ var cur_Step = 1;
 var kakaoimgName = '';
 var styleCheck = false;
 var list = ['11','9','5','10','4'];
+var FN='';
+function frame()
+{
+  location.replace('../../main/'+"<%=UN%>"+"/"+"<%=UE%>");
+}
 
 /* Check file if style transfer is done */
-function check_file(){
+/*function check_file(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
   var http = new XMLHttpRequest();
@@ -126,11 +131,64 @@ function check_file(){
 
   if(http.status!=404){
     styleCheck = true;
-    /* Load images if process is done */
     setTimeout("style_img_load()",1000);
     clearInterval(timerId); 
   }
+}*/
+$('#fileForm').on('change', function () {
+  //var form = $('#fileForm3')[0];
+  //var form = $("#fileForm3").serialize();
+  var formData = new FormData(); 
+  onProgress();
+  //var fileext=$('#fileInput').val().split('.')[1];
+  
+  formData.append('image', $('input[type=file]')[0].files[0]);
+  //FN = genFileName() +"."+fileext
+  //formData.append('name', FN)
+  $.ajax({
+      type: 'post',
+      url: '/ajax/upload',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        FN = data;
+        console.log('SUCCESS');
+        var temp2=FN.split('.'); 
+        console.log(temp2[0])
+        setTimeout(function(){ $('#insta_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
+        offProgress();
+        },300);
+
+
+        cur_Step = cur_Step +1;
+        updateUI();
+        $("#bottomList").css('display','block');
+      },
+      error: function (err) {
+        console.log(err);
+        console.log("ERROR")
+      }
+  });
+});
+
+function check_file(){
+  //var filenameOb = document.getElementById("filePath");
+  var filename = FN;
+  var temp = filename.split('.');
+  var http = new XMLHttpRequest();
+  http.open('HEAD',"/images/ResultImage/"+temp[0]+".jpg", false);
+  http.send();
+
+  if(http.status!=404){
+    styleCheck = true;
+    /* Load images if process is done */
+    clearInterval(timerId); 
+    setTimeout("style_img_load()",1000);
+    console.log("styled img load finished");
+  }
 }
+
 
 /* Show progress bar if something is onprocessing */
 function onProgress()
@@ -151,18 +209,33 @@ function offProgress()
 }
 
 /* load Stylized Images into View */
-function style_img_load(){
+/*function style_img_load(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
 
   var num = Math.random();
-  /* filename should be changed or Dummy cached Image will disturb you */
   filename = filename+"?v=" + num;
 
   $('#insta_origin_image').attr("src","/images/Result/"+filename);
   //$("img.r_arrow").attr('src', '/images/arrow3.png');
   //able message
    $("img.r_arrow").attr('src', '/images/btn8.png');
+}
+*/
+function style_img_load(){
+  var filename = FN //document.getElementById("filePath");
+  //var filename = filenameOb.value;
+  var filenameJpg=filename.split('.');
+  var num = Math.random();
+  /* filename should be changed or Dummy cached Image will disturb you */
+  filename = filenameJpg[0]+".jpg"+"?v=" + num;
+
+  $('#insta_origin_image').attr("src","/images/ResultImage/"+filename);
+//  $("img.r_arrow").attr('src', '/images/arrow3.png');
+  $("img.r_arrow").attr('src', '/images/Done_next_blue.png').click(function(){
+  location.replace('../../dbemail');
+  });
+
 }
 
 
@@ -196,12 +269,14 @@ function updateUI()
       {
         //$("img.r_arrow").attr('src', '/images/arrow4.png');
           //disable message
-         $("img.r_arrow").attr('src', '/images/btn12.png');
+        // $("img.r_arrow").attr('src', '/images/btn12.png');
       }
       else
       {
         //$("img.r_arrow").attr('src','/images/arrow3.png');
-           $("img.r_arrow").attr('src','/images/btn8.png');
+        $("img.r_arrow").attr('src','/images/Done_next_blue.png').click(function(){
+        location.replace('dbemail');
+        });
       }
       //$("img.l_arrow").attr('src','/images/arrow2.png');
       $("img.l_arrow").attr('src','/images/btn1.png');
@@ -214,37 +289,41 @@ function updateUI()
       $("#s3").css('display','none');  
       break;
     case 3:
-      $("#insta_txt1").focus();
-      $("#insta_txt1").val('');
-      $("#insta_txt2").focus();
-      $("#insta_txt2").val('');
-      $("#insta_p1").text("");
-      $("#insta_p2").text("");
-      $("img.l_arrow").attr('src','/images/arrow11.png');
+      //$("#insta_txt1").focus();
+     // $("#insta_txt1").val('');
+     // $("#insta_txt2").focus();
+     // $("#insta_txt2").val('');
+     // $("#insta_p1").text("");
+     // $("#insta_p2").text("");
+     // $("img.l_arrow").attr('src','/images/style_back_blue.png');
       //$("img.r_arrow").attr('src','/images/arrow8.png');
-      $("img.r_arrow").attr('src','/images/btn10.png');
-      $("img.l_arrow").css('display','block');
-      $("img.r_arrow").css('display','block');
-      $('.step3').fadeIn();
-      $('#fileInput').prop('disabled', true);
-      $("#s3").css('display','block');
+    //  $("img.r_arrow").attr('src','/images/btn14.png').click(function(){
+     // location.replace('dbemail');
+    //  });
+     // $("img.l_arrow").css('display','block');
+     // $("img.r_arrow").css('display','block');
+    //  $('.step3').fadeIn();
+     // $('#fileInput').prop('disabled', true);
+     // $("#s3").css('display','block');
+       $(".resetBut").css('display','block');
+
       $("#s2").css('display','none');
       $("#s1").css('display','none');  
 
       break;
     case 4:
-      $("#insta_p1").text($("#insta_txt1").val());
-      $("#insta_txt1").val('');
-      $("#insta_p2").text($("#insta_txt2").val());
-      $("#insta_txt2").val('');
-      initKakao();
-      $("img.l_arrow").css('display','none');
-      $("img.r_arrow").css('display','none');
-      $(".shareBut").css('z-index', '99');
-      $(".resetBut").css('display','block');
-      $(".backToText").css('display','block');
-      $('.step4').fadeIn();
-      $('#fileInput').prop('disabled', true);
+    //  $("#insta_p1").text($("#insta_txt1").val());
+   //   $("#insta_txt1").val('');
+    //  $("#insta_p2").text($("#insta_txt2").val());
+    //  $("#insta_txt2").val('');
+      //initKakao();
+    //  $("img.l_arrow").css('display','none');
+    //  $("img.r_arrow").css('display','none');
+    //  $(".shareBut").css('z-index', '99');
+    //  $(".resetBut").css('display','block');
+    //  $(".backToText").css('display','block');
+    //  $('.step4').fadeIn();
+   //   $('#fileInput').prop('disabled', true);
       break;
   }
 }
@@ -266,19 +345,13 @@ function chkImgUpload()
 function nextStep(){
   if(styleCheck)
   {
-    if(cur_Step <4 && chkImgUpload())
+    if(cur_Step <5 && chkImgUpload())
     {
       cur_Step = cur_Step +1;
-      if(cur_Step ==4)
+      if(cur_Step ==3)
       {
-        $("img.l_arrow").css('display','none');
-        $("img.r_arrow").css('display','none');
-        $("#insta_txt1").css('display', 'none');
-        $("#insta_txt2").css('display', 'none');
-        $("#insta_p1").text($("#insta_txt1").val());
-        $("#insta_p2").text($("#insta_txt2").val());
-        capture();
-        $('#insta_background').attr("src","/background/"+$('#filePath').val());
+      console.log('abcd')
+      $.post('../../ajax/videoDB',{filename:FN, frame:'insta',UN:"<%= UN %>",UE:"<%= UE %>"  });
       }else{
         updateUI()
       }
@@ -307,10 +380,10 @@ function prevStep(){
 function saveToServer(uri, filename)
 {
   filename = filename.split('.')[0];
-  $.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
-    updateUI(); 
-  }
-  );
+ // $.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
+  //  updateUI(); 
+//  }
+ // );
 }
 
 /* Download cards
@@ -321,7 +394,7 @@ function saveToServer(uri, filename)
  */
 function DownloadCard(){
   var link = document.createElement('a');
-  var filename = $('#filePath').val().split('.')[0]+".png";
+  var filename = $('#filePath').val().split('.')[0]+".gif";
   var uagent = navigator.userAgent.toLowerCase();
 
   link.href = "/final/"+filename;
@@ -393,8 +466,46 @@ function genFileName() {
 
   return text;
 }
-
 function style_click(Id){
+
+  //var filenameOb = document.getElementById("filePath");
+  filenameOb = FN
+  if(filenameOb !='')
+  {
+    onProgress();
+
+    var filename = filenameOb;
+    var stylenum = $(this).attr("id");
+
+    if(stylenum == undefined){
+      stylenum = Id;
+    }      
+
+    for(var i=0;i<list.length;i++){
+      if(stylenum != list[i]){
+        document.getElementById(list[i]).style.opacity=0.5;  
+      }
+      document.getElementById(list[i]).onclick= null;
+    }
+
+    /* Delete Already Existing File
+       and Put another rows into DB */
+    console.log("fnnfnfnf"+FN);
+    $.post('/ajax/delete', {filename: FN });
+    $.post('/ajax/style', {stylenum: stylenum , filename: FN, frame:'insta' ,UN:"<%= UN %>", UE:" <%= UE %>" });
+
+    /* Start Thread to tell when the file is generated */
+    timerId = setInterval("check_file()", 1000); 
+  }
+  else
+  {
+    alert('올바른 사진을 업로드 해 주세요.');
+  }
+
+}
+
+
+/*function style_click(Id){
 
   var filenameOb = document.getElementById("filePath");
   if(filenameOb.value !='')
@@ -415,12 +526,9 @@ function style_click(Id){
       document.getElementById(list[i]).onclick= null;
     }
 
-    /* Delete Already Existing File
-       and Put another rows into DB */
     $.post('/ajax/delete', {filename: filename });
     $.post('/ajax/style', {stylenum: stylenum , filename: filename });
 
-    /* Start Thread to tell when the file is generated */
     timerId = setInterval("check_file()", 1000); 
   }
   else
@@ -428,7 +536,7 @@ function style_click(Id){
     alert('올바른 사진을 업로드 해 주세요.');
   }
 
-}
+}*/
 
 $(document).ready(function(){
 
@@ -448,12 +556,12 @@ $(document).ready(function(){
   });
 
   $("img.l_arrow").click(function(){
-    prevStep();
+   frame(); 
   });
 
   /*When file is changed which means file is uploaded
     It shows the preview of Images with module loadImage */
-  $('#fileInput').on('change', function (){
+  /*$('#fileInput').on('change', function (){
     var filename=$('#fileInput').val();
     var file;
 
@@ -496,7 +604,7 @@ $(document).ready(function(){
         alert("사진을 업로드 해 주세요.");
       }
     }
-  });
+  });*/
 });  
           </script> 
   </body>

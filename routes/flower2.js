@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 /* Frame Select Page */
-router.get('/', function(req, res) {
-  res.render('flower2', { title: 'Paintly'});
+router.get('/:userName/:userEmail', function(req, res) {
+  var UN = req.params.userName;
+  var UE = req.params.userEmail;
+  res.render('flower2', { title: 'Paintly', UN:UN,UE:UE});
 });
 
 /* For Sharing Page */

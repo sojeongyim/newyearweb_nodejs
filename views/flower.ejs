@@ -53,11 +53,11 @@
          
           <img id="rainbow_grip" src ="/images/sxswFrames_tropical2019.png"></img> 
           <div id="hiddenBox" ></div>
-          <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm3">
+          <form name="fileForm3" action="/ajax/upload" method="post"  enctype="multipart/form-data" id="fileForm3">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="flower_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/rainbow_inner.png"/>
+              <img onload="offProgress();" id="flower_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/rainbow_inner.png">
             </label>
-            <input id="fileInput" name="fileInput" type="file" accept="video/*" style="display: none;"/>
+            <input  id="fileInput" name="fileInput" type="file" accept="video/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
           </form>
         </div>
@@ -103,15 +103,16 @@
           <span class="tit_l_3">메시지<br>다시 쓰기</span>
         </div>
         <div class="btn_nav btn_nav_r">
-          <img class="r_arrow" align="right" style="display:none" src = "/images/r_arrow.png" >
+          <img class="r_arrow" align="right" style="display:none">
           <span class="tit_r_1">완성 카드<br>다시보기</span>
           <span class="tit_r_2">새카드<br>만들기</span>
         </div>
         <div class="btn_nav">
-          <img class="resetBut" align="right" style="display:none" src = "/images/Anewcard_next_blue.png" >
-          <img class="backToText" align="left" style="display:none" src = "/images/btn10.png" >
+          <img class="resetBut" align="right" style="display:none"  src = "/images/AnewCard_next_blue.png"> 
+          <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
         </div>
       </div>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
           <script>
 
 var timerId = 0;
@@ -119,20 +120,65 @@ var cur_Step = 1;
 var kakaoimgName = '';
 var styleCheck = false;
 var list = ['11','9','5','10','4'];
+var FN='';
+function frame()
+{
+  location.replace('../../main/'+"<%=UN%>"+"/"+"<%=UE%>");
+}
+
+$('#fileForm3').on('change', function () {
+  //var form = $('#fileForm3')[0];
+  //var form = $("#fileForm3").serialize();
+  var formData = new FormData(); 
+  onProgress();
+  //var fileext=$('#fileInput').val().split('.')[1];
+  
+  formData.append('image', $('input[type=file]')[0].files[0]);
+  //FN = genFileName() +"."+fileext
+  //formData.append('name', FN)
+  $.ajax({
+      type: 'post',
+      url: '/ajax/upload',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        FN = data;
+        console.log('SUCCESS');
+        var temp2=FN.split('.'); 
+        console.log(temp2[0])
+        setTimeout(function(){ $('#flower_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg"); 
+        offProgress();
+        },300);
+
+        cur_Step = cur_Step +1;
+        updateUI();
+        $("#bottomList").css('display','block');
+      },
+      error: function (err) {
+        console.log(err);
+        console.log("ERROR")
+      }
+  });
+});
+
+
 
 /* Check file if style transfer is done */
 function check_file(){
-  var filenameOb = document.getElementById("filePath");
-  var filename = filenameOb.value;
+  //var filenameOb = document.getElementById("filePath");
+  var filename = FN;
+  var temp = filename.split('.');
   var http = new XMLHttpRequest();
-  http.open('HEAD',"/images/Result/"+filename, false);
+  http.open('HEAD',"/images/ResultImage/"+temp[0]+".jpg", false);
   http.send();
 
   if(http.status!=404){
     styleCheck = true;
     /* Load images if process is done */
-    setTimeout("style_img_load()",1000);
     clearInterval(timerId); 
+    setTimeout("style_img_load()",1000);
+    console.log("styled img load finished");
   }
 }
 
@@ -145,6 +191,7 @@ function onProgress()
 function offProgress()
 {
   $("#progressBar").css("display", "none");
+  console.log('pulse9');
   if(cur_Step == 2){
     for(var i=0;i<list.length;i++){
       /* turn Style list into normal status*/
@@ -156,16 +203,19 @@ function offProgress()
 
 /* load Stylized Images into View */
 function style_img_load(){
-  var filenameOb = document.getElementById("filePath");
-  var filename = filenameOb.value;
-
+  var filename = FN //document.getElementById("filePath");
+  //var filename = filenameOb.value;
+  var filenameJpg=filename.split('.');
   var num = Math.random();
   /* filename should be changed or Dummy cached Image will disturb you */
-  filename = filename+"?v=" + num;
+  filename = filenameJpg[0]+".jpg"+"?v=" + num;
 
-  $('#flower_origin_image').attr("src","/images/Result/"+filename);
- // $("img.r_arrow").attr('src', '/images/arrow3.png');
-  $("img.r_arrow").attr('src', '/images/btn8.png');
+  $('#flower_origin_image').attr("src","/images/ResultImage/"+filename);
+//  $("img.r_arrow").attr('src', '/images/arrow3.png');
+  $("img.r_arrow").attr('src', '/images/Done_next_blue.png').click(function(){
+  location.replace('../../dbemail');
+  });
+
 }
 
 
@@ -182,7 +232,8 @@ function updateUI()
   $('.reactUI').css('display','none');
   $(".resetBut").css('display','none');
   $(".backToText").css('display','none');
-  switch(cur_Step){
+  switch(cur_Step)
+  {
     case 1:
       styleCheck=false;
       $('#flower_origin_image').attr("src","/images/grey.png");
@@ -197,19 +248,20 @@ function updateUI()
     case 2:
       if(styleCheck==false)
       {
-       $("img.r_arrow").attr('src', '/images/btn14.png');
- //disable message
-         $("img.r_arrow").css('display','none');
+        //$("img.r_arrow").attr('src', '/images/arrow4.png');
+          //disable message
+        // $("img.r_arrow").attr('src', '/images/AnewCard_next_blue.png');
       }
+      
       else
       {
         //$("img.r_arrow").attr('src','/images/arrow3.png');
-        $("img.r_arrow").attr('src','/images/AnewCard_next_blue.png').click(function(){
-       location.replace('dbemail');
-        });
+        $("img.r_arrow").attr('src','/images/Done_next_blue.png').click(function()
+            {location.replace('dbemail');
+            });
       }
       //$("img.l_arrow").attr('src','/images/arrow2.png');
-      $("img.l_arrow").attr('src','/images/btn1.png');
+        $("img.l_arrow").attr('src','/images/btn1.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step2').fadeIn();
@@ -217,19 +269,17 @@ function updateUI()
       $("#s2").css('display','block');
       $("#s1").css('display','none');
       $("#s3").css('display','none');  
+      
       break;
     case 3:
- $.post('/ajax/videoDB',{filename:FN});
       $(".resetBut").css('display','block');
       $("#s2").css('display','none');
       $("#s1").css('display','none');  
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
       break;
-
-          
     case 4:
-     break;
+      break;
   }
 }
 
@@ -251,13 +301,14 @@ function nextStep(){
   if(styleCheck)
   {
     if(cur_Step <5 && chkImgUpload())
-    {
+  
+      {/*$.post('/ajax/videoDB',{filename:FN});*/
+            
       cur_Step = cur_Step +1;
-      if(cur_Step ==5)
+      if(cur_Step ==3)
       {
-        $("img.l_arrow").css('display','none');
-        $("img.r_arrow").css('display','none');
-             }else{
+      $.post('/ajax/videoDB',{filename:FN,frame:'flower',UN:"<%= UN %>",UE:"<%= UE %>"} );
+      }else{
         updateUI()
       }
     }
@@ -270,7 +321,7 @@ function nextStep(){
 
 function prevStep(){
   if(cur_Step==1){
-    window.location.href="http://183.102.74.3:8886/main";
+window.location.href="http://183.102.74.3:8886/main";
   }else if(cur_Step ==2 )
   {
     location.reload();
@@ -285,10 +336,10 @@ function prevStep(){
 function saveToServer(uri, filename)
 {
   filename = filename.split('.')[0];
- // $.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
-   // updateUI(); 
- // }
- // );
+  //$.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
+  //updateUI(); 
+  //}
+  //);
 }
 
 /* Download cards
@@ -299,7 +350,7 @@ function saveToServer(uri, filename)
  */
 function DownloadCard(){
   var link = document.createElement('a');
-  var filename = $('#filePath').val().split('.')[0]+".png";
+  var filename = $('#filePath').val().split('.')[0]+".gif";
   var uagent = navigator.userAgent.toLowerCase();
 
   link.href = "/final/"+filename;
@@ -374,12 +425,13 @@ function genFileName() {
 
 function style_click(Id){
 
-  var filenameOb = document.getElementById("filePath");
-  if(filenameOb.value !='')
+  //var filenameOb = document.getElementById("filePath");
+  filenameOb = FN
+  if(filenameOb !='')
   {
     onProgress();
 
-    var filename = filenameOb.value;
+    var filename = filenameOb;
     var stylenum = $(this).attr("id");
 
     if(stylenum == undefined){
@@ -395,8 +447,9 @@ function style_click(Id){
 
     /* Delete Already Existing File
        and Put another rows into DB */
-    $.post('/ajax/delete', {filename: filename });
-    $.post('/ajax/style', {stylenum: stylenum , filename: filename });
+    console.log("fnnfnfnf"+FN);
+    $.post('/ajax/delete', {filename: FN });
+                  $.post('/ajax/style', {stylenum: stylenum , filename: FN,frame:'flower',UN:"<%= UN %>", UE: "<%= UE %>" });
 
     /* Start Thread to tell when the file is generated */
     timerId = setInterval("check_file()", 1000); 
@@ -412,7 +465,7 @@ $(document).ready(function(){
 
 
   $(".resetBut").click(function(){
-    window.location.href='http://paintly.me';
+    window.location.href = 'http://paintly.me';
   });
   $(".backToText").click(function(){
     prevStep();
@@ -426,56 +479,88 @@ $(document).ready(function(){
   });
 
   $("img.l_arrow").click(function(){
-    prevStep();
+    frame();
   });
 
   /*When file is changed which means file is uploaded
     It shows the preview of Images with module loadImage */
- /* $('#fileInput').on('change', function (){
+/*  $('#fileInput').on('change', function (){
     var filename=$('#fileInput').val();
+    console.log(filename);
     var file;
 
     if ((file = this.files[0])) {
-      if(filename.toLowerCase().indexOf("mp4")!=-1 || filename.toLowerCase().indexOf("MP4")!=-1 || filename.toLowerCase().indexOf("mov")!=-1|| filename.toLowerCase().indexOf("MOV")!=-1)
+      if(filename.toLowerCase().indexOf("mp4")!=-1 || filename.toLowerCase().indexOf("MP4")!=-1 || filename.toLowerCase().indexOf("mov")!=-1 || filename.toLowerCase().indexOf("MOV")!=-1)
       {
         onProgress();
-        var 
+        var temp=filename.split('.');
+
         var newFilename = genFileName()+"."+temp[temp.length-1];
-        loadImage(
-            file,
-            function(img){
-              var imgURI = img.toDataURL();
 
-              $.post('/ajax/upload', {imgURL: imgURI, imgName: newFilename },
-                  function(data,status){
+        console.log(newFilename);
+       //$('#filePath').val(newFilename);
+        console.log('before post');
+        console.log($('#filePath').val());
+        //$.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
+       //updateUI(); 
+        // }
 
-                    $('#flower_origin_image').attr("src",imgURI);
-                    $('#insta_background').attr("src",imgURI);
+        //$.post('/ajax/filename',{filename:newFilename});
+        //document.getElementById("fileForm3").submit();
 
-                    $('#filePath').val(newFilename);
-                    kakaoimgName = newFilename;
-                    offProgress();
+        FN=newFilename;
+        var temp2=newFilename.split('.'); 
+        console.log(temp2[0]);
+        setTimeout(function(){ $('#flower_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
+        },1000);
+        console.log('hh');
 
-                    cur_Step = cur_Step +1;
-                    updateUI();
-                    $("#bottomList").css('display','block');
 
-                  }).fail(function(xhr, status, error ){
-                alert("파일을 확인 해 주세요.");
-                location.reload();
-              });
-            },
-            {
-              orientation: true}
-        );
+          $('#filePath').val(newFilename);
+          kakaoimgName = newFilename;
+          offProgress();
+
+          cur_Step = cur_Step +1;
+         updateUI();
+         $("#bottomList").css('display','block');
+
+
+
+        //loadImage(
+          //  file,
+           // function(img){
+             // var imgURI = img.toDataURL();
+
+              //$.post('/ajax/upload', { imgName: newFilename },
+                  //function(data,status){
+
+                    //$('#flower_origin_image').attr("src",newFilename);
+                    //$('#insta_background').attr("src",newFilename);
+
+                   // $('#filePath').val(newFilename);
+                    //kakaoimgName = newFilename;
+                    //offProgress();
+
+                   // cur_Step = cur_Step +1;
+                   // updateUI();
+                   // $("#bottomList").css('display','block');
+
+                 // }).fail(function(xhr, status, error ){
+               // alert("파일을 확인 해 주세요.");
+               // location.reload();
+             // });
+           // },
+          //  {
+            //  orientation: true}
+      //  );
       }
       else
       {
         alert("사진을 업로드 해 주세요.");
       }
     }
-  });
-});  */
+  });*/
+}); 
           </script> 
   </body>
 </html>
