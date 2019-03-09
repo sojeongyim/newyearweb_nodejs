@@ -12,10 +12,9 @@
 
   <body id="background_db">
     <div id="index_container" style="margin:10% auto;font-family:gothic;">
-      <h1>give us your name, email !</h1>
+      <h1>give us your email !</h1>
       <form action="/ajax" method="post" style="margin:5% auto;">
-        <input id="dbName" name="userName" type="text" placeholder="name" value="test" style="text-align:center;width:80%; margin-bottom:3%;font-family:gothic;">
-        <input id="dbEmail" name="userEmail" type="text" placeholder="email" value="test" style="text-align:center; width:80%; margin-bottom:3%;font-family:gothic;">
+        <input id="dbEmail" name="userEmail" type="text" placeholder="email" style="text-align:center; width:80%; margin-bottom:3%;font-family:gothic;">
         <input type="button" class ="btn btn-sucess" onclick="checkAll()" value="upload" style="float:left;">
       </form>
     </div>
@@ -30,14 +29,14 @@ if(name != '' && email != '')
 {
 console.log("name is"+name);
 console.log("email is"+email);
-$.post('/ajax/user', {userName:name, userEmail:email}).done(function()
+$.post('/ajax/findemail', {userEmail:email}).done(function()
 {
 window.location.href="http://183.102.74.3:8886/main";
 });
 }
 else
 {
-  alert('name or email missed!');
+  alert('email missed!');
 }
 }
   </script>

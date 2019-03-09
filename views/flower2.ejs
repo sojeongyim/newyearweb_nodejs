@@ -108,10 +108,11 @@
           <span class="tit_r_2">새카드<br>만들기</span>
         </div>
         <div class="btn_nav">
-          <img class="resetBut" align="right" style="display:none"  src = "/images/Anewcard_next_blue.png" >
+          <img class="resetBut" align="right" style="display:none"  src = "/images/AnewCard_next_blue.png"> 
           <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
         </div>
       </div>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
           <script>
 
 var timerId = 0;
@@ -121,10 +122,49 @@ var styleCheck = false;
 var list = ['11','9','5','10','4'];
 var FN='';
 
+$('#fileForm3').on('change', function () {
+  //var form = $('#fileForm3')[0];
+  //var form = $("#fileForm3").serialize();
+  var formData = new FormData(); 
+  onProgress();
+  //var fileext=$('#fileInput').val().split('.')[1];
+  
+  formData.append('image', $('input[type=file]')[0].files[0]);
+  //FN = genFileName() +"."+fileext
+  //formData.append('name', FN)
+  $.ajax({
+      type: 'post',
+      url: '/ajax/upload',
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (data) {
+        FN = data;
+        console.log('SUCCESS');
+        var temp2=FN.split('.'); 
+        console.log(temp2[0])
+        setTimeout(function(){ $('#flower_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
+        },1000);
+
+        offProgress();
+
+        cur_Step = cur_Step +1;
+        updateUI();
+        $("#bottomList").css('display','block');
+      },
+      error: function (err) {
+        console.log(err);
+        console.log("ERROR")
+      }
+  });
+});
+
+
+
 /* Check file if style transfer is done */
 function check_file(){
-  var filenameOb = document.getElementById("filePath");
-  var filename = filenameOb.value;
+  //var filenameOb = document.getElementById("filePath");
+  var filename = FN;
   var temp = filename.split('.');
   var http = new XMLHttpRequest();
   http.open('HEAD',"/images/ResultImage/"+temp[0]+".jpg", false);
@@ -160,8 +200,8 @@ function offProgress()
 
 /* load Stylized Images into View */
 function style_img_load(){
-  var filenameOb = document.getElementById("filePath");
-  var filename = filenameOb.value;
+  var filename = FN //document.getElementById("filePath");
+  //var filename = filenameOb.value;
   var filenameJpg=filename.split('.');
   var num = Math.random();
   /* filename should be changed or Dummy cached Image will disturb you */
@@ -169,7 +209,9 @@ function style_img_load(){
 
   $('#flower_origin_image').attr("src","/images/ResultImage/"+filename);
 //  $("img.r_arrow").attr('src', '/images/arrow3.png');
- $("img.r_arrow").attr('src', '/images/btn10.png');
+  $("img.r_arrow").attr('src', '/images/btn10.png').click(function(){
+  location.replace('dbemail');
+  });
 
 }
 
@@ -205,13 +247,15 @@ function updateUI()
       {
         //$("img.r_arrow").attr('src', '/images/arrow4.png');
           //disable message
-         $("img.r_arrow").attr('src', '/images/btn12.png');
+         $("img.r_arrow").attr('src', '/images/btn14.png');
       }
       
       else
       {
         //$("img.r_arrow").attr('src','/images/arrow3.png');
-        $("img.r_arrow").attr('src','/images/btn10.png');
+        $("img.r_arrow").attr('src','/images/btn10.png').click(function()
+            {location.replace('dbemail');
+            });
       }
       //$("img.l_arrow").attr('src','/images/arrow2.png');
         $("img.l_arrow").attr('src','/images/btn1.png');
@@ -380,12 +424,13 @@ function genFileName() {
 
 function style_click(Id){
 
-  var filenameOb = document.getElementById("filePath");
-  if(filenameOb.value !='')
+  //var filenameOb = document.getElementById("filePath");
+  filenameOb = FN
+  if(filenameOb !='')
   {
     onProgress();
 
-    var filename = filenameOb.value;
+    var filename = filenameOb;
     var stylenum = $(this).attr("id");
 
     if(stylenum == undefined){
@@ -438,7 +483,7 @@ $(document).ready(function(){
 
   /*When file is changed which means file is uploaded
     It shows the preview of Images with module loadImage */
-  $('#fileInput').on('change', function (){
+/*  $('#fileInput').on('change', function (){
     var filename=$('#fileInput').val();
     console.log(filename);
     var file;
@@ -459,8 +504,9 @@ $(document).ready(function(){
        //updateUI(); 
         // }
 
-        $.post('/ajax/filename',{filename:newFilename});
-        document.getElementById("fileForm3").submit();
+        //$.post('/ajax/filename',{filename:newFilename});
+        //document.getElementById("fileForm3").submit();
+
         FN=newFilename;
         var temp2=newFilename.split('.'); 
         console.log(temp2[0]);
@@ -468,17 +514,14 @@ $(document).ready(function(){
         },1000);
         console.log('hh');
 
-     // var temp2=newFilename.split('.'); 
-     // console.log(temp2[0]);
-     // $('#flower_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
 
-                    $('#filePath').val(newFilename);
-                    kakaoimgName = newFilename;
-                    offProgress();
+          $('#filePath').val(newFilename);
+          kakaoimgName = newFilename;
+          offProgress();
 
-                    cur_Step = cur_Step +1;
-                   updateUI();
-                   $("#bottomList").css('display','block');
+          cur_Step = cur_Step +1;
+         updateUI();
+         $("#bottomList").css('display','block');
 
 
 
@@ -515,8 +558,8 @@ $(document).ready(function(){
         alert("사진을 업로드 해 주세요.");
       }
     }
-  });
-});  
+  });*/
+}); 
           </script> 
   </body>
 </html>
