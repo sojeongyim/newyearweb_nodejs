@@ -51,7 +51,7 @@
           <input class="reactUI step3" id="rainbow_txt3" autofocus placeholder="10자 이내로 입력" maxlength="10" style="display: none;letter-spacing:-1px"> 
           </input>
          
-          <img id="rainbow_grip" src ="/images/tropicalFrameSXSW.png"></img> 
+          <img id="rainbow_grip" src ="/images/sxswFrames_tropical2019.png"></img> 
           <div id="hiddenBox" ></div>
           <form name="fileForm3" action="/ajax/upload" method="post"  enctype="multipart/form-data" id="fileForm3">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
@@ -97,7 +97,7 @@
 
       <div id="bottomList">
         <div class="btn_nav btn_nav_l">
-          <img class="l_arrow" align="left"  src = "/images/arrow0.png"> 
+          <img class="l_arrow" align="left"  src = "/images/frame_back_blue.png"> 
           <span class="tit_l_1">사진 다시<br>고르기</span>
           <span class="tit_l_2">스타일<br>고르기</span>
           <span class="tit_l_3">메시지<br>다시 쓰기</span>
@@ -119,19 +119,22 @@ var cur_Step = 1;
 var kakaoimgName = '';
 var styleCheck = false;
 var list = ['11','9','5','10','4'];
+var FN='';
 
 /* Check file if style transfer is done */
 function check_file(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
+  var temp = filename.split('.');
   var http = new XMLHttpRequest();
-  http.open('HEAD',"/images/Result/"+filename, false);
+  http.open('HEAD',"/images/ResultImage/"+temp[0]+".jpg", false);
   http.send();
 
   if(http.status!=404){
     styleCheck = true;
     /* Load images if process is done */
     setTimeout("style_img_load()",1000);
+    console.log("styled img load finished");
     clearInterval(timerId); 
   }
 }
@@ -159,15 +162,13 @@ function offProgress()
 function style_img_load(){
   var filenameOb = document.getElementById("filePath");
   var filename = filenameOb.value;
-
+  var filenameJpg=filename.split('.');
   var num = Math.random();
   /* filename should be changed or Dummy cached Image will disturb you */
-  filename = filename+"?v=" + num;
+  filename = filenameJpg[0]+".jpg"+"?v=" + num;
 
-  $('#flower_origin_image').attr("src","/images/Result/"+filename);
-  //$("img.r_arrow").attr('src', '/images/arrow3.png');
-  //able message
-   $("img.r_arrow").attr('src', '/images/btn8.png');
+  $('#flower_origin_image').attr("src","/images/ResultImage/"+filename);
+  $("img.r_arrow").attr('src', '/images/arrow3.png');
 }
 
 
@@ -219,10 +220,10 @@ function updateUI()
       $("#s2").css('display','block');
       $("#s1").css('display','none');
       $("#s3").css('display','none');  
-      cur_Step=3;
+      
       break;
     case 3:
-      $("#rainbow_txt1").focus();
+     /* $("#rainbow_txt1").focus();
       $("#rainbow_txt1").val('');
       $("#rainbow_txt2").focus();
       $("#rainbow_txt2").val('');
@@ -232,6 +233,8 @@ function updateUI()
       $("#rainbow_p1").text("");
       $("#rainbow_p2").text("");
       $("#rainbow_p3").text("");
+*/
+$.post('/ajax/videoDB',{filename:FN});
 
       $("img.l_arrow").attr('src','/images/arrow11.png');
       //$("img.r_arrow").attr('src','/images/arrow8.png');
@@ -252,7 +255,7 @@ function updateUI()
       $("#rainbow_txt2").val('');
       $("#rainbow_p3").text($("#rainbow_txt3").val());
       $("#rainbow_txt3").val('');
-      initKakao();
+      /*initKakao();*/
       $("img.l_arrow").css('display','none');
       $("img.r_arrow").css('display','none');
       $(".shareBut").css('z-index', '99');
@@ -282,7 +285,9 @@ function nextStep(){
   if(styleCheck)
   {
     if(cur_Step <4 && chkImgUpload())
-    {
+  
+      {$.post('/ajax/videoDB',{filename:FN});
+            
       cur_Step = cur_Step +1;
       if(cur_Step ==4)
       {
@@ -294,8 +299,8 @@ function nextStep(){
         $("#rainbow_p1").text($("#rainbow_txt1").val());
         $("#rainbow_p2").text($("#rainbow_txt2").val());
         $("#rainbow_p3").text($("#rainbow_txt3").val());
-        capture();
-        $('#insta_background').attr("src","/background/"+$('#filePath').val());
+       /*capture();*/
+       /* $('#insta_background').attr("src","/background/"+$('#filePath').val());*/
       }else{
         updateUI()
       }
@@ -338,7 +343,7 @@ function saveToServer(uri, filename)
  */
 function DownloadCard(){
   var link = document.createElement('a');
-  var filename = $('#filePath').val().split('.')[0]+".png";
+  var filename = $('#filePath').val().split('.')[0]+".gif";
   var uagent = navigator.userAgent.toLowerCase();
 
   link.href = "/final/"+filename;
@@ -434,11 +439,12 @@ function style_click(Id){
 
     /* Delete Already Existing File
        and Put another rows into DB */
-    $.post('/ajax/delete', {filename: filename });
-    $.post('/ajax/style', {stylenum: stylenum , filename: filename });
+    console.log("fnnfnfnf"+FN);
+    $.post('/ajax/delete', {filename: FN });
+    $.post('/ajax/style', {stylenum: stylenum , filename: FN });
 
     /* Start Thread to tell when the file is generated */
-    timerId = setInterval("check_file()", 1000); 
+    timerId = setInterval("check_file()", 1500); 
   }
   else
   {
@@ -481,13 +487,39 @@ $(document).ready(function(){
         onProgress();
         var temp=filename.split('.');
 
-        var newFilename = genFileName()+temp[temp.length-1];
+        var newFilename = genFileName()+"."+temp[temp.length-1];
 
         console.log(newFilename);
-      // $("#fileInput").val(newFilename);
+       //$('#filePath').val(newFilename);
         console.log('before post');
+        console.log($('#filePath').val());
+        //$.post('/ajax/result', {imgURL: uri, imgName: filename }).done(function(){
+       //updateUI(); 
+        // }
+
+        $.post('/ajax/filename',{filename:newFilename});
         document.getElementById("fileForm3").submit();
+        FN=newFilename;
+        var temp2=newFilename.split('.'); 
+        console.log(temp2[0]);
+        setTimeout(function(){ $('#flower_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
+        },1000);
         console.log('hh');
+
+     // var temp2=newFilename.split('.'); 
+     // console.log(temp2[0]);
+     // $('#flower_origin_image').attr("src","/images/thumbs/"+temp2[0]+".jpg");
+
+                    $('#filePath').val(newFilename);
+                    kakaoimgName = newFilename;
+                    offProgress();
+
+                    cur_Step = cur_Step +1;
+                   updateUI();
+                   $("#bottomList").css('display','block');
+
+
+
         //loadImage(
           //  file,
            // function(img){

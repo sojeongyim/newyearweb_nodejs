@@ -11,28 +11,47 @@ var dbemail='';
 var originPath='./public/images/Origin/'
 var filename='';
 var size;
-var status=3;
+var status='';
 var form = new multiparty.Form();
 var DirName = '/root/web/paintly_newyear/public/images/Origin/'
+var DirThumbs = '/root/web/paintly_newyear/public/images/thumbs/'
  var filename='';
+var filename2='';
   var size;
-  var status=3;
 var temp='';
+var stylenum='';
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpeg = require('fluent-ffmpeg');
+ffmpeg.setFfmpegPath(ffmpegPath);
+
+
+const extractFrames = require('ffmpeg-extract-frames')
+
+
 /* Router for Ajax Communication */
 /* Get DataURI(Images) and Save it to Serverside */
+router.post('/filename', function(req,res,next)
+  {
+    filename2=req.body.filename;
+    console.log("filename2"+filename2);
+  }
+);
+  
 router.post('/upload', function(req, res, next) {
-  form.on('field',function(name,value){
+  form.on('field',function(name,value)
+  {
+
     console.log('normal field / name = '+name+' , value = '+value);
+
   });
 
   form.on('part',function(part){
     if (part.filename) {
       filename = part.filename;
+      filename = filename2;
       //size = part.byteCount;
-       temp=filename.split('.');
-      
-      filename=genFileName()+temp[temp.length-1];
-
+      //videoFrameExtractor.extractFrame(filename, 1, 1, DirThumbs);
+      console.log("here is ajax part, file name is"+filename);
     }else{
       part.resume();
     } 
@@ -52,7 +71,10 @@ router.post('/upload', function(req, res, next) {
                   });*/
       
       console.log(filename+' Part read complete');
-      writeStream.end();
+      writeStream.end(); 
+      //console.log("extractframe1")
+      extractFrames({input: DirName+filename,output: DirThumbs+filename.split('.')[0]+'.jpg',offsets: [0]}) 
+      console.log("Extract First Frame")
     });
 
   }); //form on part end
@@ -68,8 +90,9 @@ router.post('/upload', function(req, res, next) {
   });
 
   form.parse(req);
-  
 });
+
+
 function genFileName() {
   var text = "";
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -142,23 +165,45 @@ console.log("save video in Origin!");
 router.post('/style', function(req, res)
   {
     var filename=req.body.filename;
-    var stylenum=req.body.stylenum;
-     var Name=req.body.userName;
-    var Email=req.body.userEmail;
+     stylenum=req.body.stylenum;
 
-    connection.query('INSERT INTO image(filename, stylename,username,useremail) VALUES(?,?)',[filename,stylenum,dbname,dbemail],function(err, rows, fields){
+    var fileNameJpg=filename.split('.');
+    status=1;
+    console.log(filename, stylenum);
+
+   connection.query('INSERT INTO image(filename, stylename,username,useremail,status) VALUES(?,?,?,?,?)',[fileNameJpg[0]+'.jpg',stylenum,dbname,dbemail,status],function(err, rows, fields){
       if (!err){
-        var answer={'result': 'ok'};
-        res.json(answer);
-        res.render('main',{title: 'Paintly'});
-
+       var answer={'result': 'ok'};
+       res.json(answer);
+      res.render('main',{title: 'Paintly'});
+        console.log("db finished");
       }
       else
         console.log('Error while performing Query.', err);
     });
+console.log("db finished");
+
 
   });
-router.post('/user', function(req, res)
+router.post('/videoDB', function(req,res){
+var filename=req.body.filename;
+status=2;
+ connection.query('INSERT INTO image(filename, stylename,username,useremail,status) VALUES(?,?,?,?,?)',[filename,stylenum,dbname,dbemail,status],function(err, rows, fields){
+      if (!err){
+       var answer={'result': 'ok'};
+       res.json(answer);
+      res.render('main',{title: 'Paintly'});
+        console.log("video db finished");
+      }
+      else
+        console.log('Error while performing Query.', err);
+    });
+console.log("video db finished");
+
+
+});
+
+router.post('/user', function(req, res,next)
   {
     var name=req.body.userName;
     var email=req.body.userEmail;

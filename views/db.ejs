@@ -12,7 +12,7 @@
       <form action="/ajax" method="post">
         <input id="dbName" name="userName" type="text" placeholder="name">
         <input id="dbEmail" name="userEmail" type="text" placeholder="email">
-        <input type="button" class ="btn btn-sucess" onclick="checkAll()" value="upload">
+        <input type="button" class ="btn btn-sucess" value="upload">
       </form>
     </div>
   </body>
@@ -26,10 +26,11 @@ if(name != '' && email != '')
 {
 console.log("name is"+name);
 console.log("email is"+email);
-//$.post('/ajax/user', {userName:name, userEmail:email}).done(function()
-//{
-//window.location.href="http://183.102.74.3:8886/main";
-//});
+$.post('/ajax/user', {userName:name, userEmail:email}).done(function()
+{
+window.location.href="http://183.102.74.3:8886/main";
+console.log("user check");
+});
 }
 else
 {
