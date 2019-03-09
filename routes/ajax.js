@@ -88,7 +88,9 @@ router.post('/upload', function(req, res, next) {
   {
     // console.log(' Reading total  '+byteRead+'/'+byteExpected);
   });
-
+  form.on("error", function (error) {
+    console.log("Error Object upload");
+  });
   form.parse(req);
 });
 
@@ -216,8 +218,6 @@ router.post('/user', function(req, res,next)
     console.log(dbname);
     console.log(dbemail);
     console.log("end ajax user");
-
-    res.json(answer);
     res.render('main',{title:Paintly});
   });
 

@@ -51,7 +51,7 @@
           <input class="reactUI step3" id="rainbow_txt3" autofocus placeholder="10자 이내로 입력" maxlength="10" style="display: none;letter-spacing:-1px"> 
           </input>
          
-          <img id="rainbow_grip" src ="/images/flowerFrameSXSW.png"></img> 
+          <img id="rainbow_grip" src ="/images/sxswFrames_flower2019.png"></img> 
           <div id="hiddenBox" ></div>
           <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm3">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
@@ -97,7 +97,7 @@
 
       <div id="bottomList">
         <div class="btn_nav btn_nav_l">
-          <img class="l_arrow" align="left"  src = "/images/arrow0.png"> 
+          <img class="l_arrow" align="left"  src = "/images/frame_back_blue.png"> 
           <span class="tit_l_1">사진 다시<br>고르기</span>
           <span class="tit_l_2">스타일<br>고르기</span>
           <span class="tit_l_3">메시지<br>다시 쓰기</span>
@@ -164,7 +164,8 @@ function style_img_load(){
   filename = filename+"?v=" + num;
 
   $('#flower_origin_image').attr("src","/images/Result/"+filename);
-  $("img.r_arrow").attr('src', '/images/arrow3.png');
+ // $("img.r_arrow").attr('src', '/images/arrow3.png');
+  $("img.r_arrow").attr('src', '/images/btn8.png');
 }
 
 
@@ -196,13 +197,17 @@ function updateUI()
     case 2:
       if(styleCheck==false)
       {
-        $("img.r_arrow").attr('src', '/images/arrow4.png');
+       // $("img.r_arrow").attr('src', '/images/arrow4.png');
+ //disable message
+         $("img.r_arrow").attr('src', '/images/btn12.png');
       }
       else
       {
-        $("img.r_arrow").attr('src','/images/arrow3.png');
+        //$("img.r_arrow").attr('src','/images/arrow3.png');
+         $("img.r_arrow").attr('src','/images/btn10.png');
       }
-      $("img.l_arrow").attr('src','/images/arrow2.png');
+      //$("img.l_arrow").attr('src','/images/arrow2.png');
+      $("img.l_arrow").attr('src','/images/btn1.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step2').fadeIn();
@@ -210,6 +215,7 @@ function updateUI()
       $("#s2").css('display','block');
       $("#s1").css('display','none');
       $("#s3").css('display','none');  
+      cur_Step=3;
       break;
     case 3:
       $("#rainbow_txt1").focus();
@@ -224,7 +230,8 @@ function updateUI()
       $("#rainbow_p3").text("");
 
       $("img.l_arrow").attr('src','/images/arrow11.png');
-      $("img.r_arrow").attr('src','/images/arrow8.png');
+      //$("img.r_arrow").attr('src','/images/arrow8.png');
+        $("img.r_arrow").attr('src','/images/btn10.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step3').fadeIn();

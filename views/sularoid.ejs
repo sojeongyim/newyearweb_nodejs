@@ -40,11 +40,11 @@
           <div class="something">
             <img id="blurred_background" style="background-color:lightgray;"></img> 
           </div>
-          <img id="grip" class="rotate"  src ="/images/polaroid.png"></img> 
-          <div id="hiddenBox" class="rotate"></div>
+          <img id="grip" class=".rotate"  src ="/images/polaroid_logo.png"></img> 
+          <div id="hiddenBox" class=".rotate"></div>
           <form action="/ajax" method="post"  enctype="multipart/form-data" id="fileForm">
             <label for="fileInput" style= "height: 100%; width: 100%; margin-bottom: 0px; display: inline-block; ">
-              <img onload="offProgress()" id="origin_image" class="rotate" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/grey.png"/>
+              <img onload="offProgress()" id="origin_image" class=".rotate" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/grey.png"/>
             </label>
             <input id="fileInput" name="fileInput" type="file" accept="video/*" style="display: none;"/>
             <input type="text" id="filePath" style="display: none;"/>
@@ -86,7 +86,7 @@
 
       <div id="bottomList">
         <div class="btn_nav btn_nav_l">
-          <img class="l_arrow" align="left"  src = "/images/arrow0.png"> 
+          <img class="l_arrow" align="left"  src = "/images/frame_back_blue.png"> 
           <span class="tit_l_1">사진 다시<br>고르기</span>
           <span class="tit_l_2">스타일<br>고르기</span>
           <span class="tit_l_3">메시지<br>다시 쓰기</span>
@@ -97,8 +97,10 @@
           <span class="tit_r_2">새카드<br>만들기</span>
         </div>
         <div class="btn_nav">
-          <img class="resetBut" align="right" style="display:none" src = "/images/arrow6.png" >
+<!--           <img class="resetBut" align="right" style="display:none" src = "/images/arrow6.png" > -->
+          <img class="resetBut" align="right" style="display:none" src = "/images/AnewCard_next_blue.png" >
           <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
+
         </div>
       </div>
           <script>
@@ -153,7 +155,9 @@ function style_img_load(){
   filename = filename+"?v=" + num;
 
   $('#origin_image').attr("src","/images/Result/"+filename);
-  $("img.r_arrow").attr('src', '/images/arrow3.png');
+  // $("img.r_arrow").attr('src', '/images/arrow3.png');
+  //able message
+   $("img.r_arrow").attr('src', '/images/btn8.png');
 }
 
 
@@ -185,13 +189,19 @@ function updateUI()
     case 2:
       if(styleCheck==false)
       {
-        $("img.r_arrow").attr('src', '/images/arrow4.png');
+        //$("img.r_arrow").attr('src', '/images/arrow4.png');
+        //disable message
+         $("img.r_arrow").attr('src', '/images/btn12.png');
       }
       else
       {
-        $("img.r_arrow").attr('src','/images/arrow3.png');
+        //able massege
+        //$("img.r_arrow").attr('src','/images/arrow3.png');
+         $("img.r_arrow").attr('src','/images/btn8.png');
       }
-      $("img.l_arrow").attr('src','/images/arrow2.png');
+      //able image select
+      // $("img.l_arrow").attr('src','/images/arrow2.png');
+      $("img.l_arrow").attr('src','/images/btn1.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step2').fadeIn();
@@ -204,8 +214,10 @@ function updateUI()
       $("#txt").focus();
       $("#txt").val('');
       $("#inImgTop p").text("");
-      $("img.l_arrow").attr('src','/images/arrow11.png');
-      $("img.r_arrow").attr('src','/images/arrow8.png');
+      //$("img.l_arrow").attr('src','/images/arrow11.png');
+      $("img.l_arrow").attr('src','/images/style_back_blue.png');
+      // $("img.r_arrow").attr('src','/images/arrow8.png');
+      $("img.r_arrow").attr('src','/images/btn10.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step3').fadeIn();
@@ -437,7 +449,7 @@ $(document).ready(function(){
     var file;
 
     if ((file = this.files[0])) {
-      if(filename.toLowerCase().indexOf("MP4")!=-1 || filename.toLowerCase().indexOf("mp4")!=-1 || filename.toLowierCase().indexOf("MOV")!=-1) || filename.toLowerCase().indexOf("mov")!=-1)
+      if(filename.toLowerCase().indexOf("MP4")!=-1 || filename.toLowerCase().indexOf("mp4")!=-1 || filename.toLowierCase().indexOf("MOV")!=-1|| filename.toLowerCase().indexOf("mov")!=-1)
 
       {
         onProgress();
