@@ -12,11 +12,26 @@
     "ejs": "~2.5.7",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "frame-extractor": "0.0.8",
     "html2canvas": "^1.0.0-alpha.12",
     "http-errors": "~1.6.2",
     "image-data-uri": "^2.0.0",
     "morgan": "~1.9.0",
     "multiparty": "^4.2.1",
-    "mysql": "^2.16.0"
-  }
+    "mysql": "^2.16.0",
+    "video-frame-extractor": "^0.1.1"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/pulse9/paintly_newyear.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/pulse9/paintly_newyear/issues"
+  },
+  "homepage": "https://gitlab.com/pulse9/paintly_newyear#README",
+  "description": ""
 }
