@@ -13,9 +13,10 @@
   <body id="background_db">
     <div id="index_container" style="margin:10% auto;font-family:gothic;">
       <h1>give us your email !</h1>
-      <form action="/ajax" method="post" style="margin:5% auto;">
+      <form action="/ajax/findemail" method="post" style="margin:5% auto;">
         <input id="dbEmail" name="userEmail" type="text" placeholder="email" style="text-align:center; width:80%; margin-bottom:3%;font-family:gothic;">
-        <input type="button" class ="btn btn-sucess" onclick="checkAll()" value="upload" style="float:left;">
+        <input type="submit" value="Submit">
+        <!-- <input type="button" class ="btn btn-sucess" onclick="checkAll()" value="upload" style="float:left;"> --!>
       </form>
     </div>
   </body>
@@ -31,7 +32,8 @@ console.log("name is"+name);
 console.log("email is"+email);
 $.post('/ajax/findemail', {userEmail:email}).done(function()
 {
-window.location.href="http://183.102.74.3:8886/main";
+  console.log('55555')
+//window.location.href="http://183.102.74.3:8886/main";
 });
 }
 else

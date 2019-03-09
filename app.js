@@ -20,6 +20,13 @@ var ryulRouter = require('./routes/ryul');
 var flowerRouter = require('./routes/flower');
 var flower2Router = require('./routes/flower2');
 var dbRouter =  require('./routes/db');
+var dbemailRouter=require('./routes/dbemail');
+var flower2ResultRouter=require('./routes/flower2Result.js');
+var flowerResultRouter=require('./routes/flowerResult.js');
+var instaResultRouter=require('./routes/instaResult.js');
+var sularoidResultRouter=require('./routes/sularoidResult.js');
+
+
 
 var app = express();
 
@@ -51,7 +58,11 @@ app.use('/insta',instaRouter);
 app.use('/ryul',ryulRouter);
 app.use('/flower',flowerRouter);
 app.use('/flower2',flower2Router);
-
+app.use('/dbemail',dbemailRouter);
+app.use('/ajax/flower2Result', flower2ResultRouter);
+app.use('/flowerResult', flowerResultRouter);
+app.use('/instaResult', instaResultRouter);
+app.use('/sularoidResult', sularoidResultRouter);
 app.use('/db', dbRouter);
 
 // catch 404 and forward to error handler

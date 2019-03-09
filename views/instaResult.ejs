@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>    
+    <% include header %>
+    <title>Paintly.AIcard.main</title>
+  </head>
+
+  <body id="mainBackground">
+     <center id="card_style"> 
+        <div id="capture_card" style="width:100%; height:100%; position: relative; text-align: center;">
+          <div id = "progressBar">
+            <div class="loader"></div>
+          </div>
+          <div id = "insta_inImgTop1">
+            <p id="insta_p1" style="color: white;font-family: nanum Gothic;
+    font-weight: bold;"> </p>
+          </div>
+          <div id = "insta_inImgTop2">
+            <p id="insta_p2" style="color: white;font-family: nanum Gothic;
+    font-weight: bold;"> </p>
+          </div>
+          <input class="reactUI step3" id="insta_txt1" autofocus placeholder="18자 이내로 입력" maxlength="18" style="display: none;letter-spacing:-1px"> 
+          </input>
+          <input class="reactUI step3" id="insta_txt2" autofocus placeholder="18자 이내로 입력" maxlength="18" style="display: none;letter-spacing:-1px"> 
+          </input>
+          <div class="insta_something">
+            <img id="insta_background" style="width:100%; height: 100%;position: absolute;top: 0%; left: 0%;" ></img> 
+          </div>
+          <img id="insta_grip" src ="/images/intagramEng.png"></img> 
+          <div id="hiddenBox" ></div>
+              <img onload="offProgress()" id="insta_origin_image" style="z-index: 11; display: inline-block; pointer-events: none;" src="/images/insta_grey.png"/>
+        </div>
+      </center>
+
+  </body>
+</html>
