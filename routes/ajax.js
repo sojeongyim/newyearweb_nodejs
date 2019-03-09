@@ -15,9 +15,9 @@ var status='';
 var form = new multiparty.Form();
 var DirName = '/root/web/paintly_newyear/public/images/Origin/'
 var DirThumbs = '/root/web/paintly_newyear/public/images/thumbs/'
- var filename='';
+var filename='';
 var filename2='';
-  var size;
+var size;
 var temp='';
 var stylenum='';
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
@@ -81,7 +81,7 @@ router.post('/upload', function(req, res, next) {
 
   form.on('close',function()
   {
-    // res.status(200).send('Upload complete');
+    res.status(200);
   });
 
   form.on('progress',function(byteRead,byteExpected)
@@ -111,7 +111,7 @@ function setDB1(filename){
         if (!err){
           //var answer={'result': 'ok'};
           //res.json(answer);
-          //res.render('main',{title: 'Paintly'});
+          res.render('main',{title: 'Paintly'});
           console.log('db ok');
         }
         else
@@ -174,8 +174,8 @@ router.post('/style', function(req, res)
    connection.query('INSERT INTO image(filename, stylename,username,useremail,status) VALUES(?,?,?,?,?)',[fileNameJpg[0]+'.jpg',stylenum,dbname,dbemail,status],function(err, rows, fields){
       if (!err){
        var answer={'result': 'ok'};
-       res.json(answer);
-      res.render('main',{title: 'Paintly'});
+       //res.json(answer);
+        res.render('main',{title: 'Paintly'});
         console.log("db finished");
       }
       else
@@ -183,6 +183,7 @@ router.post('/style', function(req, res)
     });
 console.log("db finished");
 
+    //res.json({'result':'ok'})
 
   });
 router.post('/videoDB', function(req,res){
@@ -191,14 +192,15 @@ status=2;
  connection.query('INSERT INTO image(filename, stylename,username,useremail,status) VALUES(?,?,?,?,?)',[filename,stylenum,dbname,dbemail,status],function(err, rows, fields){
       if (!err){
        var answer={'result': 'ok'};
-       res.json(answer);
-      res.render('main',{title: 'Paintly'});
+       //res.json(answer);
+       res.render('main',{title: 'Paintly'});
         console.log("video db finished");
       }
       else
         console.log('Error while performing Query.', err);
     });
 console.log("video db finished");
+//  res.json({'result':'ok'})
 
 
 });
@@ -225,9 +227,9 @@ router.post('/result', function(req, res)
   {
     var dataURI=req.body.imgURL;
     var imgName=req.body.imgName;
-    var filePath = './public/images/Result/' + imgName;
-
-    imageDataURI.outputFile(dataURI, filePath).then(res => console.log(res));
+    //var filePath = './public/images/Result/' + imgName;
+    //console.log("WHAT IS WRONG WITH YOU????")
+    //imageDataURI.outputFile(dataURI, filePath).then(res => console.log(res));
 
     var answer={'result': 'ok'};
     res.json(answer);
@@ -238,8 +240,9 @@ router.post('/result', function(req, res)
 router.post('/delete', function(req, res, next)
   {
     var filename=req.body.filename;
-    var filepath= './public/images/Result/';
-    filepath = filepath + filename;
+    console.log(filename)
+    var filepath= './public/images/ResultImage/'+filename.split('.')[0]+'.jpg';
+    //filepath = filepath + filename;
 
     fs.access(filepath, error => {
       if (!error) {
@@ -250,7 +253,7 @@ router.post('/delete', function(req, res, next)
         console.log(error);
       }
     });
-
+    
     var answer={'result': 'ok'};
     res.json(answer);
   });

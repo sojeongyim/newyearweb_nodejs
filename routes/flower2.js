@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 /* For Sharing Page */
 router.get('/:filename', function(req, res, next) {
   var filename = req.params.filename;
-  res.render('result', { title: 'Paintly',filename:filename});
+  //res.render('result', { title: 'Paintly',filename:filename});
 });
 
 
