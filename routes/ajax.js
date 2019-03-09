@@ -38,60 +38,51 @@ router.post('/filename', function(req,res,next)
 );
   
 router.post('/upload', function(req, res, next) {
-  form.on('field',function(name,value)
-  {
-
-    console.log('normal field / name = '+name+' , value = '+value);
-
+  var count = 0;
+  var form = new multiparty.Form();
+   
+  // Errors may be emitted
+  // Note that if you are listening to 'part' events, the same error may be
+  // emitted from the `form` and the `part`.
+  form.on('error', function(err) {
+    console.log('Error parsing form: ' + err.stack);
   });
-
-  form.on('part',function(part){
-    if (part.filename) {
-      filename = part.filename;
-      filename = filename2;
-      //size = part.byteCount;
-      //videoFrameExtractor.extractFrame(filename, 1, 1, DirThumbs);
-      console.log("here is ajax part, file name is"+filename);
-    }else{
+   
+  // Parts are emitted when parsing the form
+  form.on('part', function(part) {
+    // You *must* act on the part by reading it
+    // NOTE: if you want to ignore it, just call "part.resume()"
+   
+    if (!part.filename) {
+      // filename is not defined when this is a field and not a file
+      console.log('got field named ' + part.name);
+      // ignore field's content
       part.resume();
-    } 
-    var writeStream = fs.createWriteStream(DirName+filename);
-    part.pipe(writeStream);
-    /*part.on('data',function(chunk){
-                  console.log(filename+' read '+chunk.length + 'bytes');
-                });*/
-    part.on('end',function(){
-      /*var query = "INSERT INTO video (filename, tstamp, style, uid, and_ios, status) VALUES ?";
-                  var filename_arr = filename.split("__");
-                  console.log(filename_arr);
-                  loc_tmp = filename.indexOf(filename_arr[2]);
-                  var values = [[filename, filename_arr[0], filename_arr[1], filename.slice(loc_tmp,loc_tmp+10), filename_arr[filename_arr.length-1].split('.')[0], 0]];
-                  connection.query(query, [values], function(err, result){
-                  if (err) throw err;
-                  });*/
-      
-      console.log(filename+' Part read complete');
-      writeStream.end(); 
-      //console.log("extractframe1")
-      extractFrames({input: DirName+filename,output: DirThumbs+filename.split('.')[0]+'.jpg',offsets: [0]}) 
-      console.log("Extract First Frame")
+    }
+   
+    if (part.filename) {
+      // filename is defined when this is a file
+      console.log('got file named ' + part.name);
+      // ignore file's content here
+      part.resume();
+    }
+   
+    part.on('error', function(err) {
+      // decide what to do
     });
-
-  }); //form on part end
-
-  form.on('close',function()
-  {
-    res.status(200);
   });
-
-  form.on('progress',function(byteRead,byteExpected)
-  {
-    // console.log(' Reading total  '+byteRead+'/'+byteExpected);
+   
+  // Close emitted after form parsed
+  form.on('close', function() {
+    console.log('Upload completed!');
+    res.setHeader('text/plain');
+    res.end();
   });
-  form.on("error", function (error) {
-    console.log("Error Object upload");
-  });
+   
+  // Parse req
   form.parse(req);
+
+
 });
 
 
@@ -218,7 +209,8 @@ router.post('/user', function(req, res,next)
     console.log(dbname);
     console.log(dbemail);
     console.log("end ajax user");
-    res.render('main',{title:Paintly});
+    res.json(answer);
+    //res.render('main',{title:Paintly});
   });
 
 /* Save Final (with Text) Result into Server

@@ -108,7 +108,7 @@
           <span class="tit_r_2">새카드<br>만들기</span>
         </div>
         <div class="btn_nav">
-          <img class="resetBut" align="right" style="display:none"  src = "/images/arrow6.png" >
+          <img class="resetBut" align="right" style="display:none"  src = "/images/Anewcard_next_blue.png" >
           <img class="backToText" align="left" style="display:none" src = "/images/arrow1.png" >
         </div>
       </div>
@@ -168,7 +168,9 @@ function style_img_load(){
   filename = filenameJpg[0]+".jpg"+"?v=" + num;
 
   $('#flower_origin_image').attr("src","/images/ResultImage/"+filename);
-  $("img.r_arrow").attr('src', '/images/arrow3.png');
+//  $("img.r_arrow").attr('src', '/images/arrow3.png');
+ $("img.r_arrow").attr('src', '/images/btn10.png');
+
 }
 
 
@@ -223,32 +225,8 @@ function updateUI()
       
       break;
     case 3:
-<<<<<<< HEAD
       $.post('/ajax/videoDB',{filename:FN});
       $(".resetBut").css('display','block');
-=======
-     /* $("#rainbow_txt1").focus();
-      $("#rainbow_txt1").val('');
-      $("#rainbow_txt2").focus();
-      $("#rainbow_txt2").val('');
-      $("#rainbow_txt3").focus();
-      $("#rainbow_txt3").val('');
-      
-      $("#rainbow_p1").text("");
-      $("#rainbow_p2").text("");
-      $("#rainbow_p3").text("");
-*/
-$.post('/ajax/videoDB',{filename:FN});
-
-      $("img.l_arrow").attr('src','/images/arrow11.png');
-      //$("img.r_arrow").attr('src','/images/arrow8.png');
-      $("img.r_arrow").attr('src','/images/btn10.png');
-      $("img.l_arrow").css('display','block');
-      $("img.r_arrow").css('display','block');
-      $('.step3').fadeIn();
-      $('#fileInput').prop('disabled', true);
-      $("#s3").css('display','block');
->>>>>>> 7e0d817d76b25311f6ab791d82788bc0ef409a10
       $("#s2").css('display','none');
       $("#s1").css('display','none');  
       $("img.l_arrow").css('display','none');
@@ -276,12 +254,12 @@ function chkImgUpload()
 function nextStep(){
   if(styleCheck)
   {
-    if(cur_Step <4 && chkImgUpload())
+    if(cur_Step <5 && chkImgUpload())
   
       {/*$.post('/ajax/videoDB',{filename:FN});*/
             
       cur_Step = cur_Step +1;
-      if(cur_Step ==4)
+      if(cur_Step ==5)
       {
         $("img.l_arrow").css('display','none');
         $("img.r_arrow").css('display','none');
