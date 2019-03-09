@@ -165,7 +165,9 @@ function style_img_load(){
   filename = filename+"?v=" + num;
 
   $('#flower_origin_image').attr("src","/images/Result/"+filename);
-  $("img.r_arrow").attr('src', '/images/arrow3.png');
+  //$("img.r_arrow").attr('src', '/images/arrow3.png');
+  //able message
+   $("img.r_arrow").attr('src', '/images/btn8.png');
 }
 
 
@@ -182,7 +184,8 @@ function updateUI()
   $('.reactUI').css('display','none');
   $(".resetBut").css('display','none');
   $(".backToText").css('display','none');
-  switch(cur_Step){
+  switch(cur_Step)
+  {
     case 1:
       styleCheck=false;
       $('#flower_origin_image').attr("src","/images/grey.png");
@@ -197,13 +200,18 @@ function updateUI()
     case 2:
       if(styleCheck==false)
       {
-        $("img.r_arrow").attr('src', '/images/arrow4.png');
+        //$("img.r_arrow").attr('src', '/images/arrow4.png');
+          //disable message
+         $("img.r_arrow").attr('src', '/images/btn12.png');
       }
+      
       else
       {
-        $("img.r_arrow").attr('src','/images/arrow3.png');
+        //$("img.r_arrow").attr('src','/images/arrow3.png');
+        $("img.r_arrow").attr('src','/images/btn10.png');
       }
-      $("img.l_arrow").attr('src','/images/arrow2.png');
+      //$("img.l_arrow").attr('src','/images/arrow2.png');
+        $("img.l_arrow").attr('src','/images/btn1.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step2').fadeIn();
@@ -211,6 +219,7 @@ function updateUI()
       $("#s2").css('display','block');
       $("#s1").css('display','none');
       $("#s3").css('display','none');  
+      cur_Step=3;
       break;
     case 3:
       $("#rainbow_txt1").focus();
@@ -225,7 +234,8 @@ function updateUI()
       $("#rainbow_p3").text("");
 
       $("img.l_arrow").attr('src','/images/arrow11.png');
-      $("img.r_arrow").attr('src','/images/arrow8.png');
+      //$("img.r_arrow").attr('src','/images/arrow8.png');
+      $("img.r_arrow").attr('src','/images/btn10.png');
       $("img.l_arrow").css('display','block');
       $("img.r_arrow").css('display','block');
       $('.step3').fadeIn();

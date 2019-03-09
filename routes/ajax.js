@@ -52,7 +52,7 @@ router.post('/upload', function(req, res, next) {
                   });*/
       
       console.log(filename+' Part read complete');
-      writeStream.end().function(){setDB1(filename)};
+      writeStream.end();
     });
 
   }); //form on part end
@@ -169,8 +169,6 @@ router.post('/user', function(req, res)
     console.log(dbname);
     console.log(dbemail);
     console.log("end ajax user");
-
-    res.json(answer);
     res.render('main',{title:Paintly});
   });
 
